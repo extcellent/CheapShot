@@ -388,22 +388,20 @@
         }
 
         .movie-card .poster {
-            width: 100%;
-            aspect-ratio: 2/3;
-            background: rgba(255, 255, 255, 0.04);
-            overflow: hidden;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+			width: 100%;
+			aspect-ratio: 2 / 3; /* Standard movie poster height */
+			overflow: hidden;
+			border-radius: 8px;
+			background-color: #141414;
+		}
 
         .movie-card .poster img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s;
-        }
+			height: 100%;
+			object-fit: cover; /* Crops the sides of the 16:9 thumbnail to fit the 2:3 vertical box */
+			display: block;
+		}
 
         .movie-card:hover .poster img {
             transform: scale(1.05);
