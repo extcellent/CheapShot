@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheapShot - Free Entertainment Hub</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e8e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #14141c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a3a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a4a;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0 24px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            font-weight: 400;
+            -webkit-text-fill-color: #6b6b80;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #8888a0;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #e8e8f0;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #8888a0;
+            max-width: 600px;
+            margin: 0 auto 28px;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .trust-badges span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: #aaaac0;
+        }
+
+        /* ===== CATEGORY TABS ===== */
+        .category-tabs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .tabs-header {
+            display: flex;
+            gap: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 4px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 28px;
+            border: none;
+            background: transparent;
+            color: #8888a0;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            transition: all 0.25s;
+            font-family: inherit;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: #e8e8f0;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tab-btn.active {
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.08);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: #f59e0b;
+            border-radius: 2px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeUp 0.35s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== SAFETY STEPS (Games) ===== */
+        .safety-steps {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-bottom: 32px;
+        }
+
+        .safety-steps h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .step-row:last-child {
+            border-bottom: none;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-row p {
+            font-size: 14px;
+            color: #bbbcd0;
+        }
+
+        .step-row p strong {
+            color: #e8e8f0;
+        }
+
+        /* ===== CONTAINER GRID ===== */
+        .container-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .container-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 22px 24px;
+            transition: all 0.25s;
+            position: relative;
+        }
+
+        .container-box:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .container-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .container-header h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #e8e8f0;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        .status-badge.online {
+            background: rgba(52, 211, 153, 0.15);
+            color: #34d399;
+        }
+
+        .status-badge.offline {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .status-badge.maintenance {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0 10px;
+            font-size: 15px;
+        }
+
+        .rating .stars {
+            color: #f59e0b;
+        }
+
+        .rating .votes {
+            color: #6b6b80;
+            font-size: 13px;
+        }
+
+        .container-description {
+            font-size: 14px;
+            color: #8888a0;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .visit-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            transition: all 0.2s;
+            border: 1px solid rgba(245, 158, 11, 0.15);
+        }
+
+        .visit-btn:hover {
+            background: rgba(245, 158, 11, 0.25);
+        }
+
+        .visit-btn.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .section-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e8e8f0;
+        }
+
+        .section-header .sub {
+            font-size: 14px;
+            color: #6b6b80;
+        }
+
+        .section-header .sub a {
+            color: #f59e0b;
+        }
+
+        /* ===== COMPARISON SECTION ===== */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 12px;
+        }
+
+        .comparison-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 20px 22px;
+            transition: all 0.25s;
+        }
+
+        .comparison-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-card .product-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: #e8e8f0;
+            margin-bottom: 4px;
+        }
+
+        .comparison-card .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f59e0b;
+        }
+
+        .comparison-card .product-price .original {
+            font-size: 15px;
+            color: #6b6b80;
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        .comparison-card .product-meta {
+            font-size: 13px;
+            color: #8888a0;
+            margin: 6px 0 12px;
+        }
+
+        .comparison-card .product-meta span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 10px;
+            border-radius: 100px;
+            margin-right: 6px;
+            font-size: 12px;
+        }
+
+        .compare-btn {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.06);
+            color: #aaaac0;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .compare-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #e8e8f0;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding: 32px 24px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #6b6b80;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: #6b6b80;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #e8e8f0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .nav-container {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 12px 0;
+                gap: 8px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                gap: 4px;
+            }
+
+            .nav-links a {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 32px 16px 24px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .tabs-header {
+                gap: 4px;
+            }
+
+            .tab-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .container-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .safety-steps {
+                padding: 16px 18px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 900px) {
+            .container-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Cheap<span>Shot</span></div>
+            <div class="nav-links">
+                <a href="#" class="active" data-tab="movies">Movies</a>
+                <a href="#" data-tab="games">Games</a>
+                <a href="#" data-tab="music">Music</a>
+                <a href="#" data-tab="compare">Compare</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <h1>Entertainment <br><span class="highlight">Without the Price Tag</span></h1>
+        <p>Your trusted guide to free, safe, and smart entertainment. Hand-tested, community-rated, and updated weekly.</p>
+        <div class="trust-badges">
+            <span>✅ Community Rated</span>
+            <span>🛡️ Safety Checked</span>
+            <span>🔄 Updated Weekly</span>
+            <span>📊 100+ Sites Verified</span>
+        </div>
+    </section>
+
+    <!-- ===== TABS ===== -->
+    <section class="category-tabs">
+
+        <!-- Tab Headers -->
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="movies">🎬 Movies & TV</button>
+            <button class="tab-btn" data-tab="games">🎮 Games</button>
+            <button class="tab-btn" data-tab="music">🎵 Music</button>
+            <button class="tab-btn" data-tab="compare">⚖️ Compare & Save</button>
+        </div>
+
+        <!-- ======================== -->
+        <!-- TAB 1: MOVIES           -->
+        <!-- ======================== -->
+        <div class="tab-content active" id="tab-movies">
+
+            <div class="section-header">
+                <h2>📺 Free Streaming Sites</h2>
+                <span class="sub">5 top-rated sites</span>
+            </div>
+
+            <div class="container-grid">
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>MovieStream Pro</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="votes">(4.8 · 234 votes)</span>
+                    </div>
+                    <p class="container-description">HD streams, minimal ads, huge library of new releases.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>CineHub</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.5 · 189 votes)</span>
+                    </div>
+                    <p class="container-description">Great for classics and indie films. Clean interface.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>FlixBase</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.3 · 156 votes)</span>
+                    </div>
+                    <p class="container-description">Fast streams, good for TV series and anime.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>WatchFree</h4>
+                        <span class="status-badge maintenance">🟡 Maintenance</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★☆☆</span>
+                        <span class="votes">(3.8 · 92 votes)</span>
+                    </div>
+                    <p class="container-description">Currently undergoing updates. Check back soon.</p>
+                    <a href="#" class="visit-btn disabled">Check Later</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>StreamVerse</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.6 · 210 votes)</span>
+                    </div>
+                    <p class="container-description">4K options, minimal buffering, regularly updated.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+            </div>
+
+            <!-- Safety Note for Movies -->
+            <div style="margin-top: 28px; padding: 18px 22px; background: rgba(245, 158, 11, 0.06); border-radius: 12px; border-left: 3px solid #f59e0b;">
+                <p style="font-size: 14px; color: #aaaac0;">
+                    🛡️ <strong style="color: #e8e8f0;">Streaming safety tip:</strong> Always use an ad-blocker (like uBlock Origin) and a VPN for privacy. Never download files from streaming sites.
+                </p>
+            </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- TAB 2: GAMES             -->
+        <!-- ======================== -->
+        <div class="tab-content" id="tab-games">
+
+            <div class="section-header">
+                <h2>🎮 Free Games & Safe Downloads</h2>
+                <span class="sub">5 trusted sources</span>
+            </div>
+
+            <!-- Safety Steps -->
+            <div class="safety-steps">
+                <h3>🛡️ How to Get Free Games Safely</h3>
+                <div class="step-row">
+                    <span class="step-num">1</span>
+                    <p><strong>Download the ZIP</strong> from a trusted source (see our picks below).</p>
+                </div>
+                <div class="step-row">
+                    <span class="step-num">2</span>
+                    <p><strong>Extract</strong> the files to a new folder.</p>
+                </div>
+                <div class="step-row">
+                    <span class="step-num">3</span>
+                    <p><strong>Scan</strong> the folder with Windows Defender or Malwarebytes.</p>
+                </div>
+                <div class="step-row">
+                    <span class="step-num">4</span>
+                    <p><strong>Scan the .exe</strong> with <a href="#" style="color:#f59e0b;">VirusTotal</a> (upload the file).</p>
+                </div>
+                <div class="step-row">
+                    <span class="step-num">5</span>
+                    <p><strong>Run in a sandbox</strong> (like Sandboxie) for extra safety.</p>
+                </div>
+            </div>
+
+            <div class="container-grid">
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>GameRepo</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="votes">(4.9 · 312 votes)</span>
+                    </div>
+                    <p class="container-description">Massive library, verified uploads, community-rated.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>FreePlay Hub</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.6 · 198 votes)</span>
+                    </div>
+                    <p class="container-description">Curated selection, includes indie and AAA titles.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>PixelCrate</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.4 · 167 votes)</span>
+                    </div>
+                    <p class="container-description">Great for retro games and ROMs. Clean downloads.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>SteamUnlocked</h4>
+                        <span class="status-badge maintenance">🟡 Limited</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.2 · 145 votes)</span>
+                    </div>
+                    <p class="container-description">Some titles temporarily unavailable.</p>
+                    <a href="#" class="visit-btn disabled">Check Later</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>IndieVault</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.7 · 203 votes)</span>
+                    </div>
+                    <p class="container-description">Focus on indie games, DRM-free, safe downloads.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- TAB 3: MUSIC             -->
+        <!-- ======================== -->
+        <div class="tab-content" id="tab-music">
+
+            <div class="section-header">
+                <h2>🎵 Free Music Downloads</h2>
+                <span class="sub">5 sources + converter guide</span>
+            </div>
+
+            <div class="container-grid">
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>MP3Jungle</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.5 · 189 votes)</span>
+                    </div>
+                    <p class="container-description">Huge catalog, fast downloads, 320kbps quality.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>BeatStream</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.3 · 156 votes)</span>
+                    </div>
+                    <p class="container-description">Curated playlists, trending tracks, clean UI.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>SoundCrate</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.4 · 134 votes)</span>
+                    </div>
+                    <p class="container-description">Great for underground and independent artists.</p>
+                    <a href="#" class="visit-btn">Visit Site →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>YouTube Converter</h4>
+                        <span class="status-badge online">🟢 Online</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(4.1 · 98 votes)</span>
+                    </div>
+                    <p class="container-description">Paste any YouTube link, download MP3 instantly.</p>
+                    <a href="#" class="visit-btn">Use Tool →</a>
+                </div>
+
+                <div class="container-box">
+                    <div class="container-header">
+                        <h4>MixTape Archive</h4>
+                        <span class="status-badge offline">🔴 Offline</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★☆☆</span>
+                        <span class="votes">(3.6 · 67 votes)</span>
+                    </div>
+                    <p class="container-description">Currently down. Check back next week.</p>
+                    <a href="#" class="visit-btn disabled">Unavailable</a>
+                </div>
+            </div>
+
+            <!-- Music Guide -->
+            <div style="margin-top: 28px; padding: 20px 24px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                <h4 style="color: #f59e0b; font-size: 15px; margin-bottom: 10px;">📥 How to Add Downloaded Music to iTunes / Apple Music</h4>
+                <ol style="color: #aaaac0; font-size: 14px; line-height: 2; padding-left: 20px;">
+                    <li>Open <strong style="color: #e8e8f0;">iTunes</strong> (or Apple Music app on Mac).</li>
+                    <li>Go to <strong style="color: #e8e8f0;">File → Add to Library</strong> (or drag & drop the MP3).</li>
+                    <li>Your music will appear in the <strong style="color: #e8e8f0;">"Recently Added"</strong> section.</li>
+                    <li>Right-click → <strong style="color: #e8e8f0;">Get Info</strong> to edit metadata (artist, album, cover art).</li>
+                    <li>Sync to your device via iCloud or USB.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- TAB 4: COMPARE & SAVE    -->
+        <!-- ======================== -->
+        <div class="tab-content" id="tab-compare">
+
+            <div class="section-header">
+                <h2>⚖️ Compare & Save on Gear</h2>
+                <span class="sub">Real vs. budget — side by side</span>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="product-name">Venum Challenger Shorts</div>
+                    <div class="product-price">$89.99 <span class="original">$119.99</span></div>
+                    <div class="product-meta"><span>⚡ Premium</span> Polyester-elastane, reinforced stitching</div>
+                    <a href="#" class="compare-btn">View Deal →</a>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="product-name">Venum Style (Temu)</div>
+                    <div class="product-price">$18.99</div>
+                    <div class="product-meta"><span>💰 Budget</span> Similar design, lighter material</div>
+                    <a href="#" class="compare-btn">View Deal →</a>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="product-name">Logitech G Pro X</div>
+                    <div class="product-price">$129.99 <span class="original">$169.99</span></div>
+                    <div class="product-meta"><span>🎧 Gaming</span> Wireless, 50mm drivers, Blue Voice</div>
+                    <a href="#" class="compare-btn">View Deal →</a>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="product-name">Budget Gaming Headset</div>
+                    <div class="product-price">$29.99</div>
+                    <div class="product-meta"><span>💰 Budget</span> Wired, 40mm drivers, basic mic</div>
+                    <a href="#" class="compare-btn">View Deal →</a>
+                </div>
+            </div>
+
+            <!-- Material Comparison Note -->
+            <div style="margin-top: 24px; padding: 16px 20px; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                <p style="font-size: 14px; color: #aaaac0;">
+                    🔍 <strong style="color: #e8e8f0;">Pro tip:</strong> Always check the <strong style="color: #f59e0b;">material composition</strong> and <strong style="color: #f59e0b;">customer reviews</strong> before buying budget alternatives. We verify every product we list.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>© 2026 CheapShot — Your smart entertainment guide.</p>
+        <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Safety Guide</a>
+            <a href="#">Contact</a>
+            <a href="#">Report a Link</a>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // Tab switching
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function switchTab(tabId) {
+            // Hide all contents
+            tabContents.forEach(content => content.classList.remove('active'));
+            // Show target
+            const target = document.getElementById('tab-' + tabId);
+            if (target) target.classList.add('active');
+
+            // Update tab buttons
+            tabBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.tab === tabId) btn.classList.add('active');
+            });
+
+            // Update nav links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.tab === tabId) link.classList.add('active');
+            });
+        }
+
+        // Tab button clicks
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchTab(btn.dataset.tab);
+            });
+        });
+
+        // Nav link clicks
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchTab(link.dataset.tab);
+                // Scroll to content
+                document.querySelector('.category-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Set initial active tab (movies)
+        switchTab('movies');
+    </script>
+
+</body>
+</html>
