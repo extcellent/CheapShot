@@ -1031,50 +1031,37 @@
             return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
         }
 
-		function renderMovieCard(movie, index, showRank = false) {
-			const rank = showRank ? `<div class="top-rank">#${index + 1}</div>` : '';
-			const ratingDisplay = movie.rating ? `<span class="rating-star">⭐ ${movie.rating.toFixed(1)}</span>` : '';
-			const videoId = extractYouTubeId(movie.url);
-
-			// Attempt the absolute highest quality first
-			const maxResThumb = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-			const hqThumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-			const standardThumb = `https://img.youtube.com/vi/${videoId}/default.jpg`;
-
-			return `
-				<div class="movie-card" onclick="openModal(${index})">
-					${rank}
-					<div class="poster">
-						<img 
-							src="${maxResThumb}" 
-							alt="${movie.title}" 
-							loading="lazy" 
-							onerror="
-								if (this.src === '${maxResThumb}') { 
-									this.src = '${hqThumb}'; 
-								} else if (this.src === '${hqThumb}') { 
-									this.src = '${standardThumb}'; 
-								} else { 
-									this.onerror = null; 
-									this.parentElement.innerHTML = '<div class=\\'fallback\\'>🎬</div>'; 
-								}
-							"
-						>
-						<div class="play-overlay">
-							<div class="play-btn">▶</div>
-						</div>
-					</div>
-					<div class="info">
-						<h4>${movie.title}</h4>
-						<div class="meta">
-							${ratingDisplay}
-							${ratingDisplay ? '·' : ''}
-							<span>${movie.year}</span>
-						</div>
-					</div>
-				</div>
-			`;
-		}
+        function renderMovieCard(movie, index, showRank = false) {
+            const thumb = getThumbnail(movie.url);
+            const rank = showRank ? `<div class="top-rank">#${index + 1}</div>` : '';
+            const ratingDisplay = movie.rating ? `<span class="rating-star">⭐ ${movie.rating.toFixed(1)}</span>` : '';
+            const videoId = extractYouTubeId(movie.url);
+        
+            return `
+                <div class="movie-card" onclick="openModal(${index})">
+                    ${rank}
+                    <div class="poster">
+                        <img 
+                            src="${thumb}" 
+                            alt="${movie.title}" 
+                            loading="lazy" 
+                            onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/default.jpg'; if(!this.complete || this.naturalWidth === 0) { this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'; }"
+                        >
+                        <div class="play-overlay">
+                            <div class="play-btn">▶</div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h4>${movie.title}</h4>
+                        <div class="meta">
+                            ${ratingDisplay}
+                            ${ratingDisplay ? '·' : ''}
+                            <span>${movie.year}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
         function renderSliders() {
             if (!movies || movies.length === 0) {
@@ -1270,28 +1257,28 @@
 
         let heroIndex = 0;
 
-		function updateHero(movie) {
-			const id = extractYouTubeId(movie.url);
-			const backdrop = document.getElementById('hero-backdrop'); // Replace with your actual hero ID/Class
-			if (!id || !backdrop) return;
+        function updateHero(index) {
+            if (!movies || movies.length === 0) return;
 
-			const maxResUrl = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-			const hqUrl = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+            const movie = movies[index % movies.length];
+            if (!movie) return;
 
-			const testImg = new Image();
-			testImg.onload = function() {
-				// YouTube returns a tiny 120px placeholder image if maxresdefault doesn't exist
-				if (this.width > 120) {
-					backdrop.style.backgroundImage = `url('${maxResUrl}')`;
-				} else {
-					backdrop.style.backgroundImage = `url('${hqUrl}')`;
-				}
-			};
-			testImg.onerror = function() {
-				backdrop.style.backgroundImage = `url('${hqUrl}')`;
-			};
-			testImg.src = maxResUrl;
-		}
+            const backdrop = document.getElementById('heroBackdrop');
+            const title = document.getElementById('heroTitle');
+            const desc = document.getElementById('heroDesc');
+            const rating = document.getElementById('heroRating');
+            const year = document.getElementById('heroYear');
+            const genre = document.getElementById('heroGenre');
+
+            const thumb = getThumbnail(movie.url);
+            backdrop.style.backgroundImage = `url('${thumb}')`;
+            title.textContent = movie.title;
+            desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
+
+            rating.innerHTML = `⭐ ${movie.rating || 0.0}`;
+            year.textContent = movie.year;
+            genre.textContent = movie.genre;
+        }
 
         // Auto-rotate hero
         setInterval(() => {
