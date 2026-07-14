@@ -605,13 +605,25 @@
             display: none !important;
         }
 
-        /* Hide ALL YouTube elements */
-        .plyr--youtube .plyr__video-embed iframe {
-            pointer-events: auto;
+        .plyr__video-embed iframe {
+            pointer-events: none !important;
         }
 
-        .plyr__video-embed iframe {
-            pointer-events: none;
+        .plyr--youtube .plyr__video-embed iframe {
+            pointer-events: none !important;
+        }
+
+        /* Hide ALL YouTube elements */
+        .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark,
+        .ytp-gradient-top, .ytp-gradient-bottom,
+        .ytp-chrome-top-buttons, .ytp-title, .ytp-share-icon,
+        .ytp-panel, .ytp-popup, .ytp-menu,
+        .ytp-chrome-bottom, .ytp-progress-bar-container,
+        .ytp-chrome-controls, .ytp-player-content,
+        .ytp-cued-thumbnail-overlay, .ytp-pause-overlay,
+        .ytp-big-play-button, .ytp-spinner,
+        .ytp-tooltip, .ytp-tooltip-text {
+            display: none !important;
         }
 
         /* Custom Plyr theme */
@@ -639,6 +651,7 @@
 
         .plyr__controls {
             background: linear-gradient(0deg, rgba(10, 10, 15, 0.85) 0%, transparent 100%);
+            padding: 10px 12px;
         }
 
         .plyr__controls .plyr__control {
@@ -683,14 +696,19 @@
             background: #f59e0b;
         }
 
+        /* Settings menu - FIXED */
         .plyr__menu__container {
             background: #1a1a24 !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
             border-radius: 8px !important;
+            padding: 8px 0 !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
         }
 
         .plyr__menu__container .plyr__control {
             color: #e8e8f0 !important;
+            padding: 8px 16px !important;
+            font-size: 14px !important;
         }
 
         .plyr__menu__container .plyr__control[role="menuitemradio"]:hover {
@@ -703,15 +721,30 @@
 
         .plyr__menu__container .plyr__control[role="menuitemradio"] .plyr__menu__value {
             color: #e8e8f0 !important;
+            padding-left: 8px !important;
         }
 
         .plyr__menu__container .plyr__menu__value {
+            color: #aaaac0 !important;
+        }
+
+        .plyr__menu__container .plyr__control--back {
+            color: #e8e8f0 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            padding: 10px 16px !important;
+        }
+
+        .plyr__menu__container .plyr__control--back:hover {
+            background: rgba(245, 158, 11, 0.1) !important;
+        }
+
+        /* Settings button - make it visible */
+        .plyr__control[data-plyr="settings"] {
             color: #e8e8f0 !important;
         }
 
-        /* Ensure settings menu shows all options */
-        .plyr__menu__container .plyr__control[role="menuitemradio"] {
-            color: #e8e8f0 !important;
+        .plyr__control[data-plyr="settings"]:hover {
+            color: #f59e0b !important;
         }
 
         .modal-movie-info {
@@ -1083,7 +1116,7 @@
                 <div data-plyr-provider="youtube" data-plyr-embed-id="${videoId}"></div>
             `;
 
-            // Initialize Plyr with ALL controls
+            // Initialize Plyr with ALL controls VISIBLE
             const player = new Plyr(container.querySelector('[data-plyr-provider]'), {
                 controls: [
                     'play-large',
@@ -1109,8 +1142,7 @@
                     cc_load_policy: 0,
                     hl: 'en',
                     autohide: 1,
-                    disablekb: 1,
-                    widget_referrer: window.location.href
+                    disablekb: 1
                 },
                 autoplay: false,
                 debug: false,
@@ -1129,10 +1161,9 @@
                 }
             });
 
-            // Force hide ALL YouTube UI elements
+            // Make sure settings button is visible
             player.on('ready', function() {
-                const containerEl = container;
-                // Inject style to completely hide YouTube's UI
+                // Hide YouTube UI completely
                 const styleId = 'plyr-youtube-hide';
                 if (!document.getElementById(styleId)) {
                     const style = document.createElement('style');
@@ -1141,14 +1172,12 @@
                         .plyr__video-embed .plyr__video-embed__container::after {
                             display: none !important;
                         }
-                        /* Hide ALL YouTube UI */
                         .plyr__video-embed iframe {
                             pointer-events: none !important;
                         }
                         .plyr--youtube .plyr__video-embed iframe {
                             pointer-events: none !important;
                         }
-                        /* Hide YouTube overlay elements */
                         .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark,
                         .ytp-gradient-top, .ytp-gradient-bottom,
                         .ytp-chrome-top-buttons, .ytp-title, .ytp-share-icon,
@@ -1157,38 +1186,20 @@
                         .ytp-chrome-controls, .ytp-player-content,
                         .ytp-cued-thumbnail-overlay, .ytp-pause-overlay,
                         .ytp-big-play-button, .ytp-spinner,
-                        .ytp-tooltip, .ytp-tooltip-text,
-                        .ytp-watch-later-button, .ytp-share-button {
-                            display: none !important;
-                        }
-                        /* Hide any YouTube controls that might appear */
-                        .html5-video-player .ytp-chrome-top {
-                            display: none !important;
-                        }
-                        .html5-video-player .ytp-chrome-bottom {
-                            display: none !important;
-                        }
-                        .html5-video-player .ytp-gradient-top {
-                            display: none !important;
-                        }
-                        .html5-video-player .ytp-gradient-bottom {
+                        .ytp-tooltip, .ytp-tooltip-text {
                             display: none !important;
                         }
                     `;
                     document.head.appendChild(style);
                 }
 
-                // Add a class to the iframe to hide YouTube controls
-                const iframe = containerEl.querySelector('iframe');
-                if (iframe) {
-                    iframe.style.pointerEvents = 'none';
-                    // Re-enable after a moment for Plyr to work
-                    setTimeout(() => {
-                        iframe.style.pointerEvents = 'none';
-                    }, 50);
+                // Show settings button
+                const settingsBtn = container.querySelector('[data-plyr="settings"]');
+                if (settingsBtn) {
+                    settingsBtn.style.display = 'flex';
                 }
 
-                console.log('🎬 Plyr player ready - YouTube UI hidden');
+                console.log('🎬 Plyr player ready - Settings/Quality/Captions available');
             });
 
             currentPlayer = player;
