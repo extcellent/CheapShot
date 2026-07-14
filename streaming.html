@@ -542,14 +542,24 @@
             height: 100%;
         }
 
-        /* Hide YouTube branding completely */
-        .modal-video-wrapper .plyr__video-wrapper .plyr__video-embed iframe {
+        /* COMPLETELY HIDE ALL YOUTUBE BRANDING */
+        .plyr__video-wrapper .plyr__video-embed iframe {
             pointer-events: auto;
         }
 
-        /* Hide YouTube logo overlay */
-        .plyr__video-wrapper .plyr__video-embed .plyr__video-embed__container::after {
+        /* Hide YouTube logo, watermark, and all overlay elements */
+        .plyr__video-embed .plyr__video-embed__container::after {
             display: none !important;
+        }
+
+        /* Hide YouTube's top bar, logo, and watermarks */
+        .plyr--youtube .plyr__video-embed iframe {
+            pointer-events: auto;
+        }
+
+        /* Force hide all YouTube branding elements */
+        .plyr__video-wrapper .plyr__video-embed iframe {
+            pointer-events: auto;
         }
 
         /* Custom Plyr theme */
@@ -621,12 +631,39 @@
             background: #f59e0b;
         }
 
+        .plyr__menu__container {
+            background: #1a1a24 !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 8px !important;
+        }
+
+        .plyr__menu__container .plyr__control {
+            color: #e8e8f0 !important;
+        }
+
         .plyr__menu__container .plyr__control[role="menuitemradio"]:hover {
-            background: rgba(245, 158, 11, 0.2);
+            background: rgba(245, 158, 11, 0.15) !important;
         }
 
         .plyr__menu__container .plyr__control[role="menuitemradio"][aria-checked="true"]::before {
-            background: #f59e0b;
+            background: #f59e0b !important;
+        }
+
+        .plyr__menu__container .plyr__control[role="menuitemradio"] .plyr__menu__value {
+            color: #e8e8f0 !important;
+        }
+
+        /* Fix settings menu text visibility */
+        .plyr__menu__container .plyr__control {
+            color: #e8e8f0 !important;
+        }
+
+        .plyr__menu__container .plyr__menu__value {
+            color: #e8e8f0 !important;
+        }
+
+        .plyr__menu__container .plyr__control[role="menuitemradio"] .plyr__menu__value {
+            color: #e8e8f0 !important;
         }
 
         .modal-movie-info {
@@ -876,7 +913,6 @@
         // ============================================================
 
         let currentPlayer = null;
-        let isPlayerReady = false;
 
         function extractYouTubeId(url) {
             const patterns = [
@@ -964,7 +1000,7 @@
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // Initialize Plyr player after modal is visible - NO AUTOPLAY
+            // Initialize Plyr player after modal is visible
             setTimeout(() => {
                 initPlyr(movie.url);
             }, 150);
@@ -984,12 +1020,12 @@
                 currentPlayer = null;
             }
 
-            // Create YouTube iframe with Plyr - NO AUTOPLAY
+            // Create YouTube iframe with Plyr
             container.innerHTML = `
                 <div data-plyr-provider="youtube" data-plyr-embed-id="${videoId}"></div>
             `;
 
-            // Initialize Plyr with NO autoplay
+            // Initialize Plyr
             const player = new Plyr(container.querySelector('[data-plyr-provider]'), {
                 controls: [
                     'play-large',
@@ -1003,7 +1039,7 @@
                     'pip',
                     'fullscreen'
                 ],
-                settings: ['quality', 'speed'],
+                settings: ['captions', 'quality', 'speed', 'loop'],
                 youtube: {
                     modestbranding: 1,
                     rel: 0,
@@ -1013,29 +1049,43 @@
                     controls: 1,
                     fs: 1,
                     cc_load_policy: 0,
-                    hl: 'en'
+                    hl: 'en',
+                    autohide: 0
                 },
-                autoplay: false, // CRITICAL: No autoplay
-                debug: false
+                autoplay: false,
+                debug: false,
+                captions: {
+                    active: false,
+                    language: 'en'
+                }
             });
 
-            // Hide YouTube branding with CSS after load
+            // Force hide YouTube branding after player loads
             player.on('ready', function() {
+                // Hide all YouTube overlay elements
                 const iframe = container.querySelector('iframe');
                 if (iframe) {
-                    // Add CSS to hide YouTube logo
-                    const style = document.createElement('style');
-                    style.textContent = `
-                        .plyr__video-embed .plyr__video-embed__container::after {
-                            display: none !important;
-                        }
-                        .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark {
-                            display: none !important;
-                        }
-                    `;
-                    document.head.appendChild(style);
+                    // Inject CSS to completely hide YouTube branding
+                    const styleId = 'plyr-youtube-hide';
+                    if (!document.getElementById(styleId)) {
+                        const style = document.createElement('style');
+                        style.id = styleId;
+                        style.textContent = `
+                            .plyr__video-embed .plyr__video-embed__container::after {
+                                display: none !important;
+                            }
+                            .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark,
+                            .ytp-gradient-top, .ytp-gradient-bottom,
+                            .ytp-chrome-top-buttons, .ytp-title, .ytp-share-icon {
+                                display: none !important;
+                            }
+                            .ytp-chrome-bottom .ytp-progress-bar-container {
+                                display: none !important;
+                            }
+                        `;
+                        document.head.appendChild(style);
+                    }
                 }
-                isPlayerReady = true;
             });
 
             currentPlayer = player;
@@ -1060,7 +1110,6 @@
                 currentPlayer = null;
             }
             container.innerHTML = '';
-            isPlayerReady = false;
         }
 
         document.addEventListener('keydown', (e) => {
