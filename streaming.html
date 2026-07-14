@@ -542,6 +542,16 @@
             height: 100%;
         }
 
+        /* Hide YouTube branding completely */
+        .modal-video-wrapper .plyr__video-wrapper .plyr__video-embed iframe {
+            pointer-events: auto;
+        }
+
+        /* Hide YouTube logo overlay */
+        .plyr__video-wrapper .plyr__video-embed .plyr__video-embed__container::after {
+            display: none !important;
+        }
+
         /* Custom Plyr theme */
         .plyr--video {
             background: #0a0a0f;
@@ -819,7 +829,6 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">✕</button>
             <div class="modal-video-wrapper" id="videoWrapper">
-                <!-- Plyr player will be inserted here -->
                 <div id="plyrContainer"></div>
             </div>
             <div class="modal-movie-info">
@@ -860,69 +869,6 @@
             genre: "Comedy",
             rating: 6.5,
             desc: "A parody of hood films where a young man navigates life in the hood."
-        }, {
-            url: "https://www.youtube.com/watch?v=0LZk1Jogf-U",
-            title: "The Night of the Hunter",
-            year: "1955",
-            genre: "Thriller",
-            rating: 8.0,
-            desc: "A terrifying tale of a murderous preacher who stalks a widow and her children."
-        }, {
-            url: "https://www.youtube.com/watch?v=6Sx7q8Xm6WE",
-            title: "The Big Lebowski",
-            year: "1998",
-            genre: "Comedy",
-            rating: 8.1,
-            desc: "A slacker is mistaken for a millionaire and gets caught up in a bizarre kidnapping plot."
-        }, {
-            url: "https://www.youtube.com/watch?v=9k5-Cq88p30",
-            title: "The Red Balloon",
-            year: "1956",
-            genre: "Family",
-            rating: 7.8,
-            desc: "A young boy befriends a sentient red balloon in Paris."
-        }, {
-            url: "https://www.youtube.com/watch?v=YrXhMsCmnlM",
-            title: "Sherlock Jr.",
-            year: "1924",
-            genre: "Comedy",
-            rating: 8.2,
-            desc: "A projectionist dreams he is a famous detective solving a case."
-        }, {
-            url: "https://www.youtube.com/watch?v=GpDpa3w4hZE",
-            title: "The General",
-            year: "1926",
-            genre: "Adventure",
-            rating: 8.1,
-            desc: "A train engineer pursues his stolen locomotive during the Civil War."
-        }, {
-            url: "https://www.youtube.com/watch?v=9VjRwzPJPTE",
-            title: "A Trip to the Moon",
-            year: "1902",
-            genre: "Sci-Fi",
-            rating: 8.0,
-            desc: "A group of astronomers travel to the moon in a cannon-propelled capsule."
-        }, {
-            url: "https://www.youtube.com/watch?v=lZ3bqFjxiTg",
-            title: "The Good, the Bad and the Ugly",
-            year: "1966",
-            genre: "Western",
-            rating: 8.8,
-            desc: "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery."
-        }, {
-            url: "https://www.youtube.com/watch?v=1R0L3hW5iis",
-            title: "Once Upon a Time in the West",
-            year: "1968",
-            genre: "Western",
-            rating: 8.5,
-            desc: "A mysterious stranger with a harmonica joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad."
-        }, {
-            url: "https://www.youtube.com/watch?v=WwQ7lA0PSqI",
-            title: "The Apartment",
-            year: "1960",
-            genre: "Romance",
-            rating: 8.3,
-            desc: "A man tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue."
         }];
 
         // ============================================================
@@ -930,6 +876,7 @@
         // ============================================================
 
         let currentPlayer = null;
+        let isPlayerReady = false;
 
         function extractYouTubeId(url) {
             const patterns = [
@@ -947,12 +894,6 @@
         function getThumbnail(url) {
             const id = extractYouTubeId(url);
             return id ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg` : '';
-        }
-
-        function getYouTubeEmbedUrl(url) {
-            const id = extractYouTubeId(url);
-            return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=0&fs=1&iv_load_policy=3&color=white` :
-            '';
         }
 
         function renderMovieCard(movie, index, showRank = false) {
@@ -1023,10 +964,10 @@
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // Initialize Plyr player after modal is visible
+            // Initialize Plyr player after modal is visible - NO AUTOPLAY
             setTimeout(() => {
                 initPlyr(movie.url);
-            }, 100);
+            }, 150);
         }
 
         function initPlyr(videoUrl) {
@@ -1037,16 +978,18 @@
 
             // Destroy existing player
             if (currentPlayer) {
-                currentPlayer.destroy();
+                try {
+                    currentPlayer.destroy();
+                } catch (e) {}
                 currentPlayer = null;
             }
 
-            // Create YouTube iframe with Plyr
+            // Create YouTube iframe with Plyr - NO AUTOPLAY
             container.innerHTML = `
                 <div data-plyr-provider="youtube" data-plyr-embed-id="${videoId}"></div>
             `;
 
-            // Initialize Plyr
+            // Initialize Plyr with NO autoplay
             const player = new Plyr(container.querySelector('[data-plyr-provider]'), {
                 controls: [
                     'play-large',
@@ -1066,9 +1009,33 @@
                     rel: 0,
                     showinfo: 0,
                     iv_load_policy: 3,
-                    color: 'white'
+                    color: 'white',
+                    controls: 1,
+                    fs: 1,
+                    cc_load_policy: 0,
+                    hl: 'en'
                 },
-                autoplay: true
+                autoplay: false, // CRITICAL: No autoplay
+                debug: false
+            });
+
+            // Hide YouTube branding with CSS after load
+            player.on('ready', function() {
+                const iframe = container.querySelector('iframe');
+                if (iframe) {
+                    // Add CSS to hide YouTube logo
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .plyr__video-embed .plyr__video-embed__container::after {
+                            display: none !important;
+                        }
+                        .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark {
+                            display: none !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                isPlayerReady = true;
             });
 
             currentPlayer = player;
@@ -1087,10 +1054,13 @@
 
             // Destroy player
             if (currentPlayer) {
-                currentPlayer.destroy();
+                try {
+                    currentPlayer.destroy();
+                } catch (e) {}
                 currentPlayer = null;
             }
             container.innerHTML = '';
+            isPlayerReady = false;
         }
 
         document.addEventListener('keydown', (e) => {
