@@ -119,12 +119,6 @@
             background: linear-gradient(0deg, #0a0a0f 0%, rgba(10, 10, 15, 0.4) 50%, rgba(10, 10, 15, 0.2) 100%);
         }
 
-        .hero-banner .hero-backdrop img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .hero-banner .hero-content {
             position: absolute;
             bottom: 15%;
@@ -170,6 +164,13 @@
         .hero-banner .hero-content .meta .rating {
             color: #f59e0b;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .hero-banner .hero-content .meta .rating .star {
+            font-size: 16px;
         }
 
         .hero-banner .hero-content .description {
@@ -312,7 +313,7 @@
             right: -8px;
         }
 
-        /* ===== MOVIE CARD - FIXED THUMBNAILS ===== */
+        /* ===== MOVIE CARD ===== */
         .movie-card {
             flex: 0 0 200px;
             background: rgba(255, 255, 255, 0.03);
@@ -419,6 +420,7 @@
 
         .movie-card .info .meta .rating-star {
             color: #f59e0b;
+            font-weight: 600;
         }
 
         .movie-card .rating-badge {
@@ -542,6 +544,18 @@
             border: none;
         }
 
+        .modal-video-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(0deg, rgba(10, 10, 15, 0.6) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
         .modal-movie-info {
             padding: 20px 24px 24px;
         }
@@ -556,6 +570,15 @@
         .modal-movie-info .meta {
             font-size: 14px;
             color: #8888a0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .modal-movie-info .meta .rating-display {
+            color: #f59e0b;
+            font-weight: 600;
         }
 
         .modal-movie-info .description {
@@ -664,9 +687,9 @@
             <div class="badge">✅ 100% LEGAL</div>
             <h1 id="heroTitle">Loading...</h1>
             <div class="meta" id="heroMeta">
-                <span class="rating">⭐ 0.0</span>
-                <span>2024</span>
-                <span>· Genre</span>
+                <span class="rating" id="heroRating">⭐ 0.0</span>
+                <span id="heroYear">2024</span>
+                <span>· <span id="heroGenre">Genre</span></span>
             </div>
             <p class="description" id="heroDesc">Loading description...</p>
             <div class="btn-group">
@@ -737,7 +760,13 @@
             </div>
             <div class="modal-movie-info">
                 <h2 id="modalTitle">Movie Title</h2>
-                <div class="meta" id="modalMeta">2024 · Drama</div>
+                <div class="meta" id="modalMeta">
+                    <span id="modalYear">2024</span>
+                    <span>·</span>
+                    <span id="modalGenre">Drama</span>
+                    <span>·</span>
+                    <span class="rating-display">⭐ <span id="modalRating">0.0</span></span>
+                </div>
                 <div class="description" id="modalDesc">Movie description goes here.</div>
             </div>
         </div>
@@ -751,348 +780,19 @@
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
-        // 📽️  MOVIE DATABASE — ADD MOVIES HERE
+        // 📽️  ADD YOUR MOVIES HERE — SUPER SIMPLE!
         // ============================================================
-        // To add a movie, just paste a new object in the array below.
-        // The thumbnail will auto-load from YouTube.
+        // Just paste the YouTube URL + movie details.
+        // Rating: just a number (e.g. 8.5)
         // ============================================================
 
         const movies = [{
-            url: "https://www.youtube.com/watch?v=0LZk1Jogf-U",
-            title: "The Night of the Hunter",
-            year: "1955",
-            genre: "Thriller",
-            rating: 8.0,
-            desc: "A terrifying tale of a murderous preacher who stalks a widow and her children."
-        }, {
-            url: "https://www.youtube.com/watch?v=6Sx7q8Xm6WE",
-            title: "The Big Lebowski",
-            year: "1998",
-            genre: "Comedy",
-            rating: 8.1,
-            desc: "A slacker is mistaken for a millionaire and gets caught up in a bizarre kidnapping plot."
-        }, {
-            url: "https://www.youtube.com/watch?v=9k5-Cq88p30",
-            title: "The Red Balloon",
-            year: "1956",
-            genre: "Family",
-            rating: 7.8,
-            desc: "A young boy befriends a sentient red balloon in Paris."
-        }, {
-            url: "https://www.youtube.com/watch?v=YrXhMsCmnlM",
-            title: "Sherlock Jr.",
-            year: "1924",
-            genre: "Comedy",
-            rating: 8.2,
-            desc: "A projectionist dreams he is a famous detective solving a case."
-        }, {
-            url: "https://www.youtube.com/watch?v=GpDpa3w4hZE",
-            title: "The General",
-            year: "1926",
-            genre: "Adventure",
-            rating: 8.1,
-            desc: "A train engineer pursues his stolen locomotive during the Civil War."
-        }, {
-            url: "https://www.youtube.com/watch?v=9VjRwzPJPTE",
-            title: "A Trip to the Moon",
-            year: "1902",
-            genre: "Sci-Fi",
-            rating: 8.0,
-            desc: "A group of astronomers travel to the moon in a cannon-propelled capsule."
-        }, {
             url: "https://www.youtube.com/watch?v=6_IO-q5X6QQ",
             title: "Don't Be a Menace",
             year: "1996",
             genre: "Comedy",
             rating: 6.5,
             desc: "A parody of hood films where a young man navigates life in the hood."
-        }, {
-            url: "https://www.youtube.com/watch?v=lZ3bqFjxiTg",
-            title: "The Good, the Bad and the Ugly",
-            year: "1966",
-            genre: "Western",
-            rating: 8.8,
-            desc: "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery."
-        }, {
-            url: "https://www.youtube.com/watch?v=1R0L3hW5iis",
-            title: "Once Upon a Time in the West",
-            year: "1968",
-            genre: "Western",
-            rating: 8.5,
-            desc: "A mysterious stranger with a harmonica joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad."
-        }, {
-            url: "https://www.youtube.com/watch?v=WwQ7lA0PSqI",
-            title: "The Apartment",
-            year: "1960",
-            genre: "Romance",
-            rating: 8.3,
-            desc: "A man tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue."
-        }, {
-            url: "https://www.youtube.com/watch?v=7wPz8VzVjqY",
-            title: "Sunset Boulevard",
-            year: "1950",
-            genre: "Drama",
-            rating: 8.4,
-            desc: "A screenwriter develops a dangerous relationship with a faded film star determined to make a triumphant return."
-        }, {
-            url: "https://www.youtube.com/watch?v=GJtjDm5gkAM",
-            title: "The Third Man",
-            year: "1949",
-            genre: "Mystery",
-            rating: 8.1,
-            desc: "Pulp novelist Holly Martins travels to shadowy, postwar Vienna, only to find himself investigating the mysterious death of an old friend."
-        }, {
-            url: "https://www.youtube.com/watch?v=W9BMwn5yRWM",
-            title: "The Grapes of Wrath",
-            year: "1940",
-            genre: "Drama",
-            rating: 8.1,
-            desc: "A poor Midwest family is forced off their land. They travel to California, suffering the misfortunes of the homeless in the Great Depression."
-        }, {
-            url: "https://www.youtube.com/watch?v=yMJoZrzs49A",
-            title: "The Treasure of the Sierra Madre",
-            year: "1948",
-            genre: "Adventure",
-            rating: 8.2,
-            desc: "Two down-on-their-luck Americans searching for work in 1920s Mexico convince an old prospector to help them mine for gold in the Sierra Madre Mountains."
-        }, {
-            url: "https://www.youtube.com/watch?v=Hn9-zNHtt9A",
-            title: "The Maltese Falcon",
-            year: "1941",
-            genre: "Crime",
-            rating: 7.9,
-            desc: "A private detective takes on a case that involves him with three eccentric criminals, a beautiful liar, and their quest for a priceless statuette."
-        }, {
-            url: "https://www.youtube.com/watch?v=_V6WqzSNqOo",
-            title: "Double Indemnity",
-            year: "1944",
-            genre: "Crime",
-            rating: 8.3,
-            desc: "An insurance representative lets himself be talked into a murder/insurance fraud scheme that arouses an insurance investigator's suspicions."
-        }, {
-            url: "https://www.youtube.com/watch?v=RvEWztrW2Bg",
-            title: "The Lost Weekend",
-            year: "1945",
-            genre: "Drama",
-            rating: 7.9,
-            desc: "A writer struggles with alcoholism and his attempts to get his next novel written."
-        }, {
-            url: "https://www.youtube.com/watch?v=4tIu_h99dYQ",
-            title: "The Best Years of Our Lives",
-            year: "1946",
-            genre: "Drama",
-            rating: 8.1,
-            desc: "Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed."
-        }, {
-            url: "https://www.youtube.com/watch?v=9VjRwzPJPTE",
-            title: "A Trip to the Moon",
-            year: "1902",
-            genre: "Sci-Fi",
-            rating: 8.0,
-            desc: "A group of astronomers travel to the moon in a cannon-propelled capsule."
-        }, {
-            url: "https://www.youtube.com/watch?v=5EUNbSnc7pA",
-            title: "The Kid",
-            year: "1921",
-            genre: "Comedy",
-            rating: 8.3,
-            desc: "The Tramp cares for an abandoned child, but events put their relationship in jeopardy."
-        }, {
-            url: "https://www.youtube.com/watch?v=FiqYVchX-Vc",
-            title: "Modern Times",
-            year: "1936",
-            genre: "Comedy",
-            rating: 8.5,
-            desc: "The Tramp struggles to live in modern industrial society with the help of a young homeless woman."
-        }, {
-            url: "https://www.youtube.com/watch?v=GleuWbQLLeQ",
-            title: "City Lights",
-            year: "1931",
-            genre: "Comedy",
-            rating: 8.5,
-            desc: "The Tramp falls in love with a beautiful blind flower seller. His efforts to help her lead to a series of comic and touching adventures."
-        }, {
-            url: "https://www.youtube.com/watch?v=sXQO26x06bQ",
-            title: "The Great Dictator",
-            year: "1940",
-            genre: "Comedy",
-            rating: 8.4,
-            desc: "A Jewish barber and a dictator, who look alike, have their identities confused. The barber is mistaken for the dictator and gives a speech that is a plea for humanity."
-        }, {
-            url: "https://www.youtube.com/watch?v=LeV7nvTHRkM",
-            title: "Monsieur Verdoux",
-            year: "1947",
-            genre: "Comedy",
-            rating: 7.8,
-            desc: "A suave but cash-strapped family man marries and murders wealthy widows for their money."
-        }, {
-            url: "https://www.youtube.com/watch?v=0LZk1Jogf-U",
-            title: "The Night of the Hunter",
-            year: "1955",
-            genre: "Thriller",
-            rating: 8.0,
-            desc: "A terrifying tale of a murderous preacher who stalks a widow and her children."
-        }, {
-            url: "https://www.youtube.com/watch?v=6Sx7q8Xm6WE",
-            title: "The Big Lebowski",
-            year: "1998",
-            genre: "Comedy",
-            rating: 8.1,
-            desc: "A slacker is mistaken for a millionaire and gets caught up in a bizarre kidnapping plot."
-        }, {
-            url: "https://www.youtube.com/watch?v=9k5-Cq88p30",
-            title: "The Red Balloon",
-            year: "1956",
-            genre: "Family",
-            rating: 7.8,
-            desc: "A young boy befriends a sentient red balloon in Paris."
-        }, {
-            url: "https://www.youtube.com/watch?v=YrXhMsCmnlM",
-            title: "Sherlock Jr.",
-            year: "1924",
-            genre: "Comedy",
-            rating: 8.2,
-            desc: "A projectionist dreams he is a famous detective solving a case."
-        }, {
-            url: "https://www.youtube.com/watch?v=GpDpa3w4hZE",
-            title: "The General",
-            year: "1926",
-            genre: "Adventure",
-            rating: 8.1,
-            desc: "A train engineer pursues his stolen locomotive during the Civil War."
-        }, {
-            url: "https://www.youtube.com/watch?v=9VjRwzPJPTE",
-            title: "A Trip to the Moon",
-            year: "1902",
-            genre: "Sci-Fi",
-            rating: 8.0,
-            desc: "A group of astronomers travel to the moon in a cannon-propelled capsule."
-        }, {
-            url: "https://www.youtube.com/watch?v=6_IO-q5X6QQ",
-            title: "Don't Be a Menace",
-            year: "1996",
-            genre: "Comedy",
-            rating: 6.5,
-            desc: "A parody of hood films where a young man navigates life in the hood."
-        }, {
-            url: "https://www.youtube.com/watch?v=lZ3bqFjxiTg",
-            title: "The Good, the Bad and the Ugly",
-            year: "1966",
-            genre: "Western",
-            rating: 8.8,
-            desc: "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery."
-        }, {
-            url: "https://www.youtube.com/watch?v=1R0L3hW5iis",
-            title: "Once Upon a Time in the West",
-            year: "1968",
-            genre: "Western",
-            rating: 8.5,
-            desc: "A mysterious stranger with a harmonica joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad."
-        }, {
-            url: "https://www.youtube.com/watch?v=WwQ7lA0PSqI",
-            title: "The Apartment",
-            year: "1960",
-            genre: "Romance",
-            rating: 8.3,
-            desc: "A man tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue."
-        }, {
-            url: "https://www.youtube.com/watch?v=7wPz8VzVjqY",
-            title: "Sunset Boulevard",
-            year: "1950",
-            genre: "Drama",
-            rating: 8.4,
-            desc: "A screenwriter develops a dangerous relationship with a faded film star determined to make a triumphant return."
-        }, {
-            url: "https://www.youtube.com/watch?v=GJtjDm5gkAM",
-            title: "The Third Man",
-            year: "1949",
-            genre: "Mystery",
-            rating: 8.1,
-            desc: "Pulp novelist Holly Martins travels to shadowy, postwar Vienna, only to find himself investigating the mysterious death of an old friend."
-        }, {
-            url: "https://www.youtube.com/watch?v=W9BMwn5yRWM",
-            title: "The Grapes of Wrath",
-            year: "1940",
-            genre: "Drama",
-            rating: 8.1,
-            desc: "A poor Midwest family is forced off their land. They travel to California, suffering the misfortunes of the homeless in the Great Depression."
-        }, {
-            url: "https://www.youtube.com/watch?v=yMJoZrzs49A",
-            title: "The Treasure of the Sierra Madre",
-            year: "1948",
-            genre: "Adventure",
-            rating: 8.2,
-            desc: "Two down-on-their-luck Americans searching for work in 1920s Mexico convince an old prospector to help them mine for gold in the Sierra Madre Mountains."
-        }, {
-            url: "https://www.youtube.com/watch?v=Hn9-zNHtt9A",
-            title: "The Maltese Falcon",
-            year: "1941",
-            genre: "Crime",
-            rating: 7.9,
-            desc: "A private detective takes on a case that involves him with three eccentric criminals, a beautiful liar, and their quest for a priceless statuette."
-        }, {
-            url: "https://www.youtube.com/watch?v=_V6WqzSNqOo",
-            title: "Double Indemnity",
-            year: "1944",
-            genre: "Crime",
-            rating: 8.3,
-            desc: "An insurance representative lets himself be talked into a murder/insurance fraud scheme that arouses an insurance investigator's suspicions."
-        }, {
-            url: "https://www.youtube.com/watch?v=RvEWztrW2Bg",
-            title: "The Lost Weekend",
-            year: "1945",
-            genre: "Drama",
-            rating: 7.9,
-            desc: "A writer struggles with alcoholism and his attempts to get his next novel written."
-        }, {
-            url: "https://www.youtube.com/watch?v=4tIu_h99dYQ",
-            title: "The Best Years of Our Lives",
-            year: "1946",
-            genre: "Drama",
-            rating: 8.1,
-            desc: "Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed."
-        }, {
-            url: "https://www.youtube.com/watch?v=9VjRwzPJPTE",
-            title: "A Trip to the Moon",
-            year: "1902",
-            genre: "Sci-Fi",
-            rating: 8.0,
-            desc: "A group of astronomers travel to the moon in a cannon-propelled capsule."
-        }, {
-            url: "https://www.youtube.com/watch?v=5EUNbSnc7pA",
-            title: "The Kid",
-            year: "1921",
-            genre: "Comedy",
-            rating: 8.3,
-            desc: "The Tramp cares for an abandoned child, but events put their relationship in jeopardy."
-        }, {
-            url: "https://www.youtube.com/watch?v=FiqYVchX-Vc",
-            title: "Modern Times",
-            year: "1936",
-            genre: "Comedy",
-            rating: 8.5,
-            desc: "The Tramp struggles to live in modern industrial society with the help of a young homeless woman."
-        }, {
-            url: "https://www.youtube.com/watch?v=GleuWbQLLeQ",
-            title: "City Lights",
-            year: "1931",
-            genre: "Comedy",
-            rating: 8.5,
-            desc: "The Tramp falls in love with a beautiful blind flower seller. His efforts to help her lead to a series of comic and touching adventures."
-        }, {
-            url: "https://www.youtube.com/watch?v=sXQO26x06bQ",
-            title: "The Great Dictator",
-            year: "1940",
-            genre: "Comedy",
-            rating: 8.4,
-            desc: "A Jewish barber and a dictator, who look alike, have their identities confused. The barber is mistaken for the dictator and gives a speech that is a plea for humanity."
-        }, {
-            url: "https://www.youtube.com/watch?v=LeV7nvTHRkM",
-            title: "Monsieur Verdoux",
-            year: "1947",
-            genre: "Comedy",
-            rating: 7.8,
-            desc: "A suave but cash-strapped family man marries and murders wealthy widows for their money."
         }];
 
         // ============================================================
@@ -1114,18 +814,17 @@
 
         function getThumbnail(url) {
             const id = extractYouTubeId(url);
-            return id ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg` :
-                `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+            return id ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg` : '';
         }
 
         function getEmbedUrl(url) {
             const id = extractYouTubeId(url);
-            return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&showinfo=0` : '';
+            return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1&fs=1` :
+            '';
         }
 
         function renderMovieCard(movie, index, showRank = false) {
             const thumb = getThumbnail(movie.url);
-            const embedUrl = getEmbedUrl(movie.url);
             const rank = showRank ? `<div class="top-rank">#${index + 1}</div>` : '';
             const ratingDisplay = movie.rating ? `<span class="rating-star">⭐ ${movie.rating.toFixed(1)}</span>` : '';
 
@@ -1150,6 +849,7 @@
             `;
         }
 
+        // Create categories
         const top10 = movies.slice(0, 10);
         const trending = movies.slice().sort(() => Math.random() - 0.5);
         const topRated = movies.slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
@@ -1176,12 +876,16 @@
             const modal = document.getElementById('movieModal');
             const iframe = document.getElementById('movieIframe');
             const title = document.getElementById('modalTitle');
-            const meta = document.getElementById('modalMeta');
+            const year = document.getElementById('modalYear');
+            const genre = document.getElementById('modalGenre');
+            const rating = document.getElementById('modalRating');
             const desc = document.getElementById('modalDesc');
 
             iframe.src = getEmbedUrl(movie.url);
             title.textContent = movie.title;
-            meta.textContent = `${movie.year} · ${movie.genre}`;
+            year.textContent = movie.year;
+            genre.textContent = movie.genre;
+            rating.textContent = movie.rating ? movie.rating.toFixed(1) : 'N/A';
             desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
 
             modal.classList.add('active');
@@ -1189,21 +893,7 @@
         }
 
         function openHeroMovie() {
-            const movie = movies[0];
-            if (!movie) return;
-            const modal = document.getElementById('movieModal');
-            const iframe = document.getElementById('movieIframe');
-            const title = document.getElementById('modalTitle');
-            const meta = document.getElementById('modalMeta');
-            const desc = document.getElementById('modalDesc');
-
-            iframe.src = getEmbedUrl(movie.url);
-            title.textContent = movie.title;
-            meta.textContent = `${movie.year} · ${movie.genre}`;
-            desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            if (movies.length > 0) openModal(0);
         }
 
         function closeModal() {
@@ -1228,21 +918,22 @@
         function updateHero(index) {
             const movie = movies[index % movies.length];
             if (!movie) return;
+
             const backdrop = document.getElementById('heroBackdrop');
             const title = document.getElementById('heroTitle');
             const desc = document.getElementById('heroDesc');
-            const meta = document.getElementById('heroMeta');
+            const rating = document.getElementById('heroRating');
+            const year = document.getElementById('heroYear');
+            const genre = document.getElementById('heroGenre');
 
             const thumb = getThumbnail(movie.url);
             backdrop.style.backgroundImage = `url('${thumb}')`;
             title.textContent = movie.title;
             desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
 
-            meta.innerHTML = `
-                <span class="rating">⭐ ${movie.rating || 7.0}</span>
-                <span>${movie.year}</span>
-                <span>· ${movie.genre}</span>
-            `;
+            rating.innerHTML = `⭐ ${movie.rating || 0.0}`;
+            year.textContent = movie.year;
+            genre.textContent = movie.genre;
         }
 
         setInterval(() => {
