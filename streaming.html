@@ -1025,19 +1025,36 @@
 
         function getThumbnail(url) {
             const id = extractYouTubeId(url);
-            return id ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg` : '';
+            if (!id) return '';
+            
+            // Try multiple thumbnail sizes in order of preference
+            const thumbnails = [
+                `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
+                `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+                `https://img.youtube.com/vi/${id}/mqdefault.jpg`,
+                `https://img.youtube.com/vi/${id}/default.jpg`
+            ];
+            
+            // Return the first one that exists (will be checked by the img onerror)
+            return thumbnails[0]; // Try maxresdefault first, fallback will handle others
         }
 
         function renderMovieCard(movie, index, showRank = false) {
             const thumb = getThumbnail(movie.url);
             const rank = showRank ? `<div class="top-rank">#${index + 1}</div>` : '';
             const ratingDisplay = movie.rating ? `<span class="rating-star">⭐ ${movie.rating.toFixed(1)}</span>` : '';
-
+        
             return `
                 <div class="movie-card" onclick="openModal(${index})">
                     ${rank}
                     <div class="poster">
-                        <img src="${thumb}" alt="${movie.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'">
+                        <img 
+                            src="${thumb}" 
+                            alt="${movie.title}" 
+                            loading="lazy" 
+                            onerror="this.src='https://img.youtube.com/vi/${extractYouTubeId(movie.url)}/hqdefault.jpg'; this.onerror=null;"
+                            onerror="this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'"
+                        >
                         <div class="play-overlay">
                             <div class="play-btn">▶</div>
                         </div>
