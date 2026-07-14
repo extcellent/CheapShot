@@ -89,36 +89,50 @@
             font-weight: 400;
         }
 
-.logo-tv {
-    position: relative;
-    font-weight: 700;
-    background: linear-gradient(135deg, #f59e0b, #ef4444);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-left: 2px;
-    display: inline-block;
-}
-
-/* A razor-sharp white reflection that slides over the text every 4 seconds */
-.logo-tv::after {
-    content: 'TV';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: sleekSweep 4s infinite ease-in-out;
-}
-
-@keyframes sleekSweep {
-    0% { background-position: -200% 0; }
-    30% { background-position: 200% 0; }
-    100% { background-position: 200% 0; }
-}
+        .logo-tv {
+            position: relative;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: 2px;
+            display: inline-block;
+        }
+        
+        /* A seamless, non-stop premium light sweep */
+        .logo-tv::after {
+            content: 'TV'; /* Matches the text exactly */
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            
+            /* A tightly focused, ultra-smooth satin silver reflection */
+            background: linear-gradient(
+                105deg, 
+                transparent 30%, 
+                rgba(255, 255, 255, 0.2) 42%, 
+                rgba(255, 255, 255, 0.7) 50%, 
+                rgba(255, 255, 255, 0.2) 58%, 
+                transparent 70%
+            );
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* 'linear' keeps the speed completely constant; 3s makes it smooth */
+            animation: premiumFlow 3s linear infinite;
+        }
+        
+        @keyframes premiumFlow {
+            0% {
+                background-position: 150% 0;
+            }
+            100% {
+                background-position: -150% 0;
+            }
+        }
 
         .back-btn {
             padding: 8px 20px;
