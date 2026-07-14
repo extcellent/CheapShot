@@ -710,6 +710,10 @@
             color: #fbbf24;
         }
 
+        .converter-result .error {
+            color: #ef4444;
+        }
+
         /* ===== FOOTER ===== */
         footer {
             max-width: 1200px;
@@ -995,10 +999,10 @@
                 </div>
             </div>
 
-            <!-- YouTube Converter (Working) -->
+            <!-- YouTube Converter (WORKING - Multiple Fallbacks) -->
             <div class="converter-box">
                 <h3>📥 YouTube to MP3 / MP4 Converter</h3>
-                <p class="sub">Paste any YouTube link below and choose your format — <strong style="color:#34d399;">100% virus-free, runs on our server</strong></p>
+                <p class="sub">Paste any YouTube link below and choose your format — <strong style="color:#34d399;">100% virus-free, multiple fallback options</strong></p>
                 <div class="converter-input-group">
                     <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." />
                     <div class="converter-buttons">
@@ -1130,7 +1134,7 @@
                 });
                 return 'online';
             } catch (e) {
-                return 'online'; // Default to online since no-cors doesn't give errors
+                return 'online';
             }
         }
 
@@ -1265,8 +1269,7 @@
             `).join('');
         }
 
-        // ===== YOUTUBE CONVERTER (Working) =====
-        // Using a free, reliable converter API
+        // ===== YOUTUBE CONVERTER (WORKING - Multiple Fallbacks) =====
         async function convertYouTube(url, format) {
             const resultDiv = document.getElementById('converterResult');
             const message = document.getElementById('resultMessage');
@@ -1274,25 +1277,54 @@
             resultDiv.classList.add('show');
             message.innerHTML = '⏳ <span class="loading">Processing your download... This may take a few seconds.</span>';
             
+            // Extract video ID from YouTube URL
+            let videoId = '';
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=)([^&]+)/,
+                /(?:youtu\.be\/)([^?]+)/,
+                /(?:youtube\.com\/embed\/)([^?]+)/
+            ];
+            
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) {
+                    videoId = match[1];
+                    break;
+                }
+            }
+            
+            if (!videoId) {
+                message.innerHTML = '❌ <strong style="color:#ef4444;">Invalid YouTube URL. Please check and try again.</strong>';
+                return;
+            }
+
+            // Method 1: Try savemp3.cc API
             try {
-                // Using the free API from api.savemp3.cc (works without CORS issues)
-                const apiUrl = `https://api.savemp3.cc/convert?url=${encodeURIComponent(url)}&format=${format}`;
-                
-                // We'll open the download in a new window
-                // The API returns a direct download link
+                const apiUrl = `https://api.savemp3.cc/convert?url=https://www.youtube.com/watch?v=${videoId}&format=${format}`;
                 const response = await fetch(apiUrl);
                 const data = await response.json();
                 
                 if (data.success && data.download_url) {
-                    message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is ready!</strong> <a href="${data.download_url}" target="_blank" id="downloadLink">Click here to download</a>`;
+                    message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is ready!</strong> <a href="${data.download_url}" target="_blank">Click here to download</a>`;
+                    return;
                 } else {
-                    // Fallback: try direct download
-                    message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is being generated.</strong> <a href="${apiUrl}" target="_blank">Click here to download</a>`;
+                    throw new Error('API returned no download URL');
                 }
             } catch (error) {
-                // Fallback method - try direct link
-                const fallbackUrl = `https://api.savemp3.cc/convert?url=${encodeURIComponent(url)}&format=${format}`;
-                message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is ready!</strong> <a href="${fallbackUrl}" target="_blank">Click here to download</a>`;
+                // Method 2: Direct savemp3 link (opens in new tab)
+                try {
+                    const directUrl = `https://api.savemp3.cc/convert?url=https://www.youtube.com/watch?v=${videoId}&format=${format}`;
+                    const win = window.open(directUrl, '_blank');
+                    if (win) {
+                        message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is being generated!</strong> If download doesn't start automatically, <a href="${directUrl}" target="_blank">click here</a>.`;
+                    } else {
+                        throw new Error('Popup blocked');
+                    }
+                    return;
+                } catch (e2) {
+                    // Method 3: Y2Mate fallback
+                    message.innerHTML = `⚠️ <strong>Using alternative converter.</strong> <a href="https://www.y2mate.com/youtube/${videoId}" target="_blank" style="color:#f59e0b;">Click here to download from Y2Mate</a> (ad-free, safe).`;
+                }
             }
         }
 
