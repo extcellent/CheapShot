@@ -599,7 +599,6 @@
             height: 100%;
         }
 
-        /* COMPLETELY HIDE YOUTUBE UI */
         .plyr__video-embed .plyr__video-embed__container::after {
             display: none !important;
         }
@@ -695,7 +694,6 @@
             background: #f59e0b;
         }
 
-        /* Settings menu - FIXED */
         .plyr__menu__container {
             background: #1a1a24 !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -737,7 +735,6 @@
             background: rgba(245, 158, 11, 0.1) !important;
         }
 
-        /* Settings button - make it visible */
         .plyr__control[data-plyr="settings"] {
             color: #e8e8f0 !important;
         }
@@ -790,6 +787,31 @@
         .footer p {
             font-size: 13px;
             color: #6b6b80;
+        }
+
+        /* ===== LOADING ===== */
+        .loading-movies {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b6b80;
+            font-size: 16px;
+        }
+
+        .loading-movies .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(245, 158, 11, 0.1);
+            border-top-color: #f59e0b;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* ===== RESPONSIVE ===== */
@@ -983,26 +1005,69 @@
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
-        // 📽️  ADD YOUR MOVIES HERE — SUPER SIMPLE!
-        // ============================================================
-        // Just paste the YouTube URL + movie details.
-        // Rating: just a number (e.g. 8.5)
-        // ============================================================
-
-        const movies = [{
-            url: "https://www.youtube.com/watch?v=6_IO-q5X6QQ",
-            title: "Don't Be a Menace",
-            year: "1996",
-            genre: "Comedy",
-            rating: 6.5,
-            desc: "A parody of hood films where a young man navigates life in the hood."
-        }];
-
-        // ============================================================
         // 🎬  ENGINE — DON'T EDIT BELOW THIS LINE
         // ============================================================
 
         let currentPlayer = null;
+        let movies = [];
+
+        // ============================================================
+        // 📥  LOAD MOVIES FROM EXTERNAL FILE
+        // ============================================================
+
+        async function loadMovies() {
+            try {
+                // Show loading state
+                showLoading();
+
+                // Load from movies.js file
+                const response = await fetch('/movies.js');
+                const scriptText = await response.text();
+
+                // Execute the script to get movieDatabase
+                eval(scriptText);
+
+                // Assign to movies array
+                if (typeof movieDatabase !== 'undefined') {
+                    movies = movieDatabase;
+                }
+
+                // Re-render everything
+                renderAll();
+                updateHero(0);
+
+                console.log(`✅ Loaded ${movies.length} movies from movies.js!`);
+            } catch (error) {
+                console.error('❌ Failed to load movies.js:', error);
+                document.getElementById('top10Slider').innerHTML = `
+                    <div style="color:#ef4444;padding:40px;text-align:center;">
+                        ❌ Failed to load movies. Make sure movies.js exists in the same folder.
+                        <br><br>
+                        <span style="color:#6b6b80;font-size:14px;">Error: ${error.message}</span>
+                    </div>
+                `;
+                document.getElementById('trendingSlider').innerHTML = '';
+                document.getElementById('topRatedSlider').innerHTML = '';
+                document.getElementById('allMoviesSlider').innerHTML = '';
+            }
+        }
+
+        function showLoading() {
+            const loadingHTML = `
+                <div class="loading-movies">
+                    <div class="spinner"></div>
+                    <p>Loading movies...</p>
+                </div>
+            `;
+            document.getElementById('top10Slider').innerHTML = loadingHTML;
+            document.getElementById('trendingSlider').innerHTML = loadingHTML;
+            document.getElementById('topRatedSlider').innerHTML = loadingHTML;
+            document.getElementById('allMoviesSlider').innerHTML = loadingHTML;
+        }
+
+        // ============================================================
+        // 🎬  ENGINE FUNCTIONS
+        // ============================================================
 
         function extractYouTubeId(url) {
             const patterns = [
@@ -1048,17 +1113,24 @@
             `;
         }
 
-        // Create categories
-        const top10 = movies.slice(0, 10);
-        const trending = movies.slice().sort(() => Math.random() - 0.5);
-        const topRated = movies.slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
-        const allMovies = movies;
-
         function renderSliders() {
+            if (!movies || movies.length === 0) {
+                return;
+            }
+
+            const top10 = movies.slice(0, 10);
+            const trending = movies.slice().sort(() => Math.random() - 0.5);
+            const topRated = movies.slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
+            const allMovies = movies;
+
             document.getElementById('top10Slider').innerHTML = top10.map((m, i) => renderMovieCard(m, i, true)).join('');
             document.getElementById('trendingSlider').innerHTML = trending.map((m, i) => renderMovieCard(m, i)).join('');
             document.getElementById('topRatedSlider').innerHTML = topRated.map((m, i) => renderMovieCard(m, i)).join('');
             document.getElementById('allMoviesSlider').innerHTML = allMovies.map((m, i) => renderMovieCard(m, i)).join('');
+        }
+
+        function renderAll() {
+            renderSliders();
         }
 
         function slide(sliderId, direction) {
@@ -1069,7 +1141,7 @@
         }
 
         function openModal(index) {
-            const movie = allMovies[index];
+            const movie = movies[index];
             if (!movie) return;
 
             const modal = document.getElementById('movieModal');
@@ -1236,6 +1308,8 @@
         let heroIndex = 0;
 
         function updateHero(index) {
+            if (!movies || movies.length === 0) return;
+
             const movie = movies[index % movies.length];
             if (!movie) return;
 
@@ -1256,15 +1330,19 @@
             genre.textContent = movie.genre;
         }
 
+        // Auto-rotate hero
         setInterval(() => {
-            heroIndex = (heroIndex + 1) % movies.length;
-            updateHero(heroIndex);
+            if (movies && movies.length > 0) {
+                heroIndex = (heroIndex + 1) % movies.length;
+                updateHero(heroIndex);
+            }
         }, 6000);
 
-        renderSliders();
-        updateHero(0);
+        // ============================================================
+        // 🚀  START — Load movies from external file
+        // ============================================================
 
-        console.log(`✅ ${movies.length} movies loaded!`);
+        loadMovies();
     </script>
 
 </body>
