@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Movies - CheapShot</title>
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -167,10 +169,6 @@
             display: flex;
             align-items: center;
             gap: 4px;
-        }
-
-        .hero-banner .hero-content .meta .rating .star {
-            font-size: 16px;
         }
 
         .hero-banner .hero-content .description {
@@ -528,6 +526,7 @@
             transform: scale(1.1);
         }
 
+        /* ===== PLYR CUSTOM PLAYER ===== */
         .modal-video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
@@ -535,25 +534,89 @@
             background: #0a0a0f;
         }
 
-        .modal-video-wrapper iframe {
+        .modal-video-wrapper .plyr {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
         }
 
-        .modal-video-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 80px;
-            background: linear-gradient(0deg, rgba(10, 10, 15, 0.6) 0%, transparent 100%);
-            pointer-events: none;
-            z-index: 2;
+        /* Custom Plyr theme */
+        .plyr--video {
+            background: #0a0a0f;
+        }
+
+        .plyr__video-wrapper {
+            background: #0a0a0f;
+        }
+
+        .plyr__control--overlaid {
+            background: rgba(245, 158, 11, 0.9);
+            border-color: rgba(245, 158, 11, 0.9);
+        }
+
+        .plyr__control--overlaid:hover {
+            background: #fbbf24;
+            border-color: #fbbf24;
+        }
+
+        .plyr__control--overlaid svg {
+            fill: #0a0a0f;
+        }
+
+        .plyr__controls {
+            background: linear-gradient(0deg, rgba(10, 10, 15, 0.85) 0%, transparent 100%);
+        }
+
+        .plyr__controls .plyr__control {
+            color: #e8e8f0;
+        }
+
+        .plyr__controls .plyr__control:hover {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .plyr__controls .plyr__control.plyr__tab-focus {
+            box-shadow: 0 0 0 2px #f59e0b;
+        }
+
+        .plyr__controls .plyr__progress__buffer {
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .plyr__controls .plyr__progress__played {
+            background: #f59e0b;
+        }
+
+        .plyr__controls .plyr__progress__played .plyr__tooltip {
+            background: #f59e0b;
+            color: #0a0a0f;
+        }
+
+        .plyr__controls .plyr__volume input[type="range"]::-webkit-slider-runnable-track {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .plyr__controls .plyr__volume input[type="range"]::-webkit-slider-thumb {
+            background: #f59e0b;
+        }
+
+        .plyr__controls .plyr__volume input[type="range"]::-moz-range-track {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .plyr__controls .plyr__volume input[type="range"]::-moz-range-thumb {
+            background: #f59e0b;
+        }
+
+        .plyr__menu__container .plyr__control[role="menuitemradio"]:hover {
+            background: rgba(245, 158, 11, 0.2);
+        }
+
+        .plyr__menu__container .plyr__control[role="menuitemradio"][aria-checked="true"]::before {
+            background: #f59e0b;
         }
 
         .modal-movie-info {
@@ -755,8 +818,9 @@
     <div class="modal-overlay" id="movieModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">✕</button>
-            <div class="modal-video-wrapper">
-                <iframe id="movieIframe" src="" allowfullscreen loading="lazy"></iframe>
+            <div class="modal-video-wrapper" id="videoWrapper">
+                <!-- Plyr player will be inserted here -->
+                <div id="plyrContainer"></div>
             </div>
             <div class="modal-movie-info">
                 <h2 id="modalTitle">Movie Title</h2>
@@ -777,6 +841,9 @@
         <p>© 2026 CheapShot — All movies are legally free on YouTube.</p>
     </div>
 
+    <!-- ===== PLYR JS ===== -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
@@ -793,11 +860,76 @@
             genre: "Comedy",
             rating: 6.5,
             desc: "A parody of hood films where a young man navigates life in the hood."
+        }, {
+            url: "https://www.youtube.com/watch?v=0LZk1Jogf-U",
+            title: "The Night of the Hunter",
+            year: "1955",
+            genre: "Thriller",
+            rating: 8.0,
+            desc: "A terrifying tale of a murderous preacher who stalks a widow and her children."
+        }, {
+            url: "https://www.youtube.com/watch?v=6Sx7q8Xm6WE",
+            title: "The Big Lebowski",
+            year: "1998",
+            genre: "Comedy",
+            rating: 8.1,
+            desc: "A slacker is mistaken for a millionaire and gets caught up in a bizarre kidnapping plot."
+        }, {
+            url: "https://www.youtube.com/watch?v=9k5-Cq88p30",
+            title: "The Red Balloon",
+            year: "1956",
+            genre: "Family",
+            rating: 7.8,
+            desc: "A young boy befriends a sentient red balloon in Paris."
+        }, {
+            url: "https://www.youtube.com/watch?v=YrXhMsCmnlM",
+            title: "Sherlock Jr.",
+            year: "1924",
+            genre: "Comedy",
+            rating: 8.2,
+            desc: "A projectionist dreams he is a famous detective solving a case."
+        }, {
+            url: "https://www.youtube.com/watch?v=GpDpa3w4hZE",
+            title: "The General",
+            year: "1926",
+            genre: "Adventure",
+            rating: 8.1,
+            desc: "A train engineer pursues his stolen locomotive during the Civil War."
+        }, {
+            url: "https://www.youtube.com/watch?v=9VjRwzPJPTE",
+            title: "A Trip to the Moon",
+            year: "1902",
+            genre: "Sci-Fi",
+            rating: 8.0,
+            desc: "A group of astronomers travel to the moon in a cannon-propelled capsule."
+        }, {
+            url: "https://www.youtube.com/watch?v=lZ3bqFjxiTg",
+            title: "The Good, the Bad and the Ugly",
+            year: "1966",
+            genre: "Western",
+            rating: 8.8,
+            desc: "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery."
+        }, {
+            url: "https://www.youtube.com/watch?v=1R0L3hW5iis",
+            title: "Once Upon a Time in the West",
+            year: "1968",
+            genre: "Western",
+            rating: 8.5,
+            desc: "A mysterious stranger with a harmonica joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad."
+        }, {
+            url: "https://www.youtube.com/watch?v=WwQ7lA0PSqI",
+            title: "The Apartment",
+            year: "1960",
+            genre: "Romance",
+            rating: 8.3,
+            desc: "A man tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue."
         }];
 
         // ============================================================
         // 🎬  ENGINE — DON'T EDIT BELOW THIS LINE
         // ============================================================
+
+        let currentPlayer = null;
 
         function extractYouTubeId(url) {
             const patterns = [
@@ -817,9 +949,9 @@
             return id ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg` : '';
         }
 
-        function getEmbedUrl(url) {
+        function getYouTubeEmbedUrl(url) {
             const id = extractYouTubeId(url);
-            return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1&fs=1` :
+            return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=0&fs=1&iv_load_policy=3&color=white` :
             '';
         }
 
@@ -874,22 +1006,72 @@
             if (!movie) return;
 
             const modal = document.getElementById('movieModal');
-            const iframe = document.getElementById('movieIframe');
             const title = document.getElementById('modalTitle');
             const year = document.getElementById('modalYear');
             const genre = document.getElementById('modalGenre');
             const rating = document.getElementById('modalRating');
             const desc = document.getElementById('modalDesc');
 
-            iframe.src = getEmbedUrl(movie.url);
+            // Update info
             title.textContent = movie.title;
             year.textContent = movie.year;
             genre.textContent = movie.genre;
             rating.textContent = movie.rating ? movie.rating.toFixed(1) : 'N/A';
             desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
 
+            // Show modal
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+
+            // Initialize Plyr player after modal is visible
+            setTimeout(() => {
+                initPlyr(movie.url);
+            }, 100);
+        }
+
+        function initPlyr(videoUrl) {
+            const container = document.getElementById('plyrContainer');
+            const videoId = extractYouTubeId(videoUrl);
+
+            if (!videoId) return;
+
+            // Destroy existing player
+            if (currentPlayer) {
+                currentPlayer.destroy();
+                currentPlayer = null;
+            }
+
+            // Create YouTube iframe with Plyr
+            container.innerHTML = `
+                <div data-plyr-provider="youtube" data-plyr-embed-id="${videoId}"></div>
+            `;
+
+            // Initialize Plyr
+            const player = new Plyr(container.querySelector('[data-plyr-provider]'), {
+                controls: [
+                    'play-large',
+                    'play',
+                    'progress',
+                    'current-time',
+                    'mute',
+                    'volume',
+                    'captions',
+                    'settings',
+                    'pip',
+                    'fullscreen'
+                ],
+                settings: ['quality', 'speed'],
+                youtube: {
+                    modestbranding: 1,
+                    rel: 0,
+                    showinfo: 0,
+                    iv_load_policy: 3,
+                    color: 'white'
+                },
+                autoplay: true
+            });
+
+            currentPlayer = player;
         }
 
         function openHeroMovie() {
@@ -898,11 +1080,17 @@
 
         function closeModal() {
             const modal = document.getElementById('movieModal');
-            const iframe = document.getElementById('movieIframe');
+            const container = document.getElementById('plyrContainer');
 
             modal.classList.remove('active');
-            iframe.src = '';
             document.body.style.overflow = '';
+
+            // Destroy player
+            if (currentPlayer) {
+                currentPlayer.destroy();
+                currentPlayer = null;
+            }
+            container.innerHTML = '';
         }
 
         document.addEventListener('keydown', (e) => {
