@@ -1027,22 +1027,15 @@
             const id = extractYouTubeId(url);
             if (!id) return '';
             
-            // Try multiple thumbnail sizes in order of preference
-            const thumbnails = [
-                `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
-                `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
-                `https://img.youtube.com/vi/${id}/mqdefault.jpg`,
-                `https://img.youtube.com/vi/${id}/default.jpg`
-            ];
-            
-            // Return the first one that exists (will be checked by the img onerror)
-            return thumbnails[0]; // Try maxresdefault first, fallback will handle others
+            // Default to hqdefault.jpg as it is guaranteed to exist for 100% of YouTube videos
+            return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
         }
 
         function renderMovieCard(movie, index, showRank = false) {
             const thumb = getThumbnail(movie.url);
             const rank = showRank ? `<div class="top-rank">#${index + 1}</div>` : '';
             const ratingDisplay = movie.rating ? `<span class="rating-star">⭐ ${movie.rating.toFixed(1)}</span>` : '';
+            const videoId = extractYouTubeId(movie.url);
         
             return `
                 <div class="movie-card" onclick="openModal(${index})">
@@ -1052,8 +1045,7 @@
                             src="${thumb}" 
                             alt="${movie.title}" 
                             loading="lazy" 
-                            onerror="this.src='https://img.youtube.com/vi/${extractYouTubeId(movie.url)}/hqdefault.jpg'; this.onerror=null;"
-                            onerror="this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'"
+                            onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/default.jpg'; if(!this.complete || this.naturalWidth === 0) { this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'; }"
                         >
                         <div class="play-overlay">
                             <div class="play-btn">▶</div>
