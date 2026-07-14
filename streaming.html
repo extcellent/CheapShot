@@ -388,32 +388,25 @@
         }
 
         .movie-card .poster {
-            position: relative;
             width: 100%;
-            /* 1. Forces a perfect cinematic widescreen box */
-            aspect-ratio: 16 / 9; 
-            /* 2. Hides anything that leaks outside the box boundaries */
-            overflow: hidden; 
-            border-radius: 8px;
-            background-color: #141414; /* Clean dark background while loading */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 2/3;
+            background: rgba(255, 255, 255, 0.04);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .movie-card .poster img {
             width: 100%;
             height: 100%;
-            /* 3. This acts like magic: it maintains the image's proportions, 
-                  fills the box completely, and automatically trims off 
-                  the 4:3 letterbox black bars! */
-            object-fit: cover; 
-            display: block;
+            object-fit: cover;
+            transition: transform 0.4s;
         }
 
         .movie-card:hover .poster img {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
+            transform: scale(1.05);
         }
 
         .movie-card .poster .fallback {
