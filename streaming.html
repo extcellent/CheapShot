@@ -66,24 +66,13 @@
         .logo-wrapper {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-        }
-
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            gap: 6px;
         }
 
         .logo-text {
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 0px;
             font-size: 22px;
             font-weight: 800;
             letter-spacing: -0.5px;
@@ -110,31 +99,39 @@
             margin-left: 2px;
         }
 
-        /* Glass shimmer effect on TV */
-        .logo-tv::before {
+        /* Clean shimmer/lighting effect over TV only */
+        .logo-tv::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg,
-                    transparent 30%,
-                    rgba(255, 255, 255, 0.15) 45%,
-                    rgba(255, 255, 255, 0.3) 50%,
-                    rgba(255, 255, 255, 0.15) 55%,
-                    transparent 70%);
-            animation: shimmer 3s infinite;
-            pointer-events: none;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg,
+                    rgba(255, 215, 0, 0.3) 0%,
+                    rgba(255, 215, 0, 0.1) 30%,
+                    rgba(255, 255, 255, 0.4) 50%,
+                    rgba(255, 215, 0, 0.1) 70%,
+                    rgba(255, 215, 0, 0.3) 100%);
+            filter: blur(3px);
+            z-index: -1;
             border-radius: 4px;
+            opacity: 0.6;
+            animation: shimmerLight 3s ease-in-out infinite;
         }
 
-        @keyframes shimmer {
+        @keyframes shimmerLight {
             0% {
-                transform: translateX(-100%) rotate(25deg);
+                opacity: 0.3;
+                transform: scale(0.98);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02);
             }
             100% {
-                transform: translateX(100%) rotate(25deg);
+                opacity: 0.3;
+                transform: scale(0.98);
             }
         }
 
@@ -603,26 +600,16 @@
             height: 100%;
         }
 
-        /* COMPLETELY HIDE ALL YOUTUBE BRANDING */
-        .plyr__video-wrapper .plyr__video-embed iframe {
-            pointer-events: auto;
-        }
-
+        /* COMPLETELY HIDE YOUTUBE UI */
         .plyr__video-embed .plyr__video-embed__container::after {
             display: none !important;
         }
 
-        /* Hide YouTube's top bar, logo, and watermarks */
+        /* Hide ALL YouTube elements */
         .plyr--youtube .plyr__video-embed iframe {
             pointer-events: auto;
         }
 
-        /* Force hide all YouTube branding elements */
-        .plyr__video-wrapper .plyr__video-embed iframe {
-            pointer-events: auto;
-        }
-
-        /* Hide YouTube controls that show through */
         .plyr__video-embed iframe {
             pointer-events: none;
         }
@@ -724,10 +711,6 @@
 
         /* Ensure settings menu shows all options */
         .plyr__menu__container .plyr__control[role="menuitemradio"] {
-            color: #e8e8f0 !important;
-        }
-
-        .plyr__menu__container .plyr__control[role="menuitemradio"] .plyr__menu__value {
             color: #e8e8f0 !important;
         }
 
@@ -840,11 +823,6 @@
             .logo-text {
                 font-size: 18px;
             }
-
-            .logo-icon {
-                width: 26px;
-                height: 26px;
-            }
         }
 
         @media (min-width: 641px) and (max-width: 900px) {
@@ -860,9 +838,6 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-wrapper">
-                <div class="logo-icon">
-                    <img src="/cheapshot.png" alt="CheapShot" onerror="this.style.display='none'">
-                </div>
                 <div class="logo-text">
                     <span class="logo-cheap">Cheap</span>
                     <span class="logo-shot">Shot</span>
@@ -1129,12 +1104,13 @@
                     showinfo: 0,
                     iv_load_policy: 3,
                     color: 'white',
-                    controls: 1,
-                    fs: 1,
+                    controls: 0,
+                    fs: 0,
                     cc_load_policy: 0,
                     hl: 'en',
-                    autohide: 0,
-                    disablekb: 1
+                    autohide: 1,
+                    disablekb: 1,
+                    widget_referrer: window.location.href
                 },
                 autoplay: false,
                 debug: false,
@@ -1153,49 +1129,66 @@
                 }
             });
 
-            // Force hide YouTube branding completely
+            // Force hide ALL YouTube UI elements
             player.on('ready', function() {
-                // Hide all YouTube overlay elements
-                const iframe = container.querySelector('iframe');
-                if (iframe) {
-                    // Add a style to completely hide YouTube's UI
-                    const styleId = 'plyr-youtube-hide';
-                    if (!document.getElementById(styleId)) {
-                        const style = document.createElement('style');
-                        style.id = styleId;
-                        style.textContent = `
-                            .plyr__video-embed .plyr__video-embed__container::after {
-                                display: none !important;
-                            }
-                            .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark,
-                            .ytp-gradient-top, .ytp-gradient-bottom,
-                            .ytp-chrome-top-buttons, .ytp-title, .ytp-share-icon,
-                            .ytp-panel, .ytp-popup, .ytp-menu {
-                                display: none !important;
-                            }
-                            .ytp-chrome-bottom .ytp-progress-bar-container {
-                                display: none !important;
-                            }
-                            .ytp-chrome-controls {
-                                display: none !important;
-                            }
-                            .ytp-player-content {
-                                display: none !important;
-                            }
-                            .ytp-cued-thumbnail-overlay {
-                                display: none !important;
-                            }
-                        `;
-                        document.head.appendChild(style);
-                    }
-
-                    // Force hide YouTube's native controls by making iframe pointer-events none
-                    iframe.style.pointerEvents = 'none';
-                    // But allow Plyr to handle interactions
-                    setTimeout(() => {
-                        iframe.style.pointerEvents = 'auto';
-                    }, 100);
+                const containerEl = container;
+                // Inject style to completely hide YouTube's UI
+                const styleId = 'plyr-youtube-hide';
+                if (!document.getElementById(styleId)) {
+                    const style = document.createElement('style');
+                    style.id = styleId;
+                    style.textContent = `
+                        .plyr__video-embed .plyr__video-embed__container::after {
+                            display: none !important;
+                        }
+                        /* Hide ALL YouTube UI */
+                        .plyr__video-embed iframe {
+                            pointer-events: none !important;
+                        }
+                        .plyr--youtube .plyr__video-embed iframe {
+                            pointer-events: none !important;
+                        }
+                        /* Hide YouTube overlay elements */
+                        .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark,
+                        .ytp-gradient-top, .ytp-gradient-bottom,
+                        .ytp-chrome-top-buttons, .ytp-title, .ytp-share-icon,
+                        .ytp-panel, .ytp-popup, .ytp-menu,
+                        .ytp-chrome-bottom, .ytp-progress-bar-container,
+                        .ytp-chrome-controls, .ytp-player-content,
+                        .ytp-cued-thumbnail-overlay, .ytp-pause-overlay,
+                        .ytp-big-play-button, .ytp-spinner,
+                        .ytp-tooltip, .ytp-tooltip-text,
+                        .ytp-watch-later-button, .ytp-share-button {
+                            display: none !important;
+                        }
+                        /* Hide any YouTube controls that might appear */
+                        .html5-video-player .ytp-chrome-top {
+                            display: none !important;
+                        }
+                        .html5-video-player .ytp-chrome-bottom {
+                            display: none !important;
+                        }
+                        .html5-video-player .ytp-gradient-top {
+                            display: none !important;
+                        }
+                        .html5-video-player .ytp-gradient-bottom {
+                            display: none !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
                 }
+
+                // Add a class to the iframe to hide YouTube controls
+                const iframe = containerEl.querySelector('iframe');
+                if (iframe) {
+                    iframe.style.pointerEvents = 'none';
+                    // Re-enable after a moment for Plyr to work
+                    setTimeout(() => {
+                        iframe.style.pointerEvents = 'none';
+                    }, 50);
+                }
+
+                console.log('🎬 Plyr player ready - YouTube UI hidden');
             });
 
             currentPlayer = player;
