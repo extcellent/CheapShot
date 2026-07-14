@@ -11,6 +11,16 @@ const movieDatabase = [{
     genre: "Comedy",
     rating: 6.5,
     desc: "A parody of hood films where a young man navigates life in the hood."
+    },
+    {
+    url: "https://www.youtube.com/watch?v=W3Qvz6tOCW8",
+    title: "Zodiac",
+    year: "2007",
+    genre: "Crime, Drama, Mystery",
+    rating: 7.7,
+    desc: "A San Francisco cartoonist becomes an amateur detective obsessed with tracking down the Zodiac Killer, an unidentified serial murderer who terrorized Northern California in the late 1960s and 1970s."
+    },
+                       
 }];
 
 // ============================================================
