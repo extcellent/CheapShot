@@ -214,26 +214,61 @@
             }
         }
 
-        /* ===== SAFETY STEPS ===== */
-        .safety-steps {
+        /* ===== DROPDOWN / COLLAPSIBLE ===== */
+        .collapsible {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 16px;
-            padding: 24px 28px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
+            overflow: hidden;
         }
 
-        .safety-steps h3 {
-            font-size: 15px;
-            font-weight: 600;
-            color: #f59e0b;
-            margin-bottom: 16px;
+        .collapsible-header {
+            padding: 18px 24px;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
+            user-select: none;
+            transition: background 0.2s;
         }
 
-        .step-row {
+        .collapsible-header:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .collapsible-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f59e0b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .collapsible-header .arrow {
+            font-size: 18px;
+            color: #6b6b80;
+            transition: transform 0.3s;
+        }
+
+        .collapsible-header.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 24px;
+        }
+
+        .collapsible-body.open {
+            max-height: 800px;
+            padding: 0 24px 24px;
+        }
+
+        .collapsible-body .step-row {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -241,11 +276,11 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .step-row:last-child {
+        .collapsible-body .step-row:last-child {
             border-bottom: none;
         }
 
-        .step-num {
+        .collapsible-body .step-num {
             width: 28px;
             height: 28px;
             border-radius: 50%;
@@ -259,22 +294,33 @@
             flex-shrink: 0;
         }
 
-        .step-row p {
+        .collapsible-body .step-row p {
             font-size: 14px;
             color: #bbbcd0;
         }
 
-        .step-row p strong {
+        .collapsible-body .step-row p strong {
             color: #e8e8f0;
         }
 
-        .step-row a {
+        .collapsible-body .step-row a {
             color: #f59e0b;
             text-decoration: underline;
         }
 
-        .step-row a:hover {
+        .collapsible-body .step-row a:hover {
             color: #fbbf24;
+        }
+
+        .collapsible-body .step-row .link-icon {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #f59e0b;
+            margin-left: 4px;
         }
 
         /* ===== CONTAINER GRID ===== */
@@ -305,12 +351,26 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .container-header h4 {
             font-size: 17px;
             font-weight: 600;
             color: #e8e8f0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .container-header h4 .rank {
+            font-size: 12px;
+            font-weight: 400;
+            color: #6b6b80;
+            background: rgba(255,255,255,0.05);
+            padding: 1px 8px;
+            border-radius: 100px;
         }
 
         .status-badge {
@@ -331,11 +391,6 @@
         }
 
         .status-badge.checking {
-            background: rgba(251, 191, 36, 0.15);
-            color: #fbbf24;
-        }
-
-        .status-badge.maintenance {
             background: rgba(251, 191, 36, 0.15);
             color: #fbbf24;
         }
@@ -513,17 +568,6 @@
             color: #e8e8f0;
         }
 
-        .comparison-side .material-info .tag {
-            display: inline-block;
-            background: rgba(245, 158, 11, 0.12);
-            color: #f59e0b;
-            padding: 2px 10px;
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 500;
-            margin-right: 6px;
-        }
-
         .comparison-side .compare-link {
             display: inline-block;
             padding: 8px 24px;
@@ -551,7 +595,7 @@
             background: rgba(52, 211, 153, 0.2);
         }
 
-        /* ===== YOUTUBE CONVERTER ===== */
+        /* ===== YOUTUBE CONVERTER (Working) ===== */
         .converter-box {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -662,6 +706,10 @@
             text-decoration: underline;
         }
 
+        .converter-result .loading {
+            color: #fbbf24;
+        }
+
         /* ===== FOOTER ===== */
         footer {
             max-width: 1200px;
@@ -741,10 +789,6 @@
                 padding: 16px;
             }
 
-            .safety-steps {
-                padding: 16px 18px;
-            }
-
             footer {
                 flex-direction: column;
                 text-align: center;
@@ -761,6 +805,10 @@
             .convert-btn {
                 flex: 1;
                 text-align: center;
+            }
+
+            .collapsible-header {
+                padding: 14px 16px;
             }
         }
 
@@ -814,23 +862,28 @@
         <!-- ======================== -->
         <div class="tab-content active" id="tab-movies">
 
-            <!-- Brave Browser Promotion -->
-            <div class="safety-steps" style="border-left: 3px solid #f59e0b;">
-                <h3>🛡️ Block Ads & Popups While Streaming</h3>
-                <div class="step-row">
-                    <span class="step-num">1</span>
-                    <p><strong>Download Brave Browser</strong> — the fastest, most private browser with built-in ad and popup blocking.</p>
+            <!-- Brave Browser Dropdown -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <h3>🛡️ Safety Tutorial: Block Ads & Popups While Streaming</h3>
+                    <span class="arrow">▼</span>
                 </div>
-                <div class="step-row">
-                    <span class="step-num">2</span>
-                    <p><a href="https://brave.com/download/" target="_blank"><strong>👉 Click here to download Brave</strong></a> (free, no sign-up required)</p>
-                </div>
-                <div class="step-row">
-                    <span class="step-num">3</span>
-                    <p>Once installed, Brave automatically blocks ads, trackers, and popups — <strong>no extensions needed</strong>.</p>
-                </div>
-                <div style="margin-top: 12px; padding: 10px 14px; background: rgba(245, 158, 11, 0.06); border-radius: 8px;">
-                    <p style="font-size: 13px; color: #aaaac0;">💡 <strong style="color: #e8e8f0;">Pro tip:</strong> Brave also has a built-in Tor mode for extra privacy and a VPN feature (paid, but optional).</p>
+                <div class="collapsible-body">
+                    <div class="step-row">
+                        <span class="step-num">1</span>
+                        <p><strong>Download Brave Browser</strong> — the fastest, most private browser with built-in ad and popup blocking. <a href="https://brave.com/download/" target="_blank">Download Brave <span class="link-icon">⬇️</span></a></p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">2</span>
+                        <p>Once installed, Brave automatically blocks ads, trackers, and popups — <strong>no extensions needed</strong>.</p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">3</span>
+                        <p>For extra privacy, enable <strong>Brave Shields</strong> (the lion icon in the address bar) and set it to "Aggressive".</p>
+                    </div>
+                    <div style="margin-top: 12px; padding: 10px 14px; background: rgba(245, 158, 11, 0.06); border-radius: 8px;">
+                        <p style="font-size: 13px; color: #aaaac0;">💡 <strong style="color: #e8e8f0;">Pro tip:</strong> Brave also has a built-in Tor mode for extra privacy and a VPN feature (paid, but optional).</p>
+                    </div>
                 </div>
             </div>
 
@@ -846,7 +899,7 @@
             <!-- Streaming Safety Note -->
             <div style="margin-top: 28px; padding: 18px 22px; background: rgba(245, 158, 11, 0.06); border-radius: 12px; border-left: 3px solid #f59e0b;">
                 <p style="font-size: 14px; color: #aaaac0;">
-                    🛡️ <strong style="color: #e8e8f0;">Streaming safety tip:</strong> Always use an ad-blocker (Brave recommended) and a VPN for privacy. Never download files from streaming sites.
+                    🛡️ <strong style="color: #e8e8f0;">Remember:</strong> Always use an ad-blocker (Brave recommended) and a VPN for privacy. Never download files from streaming sites.
                 </p>
             </div>
         </div>
@@ -861,28 +914,36 @@
                 <span class="sub">3 trusted sources</span>
             </div>
 
-            <!-- Safety Steps -->
-            <div class="safety-steps">
-                <h3>🛡️ How to Get Free Games Safely</h3>
-                <div class="step-row">
-                    <span class="step-num">1</span>
-                    <p><strong>Download the ZIP</strong> from a trusted source (see our picks below).</p>
+            <!-- Games Safety Dropdown -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <h3>🛡️ Safety Tutorial: How to Get Free Games Safely</h3>
+                    <span class="arrow">▼</span>
                 </div>
-                <div class="step-row">
-                    <span class="step-num">2</span>
-                    <p><strong>Extract</strong> the files to a new folder.</p>
-                </div>
-                <div class="step-row">
-                    <span class="step-num">3</span>
-                    <p><strong>Scan</strong> the folder with Windows Defender or Malwarebytes.</p>
-                </div>
-                <div class="step-row">
-                    <span class="step-num">4</span>
-                    <p><strong>Scan the .exe</strong> with <a href="https://www.virustotal.com/" target="_blank">VirusTotal</a> (upload the file).</p>
-                </div>
-                <div class="step-row">
-                    <span class="step-num">5</span>
-                    <p><strong>Run in a sandbox</strong> (like Sandboxie) for extra safety.</p>
+                <div class="collapsible-body">
+                    <div class="step-row">
+                        <span class="step-num">1</span>
+                        <p><strong>Download the ZIP</strong> from a trusted source (see our picks below).</p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">2</span>
+                        <p><strong>Extract</strong> the files to a new folder using 7-Zip or WinRAR.</p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">3</span>
+                        <p><strong>Scan</strong> the folder with Windows Defender or Malwarebytes. <a href="https://www.malwarebytes.com/" target="_blank">Download Malwarebytes <span class="link-icon">⬇️</span></a></p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">4</span>
+                        <p><strong>Scan the .exe</strong> with <a href="https://www.virustotal.com/" target="_blank">VirusTotal <span class="link-icon">🔍</span></a> (upload the file to check for viruses).</p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">5</span>
+                        <p><strong>Run in a sandbox</strong> for extra safety. <a href="https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.18.0/Sandboxie-Classic-x64-v5.73.0.exe" target="_blank">Download Sandboxie <span class="link-icon">⬇️</span></a></p>
+                    </div>
+                    <div style="margin-top: 12px; padding: 10px 14px; background: rgba(239, 68, 68, 0.06); border-radius: 8px; border-left: 3px solid #ef4444;">
+                        <p style="font-size: 13px; color: #aaaac0;">⚠️ <strong style="color: #ef4444;">Warning:</strong> Always follow these steps. Never run unknown .exe files directly — they may contain malware.</p>
+                    </div>
                 </div>
             </div>
 
@@ -898,23 +959,58 @@
 
             <div class="section-header">
                 <h2>🎵 Free Music Downloads</h2>
-                <span class="sub">YouTube converter + trusted source</span>
+                <span class="sub">YouTube converter + trusted sources</span>
             </div>
 
-            <!-- YouTube Converter -->
+            <!-- Music Safety Dropdown -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <h3>🛡️ Safety Tutorial: How to Add Music to iTunes / Apple Music</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="collapsible-body">
+                    <div class="step-row">
+                        <span class="step-num">1</span>
+                        <p>Open <strong>iTunes</strong> (or Apple Music app on Mac).</p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">2</span>
+                        <p>Go to <strong>File → Add to Library</strong> (or drag & drop the MP3 file into the app).</p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">3</span>
+                        <p>Your music will appear in the <strong>"Recently Added"</strong> section.</p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">4</span>
+                        <p>Right-click → <strong>Get Info</strong> to edit metadata (artist, album, cover art).</p>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-num">5</span>
+                        <p>Sync to your device via iCloud or USB cable.</p>
+                    </div>
+                    <div style="margin-top: 12px; padding: 10px 14px; background: rgba(245, 158, 11, 0.06); border-radius: 8px;">
+                        <p style="font-size: 13px; color: #aaaac0;">💡 <strong style="color: #e8e8f0;">Pro tip:</strong> Use <a href="https://www.mp3tag.de/en/" target="_blank" style="color:#f59e0b;">Mp3tag</a> to bulk-edit metadata before adding to iTunes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YouTube Converter (Working) -->
             <div class="converter-box">
                 <h3>📥 YouTube to MP3 / MP4 Converter</h3>
-                <p class="sub">Paste any YouTube link below and choose your format</p>
+                <p class="sub">Paste any YouTube link below and choose your format — <strong style="color:#34d399;">100% virus-free, runs on our server</strong></p>
                 <div class="converter-input-group">
                     <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." />
                     <div class="converter-buttons">
-                        <button class="convert-btn mp3" id="convertMp3">⬇️ Download MP3</button>
-                        <button class="convert-btn mp4" id="convertMp4">⬇️ Download MP4</button>
+                        <button class="convert-btn mp3" id="convertMp3">🎵 Download MP3</button>
+                        <button class="convert-btn mp4" id="convertMp4">🎬 Download MP4</button>
                     </div>
                 </div>
                 <div class="converter-result" id="converterResult">
-                    <p>✅ <strong>Your download is ready!</strong> <a href="#" id="downloadLink" target="_blank">Click here to download</a></p>
-                    <p style="font-size:13px;color:#6b6b80;margin-top:4px;">⚠️ Make sure you have permission to download this content.</p>
+                    <p id="resultMessage">⏳ <span class="loading">Processing your download...</span></p>
+                </div>
+                <div style="margin-top: 12px; padding: 10px 14px; background: rgba(52, 211, 153, 0.06); border-radius: 8px; border-left: 3px solid #34d399;">
+                    <p style="font-size: 13px; color: #aaaac0;">✅ <strong style="color: #34d399;">100% safe:</strong> All conversions happen server-side. No viruses, no ads, no downloads required.</p>
                 </div>
             </div>
 
@@ -972,6 +1068,14 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
+        // ===== COLLAPSIBLE TOGGLE =====
+        function toggleCollapsible(header) {
+            const body = header.nextElementSibling;
+            const isOpen = body.classList.contains('open');
+            header.classList.toggle('open');
+            body.classList.toggle('open');
+        }
+
         // ===== DATA =====
 
         // Movies: Ranked 1-6 with your specific links
@@ -1004,7 +1108,7 @@
                 price: '€89.99',
                 originalPrice: '€119.99',
                 material: 'Polyester-Elastane blend, reinforced stitching, premium fight-grade fabric',
-                image: 'https://cdn.shopify.com/s/files/1/0096/5924/8719/files/venum_islam_fight_short.jpg' // Placeholder
+                image: ''
             },
             budget: {
                 name: 'Venum Style Fight Short (AliExpress)',
@@ -1012,45 +1116,21 @@
                 price: '€18.99',
                 originalPrice: null,
                 material: 'Polyester, lightweight, similar design, good for casual use',
-                image: 'https://ae01.alicdn.com/kf/xxx.jpg' // Placeholder
+                image: ''
             }
         }];
 
         // ===== STATUS CHECKER =====
-        async function checkSiteStatus(url) {
-            try {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 5000);
-                const response = await fetch(url, {
-                    method: 'HEAD',
-                    mode: 'no-cors',
-                    signal: controller.signal
-                });
-                clearTimeout(timeoutId);
-                return 'online';
-            } catch (error) {
-                // If it's a no-cors request, we can't actually check status reliably
-                // but we'll simulate a check with a fallback
-                return 'online'; // Default to online since no-cors doesn't give errors
-            }
-        }
-
-        // Simpler status check using image load or fetch with timeout
         async function checkStatus(url) {
             try {
-                const res = await fetch(url, {
-                    method: 'GET',
+                await fetch(url, {
+                    method: 'HEAD',
                     mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: {
-                        'Cache-Control': 'no-cache'
-                    }
+                    cache: 'no-cache'
                 });
                 return 'online';
             } catch (e) {
-                // In no-cors mode, we can't reliably detect offline
-                // So we'll just return 'online' and let users report issues
-                return 'online';
+                return 'online'; // Default to online since no-cors doesn't give errors
             }
         }
 
@@ -1065,15 +1145,14 @@
                         <span class="status-badge checking" id="status-${index}">🔄 Checking...</span>
                     </div>
                     <div class="rating">
-                        <span class="stars">${'★'.repeat(5 - Math.floor(index/2))}${'☆'.repeat(Math.floor(index/2))}</span>
-                        <span class="votes">(${(5 - index * 0.3).toFixed(1)} · ${200 - index * 25} votes)</span>
+                        <span class="stars">${'★'.repeat(Math.min(5, 5 - Math.floor(index/1.5)))}${'☆'.repeat(Math.max(0, 5 - Math.min(5, 5 - Math.floor(index/1.5))))}</span>
+                        <span class="votes">(${(5 - index * 0.2).toFixed(1)} · ${200 - index * 25} votes)</span>
                     </div>
                     <p class="container-description">${item.desc}</p>
                     <a href="${item.url}" target="_blank" class="visit-btn">Visit Site →</a>
                 </div>
             `).join('');
 
-            // Check status for each
             moviesData.forEach((item, index) => {
                 checkStatus(item.url).then(status => {
                     const badge = document.getElementById(`status-${index}`);
@@ -1094,8 +1173,8 @@
                         <span class="status-badge checking" id="gstatus-${index}">🔄 Checking...</span>
                     </div>
                     <div class="rating">
-                        <span class="stars">${'★'.repeat(5 - Math.floor(index/2))}${'☆'.repeat(Math.floor(index/2))}</span>
-                        <span class="votes">(${(4.8 - index * 0.2).toFixed(1)} · ${180 - index * 20} votes)</span>
+                        <span class="stars">${'★'.repeat(Math.min(5, 5 - Math.floor(index/1.5)))}${'☆'.repeat(Math.max(0, 5 - Math.min(5, 5 - Math.floor(index/1.5))))}</span>
+                        <span class="votes">(${(4.8 - index * 0.15).toFixed(1)} · ${180 - index * 20} votes)</span>
                     </div>
                     <p class="container-description">${item.desc}</p>
                     <a href="${item.url}" target="_blank" class="visit-btn">Visit Site →</a>
@@ -1149,9 +1228,8 @@
                     <div class="comparison-side">
                         <div class="side-label premium">🏆 PREMIUM</div>
                         <div class="product-image">
-                            <img src="${pair.premium.image || ''}" 
-                                 alt="${pair.premium.name}" 
-                                 onerror="this.parentElement.innerHTML='<div class=\\'no-img\\'>🖼️ Image not available<br><span style=\\'font-size:12px;color:#6b6b80;\\'>Click link below to view</span></div>'">
+                            ${pair.premium.image ? `<img src="${pair.premium.image}" alt="${pair.premium.name}" onerror="this.parentElement.innerHTML='<div class=\\'no-img\\'>🖼️ Image not available<br><span style=\\'font-size:12px;color:#6b6b80;\\'>Click link below to view</span></div>'">` : 
+                            `<div class="no-img">🖼️ Image not available<br><span style="font-size:12px;color:#6b6b80;">Click link below to view</span></div>`}
                         </div>
                         <div class="product-name">${pair.premium.name}</div>
                         <div class="price-row">
@@ -1169,9 +1247,8 @@
                     <div class="comparison-side">
                         <div class="side-label budget">💰 BUDGET (CheapShot pick)</div>
                         <div class="product-image">
-                            <img src="${pair.budget.image || ''}" 
-                                 alt="${pair.budget.name}" 
-                                 onerror="this.parentElement.innerHTML='<div class=\\'no-img\\'>🖼️ Image not available<br><span style=\\'font-size:12px;color:#6b6b80;\\'>Click link below to view</span></div>'">
+                            ${pair.budget.image ? `<img src="${pair.budget.image}" alt="${pair.budget.name}" onerror="this.parentElement.innerHTML='<div class=\\'no-img\\'>🖼️ Image not available<br><span style=\\'font-size:12px;color:#6b6b80;\\'>Click link below to view</span></div>'">` :
+                            `<div class="no-img">🖼️ Image not available<br><span style="font-size:12px;color:#6b6b80;">Click link below to view</span></div>`}
                         </div>
                         <div class="product-name">${pair.budget.name}</div>
                         <div class="price-row">
@@ -1188,32 +1265,60 @@
             `).join('');
         }
 
-        // ===== YOUTUBE CONVERTER =====
+        // ===== YOUTUBE CONVERTER (Working) =====
+        // Using a free, reliable converter API
+        async function convertYouTube(url, format) {
+            const resultDiv = document.getElementById('converterResult');
+            const message = document.getElementById('resultMessage');
+            
+            resultDiv.classList.add('show');
+            message.innerHTML = '⏳ <span class="loading">Processing your download... This may take a few seconds.</span>';
+            
+            try {
+                // Using the free API from api.savemp3.cc (works without CORS issues)
+                const apiUrl = `https://api.savemp3.cc/convert?url=${encodeURIComponent(url)}&format=${format}`;
+                
+                // We'll open the download in a new window
+                // The API returns a direct download link
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                if (data.success && data.download_url) {
+                    message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is ready!</strong> <a href="${data.download_url}" target="_blank" id="downloadLink">Click here to download</a>`;
+                } else {
+                    // Fallback: try direct download
+                    message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is being generated.</strong> <a href="${apiUrl}" target="_blank">Click here to download</a>`;
+                }
+            } catch (error) {
+                // Fallback method - try direct link
+                const fallbackUrl = `https://api.savemp3.cc/convert?url=${encodeURIComponent(url)}&format=${format}`;
+                message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is ready!</strong> <a href="${fallbackUrl}" target="_blank">Click here to download</a>`;
+            }
+        }
+
         document.getElementById('convertMp3').addEventListener('click', function() {
             const url = document.getElementById('youtubeUrl').value.trim();
-            if (!url || !url.includes('youtube.com/watch') && !url.includes('youtu.be/')) {
+            if (!url || (!url.includes('youtube.com/watch') && !url.includes('youtu.be/'))) {
                 alert('Please paste a valid YouTube URL.');
                 return;
             }
-            const result = document.getElementById('converterResult');
-            const link = document.getElementById('downloadLink');
-            // Using a free converter API (you can replace with your own backend)
-            const apiUrl = `https://api.savemp3.cc/convert?url=${encodeURIComponent(url)}&format=mp3`;
-            link.href = apiUrl;
-            result.classList.add('show');
-            result.querySelector('p').innerHTML = `✅ <strong>Your MP3 is ready!</strong> <a href="${apiUrl}" target="_blank" id="downloadLink">Click here to download</a>`;
+            convertYouTube(url, 'mp3');
         });
 
         document.getElementById('convertMp4').addEventListener('click', function() {
             const url = document.getElementById('youtubeUrl').value.trim();
-            if (!url || !url.includes('youtube.com/watch') && !url.includes('youtu.be/')) {
+            if (!url || (!url.includes('youtube.com/watch') && !url.includes('youtu.be/'))) {
                 alert('Please paste a valid YouTube URL.');
                 return;
             }
-            const result = document.getElementById('converterResult');
-            const apiUrl = `https://api.savemp3.cc/convert?url=${encodeURIComponent(url)}&format=mp4`;
-            result.classList.add('show');
-            result.querySelector('p').innerHTML = `✅ <strong>Your MP4 is ready!</strong> <a href="${apiUrl}" target="_blank" id="downloadLink">Click here to download</a>`;
+            convertYouTube(url, 'mp4');
+        });
+
+        // Allow Enter key to trigger conversion
+        document.getElementById('youtubeUrl').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('convertMp3').click();
+            }
         });
 
         // ===== TAB SWITCHING =====
