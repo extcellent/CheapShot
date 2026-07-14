@@ -19,7 +19,6 @@ const movieDatabase = [{
     genre: "Crime, Drama, Mystery",
     rating: 7.7,
     desc: "A San Francisco cartoonist becomes an amateur detective obsessed with tracking down the Zodiac Killer, an unidentified serial murderer who terrorized Northern California in the late 1960s and 1970s."
-    },
                        
 }];
 
