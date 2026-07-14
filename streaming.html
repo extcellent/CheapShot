@@ -91,46 +91,46 @@
 
         .logo-tv {
             position: relative;
-            display: inline-block;
+            font-weight: 700;
             background: linear-gradient(135deg, #f59e0b, #ef4444);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
             margin-left: 2px;
+            display: inline-block;
         }
-
+        
+        /* A seamless, non-stop premium light sweep */
         .logo-tv::after {
-            content: '';
+            content: 'TV'; /* Matches the text exactly */
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg,
-                    rgba(255, 215, 0, 0.3) 0%,
-                    rgba(255, 215, 0, 0.1) 30%,
-                    rgba(255, 255, 255, 0.4) 50%,
-                    rgba(255, 215, 0, 0.1) 70%,
-                    rgba(255, 215, 0, 0.3) 100%);
-            filter: blur(3px);
-            z-index: -1;
-            border-radius: 4px;
-            opacity: 0.6;
-            animation: shimmerLight 3s ease-in-out infinite;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            
+            /* A tightly focused, ultra-smooth satin silver reflection */
+            background: linear-gradient(
+                105deg, 
+                transparent 30%, 
+                rgba(255, 255, 255, 0.2) 42%, 
+                rgba(255, 255, 255, 0.7) 50%, 
+                rgba(255, 255, 255, 0.2) 58%, 
+                transparent 70%
+            );
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* 'linear' keeps the speed completely constant; 3s makes it smooth */
+            animation: premiumFlow 3s linear infinite;
         }
-
-        @keyframes shimmerLight {
+        
+        @keyframes premiumFlow {
             0% {
-                opacity: 0.3;
-                transform: scale(0.98);
-            }
-            50% {
-                opacity: 0.8;
-                transform: scale(1.02);
+                background-position: 150% 0;
             }
             100% {
-                opacity: 0.3;
-                transform: scale(0.98);
+                background-position: -150% 0;
             }
         }
 
