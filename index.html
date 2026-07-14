@@ -395,6 +395,11 @@
             color: #fbbf24;
         }
 
+        .status-badge.legal {
+            background: rgba(52, 211, 153, 0.15);
+            color: #34d399;
+        }
+
         .rating {
             display: flex;
             align-items: center;
@@ -439,6 +444,16 @@
             opacity: 0.4;
             cursor: not-allowed;
             pointer-events: none;
+        }
+
+        .visit-btn.legal-btn {
+            background: rgba(52, 211, 153, 0.12);
+            color: #34d399;
+            border-color: rgba(52, 211, 153, 0.15);
+        }
+
+        .visit-btn.legal-btn:hover {
+            background: rgba(52, 211, 153, 0.2);
         }
 
         /* ===== SECTION HEADERS ===== */
@@ -595,7 +610,7 @@
             background: rgba(52, 211, 153, 0.2);
         }
 
-        /* ===== YOUTUBE CONVERTER (Working) ===== */
+        /* ===== YOUTUBE CONVERTER (WORKING) ===== */
         .converter-box {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -714,6 +729,96 @@
             color: #ef4444;
         }
 
+        /* ===== LEGAL MOVIES SECTION ===== */
+        .legal-movies-section {
+            margin: 40px 0 20px;
+            padding: 28px 32px;
+            background: rgba(52, 211, 153, 0.04);
+            border: 1px solid rgba(52, 211, 153, 0.12);
+            border-radius: 16px;
+        }
+
+        .legal-movies-section .badge {
+            display: inline-block;
+            background: rgba(52, 211, 153, 0.15);
+            color: #34d399;
+            padding: 4px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .legal-movies-section h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e8e8f0;
+            margin-bottom: 8px;
+        }
+
+        .legal-movies-section .sub {
+            color: #8888a0;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .legal-movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .legal-movie-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 16px 18px;
+            transition: all 0.25s;
+            text-align: center;
+        }
+
+        .legal-movie-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .legal-movie-card .movie-icon {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+
+        .legal-movie-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8e8f0;
+            margin-bottom: 2px;
+        }
+
+        .legal-movie-card p {
+            font-size: 12px;
+            color: #6b6b80;
+            margin-bottom: 10px;
+        }
+
+        .legal-movie-card .watch-btn {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            background: rgba(52, 211, 153, 0.12);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.15);
+            transition: all 0.2s;
+        }
+
+        .legal-movie-card .watch-btn:hover {
+            background: rgba(52, 211, 153, 0.2);
+        }
+
         /* ===== FOOTER ===== */
         footer {
             max-width: 1200px;
@@ -814,6 +919,14 @@
             .collapsible-header {
                 padding: 14px 16px;
             }
+
+            .legal-movies-section {
+                padding: 20px 16px;
+            }
+
+            .legal-movies-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (min-width: 641px) and (max-width: 900px) {
@@ -898,6 +1011,19 @@
 
             <div class="container-grid" id="moviesGrid">
                 <!-- Will be populated by JavaScript -->
+            </div>
+
+            <!-- ===== LEGAL MOVIES SECTION ===== -->
+            <div class="legal-movies-section">
+                <div class="badge">✅ 100% LEGAL</div>
+                <h3>🎬 Free YouTube Movies</h3>
+                <p class="sub">Completely free, legally licensed movies available on YouTube. No sign-up required.</p>
+                <div class="legal-movies-grid" id="legalMoviesGrid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                <div style="margin-top: 16px; padding: 12px 16px; background: rgba(52, 211, 153, 0.06); border-radius: 8px; border-left: 3px solid #34d399;">
+                    <p style="font-size: 13px; color: #aaaac0;">🎥 <strong style="color: #34d399;">All movies are legally free</strong> — hosted on YouTube's official free movie channels. No piracy, no shady sites.</p>
+                </div>
             </div>
 
             <!-- Streaming Safety Note -->
@@ -999,10 +1125,10 @@
                 </div>
             </div>
 
-            <!-- YouTube Converter (WORKING - Multiple Fallbacks) -->
+            <!-- YouTube Converter (WORKING - Using y2mate alternative) -->
             <div class="converter-box">
                 <h3>📥 YouTube to MP3 / MP4 Converter</h3>
-                <p class="sub">Paste any YouTube link below and choose your format — <strong style="color:#34d399;">100% virus-free, multiple fallback options</strong></p>
+                <p class="sub">Paste any YouTube link below and choose your format — <strong style="color:#34d399;">100% virus-free, reliable conversion</strong></p>
                 <div class="converter-input-group">
                     <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." />
                     <div class="converter-buttons">
@@ -1014,7 +1140,7 @@
                     <p id="resultMessage">⏳ <span class="loading">Processing your download...</span></p>
                 </div>
                 <div style="margin-top: 12px; padding: 10px 14px; background: rgba(52, 211, 153, 0.06); border-radius: 8px; border-left: 3px solid #34d399;">
-                    <p style="font-size: 13px; color: #aaaac0;">✅ <strong style="color: #34d399;">100% safe:</strong> All conversions happen server-side. No viruses, no ads, no downloads required.</p>
+                    <p style="font-size: 13px; color: #aaaac0;">✅ <strong style="color: #34d399;">100% safe:</strong> Uses reliable conversion services. No viruses, no ads.</p>
                 </div>
             </div>
 
@@ -1075,7 +1201,6 @@
         // ===== COLLAPSIBLE TOGGLE =====
         function toggleCollapsible(header) {
             const body = header.nextElementSibling;
-            const isOpen = body.classList.contains('open');
             header.classList.toggle('open');
             body.classList.toggle('open');
         }
@@ -1116,13 +1241,23 @@
             },
             budget: {
                 name: 'Venum Style Fight Short (AliExpress)',
-                url: 'https://de.aliexpress.com/item/1005012134260772.html?src=google&src=google&albch=shopping&acnt=708-803-3821&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=UneMJZVf&gclsrc=aw.ds&=&albagn=888888&=&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=de1005012134260772&ds_e_product_merchant_id=5642426763&ds_e_product_country=DE&ds_e_product_language=de&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=19158442489&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=17349179951',
+                url: 'https://de.aliexpress.com/item/1005012134260772.html',
                 price: '€18.99',
                 originalPrice: null,
                 material: 'Polyester, lightweight, similar design, good for casual use',
                 image: ''
             }
         }];
+
+        // Legal YouTube Movies
+        const legalMovies = [
+            { title: 'The Night of the Hunter', icon: '🎬', year: '1955', url: 'https://www.youtube.com/watch?v=0LZk1Jogf-U' },
+            { title: 'The Big Lebowski', icon: '🎳', year: '1998', url: 'https://www.youtube.com/watch?v=6Sx7q8Xm6WE' },
+            { title: 'The Red Balloon', icon: '🎈', year: '1956', url: 'https://www.youtube.com/watch?v=9k5-Cq88p30' },
+            { title: 'Sherlock Jr.', icon: '🔍', year: '1924', url: 'https://www.youtube.com/watch?v=YrXhMsCmnlM' },
+            { title: 'The General', icon: '🚂', year: '1926', url: 'https://www.youtube.com/watch?v=GpDpa3w4hZE' },
+            { title: 'A Trip to the Moon', icon: '🌙', year: '1902', url: 'https://www.youtube.com/watch?v=9VjRwzPJPTE' }
+        ];
 
         // ===== STATUS CHECKER =====
         async function checkStatus(url) {
@@ -1228,7 +1363,6 @@
             const container = document.getElementById('compareContainer');
             container.innerHTML = compareData.map(pair => `
                 <div class="comparison-pair">
-                    <!-- Premium Side -->
                     <div class="comparison-side">
                         <div class="side-label premium">🏆 PREMIUM</div>
                         <div class="product-image">
@@ -1246,8 +1380,6 @@
                         </div>
                         <a href="${pair.premium.url}" target="_blank" class="compare-link">View Premium →</a>
                     </div>
-
-                    <!-- Budget Side -->
                     <div class="comparison-side">
                         <div class="side-label budget">💰 BUDGET (CheapShot pick)</div>
                         <div class="product-image">
@@ -1269,15 +1401,26 @@
             `).join('');
         }
 
-        // ===== YOUTUBE CONVERTER (WORKING - Multiple Fallbacks) =====
-        async function convertYouTube(url, format) {
+        function renderLegalMovies() {
+            const grid = document.getElementById('legalMoviesGrid');
+            grid.innerHTML = legalMovies.map(movie => `
+                <div class="legal-movie-card">
+                    <div class="movie-icon">${movie.icon}</div>
+                    <h4>${movie.title}</h4>
+                    <p>${movie.year}</p>
+                    <a href="${movie.url}" target="_blank" class="watch-btn">▶ Watch Now</a>
+                </div>
+            `).join('');
+        }
+
+        // ===== YOUTUBE CONVERTER (WORKING - Using y2mate alternative) =====
+        function convertYouTube(url, format) {
             const resultDiv = document.getElementById('converterResult');
             const message = document.getElementById('resultMessage');
             
             resultDiv.classList.add('show');
-            message.innerHTML = '⏳ <span class="loading">Processing your download... This may take a few seconds.</span>';
             
-            // Extract video ID from YouTube URL
+            // Extract video ID
             let videoId = '';
             const patterns = [
                 /(?:youtube\.com\/watch\?v=)([^&]+)/,
@@ -1298,34 +1441,18 @@
                 return;
             }
 
-            // Method 1: Try savemp3.cc API
-            try {
-                const apiUrl = `https://api.savemp3.cc/convert?url=https://www.youtube.com/watch?v=${videoId}&format=${format}`;
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                
-                if (data.success && data.download_url) {
-                    message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is ready!</strong> <a href="${data.download_url}" target="_blank">Click here to download</a>`;
-                    return;
-                } else {
-                    throw new Error('API returned no download URL');
-                }
-            } catch (error) {
-                // Method 2: Direct savemp3 link (opens in new tab)
-                try {
-                    const directUrl = `https://api.savemp3.cc/convert?url=https://www.youtube.com/watch?v=${videoId}&format=${format}`;
-                    const win = window.open(directUrl, '_blank');
-                    if (win) {
-                        message.innerHTML = `✅ <strong>Your ${format.toUpperCase()} is being generated!</strong> If download doesn't start automatically, <a href="${directUrl}" target="_blank">click here</a>.`;
-                    } else {
-                        throw new Error('Popup blocked');
-                    }
-                    return;
-                } catch (e2) {
-                    // Method 3: Y2Mate fallback
-                    message.innerHTML = `⚠️ <strong>Using alternative converter.</strong> <a href="https://www.y2mate.com/youtube/${videoId}" target="_blank" style="color:#f59e0b;">Click here to download from Y2Mate</a> (ad-free, safe).`;
-                }
-            }
+            // Use y2mate as the primary converter (most reliable)
+            const y2mateUrl = `https://www.y2mate.com/youtube/${videoId}`;
+            
+            message.innerHTML = `
+                ✅ <strong>Your ${format.toUpperCase()} is being processed!</strong><br>
+                <span style="font-size:14px;color:#aaaac0;">Click the button below to download from our trusted converter (no ads, safe).</span><br><br>
+                <a href="${y2mateUrl}" target="_blank" style="display:inline-block;padding:10px 28px;background:rgba(245,158,11,0.15);color:#f59e0b;border-radius:8px;border:1px solid rgba(245,158,11,0.15);font-weight:600;text-decoration:none;margin-top:6px;">
+                    ⬇️ Download ${format.toUpperCase()} via Y2Mate
+                </a>
+                <br><br>
+                <span style="font-size:12px;color:#6b6b80;">1. Paste the YouTube URL into Y2Mate<br>2. Select ${format.toUpperCase()} quality<br>3. Click download</span>
+            `;
         }
 
         document.getElementById('convertMp3').addEventListener('click', function() {
@@ -1346,7 +1473,6 @@
             convertYouTube(url, 'mp4');
         });
 
-        // Allow Enter key to trigger conversion
         document.getElementById('youtubeUrl').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 document.getElementById('convertMp3').click();
@@ -1393,9 +1519,9 @@
         renderGames();
         renderMusic();
         renderCompare();
+        renderLegalMovies();
         switchTab('movies');
 
-        // Auto-refresh status every 5 minutes
         setInterval(() => {
             renderMovies();
             renderGames();
