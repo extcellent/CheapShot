@@ -23,13 +23,13 @@
 // 🏆  TOP 10 — eigene Bilder (poster / backdrop optional)
 // ============================================================
 const topMoviesDatabase = [
-        {
+    {
         url: "https://www.youtube.com/watch?v=6BlWDPRiQ88",
         title: "Heat",
         year: "1995",
         genre: "Action, Crime, Drama",
         rating: 8.3,
-        desc: "An underground high-end burglary crew and the police detective obsessed with catching them collide in Michael Mann's sprawling crime epic."
+        desc: "An underground high-end burglary crew and the police detective obsessed with catching them collide in Michael Mann's sprawling crime epic.",
         poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv3b943sWV9jo_CR47cTS_-wQLaAhB8IUunZ69cLdiCyOJ8aY9ZmbLrF8T&s=10",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
         backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
     },
@@ -49,7 +49,9 @@ const topMoviesDatabase = [
         year: "1999",
         genre: "Fantasy, Horror, Mystery",
         rating: 7.3,
-        desc: "Constable Ichabod Crane investigates a series of murders in a village haunted by a legendary headless horseman."
+        desc: "Constable Ichabod Crane investigates a series of murders in a village haunted by a legendary headless horseman.",
+        poster: "",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
+        backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
     },
     {
         url: "https://www.youtube.com/watch?v=RpCz53C5-dw",
@@ -57,7 +59,7 @@ const topMoviesDatabase = [
         year: "2005",
         genre: "Action, Adventure, Drama",
         rating: 7.3,
-        desc: "A French blacksmith travels to Jerusalem during the Crusades and becomes the reluctant defender of the city against Saladin's army
+        desc: "A French blacksmith travels to Jerusalem during the Crusades and becomes the reluctant defender of the city against Saladin's army",
         poster: "",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
         backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
     },
@@ -67,10 +69,10 @@ const topMoviesDatabase = [
         year: "2003",
         genre: "Action, Fantasy, Thriller",
         rating: 7.0,
-        desc: "A vampire warrior falls for a human caught in the centuries-old war between vampires and werewolves."
+        desc: "A vampire warrior falls for a human caught in the centuries-old war between vampires and werewolves.",
         poster: "",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
         backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
-    },
+    }
 ];
 
 // ============================================================
