@@ -40,7 +40,7 @@ const topMoviesDatabase = [
         genre: "Crime, Drama, Mystery",
         rating: 7.7,
         desc: "A San Francisco cartoonist becomes an amateur detective obsessed with tracking down the Zodiac Killer, an unidentified serial murderer who terrorized Northern California in the late 1960s and 1970s.",
-        poster: "",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
+        poster: "https://i.ebayimg.com/images/g/AmkAAOSwsARk3JNb/s-l1200.jpg",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
         backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
     },
     {
@@ -50,7 +50,7 @@ const topMoviesDatabase = [
         genre: "Fantasy, Horror, Mystery",
         rating: 7.3,
         desc: "Constable Ichabod Crane investigates a series of murders in a village haunted by a legendary headless horseman.",
-        poster: "",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
+        poster: "https://m.media-amazon.com/images/M/MV5BMWVjYTFkOTItMGEyZS00Yzk2LTgzZmUtMDZiNjMyZDk5MTY4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
         backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
     },
     {
@@ -60,7 +60,7 @@ const topMoviesDatabase = [
         genre: "Action, Adventure, Drama",
         rating: 7.3,
         desc: "A French blacksmith travels to Jerusalem during the Crusades and becomes the reluctant defender of the city against Saladin's army",
-        poster: "",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
+        poster: "https://images.justwatch.com/poster/302976085/s166/kingdom-of-heaven.jpg",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
         backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
     },
     {
@@ -70,7 +70,7 @@ const topMoviesDatabase = [
         genre: "Action, Fantasy, Thriller",
         rating: 7.0,
         desc: "A vampire warrior falls for a human caught in the centuries-old war between vampires and werewolves.",
-        poster: "",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
+        poster: "https://image.tmdb.org/t/p/original/4FCEWjXoEJvCt4Jpq1fuJwMZTTL.jpg",   // z.B. "poster-images/dontbeamenace.png" oder ein Link
         backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
     }
 ];
