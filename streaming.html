@@ -409,6 +409,78 @@
             transform: scale(1.05);
         }
 
+        /* ===== WIDE POSTER (Trending / Top Rated / Alle Filme) ===== */
+        .movie-card .poster-wide {
+            position: relative;
+            width: 100%;
+            /* Erzwingt eine perfekte kinotaugliche 16:9-Box */
+            aspect-ratio: 16 / 9;
+            /* Verbirgt alles, was über die Box-Grenzen hinausragt */
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #141414; /* sauberer dunkler Hintergrund beim Laden */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .movie-card .poster-wide img {
+            width: 100%;
+            height: 100%;
+            /* behält die Proportionen bei, füllt die Box komplett
+               und schneidet automatisch die 4:3-Letterbox-Balken weg */
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .movie-card:hover .poster-wide img {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .movie-card .poster-wide .fallback {
+            font-size: 36px;
+            color: #6b6b80;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .movie-card .poster-wide .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(2px);
+        }
+
+        .movie-card:hover .poster-wide .play-overlay {
+            opacity: 1;
+        }
+
+        .movie-card .poster-wide .play-overlay .play-btn {
+            width: 48px;
+            height: 48px;
+            background: rgba(245, 158, 11, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #0a0a0f;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .movie-card:hover .poster-wide .play-overlay .play-btn {
+            transform: scale(1);
+        }
+
         .movie-card .poster .fallback {
             font-size: 36px;
             color: #6b6b80;
@@ -988,10 +1060,18 @@
 
         let currentPlayer = null;
         let movies = [];
+        let topMoviesCount = 0; // wie viele Filme aus movies.js wirklich als "eigene Top 10" gelten
 
-        // Check if movieDatabase exists (loaded from movies.js)
-        if (typeof movieDatabase !== 'undefined') {
+        // Check if the movie data exists (loaded from movies.js)
+        if (typeof topMoviesDatabase !== 'undefined' && typeof movieDatabase !== 'undefined') {
+            // Neues Format: eigene Top-10-Sektion + restliche Filme
+            movies = [...topMoviesDatabase, ...movieDatabase];
+            topMoviesCount = topMoviesDatabase.length;
+            console.log(`✅ Loaded ${topMoviesDatabase.length} Top-10-Filme + ${movieDatabase.length} weitere Filme aus movies.js!`);
+        } else if (typeof movieDatabase !== 'undefined') {
+            // Altes Format: nur eine Liste -> erste 10 gelten als Top 10
             movies = movieDatabase;
+            topMoviesCount = Math.min(10, movies.length);
             console.log(`✅ Loaded ${movies.length} movies from movies.js!`);
         } else {
             console.error('❌ movies.js not loaded! Make sure movies.js exists.');
@@ -1031,21 +1111,36 @@
             return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
         }
 
-        function renderMovieCard(movie, index, showRank = false) {
-            const thumb = getThumbnail(movie.url);
+        // Für die Top-10-Leiste: eigenes Poster-Bild (lokale Datei oder Link)
+        // aus movies.js nutzen, falls vorhanden. Sonst Fallback auf YouTube-Thumbnail.
+        function getPoster(movie) {
+            if (movie.poster && movie.poster.trim() !== '') {
+                return movie.poster;
+            }
+            return getThumbnail(movie.url);
+        }
+
+        function renderMovieCard(movie, index, showRank = false, variant = 'wide') {
+            const isTop10 = variant === 'top10';
+            const thumb = isTop10 ? getPoster(movie) : getThumbnail(movie.url);
             const rank = showRank ? `<div class="top-rank">#${index + 1}</div>` : '';
             const ratingDisplay = movie.rating ? `<span class="rating-star">⭐ ${movie.rating.toFixed(1)}</span>` : '';
             const videoId = extractYouTubeId(movie.url);
+            const posterClass = isTop10 ? 'poster' : 'poster-wide';
+            // Fallback-Kette: eigenes Poster -> YouTube hqdefault -> YouTube default -> Emoji
+            const onErrorAttr = isTop10
+                ? `this.onerror=null; this.src='${getThumbnail(movie.url)}'; this.onerror=function(){ this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/default.jpg'; if(!this.complete || this.naturalWidth === 0) { this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'; } };`
+                : `this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/default.jpg'; if(!this.complete || this.naturalWidth === 0) { this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'; }`;
         
             return `
                 <div class="movie-card" onclick="openModal(${index})">
                     ${rank}
-                    <div class="poster">
+                    <div class="${posterClass}">
                         <img 
                             src="${thumb}" 
                             alt="${movie.title}" 
                             loading="lazy" 
-                            onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/default.jpg'; if(!this.complete || this.naturalWidth === 0) { this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'; }"
+                            onerror="${onErrorAttr}"
                         >
                         <div class="play-overlay">
                             <div class="play-btn">▶</div>
@@ -1068,15 +1163,15 @@
                 return;
             }
 
-            const top10 = movies.slice(0, 10);
+            const top10 = movies.slice(0, topMoviesCount);
             const trending = movies.slice().sort(() => Math.random() - 0.5);
             const topRated = movies.slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
             const allMovies = movies;
 
-            document.getElementById('top10Slider').innerHTML = top10.map((m, i) => renderMovieCard(m, i, true)).join('');
-            document.getElementById('trendingSlider').innerHTML = trending.map((m, i) => renderMovieCard(m, i)).join('');
-            document.getElementById('topRatedSlider').innerHTML = topRated.map((m, i) => renderMovieCard(m, i)).join('');
-            document.getElementById('allMoviesSlider').innerHTML = allMovies.map((m, i) => renderMovieCard(m, i)).join('');
+            document.getElementById('top10Slider').innerHTML = top10.map((m, i) => renderMovieCard(m, i, true, 'top10')).join('');
+            document.getElementById('trendingSlider').innerHTML = trending.map((m, i) => renderMovieCard(m, i, false, 'wide')).join('');
+            document.getElementById('topRatedSlider').innerHTML = topRated.map((m, i) => renderMovieCard(m, i, false, 'wide')).join('');
+            document.getElementById('allMoviesSlider').innerHTML = allMovies.map((m, i) => renderMovieCard(m, i, false, 'wide')).join('');
         }
 
         function renderAll() {
@@ -1257,7 +1352,54 @@
 
         let heroIndex = 0;
 
-        function updateHero(index) {
+        // Lädt ein Bild testweise und meldet per Promise, ob es existiert/geladen werden konnte
+        function preloadImage(src) {
+            return new Promise((resolve, reject) => {
+                if (!src) { reject(); return; }
+                const img = new Image();
+                img.onload = () => {
+                    // YouTube liefert bei fehlendem maxresdefault ein 120x90 Platzhalterbild
+                    if (img.naturalWidth <= 120 && img.naturalHeight <= 90) {
+                        reject();
+                    } else {
+                        resolve(src);
+                    }
+                };
+                img.onerror = reject;
+                img.src = src;
+            });
+        }
+
+        // Ermittelt das bestmögliche Hero-Backdrop:
+        // 1. eigenes hochauflösendes Bild (movie.backdrop), falls angegeben
+        // 2. YouTube maxresdefault (1280x720, randlos, keine schwarzen Balken)
+        // 3. YouTube sddefault (640x480)
+        // 4. YouTube hqdefault (480x360) als letzter Fallback
+        async function getHeroBackdrop(movie) {
+            const id = extractYouTubeId(movie.url);
+
+            if (movie.backdrop && movie.backdrop.trim() !== '') {
+                try {
+                    return await preloadImage(movie.backdrop);
+                } catch (e) { /* fällt weiter durch */ }
+            }
+
+            if (id) {
+                try {
+                    return await preloadImage(`https://img.youtube.com/vi/${id}/maxresdefault.jpg`);
+                } catch (e) { /* fällt weiter durch */ }
+
+                try {
+                    return await preloadImage(`https://img.youtube.com/vi/${id}/sddefault.jpg`);
+                } catch (e) { /* fällt weiter durch */ }
+
+                return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+            }
+
+            return '';
+        }
+
+        async function updateHero(index) {
             if (!movies || movies.length === 0) return;
 
             const movie = movies[index % movies.length];
@@ -1270,7 +1412,12 @@
             const year = document.getElementById('heroYear');
             const genre = document.getElementById('heroGenre');
 
-            const thumb = getThumbnail(movie.url);
+            // Ist der Aufruf noch aktuell, wenn das Preloading fertig ist?
+            const requestIndex = index;
+            const thumb = await getHeroBackdrop(movie);
+            if (heroIndex !== requestIndex && movies[heroIndex % movies.length] !== movie) {
+                // ein neuerer Hero-Wechsel hat bereits stattgefunden -> abbrechen
+            }
             backdrop.style.backgroundImage = `url('${thumb}')`;
             title.textContent = movie.title;
             desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
