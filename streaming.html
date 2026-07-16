@@ -861,6 +861,47 @@
             color: #6b6b80;
         }
 
+        #watchLinksContainer {
+            padding: 40px 32px;
+        }
+        .watch-links-inner h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e8e8f0;
+            margin-bottom: 6px;
+        }
+        .watch-links-sub {
+            font-size: 14px;
+            color: #8888a0;
+            margin-bottom: 20px;
+        }
+        .watch-links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .watch-link-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #e8e8f0;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        .watch-link-btn:hover {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.4);
+            transform: translateX(4px);
+        }
+        .watch-link-icon {
+            font-size: 20px;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 640px) {
             .hero-banner {
@@ -1027,6 +1068,7 @@
             <div class="modal-video-wrapper" id="videoWrapper">
                 <div id="plyrContainer"></div>
             </div>
+            <div id="watchLinksContainer" style="display:none;"></div>
             <div class="modal-movie-info">
                 <h2 id="modalTitle">Movie Title</h2>
                 <div class="meta" id="modalMeta">
@@ -1085,7 +1127,36 @@
             document.getElementById('topRatedSlider').innerHTML = '';
             document.getElementById('allMoviesSlider').innerHTML = '';
         }
-
+        
+        // ============================================================
+        // 🔀 SCHALTER: eigener Player (true) oder Watch-Links-Liste (false)
+        // ============================================================
+        const USE_EMBED_PLAYER = true; // true = wie bisher | false = "Wo läuft der Film"-Liste statt Player
+        
+        function renderWatchLinks(movie) {
+            const q = encodeURIComponent(`${movie.title} ${movie.year}`);
+            const providers = [
+                { name: 'JustWatch (alle Anbieter)', url: `https://www.justwatch.com/us/search?q=${q}`, icon: '🔍' },
+                { name: 'Netflix', url: `https://www.netflix.com/search?q=${q}`, icon: '🅽' },
+                { name: 'Tubi (kostenlos)', url: `https://tubitv.com/search/${q}`, icon: '📺' },
+                { name: 'Pluto TV (kostenlos)', url: `https://pluto.tv/en/search?query=${q}`, icon: '🌀' },
+                { name: 'Amazon Prime Video', url: `https://www.amazon.com/s?k=${q}&i=instant-video`, icon: '🅰️' }
+            ];
+            return `
+                <div class="watch-links-inner">
+                    <h3>Wo läuft "${movie.title}"?</h3>
+                    <p class="watch-links-sub">Wähle einen Anbieter, um danach zu suchen:</p>
+                    <div class="watch-links-list">
+                        ${providers.map(p => `
+                            <a href="${p.url}" target="_blank" rel="noopener" class="watch-link-btn">
+                                <span class="watch-link-icon">${p.icon}</span>
+                                <span>${p.name}</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
         // ============================================================
         // 🎬  ENGINE FUNCTIONS
         // ============================================================
@@ -1213,12 +1284,20 @@
             // Show modal
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-
-            // Initialize Plyr player after modal is visible
-            setTimeout(() => {
-                initPlyr(movie.url);
-            }, 150);
-        }
+            
+            if (USE_EMBED_PLAYER) {
+                document.getElementById('videoWrapper').style.display = '';
+                document.getElementById('watchLinksContainer').style.display = 'none';
+                // Initialize Plyr player after modal is visible
+                setTimeout(() => {
+                    initPlyr(movie.url);
+                }, 150);
+            } else {
+                document.getElementById('videoWrapper').style.display = 'none';
+                const linksContainer = document.getElementById('watchLinksContainer');
+                linksContainer.style.display = '';
+                linksContainer.innerHTML = renderWatchLinks(movie);
+            }
 
         function initPlyr(videoUrl) {
             const container = document.getElementById('plyrContainer');
@@ -1335,10 +1414,11 @@
         function closeModal() {
             const modal = document.getElementById('movieModal');
             const container = document.getElementById('plyrContainer');
-
+            const linksContainer = document.getElementById('watchLinksContainer');
+        
             modal.classList.remove('active');
             document.body.style.overflow = '';
-
+        
             // Destroy player
             if (currentPlayer) {
                 try {
@@ -1347,6 +1427,7 @@
                 currentPlayer = null;
             }
             container.innerHTML = '';
+            linksContainer.innerHTML = '';
         }
 
         document.addEventListener('keydown', (e) => {
