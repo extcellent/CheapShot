@@ -283,7 +283,7 @@ const movieDatabase = [
         desc: "A former special forces operative travels to Rio de Janeiro to rescue his kidnapped son, uncovering a web of corruption and violence in the city's favelas."
     },
     {
-        url: "https://youtu.be/QFgbAJbfz28",
+        url: "https://youtu.be/zu8CSX0lwhE",
         title: "Project X",
         year: "2012",
         genre: "Comedy",
@@ -299,7 +299,7 @@ const movieDatabase = [
         desc: "Armed with every weapon they can get their hands on, the Expendables are the world's last line of defense when all other options are off the table."
     },
     {
-        url: "https://youtu.be/zu8CSX0lwhE",
+        url: "https://youtu.be/QFgbAJbfz28",
         title: "Death Proof",
         year: "2007",
         genre: "Action, Thriller",
