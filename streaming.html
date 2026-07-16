@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Movies - CheapShot</title>
+    <title>CheapShotTV</title>
     <!-- Plyr CSS -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <style>
@@ -1120,10 +1120,10 @@
             return getThumbnail(movie.url);
         }
 
-        function renderMovieCard(movie, index, showRank = false, variant = 'wide') {
+        function renderMovieCard(movie, index, showRank = false, variant = 'wide', rankNumber = null) {
             const isTop10 = variant === 'top10';
             const thumb = isTop10 ? getPoster(movie) : getThumbnail(movie.url);
-            const rank = showRank ? `<div class="top-rank">#${index + 1}</div>` : '';
+            const rank = showRank ? `<div class="top-rank">#${(rankNumber !== null ? rankNumber : index) + 1}</div>` : '';
             const ratingDisplay = movie.rating ? `<span class="rating-star">⭐ ${movie.rating.toFixed(1)}</span>` : '';
             const videoId = extractYouTubeId(movie.url);
             const posterClass = isTop10 ? 'poster' : 'poster-wide';
@@ -1168,10 +1168,10 @@
             const topRated = movies.slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
             const allMovies = movies;
 
-            document.getElementById('top10Slider').innerHTML = top10.map((m, i) => renderMovieCard(m, i, true, 'top10')).join('');
-            document.getElementById('trendingSlider').innerHTML = trending.map((m, i) => renderMovieCard(m, i, false, 'wide')).join('');
-            document.getElementById('topRatedSlider').innerHTML = topRated.map((m, i) => renderMovieCard(m, i, false, 'wide')).join('');
-            document.getElementById('allMoviesSlider').innerHTML = allMovies.map((m, i) => renderMovieCard(m, i, false, 'wide')).join('');
+            document.getElementById('top10Slider').innerHTML = top10.map((m, i) => renderMovieCard(m, movies.indexOf(m), true, 'top10', i)).join('');
+            document.getElementById('trendingSlider').innerHTML = trending.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
+            document.getElementById('topRatedSlider').innerHTML = topRated.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
+            document.getElementById('allMoviesSlider').innerHTML = allMovies.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
         }
 
         function renderAll() {
