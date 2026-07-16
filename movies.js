@@ -240,7 +240,8 @@ const movieDatabase = [
         year: "2008",
         genre: "Action, Adventure, Sci-Fi",
         rating: 6.1,
-        desc: "A young man with teleportation abilities finds himself in the middle of an ancient war between those like him and their sworn enemies."
+        desc: "A young man with teleportation abilities finds himself in the middle of an ancient war between those like him and their sworn enemies.",
+        thumbnail: "https://m.media-amazon.com/images/S/pv-target-images/b25957bdb9717637145c6a4f074386b909aa1639440031191dddeedcc17d03f7._SX1080_FMjpg_.jpg" 
     },
     {
         url: "https://youtu.be/SEIqCe_0OX0",
