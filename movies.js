@@ -34,6 +34,24 @@ const topMoviesDatabase = [
         backdrop: ""  // z.B. "backdrops/dontbeamenace.jpg" oder ein Link
     },
     {
+        url: "https://youtu.be/DayRQcMrYIQ",
+        title: "Warrior",
+        year: "2011",
+        genre: "Action, Drama, Sport",
+        rating: 8.2,
+        desc: "Two estranged brothers, both struggling with their past, enter a high-stakes MMA tournament, forcing them to confront each other and their abusive father. [citation:8]",
+        poster: "https://m.media-amazon.com/images/I/61Bh9r3J7pL._AC_UF894,1000_QL80_.jpg",
+    },
+    {
+        url: "https://youtu.be/isMhGcLAvfQ",
+        title: "The Martian",
+        year: "2015",
+        genre: "Sci-Fi, Adventure, Drama",
+        rating: 8.0,
+        desc: "An astronaut is stranded alone on Mars after his crew evacuates during a fierce storm, and must find a way to survive and signal Earth that he is alive.",
+        poster: "https://lumiere-a.akamaihd.net/v1/images/image_a119dd78.jpeg?region=0%2C0%2C800%2C1200",
+    },
+    {
         url: "https://www.youtube.com/watch?v=W3Qvz6tOCW8",
         title: "Zodiac",
         year: "2007",
@@ -175,6 +193,198 @@ const movieDatabase = [
         rating: 4.9,
         desc: "A year after his last rampage, Michael Myers returns to Haddonfield to hunt down his traumatized, now-mute niece Jamie."
     },
+    {
+        url: "https://youtu.be/BGMzGHcjKvE",
+        title: "Never Back Down",
+        year: "2008",
+        genre: "Action, Drama, Sport",
+        rating: 6.5,
+        desc: "A frustrated teenager arrives at a new high school and discovers an underground fight club, finding a mentor in a mixed martial arts veteran."
+    },
+    {
+        url: "https://youtu.be/_w2ZVTmcdi8",
+        title: "Jumper",
+        year: "2008",
+        genre: "Action, Adventure, Sci-Fi",
+        rating: 6.1,
+        desc: "A young man with teleportation abilities finds himself in the middle of an ancient war between those like him and their sworn enemies."
+    },
+    {
+        url: "https://youtu.be/SEIqCe_0OX0",
+        title: "xXx",
+        year: "2002",
+        genre: "Action, Adventure, Thriller",
+        rating: 5.8,
+        desc: "An extreme sports athlete is recruited by the NSA to infiltrate a Russian crime ring and stop their plans to unleash a weapon of mass destruction."
+    },
+    {
+        url: "https://youtu.be/Jl7n213ZPT0",
+        title: "Bad Teacher",
+        year: "2011",
+        genre: "Comedy, Romance",
+        rating: 5.6,
+        desc: "A lazy, incompetent middle school teacher is forced to return to teaching to make enough money for breast implants after her wealthy fiancé dumps her."
+    },
+    {
+        url: "https://youtu.be/z9TTAWb2p_o",
+        title: "Ghost World",
+        year: "2001",
+        genre: "Comedy, Drama",
+        rating: 7.3,
+        desc: "Two eccentric best friends graduate high school and respond to a man's romance-seeking newspaper ad as a gag, only to find their lives becoming increasingly complicated."
+    },
+    {
+        url: "https://youtu.be/HwZSh-l4Aqw",
+        title: "The Interview",
+        year: "2014",
+        genre: "Action, Comedy",
+        rating: 6.5,
+        desc: "A talk show host and his producer discover that they have been recruited to assassinate the leader of North Korea during an interview."
+    },
+    {
+        url: "https://youtu.be/uvLMS_i-XUw",
+        title: "Bridge to Terabithia",
+        year: "2007",
+        genre: "Adventure, Drama, Family, Fantasy",
+        rating: 7.2,
+        desc: "Two lonely children create a magical forest kingdom in their imaginations, where they rule as king and queen and face their real-world troubles together."
+    },
+    {
+        url: "https://youtu.be/a8MOVVPYW_M",
+        title: "Wedding Planner",
+        year: "2001",
+        genre: "Comedy, Romance",
+        rating: 5.3,
+        desc: "A successful wedding planner finds herself falling for a handsome doctor, only to discover that he is about to marry one of her clients."
+    },
+    {
+        url: "https://youtu.be/sNBHqbOzv_Q",
+        title: "Favela",
+        year: "2014",
+        genre: "Action, Crime, Thriller",
+        rating: 6.0,
+        desc: "A former special forces operative travels to Rio de Janeiro to rescue his kidnapped son, uncovering a web of corruption and violence in the city's favelas."
+    },
+    {
+        url: "https://youtu.be/QFgbAJbfz28",
+        title: "Project X",
+        year: "2012",
+        genre: "Comedy",
+        rating: 6.7,
+        desc: "Three high school seniors throw a party that quickly spirals out of control, turning their quiet neighborhood into a chaotic warzone. [citation:10]"
+    },
+    {
+        url: "https://youtu.be/1hQqv7YjyoA",
+        title: "Expend4bles",
+        year: "2023",
+        genre: "Action, Adventure, Thriller",
+        rating: 4.8,
+        desc: "Armed with every weapon they can get their hands on, the Expendables are the world's last line of defense when all other options are off the table."
+    },
+    {
+        url: "https://youtu.be/zu8CSX0lwhE",
+        title: "Death Proof",
+        year: "2007",
+        genre: "Action, Thriller",
+        rating: 7.0,
+        desc: "A psychotic stuntman stalks and murders young women using his 'death-proof' car, but his plans are disrupted when he targets a group of fearless friends. [citation:1][citation:11]"
+    },
+    {
+        url: "https://youtu.be/g3ecBMZYbEM",
+        title: "The Punisher",
+        year: "1989",
+        genre: "Action, Crime, Drama",
+        rating: 5.7,
+        desc: "A vigilante wages a one-man war on the Mafia and Yakuza after his family is killed by a mob bombing, using his military skills to deliver brutal justice. [citation:2][citation:12]"
+    },
+    {
+        url: "https://youtu.be/4STyTOvaBpY",
+        title: "Redemption",
+        year: "2004",
+        genre: "Biography, Crime, Drama",
+        rating: 7.2,
+        desc: "The true story of Stan 'Tookie' Williams, a former gang leader on death row who writes children's books to warn against gang violence, earning Nobel Prize nominations. [citation:3][citation:13]"
+    },
+    {
+        url: "https://youtu.be/4xgci4gfIyw",
+        title: "Patriots Day",
+        year: "2016",
+        genre: "Action, Drama, History",
+        rating: 7.3,
+        desc: "The true story of the 2013 Boston Marathon bombing and the subsequent manhunt for the perpetrators, told through the eyes of police officers and first responders. [citation:4][citation:14]"
+    },
+    {
+        url: "https://youtu.be/sx8pViXxZQg",
+        title: "Big Stan",
+        year: "2007",
+        genre: "Comedy, Crime",
+        rating: 6.0,
+        desc: "A con artist sentenced to prison hires a martial arts master to help him survive, and he soon becomes the prison's unlikely peacekeeper against a corrupt warden. [citation:5][citation:15]"
+    },
+    {
+        url: "https://youtu.be/rwsGIPTDB0o",
+        title: "Blood And Bone",
+        year: "2009",
+        genre: "Action, Crime, Drama",
+        rating: 6.7,
+        desc: "In Los Angeles, an ex-con takes the underground fighting world by storm in his quest to fulfill a promise to a dead friend."
+    },
+    {
+        url: "https://youtu.be/urf7dasypWU",
+        title: "Now You See Me",
+        year: "2013",
+        genre: "Crime, Mystery, Thriller",
+        rating: 7.2,
+        desc: "An FBI agent and an Interpol detective track a team of illusionists who pull off bank heists during their performances and reward their audiences with the money."
+    },
+    {
+        url: "https://youtu.be/3OtmHQE6T2s",
+        title: "Flower",
+        year: "2017",
+        genre: "Comedy, Drama",
+        rating: 5.9,
+        desc: "A rebellious teen blackmails older men for money to bail out her father, but a plan for revenge against her mother's boyfriend takes an unexpected and dangerous turn. [citation:6]"
+    },
+    {
+        url: "https://youtu.be/DcxVA2YxLjw",
+        title: "Scary Stories to Tell in the Dark",
+        year: "2019",
+        genre: "Horror, Mystery, Thriller",
+        rating: 6.2,
+        desc: "In 1968, a group of teenagers discover a book of terrifying stories that begin to come true, and they must find a way to stop the evil force behind them. [citation:7]"
+    },
+    {
+        url: "https://youtu.be/CiqSiMGLclw",
+        title: "Paid In Full",
+        year: "2002",
+        genre: "Crime, Drama",
+        rating: 6.9,
+        desc: "A young man rises to the top of the cocaine industry in Harlem during the 1980s, but his success comes at a devastating cost to himself and his friends. [citation:9]"
+    },
+    {
+        url: "https://youtu.be/fbuQT7MSM04",
+        title: "A Working Man (No Mercy)",
+        year: "2025",
+        genre: "Action, Thriller",
+        rating: 6.5,
+        desc: "A former military operative living a quiet life as a construction worker must use his skills to rescue his boss's daughter after she is kidnapped by a human trafficking ring."
+    },
+    {
+        url: "https://youtu.be/qvZHepVKj-Q",
+        title: "American Spy",
+        year: "2025",
+        genre: "Action, Thriller",
+        rating: "N/A",
+        desc: "An ancient order of jiu-jitsu fighters joins forces to battle a vicious race of alien invaders, but when a celebrated war hero goes down in defeat, the fate of the planet hangs in the balance."
+    },
+    {
+        url: "https://youtu.be/ciICU2bKz8A",
+        title: "OtherLife",
+        year: "2017",
+        genre: "Sci-Fi, Thriller, Mystery",
+        rating: 5.7,
+        desc: "A tech innovator creates a revolutionary virtual reality drug that allows users to experience hours of 'other life' in mere minutes, but she soon discovers a dark and dangerous side effect."
+    },    
 ];
 // ============================================================
 // 📌  RESTLICHE FILME — PATTERN ZUM KOPIEREN:
