@@ -1119,10 +1119,17 @@
             }
             return getThumbnail(movie.url);
         }
+        
+        function getWideThumbnail(movie) {
+            if (movie.thumbnail && movie.thumbnail.trim() !== '') {
+                return movie.thumbnail;
+            }
+            return getThumbnail(movie.url);
+        }        
 
         function renderMovieCard(movie, index, showRank = false, variant = 'wide', rankNumber = null) {
             const isTop10 = variant === 'top10';
-            const thumb = isTop10 ? getPoster(movie) : getThumbnail(movie.url);
+            const thumb = isTop10 ? getPoster(movie) : getWideThumbnail(movie);
             const rank = showRank ? `<div class="top-rank">#${(rankNumber !== null ? rankNumber : index) + 1}</div>` : '';
             const ratingDisplay = movie.rating ? `<span class="rating-star">⭐ ${movie.rating.toFixed(1)}</span>` : '';
             const videoId = extractYouTubeId(movie.url);
@@ -1130,7 +1137,7 @@
             // Fallback-Kette: eigenes Poster -> YouTube hqdefault -> YouTube default -> Emoji
             const onErrorAttr = isTop10
                 ? `this.onerror=null; this.src='${getThumbnail(movie.url)}'; this.onerror=function(){ this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/default.jpg'; if(!this.complete || this.naturalWidth === 0) { this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'; } };`
-                : `this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/default.jpg'; if(!this.complete || this.naturalWidth === 0) { this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'; }`;
+                : `this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/hqdefault.jpg'; this.onerror=function(){ this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/default.jpg'; if(!this.complete || this.naturalWidth === 0) { this.parentElement.innerHTML='<div class=\\'fallback\\'>🎬</div>'; } };`;
         
             return `
                 <div class="movie-card" onclick="openModal(${index})">
