@@ -24,7 +24,7 @@
 // ============================================================
 const topMoviesDatabase = [
     {
-        url: "https://www.youtube.com/watch?v=6BlWDPRiQ88",
+        url: "https://youtu.be/Zx6s-OnFwG8?si=1sUTIWGo_wR1oyLV",
         title: "Heat",
         year: "1995",
         genre: "Action, Crime, Drama",
