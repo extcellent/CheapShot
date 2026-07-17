@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Notice - CheapShot</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e8e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #14141c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a3a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a4a;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0 24px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            font-weight: 400;
+            -webkit-text-fill-color: #6b6b80;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #8888a0;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #e8e8f0;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        .page-header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px 20px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .page-header p.lead {
+            color: #8888a0;
+            font-size: 16px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 24px 60px;
+        }
+
+        .content h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 28px 0 10px;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: #c0c0d0;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .contact-block {
+            margin-top: 10px;
+            padding: 20px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+        }
+
+        .contact-block a {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .contact-block a:hover {
+            text-decoration: underline;
+        }
+
+        .takedown-block {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: rgba(52, 211, 153, 0.04);
+            border: 1px solid rgba(52, 211, 153, 0.12);
+            border-radius: 12px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding: 32px 24px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #6b6b80;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: #6b6b80;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #e8e8f0;
+        }
+
+        @media (max-width: 640px) {
+            .nav-container {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 12px 0;
+                gap: 10px;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Cheap<span>Shot</span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="streaming.html">CheapShotTV</a>
+                <a href="about.html">About</a>
+                <a href="legal-notice.html" class="active">Legal Notice</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="page-header">
+        <h1>Legal Notice</h1>
+        <p class="lead">Responsible party and contact information for CheapShot.</p>
+    </section>
+
+    <!-- ===== CONTENT ===== -->
+    <div class="content">
+
+        <h2>Responsible for this website</h2>
+        <div class="contact-block">
+            <p style="margin-bottom: 4px;">[Kevin Betz]</p>
+            <p style="margin-bottom: 0;">Email: <a href="mailto:extcellent@proton.me">extcellent@proton.me</a></p>
+        </div>
+
+        <h2>Content</h2>
+        <p>CheapShot embeds publicly available content hosted on third-party platforms, primarily YouTube. We do not host, upload, or store any video files ourselves. All playback happens through the original platform's own embedded player.</p>
+
+        <div class="takedown-block">
+            <p style="margin-bottom: 0;">If you are a rights holder and believe content has been embedded without proper authorization, please contact us at <a href="mailto:contact@yourdomain.com" style="color:#34d399; font-weight:600;">contact@yourdomain.com</a>. Reported content will be reviewed and removed promptly.</p>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2026 CheapShot</p>
+        <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="legal-notice.html">Legal Notice</a>
+        </div>
+    </footer>
+
+</body>
+</html>
