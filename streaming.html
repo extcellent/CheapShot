@@ -1110,7 +1110,7 @@
                     <span class="logo-tv">TV</span>
                 </div>
             </div>
-            <a href="/" class="back-btn">← Back to Home</a>
+            <a href="browse.html" class="back-btn">🎬 All Movies</a>
         </div>
     </nav>
 
@@ -1171,18 +1171,8 @@
         </div>
     </div>
 
-    <!-- ===== ALL MOVIES SECTION ===== -->
-    <div class="section">
-        <div class="section-header">
-            <h2>🎬 All Movies</h2>
-            <span class="view-all">View All →</span>
-        </div>
-        <div class="slider-wrapper">
-            <button class="slider-btn prev" onclick="slide('allMovies', -1)">‹</button>
-            <div class="slider-container" id="allMoviesSlider"></div>
-            <button class="slider-btn next" onclick="slide('allMovies', 1)">›</button>
-        </div>
-    </div>
+    <!-- ===== GENRE SECTIONS (auto-generated from movies.js) ===== -->
+    <div id="genreSections"></div>
 
     <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="movieModal">
@@ -1191,9 +1181,9 @@
             <div class="modal-video-wrapper" id="videoWrapper">
                 <div id="plyrContainer"></div>
                 <div class="yt-fallback-overlay" id="ytFallbackOverlay">
-                    <p>Dieses Video ist altersbeschränkt und kann hier nicht abgespielt werden.</p>
+                    <p>This video is age-restricted and can't be played here.</p>
                     <a class="yt-fallback-btn" id="ytFallbackBtn" href="#" target="_blank" rel="noopener noreferrer">
-                        ▶ Auf YouTube ansehen
+                        ▶ Watch on YouTube
                     </a>
                 </div>
             </div>
@@ -1262,7 +1252,6 @@
             `;
             document.getElementById('trendingSlider').innerHTML = '';
             document.getElementById('topRatedSlider').innerHTML = '';
-            document.getElementById('allMoviesSlider').innerHTML = '';
         }
         
         // ============================================================
@@ -1281,16 +1270,16 @@
         function renderWatchLinksFallback(movie) {
             const q = encodeURIComponent(`${movie.title} ${movie.year}`);
             const providers = [
-                { name: 'JustWatch (alle Anbieter)', url: `https://www.justwatch.com/us/search?q=${q}`, icon: '🔍' },
+                { name: 'JustWatch (all providers)', url: `https://www.justwatch.com/us/search?q=${q}`, icon: '🔍' },
                 { name: 'Netflix', url: `https://www.netflix.com/search?q=${q}`, icon: '🅽' },
-                { name: 'Tubi (kostenlos)', url: `https://tubitv.com/search/${q}`, icon: '📺' },
-                { name: 'Pluto TV (kostenlos)', url: `https://pluto.tv/en/search?query=${q}`, icon: '🌀' },
+                { name: 'Tubi (free)', url: `https://tubitv.com/search/${q}`, icon: '📺' },
+                { name: 'Pluto TV (free)', url: `https://pluto.tv/en/search?query=${q}`, icon: '🌀' },
                 { name: 'Amazon Prime Video', url: `https://www.amazon.com/s?k=${q}&i=instant-video`, icon: '🅰️' }
             ];
             return `
                 <div class="watch-links-inner">
-                    <h3>Wo läuft "${movie.title}"?</h3>
-                    <p class="watch-links-sub">Noch keine Anbieter hinterlegt — direkt suchen:</p>
+                    <h3>Where to watch "${movie.title}"?</h3>
+                    <p class="watch-links-sub">No providers listed yet — search directly:</p>
                     <div class="watch-links-list">
                         ${providers.map(p => `
                             <a href="${p.url}" target="_blank" rel="noopener" class="watch-link-btn">
@@ -1311,7 +1300,7 @@
 
             container.innerHTML = `
                 <div class="watch-links-inner">
-                    <h3>Wo läuft "${movie.title}"?</h3>
+                    <h3>Where to watch "${movie.title}"?</h3>
                     <div class="watch-links-list">
                         ${movie.where.map(p => `
                             <a href="${p.url}" target="_blank" rel="noopener" class="watch-link-btn">
@@ -1410,16 +1399,85 @@
             const top10 = movies.slice(0, topMoviesCount);
             const trending = movies.slice().sort(() => Math.random() - 0.5);
             const topRated = movies.slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
-            const allMovies = movies;
 
             document.getElementById('top10Slider').innerHTML = top10.map((m, i) => renderMovieCard(m, movies.indexOf(m), true, 'top10', i)).join('');
             document.getElementById('trendingSlider').innerHTML = trending.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
             document.getElementById('topRatedSlider').innerHTML = topRated.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
-            document.getElementById('allMoviesSlider').innerHTML = allMovies.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
+        }
+
+        // ============================================================
+        // 🎭 GENRE ROWS — fully automatic, based on movies.js
+        // ============================================================
+        // No manual maintenance needed: counts how often each genre
+        // appears across all movies, picks the most common ones, and
+        // builds a row for each with its best-rated movies. As you add
+        // more movies to movies.js, rows appear/grow automatically.
+
+        const GENRE_ROW_COUNT = 6;        // how many genre rows to show
+        const GENRE_MIN_MOVIES = 6;        // a genre needs at least this many movies to get its own row
+        const GENRE_MOVIES_PER_ROW = 20;   // max movies shown per genre row
+
+        function slugify(str) {
+            return str.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        }
+
+        function getMovieGenres(movie) {
+            if (!movie.genre) return [];
+            return movie.genre.split(',').map(g => g.trim()).filter(Boolean);
+        }
+
+        function getPopularGenres(movieList) {
+            const counts = {};
+            movieList.forEach(m => {
+                getMovieGenres(m).forEach(g => {
+                    counts[g] = (counts[g] || 0) + 1;
+                });
+            });
+            return Object.entries(counts)
+                .filter(([, count]) => count >= GENRE_MIN_MOVIES)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, GENRE_ROW_COUNT)
+                .map(([genre]) => genre);
+        }
+
+        function renderGenreSections() {
+            const container = document.getElementById('genreSections');
+            if (!container || !movies || movies.length === 0) return;
+
+            const genres = getPopularGenres(movies);
+
+            container.innerHTML = genres.map(genre => {
+                const id = 'genre-' + slugify(genre);
+                return `
+                    <div class="section">
+                        <div class="section-header">
+                            <h2>🎭 ${genre}</h2>
+                        </div>
+                        <div class="slider-wrapper">
+                            <button class="slider-btn prev" onclick="slide('${id}', -1)">‹</button>
+                            <div class="slider-container" id="${id}Slider"></div>
+                            <button class="slider-btn next" onclick="slide('${id}', 1)">›</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            genres.forEach(genre => {
+                const id = 'genre-' + slugify(genre);
+                const genreMovies = movies
+                    .filter(m => getMovieGenres(m).includes(genre))
+                    .sort((a, b) => (b.rating || 0) - (a.rating || 0))
+                    .slice(0, GENRE_MOVIES_PER_ROW);
+
+                document.getElementById(id + 'Slider').innerHTML = genreMovies
+                    .map(m => renderMovieCard(m, movies.indexOf(m), false, 'wide'))
+                    .join('');
+            });
         }
 
         function renderAll() {
             renderSliders();
+            renderGenreSections();
         }
 
         function slide(sliderId, direction) {
@@ -1441,10 +1499,10 @@
         function renderMovieDetails(movie) {
             let html = '';
             if (movie.director) {
-                html += `<div class="detail-row"><strong>Regie:</strong> <span>${movie.director}</span></div>`;
+                html += `<div class="detail-row"><strong>Director:</strong> <span>${movie.director}</span></div>`;
             }
             if (movie.cast && movie.cast.length > 0) {
-                html += `<div class="detail-row"><strong>Besetzung:</strong> <span>${movie.cast.join(', ')}</span></div>`;
+                html += `<div class="detail-row"><strong>Cast:</strong> <span>${movie.cast.join(', ')}</span></div>`;
             }
             return html;
         }
