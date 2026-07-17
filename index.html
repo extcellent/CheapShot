@@ -732,7 +732,7 @@
             color: #ef4444;
         }
 
-        /* ===== LEGAL MOVIES SECTION ===== */
+        /* ===== MOVIES SECTION ===== */
         .legal-movies-section {
             margin: 40px 0 20px;
             padding: 28px 32px;
@@ -889,7 +889,44 @@
 			transform: translateY(-4px);
 			box-shadow: 0 12px 32px rgba(139, 92, 246, 0.25);
 		}
-        
+
+		/*live-site hover*/
+		.preview-hover {
+		    position: relative;
+		}
+		
+		.preview-frame-wrap {
+		    position: absolute;
+		    bottom: calc(100% + 12px);
+		    left: 50%;
+		    transform: translateX(-50%) translateY(8px);
+		    width: 320px;
+		    height: 200px;
+		    max-width: 90vw;
+		    border-radius: 10px;
+		    border: 1px solid rgba(255, 255, 255, 0.1);
+		    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+		    overflow: hidden;
+		    opacity: 0;
+		    pointer-events: none;
+		    transition: opacity 0.2s ease, transform 0.2s ease;
+		    z-index: 20;
+		    background: #0a0a0f;
+		}
+		
+		.preview-hover:hover .preview-frame-wrap {
+		    opacity: 1;
+		    transform: translateX(-50%) translateY(0);
+		}
+		
+		.preview-frame {
+		    width: 400%;
+		    height: 400%;
+		    border: none;
+		    transform: scale(0.25);
+		    transform-origin: top left;
+		    pointer-events: none;
+		}
 
         /* ===== FOOTER ===== */
         footer {
@@ -1083,14 +1120,17 @@
                 <p class="sub">Watch movies in our library. No sign-up needed.</p>
                 
                 <!-- SINGLE CONTAINER BOX THAT LEADS TO /streaming -->
-                <div class="container-box" style="cursor:pointer; text-align:center; padding: 40px 30px; transition: all 0.3s;" onclick="window.location.href='/streaming'">
-                    <div style="font-size: 64px; margin-bottom: 12px;">🎥</div>
-                    <h4 style="font-size: 20px; color: #e8e8f0; margin-bottom: 8px;">Browse Our Library</h4>
-                    <p style="color: #8888a0; margin-bottom: 16px;">Movies, organized and ready to watch — right on our streaming page</p>
-                    <span style="display: inline-block; padding: 10px 28px; border-radius: 10px; background: rgba(52, 211, 153, 0.15); color: #34d399; font-weight: 600; border: 1px solid rgba(52, 211, 153, 0.15);">
-                        🎬 Browse Movies →
-                    </span>
-                </div>
+				<div class="container-box preview-hover" style="cursor:pointer; text-align:center; padding: 40px 30px; transition: all 0.3s;" onclick="window.location.href='/streaming'">
+				    <div class="preview-frame-wrap">
+				        <iframe class="preview-frame" src="/streaming" loading="lazy" tabindex="-1"></iframe>
+				    </div>
+				    <div style="font-size: 64px; margin-bottom: 12px;">🎥</div>
+				    <h4 style="font-size: 20px; color: #e8e8f0; margin-bottom: 8px;">Browse Our Library</h4>
+				    <p style="color: #8888a0; margin-bottom: 16px;">Movies, organized and ready to watch — right on our streaming page</p>
+				    <span style="display: inline-block; padding: 10px 28px; border-radius: 10px; background: rgba(52, 211, 153, 0.15); color: #34d399; font-weight: 600; border: 1px solid rgba(52, 211, 153, 0.15);">
+				        🎬 Browse Movies →
+				    </span>
+				</div>
             
                 <div style="margin-top: 16px; padding: 12px 16px; background: rgba(52, 211, 153, 0.06); border-radius: 8px; border-left: 3px solid #34d399;">
                     <p style="font-size: 13px; color: #aaaac0;">🎥 <strong style="color: #34d399;">Just Movies</strong> — Only Entertainment. No shady sites.</p>
