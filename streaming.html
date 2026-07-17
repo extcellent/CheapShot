@@ -1204,6 +1204,8 @@
                     <span id="modalYear">2024</span>
                     <span>·</span>
                     <span id="modalGenre">Drama</span>
+                    <span id="modalDurationSep">·</span>
+                    <span id="modalDuration"></span>
                     <span>·</span>
                     <span class="rating-display">⭐ <span id="modalRating">0.0</span></span>
                 </div>
@@ -1438,10 +1440,6 @@
 
         function renderMovieDetails(movie) {
             let html = '';
-            const durationText = formatDuration(movie.duration);
-            if (durationText) {
-                html += `<span class="duration-badge">⏱ ${durationText}</span>`;
-            }
             if (movie.director) {
                 html += `<div class="detail-row"><strong>Regie:</strong> <span>${movie.director}</span></div>`;
             }
@@ -1462,6 +1460,8 @@
             const rating = document.getElementById('modalRating');
             const desc = document.getElementById('modalDesc');
             const details = document.getElementById('modalDetails');
+            const duration = document.getElementById('modalDuration');
+            const durationSep = document.getElementById('modalDurationSep');
 
             // Update info
             title.textContent = movie.title;
@@ -1469,6 +1469,10 @@
             genre.textContent = movie.genre;
             rating.textContent = movie.rating ? movie.rating.toFixed(1) : 'N/A';
             desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
+            const durationText = formatDuration(movie.duration);
+            duration.textContent = durationText || '';
+            duration.style.display = durationText ? '' : 'none';
+            durationSep.style.display = durationText ? '' : 'none';
             details.innerHTML = renderMovieDetails(movie);
 
             // Show modal
