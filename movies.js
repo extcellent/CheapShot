@@ -149,7 +149,7 @@ const topMoviesDatabase = [
         poster: "https://image.tmdb.org/t/p/original/c6iTdD4UvpfDCOFb3BTYb1TpKki.jpg",
         backdrop: "",
         where: []
-    },2
+    },
     {
         url: "https://youtu.be/4STyTOvaBpY",
         title: "Redemption",
