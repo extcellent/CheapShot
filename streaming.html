@@ -1632,7 +1632,7 @@
         }
 
         function openHeroMovie() {
-            if (movies.length > 0) openModal(0);
+            if (movies.length > 0) openModal(heroIndex % movies.length);
         }
 
         function closeModal() {
