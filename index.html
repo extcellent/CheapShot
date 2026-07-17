@@ -868,6 +868,17 @@
 			0% { left: -60%; }
 			100% { left: 130%; }
 		}
+		
+        /* ===== STREAMING SECTION SOFT GLOW ===== */
+        .legal-movies-section {
+            position: relative;
+            animation: sectionGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes sectionGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+            50% { box-shadow: 0 0 24px 2px rgba(139, 92, 246, 0.15); }
+        }		
 
 		/* ===== CONTAINER HOVER LIFT (bleibt) ===== */
 		.legal-movies-section .container-box {
