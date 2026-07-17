@@ -90,7 +90,7 @@ const topMoviesDatabase = [
         director: "Terry Zwigoff",
         cast: ["Thora Birch", "Scarlett Johansson", "Steve Buscemi", "Brad Renfro"],
         desc: "Two eccentric best friends graduate high school and respond to a man's romance-seeking newspaper ad as a gag, only to find their lives becoming increasingly complicated.",
-        poster: "",
+        poster: "https://m.media-amazon.com/images/M/MV5BNzQ4NmFmYzYtNGJmZi00NGNkLTk2YTktM2Q0MzQ5MWRlZGEyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
         backdrop: "",
         where: []
     },
@@ -104,7 +104,7 @@ const topMoviesDatabase = [
         director: "Peter Berg",
         cast: ["Mark Wahlberg", "Kevin Bacon", "John Goodman", "J.K. Simmons"],
         desc: "The true story of the 2013 Boston Marathon bombing and the subsequent manhunt for the perpetrators, told through the eyes of police officers and first responders.",
-        poster: "",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8BmtOHjWxDq6V_FjcHMoa6J30-7aMEw8JM0AoDipxLdeliLGEzSrN3jI&s=10",
         backdrop: "",
         where: []
     },
@@ -146,21 +146,21 @@ const topMoviesDatabase = [
         director: "Gábor Csupó",
         cast: ["Josh Hutcherson", "AnnaSophia Robb", "Zooey Deschanel", "Robert Patrick"],
         desc: "Two lonely children create a magical forest kingdom in their imaginations, where they rule as king and queen and face their real-world troubles together.",
-        poster: "",
+        poster: "https://image.tmdb.org/t/p/original/c6iTdD4UvpfDCOFb3BTYb1TpKki.jpg",
         backdrop: "",
         where: []
-    },
+    },2
     {
         url: "https://youtu.be/4STyTOvaBpY",
         title: "Redemption",
         year: "2004",
         genre: "Biography, Crime, Drama",
-        rating: 7.2,
-        fsk: null,
+        rating: 7.0,
+        fsk: 16,
         director: "Vondie Curtis-Hall",
         cast: ["Jamie Foxx", "Lynn Whitfield", "Lee Thompson Young"],
         desc: "The true story of Stan 'Tookie' Williams, a former gang leader on death row who writes children's books to warn against gang violence, earning Nobel Prize nominations.",
-        poster: "",
+        poster: "https://m.media-amazon.com/images/M/MV5BMDdiNTZmZTEtZDU0Zi00Yzk5LWJjYjAtOGQzMDlmMmI1YTkzXkEyXkFqcGc@._V1_.jpg",
         backdrop: "",
         where: []
     }
