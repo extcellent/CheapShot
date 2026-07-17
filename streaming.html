@@ -931,26 +931,37 @@
         }
 
         .movie-details {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 13px;
-            color: #8888a0;
-            line-height: 1.8;
-        }
-        .movie-details .fsk-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: rgba(245, 158, 11, 0.15);
-            color: #f59e0b;
-            font-weight: 700;
-            font-size: 12px;
-            margin-right: 8px;
-        }
-        .movie-details strong {
-            color: #bbbcd0;
-        }
+                    margin-top: 16px;
+                    padding-top: 16px;
+                    border-top: 1px solid rgba(255, 255, 255, 0.08);
+                    font-size: 13px;
+                    color: #8888a0;
+                    line-height: 1.8;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                }
+                .movie-details .duration-badge {
+                    display: inline-block;
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    background: rgba(245, 158, 11, 0.15);
+                    color: #f59e0b;
+                    font-weight: 700;
+                    font-size: 12px;
+                    margin-right: 8px;
+                    width: fit-content;
+                }
+                .movie-details strong {
+                    color: #bbbcd0;
+                }
+                .movie-details .detail-row {
+                    display: flex;
+                    gap: 6px;
+                }
+                .movie-details .detail-row strong {
+                    flex-shrink: 0;
+                }
 
         #watchLinksContainer {
             padding: 40px 32px;
@@ -1414,17 +1425,27 @@
             const scrollAmount = 220;
             container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
+        
+        function formatDuration(minutes) {
+            if (!minutes) return null;
+            const h = Math.floor(minutes / 60);
+            const m = minutes % 60;
+            if (h === 0) return `${m} Min.`;
+            if (m === 0) return `${h} Std.`;
+            return `${h} Std. ${m} Min.`;
+        }
 
         function renderMovieDetails(movie) {
             let html = '';
-            if (movie.fsk !== undefined && movie.fsk !== null) {
-                html += `<span class="fsk-badge">FSK ${movie.fsk}</span>`;
+            const durationText = formatDuration(movie.duration);
+            if (durationText) {
+                html += `<span class="duration-badge">⏱ ${durationText}</span>`;
             }
             if (movie.director) {
-                html += `<div><strong>Regie:</strong> ${movie.director}</div>`;
+                html += `<div class="detail-row"><strong>Regie:</strong> <span>${movie.director}</span></div>`;
             }
             if (movie.cast && movie.cast.length > 0) {
-                html += `<div><strong>Besetzung:</strong> ${movie.cast.join(', ')}</div>`;
+                html += `<div class="detail-row"><strong>Besetzung:</strong> <span>${movie.cast.join(', ')}</span></div>`;
             }
             return html;
         }
