@@ -1201,6 +1201,7 @@
         // ============================================================
 
         let currentPlayer = null;
+        let fallbackCheckTimer = null;
         let movies = [];
         let topMoviesCount = 0; // wie viele Filme aus movies.js wirklich als "eigene Top 10" gelten
 
@@ -1456,6 +1457,7 @@
             const fallbackBtn = document.getElementById('ytFallbackBtn');
             fallbackOverlay.classList.remove('active');
             fallbackBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
+            clearTimeout(fallbackCheckTimer);
 
             // Destroy existing player
             if (currentPlayer) {
@@ -1554,12 +1556,26 @@
                 }
 
                 console.log('🎬 Plyr player ready - Settings/Quality/Captions available');
+
+                // WICHTIG: Bei altersbeschränkten / nicht einbettbaren Videos zeigt
+                // YouTube nur einen Hinweis-Screen direkt IM iFrame an - dabei wird
+                // KEIN 'error'-Event ausgelöst (Plyr merkt davon nichts). Deshalb prüfen
+                // wir zusätzlich, ob nach kurzer Zeit überhaupt eine Videolänge geladen
+                // wurde. Ist das nicht der Fall, gehen wir von einer Sperre aus.
+                clearTimeout(fallbackCheckTimer);
+                fallbackCheckTimer = setTimeout(function() {
+                    const duration = player.duration;
+                    if (!duration || isNaN(duration) || duration <= 0) {
+                        console.warn('⚠️ Video lädt keine Dauer (vermutlich gesperrt/altersbeschränkt) - zeige Fallback-Button');
+                        fallbackOverlay.classList.add('active');
+                    }
+                }, 3000);
             });
 
-            // Fallback: YouTube wirft einen Fehler (z.B. Altersbeschränkung / Embedding
-            // deaktiviert -> Fehlercodes 101/150). In dem Fall Player ausblenden und
-            // stattdessen den "Auf YouTube ansehen"-Button zeigen.
+            // Fallback Nr. 2: falls YouTube doch ein klassisches Fehler-Event wirft
+            // (z.B. Embedding komplett deaktiviert -> Fehlercodes 101/150).
             player.on('error', function() {
+                clearTimeout(fallbackCheckTimer);
                 console.warn('⚠️ YouTube Embed-Fehler - zeige Fallback-Button');
                 fallbackOverlay.classList.add('active');
             });
@@ -1578,6 +1594,7 @@
         
             modal.classList.remove('active');
             document.body.style.overflow = '';
+            clearTimeout(fallbackCheckTimer);
         
             // Destroy player
             if (currentPlayer) {
