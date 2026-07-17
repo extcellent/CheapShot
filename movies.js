@@ -351,6 +351,7 @@ const movieDatabase = [
         director: "Doug Liman",
         cast: ["Hayden Christensen", "Samuel L. Jackson", "Rachel Bilson", "Jamie Bell"],
         desc: "A young man with teleportation abilities finds himself in the middle of an ancient war between those like him and their sworn enemies.",
+        thumbnail: "https://m.media-amazon.com/images/S/pv-target-images/b25957bdb9717637145c6a4f074386b909aa1639440031191dddeedcc17d03f7._SX1080_FMjpg_.jpg",
         where: []
     },
     {
