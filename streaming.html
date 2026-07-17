@@ -861,6 +861,28 @@
             color: #6b6b80;
         }
 
+        .movie-details {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 13px;
+            color: #8888a0;
+            line-height: 1.8;
+        }
+        .movie-details .fsk-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            font-weight: 700;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        .movie-details strong {
+            color: #bbbcd0;
+        }
+
         #watchLinksContainer {
             padding: 40px 32px;
         }
@@ -900,6 +922,27 @@
         }
         .watch-link-icon {
             font-size: 20px;
+        }
+        .provider-group {
+            margin-bottom: 18px;
+        }
+        .provider-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #8888a0;
+            margin-bottom: 8px;
+        }
+        .provider-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .provider-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            object-fit: cover;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1079,6 +1122,7 @@
                     <span class="rating-display">⭐ <span id="modalRating">0.0</span></span>
                 </div>
                 <div class="description" id="modalDesc">Movie description goes here.</div>
+                <div class="movie-details" id="modalDetails"></div>
             </div>
         </div>
     </div>
@@ -1133,7 +1177,15 @@
         // ============================================================
         const USE_EMBED_PLAYER = true; // true = wie bisher | false = "Wo läuft der Film"-Liste statt Player
         
-        function renderWatchLinks(movie) {
+        // ============================================================
+        // 🔎 "Wo läuft der Film" — direkt aus movies.js (kein API-Call!)
+        // ============================================================
+        // Trag bei jedem Film in movies.js ein "where"-Array ein, z.B.:
+        // where: [{ name: "Netflix", url: "https://www.netflix.com/title/..." }]
+        // Ist das Array leer, zeigt die Seite automatisch generische Suchlinks.
+
+        // Fallback: generische Suchlinks, falls bei einem Film noch kein "where" gepflegt ist
+        function renderWatchLinksFallback(movie) {
             const q = encodeURIComponent(`${movie.title} ${movie.year}`);
             const providers = [
                 { name: 'JustWatch (alle Anbieter)', url: `https://www.justwatch.com/us/search?q=${q}`, icon: '🔍' },
@@ -1145,11 +1197,32 @@
             return `
                 <div class="watch-links-inner">
                     <h3>Wo läuft "${movie.title}"?</h3>
-                    <p class="watch-links-sub">Wähle einen Anbieter, um danach zu suchen:</p>
+                    <p class="watch-links-sub">Noch keine Anbieter hinterlegt — direkt suchen:</p>
                     <div class="watch-links-list">
                         ${providers.map(p => `
                             <a href="${p.url}" target="_blank" rel="noopener" class="watch-link-btn">
                                 <span class="watch-link-icon">${p.icon}</span>
+                                <span>${p.name}</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderWatchLinks(movie, container) {
+            if (!movie.where || movie.where.length === 0) {
+                container.innerHTML = renderWatchLinksFallback(movie);
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="watch-links-inner">
+                    <h3>Wo läuft "${movie.title}"?</h3>
+                    <div class="watch-links-list">
+                        ${movie.where.map(p => `
+                            <a href="${p.url}" target="_blank" rel="noopener" class="watch-link-btn">
+                                <span class="watch-link-icon">▶</span>
                                 <span>${p.name}</span>
                             </a>
                         `).join('')}
@@ -1263,6 +1336,20 @@
             container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
 
+        function renderMovieDetails(movie) {
+            let html = '';
+            if (movie.fsk !== undefined && movie.fsk !== null) {
+                html += `<span class="fsk-badge">FSK ${movie.fsk}</span>`;
+            }
+            if (movie.director) {
+                html += `<div><strong>Regie:</strong> ${movie.director}</div>`;
+            }
+            if (movie.cast && movie.cast.length > 0) {
+                html += `<div><strong>Besetzung:</strong> ${movie.cast.join(', ')}</div>`;
+            }
+            return html;
+        }
+
         function openModal(index) {
             const movie = movies[index];
             if (!movie) return;
@@ -1273,6 +1360,7 @@
             const genre = document.getElementById('modalGenre');
             const rating = document.getElementById('modalRating');
             const desc = document.getElementById('modalDesc');
+            const details = document.getElementById('modalDetails');
 
             // Update info
             title.textContent = movie.title;
@@ -1280,6 +1368,7 @@
             genre.textContent = movie.genre;
             rating.textContent = movie.rating ? movie.rating.toFixed(1) : 'N/A';
             desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
+            details.innerHTML = renderMovieDetails(movie);
 
             // Show modal
             modal.classList.add('active');
@@ -1296,9 +1385,9 @@
                 document.getElementById('videoWrapper').style.display = 'none';
                 const linksContainer = document.getElementById('watchLinksContainer');
                 linksContainer.style.display = '';
-                linksContainer.innerHTML = renderWatchLinks(movie);
-                }
+                renderWatchLinks(movie, linksContainer);
             }
+        }
 
         function initPlyr(videoUrl) {
             const container = document.getElementById('plyrContainer');
