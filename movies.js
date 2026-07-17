@@ -110,7 +110,9 @@ const topMoviesDatabase = [
         desc: "The true story of the 2013 Boston Marathon bombing and the subsequent manhunt for the perpetrators, told through the eyes of police officers and first responders.",
         poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8BmtOHjWxDq6V_FjcHMoa6J30-7aMEw8JM0AoDipxLdeliLGEzSrN3jI&s=10",
         backdrop: "",
+        thumbnail: "https://wallpapercat.com/w/full/d/0/8/2077084-1920x1080-desktop-1080p-patriots-day-2016-movie-background-image.jpg",
         where: []
+        
     },
     {
         url: "https://www.youtube.com/watch?v=H77qOpUTu0U",
