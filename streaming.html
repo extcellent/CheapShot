@@ -80,7 +80,7 @@
             font-size: 22px;
             font-weight: 800;
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
         }
 
         .logo-cheap {
@@ -175,20 +175,20 @@
 
         .browse-menu {
             position: absolute;
-            top: calc(100% + 10px);
+            top: calc(100% + 12px);
             right: 0;
-            min-width: 190px;
-            background: rgba(20, 20, 28, 0.98);
-            backdrop-filter: blur(20px);
+            width: 340px;
+            background: rgba(16, 16, 22, 0.98);
+            backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 8px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
             z-index: 200;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-6px);
-            transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+            transform: translateY(-8px);
+            transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
         }
 
         .browse-menu.active {
@@ -197,21 +197,56 @@
             transform: translateY(0);
         }
 
+        .browse-menu-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #6b6b80;
+            padding: 2px 6px 10px;
+        }
+
+        .browse-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
         .browse-menu-item {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
-            border-radius: 8px;
-            color: #d0d0dc;
-            font-size: 14px;
-            font-weight: 500;
+            flex-direction: column;
+            gap: 8px;
+            padding: 14px 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #e8e8f0;
             text-decoration: none;
-            transition: background 0.15s, color 0.15s;
+            transition: all 0.18s;
+        }
+
+        .browse-menu-item .icon {
+            font-size: 20px;
+        }
+
+        .browse-menu-item .label {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .browse-menu-item .sub {
+            font-size: 11px;
+            color: #8888a0;
+            font-weight: 500;
         }
 
         .browse-menu-item:hover {
-            background: rgba(245, 158, 11, 0.12);
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .browse-menu-item:hover .label {
             color: #f59e0b;
         }
 
@@ -239,9 +274,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                linear-gradient(180deg, rgba(10, 10, 15, 0.45) 0%, rgba(10, 10, 15, 0) 13%),
-                linear-gradient(0deg, #0a0a0f 0%, rgba(10, 10, 15, 0.4) 50%, rgba(10, 10, 15, 0.2) 100%);
+            background: linear-gradient(0deg, #0a0a0f 0%, rgba(10, 10, 15, 0.4) 50%, rgba(10, 10, 15, 0.2) 100%);
         }
 
         .hero-banner .hero-content {
@@ -1176,7 +1209,14 @@
             <div class="browse-dropdown" id="browseDropdown">
                 <button class="browse-btn" onclick="toggleBrowseMenu(event)">Browse <span class="caret">▾</span></button>
                 <div class="browse-menu" id="browseMenu">
-                    <a href="browse.html" class="browse-menu-item">🎬 Movies</a>
+                    <div class="browse-menu-label">Explore</div>
+                    <div class="browse-menu-grid">
+                        <a href="browse.html" class="browse-menu-item">
+                            <span class="icon">🎬</span>
+                            <span class="label">Movies</span>
+                            <span class="sub">Browse all titles</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
