@@ -313,6 +313,7 @@
             font-size: 14px;
             color: #6b6b80;
             cursor: pointer;
+            text-decoration: none;
             transition: color 0.2s;
         }
 
@@ -1136,7 +1137,7 @@
     <div class="section">
         <div class="section-header">
             <h2>🔥 Top 10 Today</h2>
-            <span class="view-all">View All →</span>
+            <a href="browse.html" class="view-all">View All →</a>
         </div>
         <div class="slider-wrapper">
             <button class="slider-btn prev" onclick="slide('top10', -1)">‹</button>
@@ -1149,7 +1150,7 @@
     <div class="section">
         <div class="section-header">
             <h2>📈 Trending Now</h2>
-            <span class="view-all">View All →</span>
+            <a href="browse.html" class="view-all">View All →</a>
         </div>
         <div class="slider-wrapper">
             <button class="slider-btn prev" onclick="slide('trending', -1)">‹</button>
@@ -1162,7 +1163,7 @@
     <div class="section">
         <div class="section-header">
             <h2>⭐ Top Rated</h2>
-            <span class="view-all">View All →</span>
+            <a href="browse.html" class="view-all">View All →</a>
         </div>
         <div class="slider-wrapper">
             <button class="slider-btn prev" onclick="slide('topRated', -1)">‹</button>
@@ -1452,6 +1453,7 @@
                     <div class="section">
                         <div class="section-header">
                             <h2>🎭 ${genre}</h2>
+                            <a href="browse.html?genre=${encodeURIComponent(genre)}" class="view-all">View All →</a>
                         </div>
                         <div class="slider-wrapper">
                             <button class="slider-btn prev" onclick="slide('${id}', -1)">‹</button>
