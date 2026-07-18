@@ -1,3 +1,10 @@
+
+
+// ============================================================
+// 🏆  TOP 10 — eigene Bilder (poster / backdrop optional)
+//     sortiert nach Rating, absteigend
+// ============================================================
+const topMoviesDatabase = [
     {
         "url": "https://www.youtube.com/watch?v=Sh3EFwHg45c",
         "title": "Safe House",
@@ -10,7 +17,16 @@
         "desc": "A young CIA agent is tasked with looking after a fugitive in a safe house. But when the safe house is attacked, he finds himself on the run with his charge.",
         "thumbnail": "https://pixel.disco.nowtv.com/uuid/49dfd8ba-a564-3c91-9314-ad5eb13e7cea/LAND_16_9?language=en-GB&proposition=NOWOTT&version=3547ca51-670c-3a97-bd43-506108d40525",
         "where": []
-    },
+    }
+];
+
+
+
+// ============================================================
+// 🎬  ALLE ANDEREN FILME — automatische YouTube-Thumbnails,
+//     erscheinen als breite 16:9-Karten (wide card)
+// ============================================================
+const movieDatabase = [
     {
         "url": "https://www.youtube.com/watch?v=VD9_0FNSwZA",
         "title": "Summer Rental",
@@ -37,3 +53,5 @@
     "thumbnail": "",
     "where": []
     }
+];
+
