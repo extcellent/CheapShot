@@ -255,12 +255,13 @@
         .hero-banner {
             position: relative;
             width: 100%;
-            height: 70vh;
-            min-height: 400px;
-            max-height: 700px;
+            height: 85vh;
+            min-height: 480px;
+            max-height: 820px;
             background: #0a0a0f;
             overflow: hidden;
             margin-bottom: 20px;
+            touch-action: pan-y;
         }
 
         .hero-banner .hero-backdrop {
@@ -344,6 +345,33 @@
             gap: 12px;
             margin-top: 16px;
             flex-wrap: wrap;
+        }
+
+        .hero-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px;
+        }
+
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.25s ease;
+        }
+
+        .hero-dot:hover {
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .hero-dot.active {
+            width: 26px;
+            background: #f59e0b;
         }
 
         .hero-banner .hero-content .btn-group .btn-play {
@@ -1238,6 +1266,7 @@
                 <button class="btn-play" onclick="openHeroMovie()">▶ Play Now</button>
                 <button class="btn-info" onclick="openHeroMovie()">More Info</button>
             </div>
+            <div class="hero-dots" id="heroDots"></div>
         </div>
     </div>
 
@@ -1799,10 +1828,6 @@
             currentPlayer = player;
         }
 
-        function openHeroMovie() {
-            if (movies.length > 0) openModal(heroIndex % movies.length);
-        }
-
         function closeModal() {
             const modal = document.getElementById('movieModal');
             const container = document.getElementById('plyrContainer');
@@ -1831,7 +1856,112 @@
             if (e.target === e.currentTarget) closeModal();
         });
 
-        let heroIndex = 0;
+        // ============================================================
+        // 🎠 HERO PLAYLIST — Top 10 movies, reshuffled once every 24h
+        // ============================================================
+        // Same order for everyone on a given day (so it doesn't feel
+        // random/inconsistent within one visit or between page reloads
+        // on the same day), but changes automatically the next day.
+        // Also no longer always starts with the same movie.
+
+        function seededRandom(seed) {
+            return function() {
+                seed = (seed * 9301 + 49297) % 233280;
+                return seed / 233280;
+            };
+        }
+
+        function getDaySeed() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const dayOfYear = Math.floor((now - start) / 86400000);
+            return now.getFullYear() * 1000 + dayOfYear;
+        }
+
+        function seededShuffle(array, seed) {
+            const rand = seededRandom(seed);
+            const arr = array.slice();
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(rand() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        let heroPlaylist = [];
+        let heroPosition = 0;
+        let heroAutoRotateTimer = null;
+
+        function buildHeroPlaylist() {
+            const pool = movies.slice(0, topMoviesCount || movies.length);
+            heroPlaylist = seededShuffle(pool, getDaySeed());
+        }
+
+        function renderHeroDots() {
+            const dots = document.getElementById('heroDots');
+            if (!dots) return;
+            dots.innerHTML = heroPlaylist.map((m, i) =>
+                `<button class="hero-dot${i === heroPosition ? ' active' : ''}" onclick="goToHeroPosition(${i})" aria-label="Show ${m.title}"></button>`
+            ).join('');
+        }
+
+        function goToHeroPosition(position) {
+            heroPosition = ((position % heroPlaylist.length) + heroPlaylist.length) % heroPlaylist.length;
+            updateHero(heroPosition);
+            renderHeroDots();
+            restartHeroAutoRotate();
+        }
+
+        function nextHero() {
+            goToHeroPosition(heroPosition + 1);
+        }
+
+        function prevHero() {
+            goToHeroPosition(heroPosition - 1);
+        }
+
+        function restartHeroAutoRotate() {
+            clearInterval(heroAutoRotateTimer);
+            heroAutoRotateTimer = setInterval(() => {
+                if (heroPlaylist.length > 0) {
+                    heroPosition = (heroPosition + 1) % heroPlaylist.length;
+                    updateHero(heroPosition);
+                    renderHeroDots();
+                }
+            }, 6000);
+        }
+
+        // ===== Swipe support (touch) =====
+        (function setupHeroSwipe() {
+            const heroBanner = document.getElementById('heroBanner');
+            if (!heroBanner) return;
+            let touchStartX = 0;
+            let touchStartY = 0;
+
+            heroBanner.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            heroBanner.addEventListener('touchend', (e) => {
+                const dx = e.changedTouches[0].screenX - touchStartX;
+                const dy = e.changedTouches[0].screenY - touchStartY;
+                // Ignore mostly-vertical swipes (user is scrolling the page)
+                if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+                if (dx < 0) {
+                    nextHero();
+                } else {
+                    prevHero();
+                }
+            }, { passive: true });
+        })();
+
+        function openHeroMovie() {
+            const movie = heroPlaylist[heroPosition];
+            if (!movie) return;
+            const idx = movies.indexOf(movie);
+            if (idx !== -1) openModal(idx);
+        }
 
         // Lädt ein Bild testweise und meldet per Promise, ob es existiert/geladen werden konnte
         function preloadImage(src) {
@@ -1889,10 +2019,10 @@
             return '';
         }
 
-        async function updateHero(index) {
-            if (!movies || movies.length === 0) return;
+        async function updateHero(position) {
+            if (!heroPlaylist || heroPlaylist.length === 0) return;
 
-            const movie = movies[index % movies.length];
+            const movie = heroPlaylist[position % heroPlaylist.length];
             if (!movie) return;
 
             const backdrop = document.getElementById('heroBackdrop');
@@ -1902,12 +2032,11 @@
             const year = document.getElementById('heroYear');
             const genre = document.getElementById('heroGenre');
 
-            // Ist der Aufruf noch aktuell, wenn das Preloading fertig ist?
-            const requestIndex = index;
+            const requestedMovie = movie;
             const thumb = await getHeroBackdrop(movie);
-            if (heroIndex !== requestIndex && movies[heroIndex % movies.length] !== movie) {
-                // ein neuerer Hero-Wechsel hat bereits stattgefunden -> abbrechen
-            }
+            // Falls der Nutzer inzwischen weitergeklickt hat, nicht mehr überschreiben
+            if (heroPlaylist[heroPosition % heroPlaylist.length] !== requestedMovie) return;
+
             backdrop.style.backgroundImage = `url('${thumb}')`;
             title.textContent = movie.title;
             desc.textContent = movie.desc || 'Watch this free movie on YouTube.';
@@ -1916,14 +2045,6 @@
             year.textContent = movie.year;
             genre.textContent = movie.genre;
         }
-
-        // Auto-rotate hero
-        setInterval(() => {
-            if (movies && movies.length > 0) {
-                heroIndex = (heroIndex + 1) % movies.length;
-                updateHero(heroIndex);
-            }
-        }, 6000);
 
         // ============================================================
         // 🚀  START — Render everything instantly
@@ -1941,7 +2062,11 @@
         });
 
         renderAll();
-        updateHero(0);
+        buildHeroPlaylist();
+        heroPosition = 0;
+        updateHero(heroPosition);
+        renderHeroDots();
+        restartHeroAutoRotate();
 
         console.log(`✅ ${movies.length} movies loaded and rendered!`);
     </script>
