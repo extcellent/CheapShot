@@ -224,6 +224,7 @@ const movieDatabase = [
         director: "Neil Marshall",
         cast: ["Sean Pertwee", "Kevin McKidd", "Emma Cleasby", "Liam Cunningham"],
         desc: "A squad of British soldiers on a training exercise in the Scottish Highlands must fight for survival against a pack of werewolves.",
+        thumbnail: "https://cinephiliabeyond.org/wp-content/uploads/2022/07/dogsoldiers.jpg?x16735",
         where: []
     },
     {
@@ -316,6 +317,7 @@ const movieDatabase = [
         director: "Brian De Palma",
         cast: ["Nicolas Cage", "Gary Sinise", "Carla Gugino"],
         desc: "A corrupt Atlantic City cop investigates the assassination of the Secretary of Defense during a championship boxing match.",
+        thumbnail: "https://spoilertown.com/wp-content/uploads/2025/10/snake-eyes-1998.webp".
         where: []
     },
     {
@@ -381,7 +383,7 @@ const movieDatabase = [
         director: "Jake Kasdan",
         cast: ["Cameron Diaz", "Justin Timberlake", "Jason Segel", "Lucy Punch"],
         desc: "A lazy, incompetent middle school teacher is forced to return to teaching to make enough money for breast implants after her wealthy fiancé dumps her.",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjsAWeCF173qkfcMTQXsPPLtNdFGkxxvh4TICqLP1LmQ1MTj_a4q69PVgG&s=10",
+        thumbnail: "https://images6.alphacoders.com/653/thumb-1920-653693.jpg",
         where: []
     },
     {
@@ -469,6 +471,7 @@ const movieDatabase = [
         director: "Mark Goldblatt",
         cast: ["Dolph Lundgren", "Louis Gossett Jr.", "Jeroen Krabbé", "Kim Miyori"],
         desc: "A vigilante wages a one-man war on the Mafia and Yakuza after his family is killed by a mob bombing, using his military skills to deliver brutal justice.",
+        thumbnail: "https://www.acmodasi.in/amdb/images/movie/w1920/0/88/the-punisher-1989-126621.webp",
         where: []
     },
     {
