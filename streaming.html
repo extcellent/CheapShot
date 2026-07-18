@@ -847,53 +847,6 @@
             background: #cc0000;
         }
 
-        .own-thumbnail-overlay {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-color: #000;
-            z-index: 5;
-            opacity: 1;
-            transition: opacity 0.35s ease;
-            pointer-events: auto;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .own-thumbnail-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .own-thumbnail-overlay .own-play-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.55);
-            border: 2px solid rgba(255, 255, 255, 0.85);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease, background 0.2s ease;
-        }
-
-        .own-thumbnail-overlay:hover .own-play-btn {
-            background: rgba(229, 9, 20, 0.85);
-            transform: scale(1.08);
-        }
-
-        .own-thumbnail-overlay .own-play-btn svg {
-            width: 32px;
-            height: 32px;
-            fill: #fff;
-            margin-left: 4px;
-        }
-
         .plyr__video-embed .plyr__video-embed__container::after {
             display: none !important;
         }
@@ -1365,11 +1318,6 @@
             <button class="modal-close" onclick="closeModal()">✕</button>
             <div class="modal-video-wrapper" id="videoWrapper">
                 <div id="plyrContainer"></div>
-                <div class="own-thumbnail-overlay" id="ownThumbnailOverlay" onclick="playOwnOverlay()">
-                    <div class="own-play-btn">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                </div>
                 <div class="yt-fallback-overlay" id="ytFallbackOverlay">
                     <p>This video is age-restricted and can't be played here.</p>
                     <a class="yt-fallback-btn" id="ytFallbackBtn" href="#" target="_blank" rel="noopener noreferrer">
@@ -1731,14 +1679,6 @@
             if (USE_EMBED_PLAYER) {
                 document.getElementById('videoWrapper').style.display = '';
                 document.getElementById('watchLinksContainer').style.display = 'none';
-
-                // Eigenes Thumbnail aus movies.js sofort anzeigen, damit man
-                // nie das kurze YouTube-eigene Thumbnail/Ladebild sieht
-                const ownOverlay = document.getElementById('ownThumbnailOverlay');
-                const ownThumb = getWideThumbnail(movie);
-                ownOverlay.style.backgroundImage = ownThumb ? `url('${ownThumb}')` : '';
-                ownOverlay.classList.remove('hidden');
-
                 // Initialize Plyr player after modal is visible
                 setTimeout(() => {
                     initPlyr(movie.url);
@@ -1749,16 +1689,6 @@
                 linksContainer.style.display = '';
                 renderWatchLinks(movie, linksContainer);
             }
-        }
-
-        function playOwnOverlay() {
-            const ownOverlay = document.getElementById('ownThumbnailOverlay');
-            if (currentPlayer) {
-                try {
-                    currentPlayer.play();
-                } catch (e) {}
-            }
-            if (ownOverlay) ownOverlay.classList.add('hidden');
         }
 
         function initPlyr(videoUrl) {
@@ -1885,12 +1815,6 @@
                         fallbackOverlay.classList.add('active');
                     }
                 }, 3000);
-            });
-
-            // Eigenes Thumbnail-Overlay ausblenden, sobald der Stream wirklich läuft
-            player.on('playing', function() {
-                const ownOverlay = document.getElementById('ownThumbnailOverlay');
-                if (ownOverlay) ownOverlay.classList.add('hidden');
             });
 
             // Fallback Nr. 2: falls YouTube doch ein klassisches Fehler-Event wirft
