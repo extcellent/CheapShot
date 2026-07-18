@@ -1751,12 +1751,21 @@
         async function getHeroBackdrop(movie) {
             const id = extractYouTubeId(movie.url);
 
+            // 1) Eigenes Backdrop-Bild (Top 10) hat höchste Priorität
             if (movie.backdrop && movie.backdrop.trim() !== '') {
                 try {
                     return await preloadImage(movie.backdrop);
                 } catch (e) { /* fällt weiter durch */ }
             }
 
+            // 2) Eigenes Thumbnail-Bild (normale Filme) als nächstes
+            if (movie.thumbnail && movie.thumbnail.trim() !== '') {
+                try {
+                    return await preloadImage(movie.thumbnail);
+                } catch (e) { /* fällt weiter durch */ }
+            }
+
+            // 3) Kein eigenes Bild hinterlegt -> automatisch wie bisher (YouTube-Thumbnail)
             if (id) {
                 try {
                     return await preloadImage(`https://img.youtube.com/vi/${id}/maxresdefault.jpg`);
