@@ -598,6 +598,19 @@ const movieDatabase = [
         desc: "A vampire warrior falls for a human caught in the centuries-old war between vampires and werewolves.",
         thumbnail: "https://images5.alphacoders.com/795/thumb-1920-795161.jpg",
         where: []
+    },
+    {
+        "url": "https://www.youtube.com/watch?v=Sh3EFwHg45c",
+        "title": "Safe House",
+        "year": "2012",
+        "genre": "Action, Thriller",
+        "rating": 6.7,
+        "duration": 115,
+        "director": "Daniel Espinosa",
+        "cast": ["Denzel Washington", "Ryan Reynolds", "Vera Farmiga", "Brendan Gleeson", "Sam Shepard"],
+        "desc": "A young CIA agent is tasked with looking after a fugitive in a safe house. But when the safe house is attacked, he finds himself on the run with his charge.",
+        "thumbnail": "https://pixel.disco.nowtv.com/uuid/49dfd8ba-a564-3c91-9314-ad5eb13e7cea/LAND_16_9?language=en-GB&proposition=NOWOTT&version=3547ca51-670c-3a97-bd43-506108d40525",
+        "where": []
     }
 ];
 // ============================================================
