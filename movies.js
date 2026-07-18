@@ -154,6 +154,7 @@ const topMoviesDatabase = [
         desc: "Two lonely children create a magical forest kingdom in their imaginations, where they rule as king and queen and face their real-world troubles together.",
         poster: "https://image.tmdb.org/t/p/original/c6iTdD4UvpfDCOFb3BTYb1TpKki.jpg",
         backdrop: "",
+        thumbnail: "https://d32qys9a6wm9no.cloudfront.net/images/movies/backdrop/9c/2ac627c55b4470c2157f5cee18025210_1920x1080.jpg?t=1636156573",
         where: []
     },
     {
