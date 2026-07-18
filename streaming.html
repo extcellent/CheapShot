@@ -855,48 +855,15 @@
             background-size: cover;
             background-position: center;
             background-color: #000;
-            z-index: 2;
+            z-index: 1;
             opacity: 1;
             transition: opacity 0.35s ease;
-            pointer-events: auto;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            pointer-events: none;
         }
 
         .own-thumbnail-overlay.hidden {
             opacity: 0;
             pointer-events: none;
-        }
-
-        .own-thumbnail-overlay .own-play-btn {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: rgba(245, 158, 11, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
-        }
-
-        .own-thumbnail-overlay:hover .own-play-btn {
-            transform: scale(1.08);
-        }
-
-        .own-thumbnail-overlay .own-play-btn svg {
-            width: 26px;
-            height: 26px;
-            fill: #0a0a0f;
-            margin-left: 3px;
-        }
-
-        /* Plyr-Controls sollen ÜBER unserem Thumbnail-Overlay sichtbar bleiben,
-           nur das Video/iframe selbst wird verdeckt */
-        .modal-video-wrapper .plyr__controls {
-            z-index: 10;
         }
 
         .plyr__video-embed .plyr__video-embed__container::after {
@@ -1370,11 +1337,7 @@
             <button class="modal-close" onclick="closeModal()">✕</button>
             <div class="modal-video-wrapper" id="videoWrapper">
                 <div id="plyrContainer"></div>
-                <div class="own-thumbnail-overlay" id="ownThumbnailOverlay" onclick="playOwnOverlay()">
-                    <div class="own-play-btn">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                </div>
+                <div class="own-thumbnail-overlay" id="ownThumbnailOverlay"></div>
                 <div class="yt-fallback-overlay" id="ytFallbackOverlay">
                     <p>This video is age-restricted and can't be played here.</p>
                     <a class="yt-fallback-btn" id="ytFallbackBtn" href="#" target="_blank" rel="noopener noreferrer">
@@ -1737,22 +1700,9 @@
                 document.getElementById('videoWrapper').style.display = '';
                 document.getElementById('watchLinksContainer').style.display = 'none';
 
-                // Eigenes Thumbnail nur anzeigen, wenn in movies.js ein "thumbnail"
-                // Eintrag existiert. Ohne Eintrag: alte Logik (direkt YouTube/Plyr,
-                // Controls sofort normal sichtbar wie vorher).
-                const ownOverlay = document.getElementById('ownThumbnailOverlay');
-                const hasOwnThumbnail = movie.thumbnail && movie.thumbnail.trim() !== '';
-                if (hasOwnThumbnail) {
-                    ownOverlay.style.backgroundImage = `url('${movie.thumbnail}')`;
-                    ownOverlay.classList.remove('hidden');
-                } else {
-                    ownOverlay.style.backgroundImage = '';
-                    ownOverlay.classList.add('hidden');
-                }
-
                 // Initialize Plyr player after modal is visible
                 setTimeout(() => {
-                    initPlyr(movie.url);
+                    initPlyr(movie.url, movie);
                 }, 150);
             } else {
                 document.getElementById('videoWrapper').style.display = 'none';
@@ -1762,17 +1712,7 @@
             }
         }
 
-        function playOwnOverlay() {
-            const ownOverlay = document.getElementById('ownThumbnailOverlay');
-            if (currentPlayer) {
-                try {
-                    currentPlayer.play();
-                } catch (e) {}
-            }
-            if (ownOverlay) ownOverlay.classList.add('hidden');
-        }
-
-        function initPlyr(videoUrl) {
+        function initPlyr(videoUrl, movie) {
             const container = document.getElementById('plyrContainer');
             const videoId = extractYouTubeId(videoUrl);
 
@@ -1784,6 +1724,14 @@
             fallbackOverlay.classList.remove('active');
             fallbackBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
             clearTimeout(fallbackCheckTimer);
+
+            // Overlay vorher aus dem Plyr-Container herausnehmen (falls vom
+            // letzten Film noch dort), sonst würde es gleich mit dem alten
+            // Player-DOM zerstört werden
+            const ownOverlaySafe = document.getElementById('ownThumbnailOverlay');
+            if (ownOverlaySafe) {
+                document.getElementById('videoWrapper').appendChild(ownOverlaySafe);
+            }
 
             // Destroy existing player
             if (currentPlayer) {
@@ -1842,6 +1790,24 @@
                     options: [0.5, 0.75, 1, 1.25, 1.5, 2]
                 }
             });
+
+            // Eigenes Thumbnail aus movies.js nur anzeigen, wenn ein "thumbnail"
+            // Eintrag existiert. Das Overlay wird DIREKT in den Plyr-Container
+            // gehängt (gleicher Stacking-Context wie die Controls), damit die
+            // native Play-Button/Steuerleiste identisch sichtbar bleibt wie
+            // bei Videos ohne eigenes Thumbnail.
+            const ownOverlay = document.getElementById('ownThumbnailOverlay');
+            const hasOwnThumbnail = movie && movie.thumbnail && movie.thumbnail.trim() !== '';
+            if (hasOwnThumbnail) {
+                ownOverlay.style.backgroundImage = `url('${movie.thumbnail}')`;
+                ownOverlay.classList.remove('hidden');
+            } else {
+                ownOverlay.style.backgroundImage = '';
+                ownOverlay.classList.add('hidden');
+            }
+            if (player.elements && player.elements.container) {
+                player.elements.container.appendChild(ownOverlay);
+            }
 
             // Make sure settings button is visible
             player.on('ready', function() {
