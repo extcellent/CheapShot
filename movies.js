@@ -421,7 +421,7 @@ const movieDatabase = [
         director: "Ernie Barbarash",
         cast: ["Michael Jai White", "Neal McDonough", "Laila Ali", "Jimmy Navarro"],
         desc: "A traumatized former Marine operative travels to the favelas of Rio de Janeiro to investigate a brutal attack on his sister, uncovering a dangerous web of police corruption and international crime syndicates.",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYolI_DuvFQRXGsKMfoJAKDvxITPf-ltPBdKPuX3WCbDPjtA9bwbCJP8N7&s=10",
+        thumbnail: "https://img.joyn.de/mas-prod/assets/b_pnae8fmxk7o/HERO_LANDSCAPE-726d9812.jpeg/profile:nextgen-web-herolandscape-1920x",
         where: []
     },
     {
