@@ -1251,7 +1251,14 @@
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 
     <!-- ===== LOAD MOVIES FROM EXTERNAL FILE ===== -->
-    <script src="movies.js"></script>
+    <script>
+        function getCountryFromCookie() {
+            const match = document.cookie.match(/visitor_country=([^;]+)/);
+            return match ? match[1] : 'US';
+        }
+        const movieFile = getCountryFromCookie() === 'DE' ? 'movies-de.js' : 'movies-us.js';
+        document.write('<script src="' + movieFile + '"><\/script>');
+    </script>
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
