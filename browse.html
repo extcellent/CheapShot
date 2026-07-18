@@ -787,6 +787,25 @@
             background: #cc0000;
         }
 
+        .own-thumbnail-overlay {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-color: #000;
+            z-index: 1;
+            opacity: 1;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .own-thumbnail-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         .plyr__video-embed .plyr__video-embed__container::after {
             display: none !important;
         }
@@ -1549,7 +1568,7 @@
                 document.getElementById('watchLinksContainer').style.display = 'none';
                 // Initialize Plyr player after modal is visible
                 setTimeout(() => {
-                    initPlyr(movie.url);
+                    initPlyr(movie.url, movie);
                 }, 150);
             } else {
                 document.getElementById('videoWrapper').style.display = 'none';
@@ -1559,7 +1578,7 @@
             }
         }
 
-        function initPlyr(videoUrl) {
+        function initPlyr(videoUrl, movie) {
             const container = document.getElementById('plyrContainer');
             const videoId = extractYouTubeId(videoUrl);
 
@@ -1626,6 +1645,22 @@
                 }
             });
 
+            // Eigenes Thumbnail aus movies.js nur anzeigen, wenn ein "thumbnail"
+            // Eintrag existiert. Das Overlay wird bei JEDEM Öffnen neu erzeugt
+            // und DIREKT in den Plyr-Container gehängt (gleicher Stacking-
+            // Context wie die Controls), damit die native Play-Button/
+            // Steuerleiste identisch sichtbar bleibt wie bei Videos ohne
+            // eigenes Thumbnail. Neu-Erzeugen statt Wiederverwenden vermeidet
+            // DOM-Lifecycle-Probleme, wenn der Player-Container geleert wird.
+            const hasOwnThumbnail = movie && movie.thumbnail && movie.thumbnail.trim() !== '';
+            let ownOverlay = null;
+            if (hasOwnThumbnail && player.elements && player.elements.container) {
+                ownOverlay = document.createElement('div');
+                ownOverlay.className = 'own-thumbnail-overlay';
+                ownOverlay.style.backgroundImage = `url('${movie.thumbnail}')`;
+                player.elements.container.appendChild(ownOverlay);
+            }
+
             player.on('ready', function() {
                 const styleId = 'plyr-youtube-hide';
                 if (!document.getElementById(styleId)) {
@@ -1677,6 +1712,11 @@
                 clearTimeout(fallbackCheckTimer);
                 console.warn('⚠️ YouTube embed error - showing fallback button');
                 fallbackOverlay.classList.add('active');
+            });
+
+            // Eigenes Thumbnail-Overlay ausblenden, sobald der Stream wirklich läuft
+            player.on('playing', function() {
+                if (ownOverlay) ownOverlay.classList.add('hidden');
             });
 
             currentPlayer = player;
