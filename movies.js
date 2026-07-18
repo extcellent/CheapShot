@@ -94,7 +94,7 @@ const topMoviesDatabase = [
         director: "Terry Zwigoff",
         cast: ["Thora Birch", "Scarlett Johansson", "Steve Buscemi", "Brad Renfro"],
         desc: "Two eccentric best friends graduate high school and respond to a man's romance-seeking newspaper ad as a gag, only to find their lives becoming increasingly complicated.",
-        poster: "https://m.media-amazon.com/images/M/MV5BNzQ4NmFmYzYtNGJmZi00NGNkLTk2YTktM2Q0MzQ5MWRlZGEyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        poster: "https://wallpapercave.com/wp/wp10599176.jpg",
         backdrop: "",
         where: []
     },
