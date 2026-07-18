@@ -571,7 +571,7 @@ const movieDatabase = [
         director: "Pierre Morel",
         cast: ["John Travolta", "Jonathan Rhys Meyers", "Kasia Smutniak", "Richard Durden"],
         desc: "A low-level CIA operative working at the US Embassy in Paris teams up with a high-ranking, unorthodox American secret agent to stop a massive terrorist attack in the city.",
-        thumbnail: "https://c4.wallpaperflare.com/wallpaper/366/57/249/movies-from-paris-with-love-wallpaper-preview.jpg",
+        thumbnail: "https://images.alphacoders.com/802/thumb-1920-802768.jpg",
         where: []
     },
     {
