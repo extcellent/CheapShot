@@ -558,7 +558,7 @@ const movieDatabase = [
         director: "David Ayer",
         cast: ["Jason Statham", "David Harbour", "Michael Peña", "Jason Flemyng", "Arianna Rivas"],
         desc: "A former military operative living a quiet life as a construction worker must use his skills to rescue his boss's daughter after she is kidnapped by a human trafficking ring.",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmE02kvVBCXyhgAtDqyajD2GrSBBTVWLoKsbuZIt1pN10U0kauY4Z9jD84&s=10",
+        thumbnail: "https://images8.alphacoders.com/139/thumb-1920-1395596.jpg",
         where: []
     },
     {
@@ -596,6 +596,7 @@ const movieDatabase = [
         director: "Len Wiseman",
         cast: ["Kate Beckinsale", "Scott Speedman", "Michael Sheen", "Shane Brolly", "Bill Nighy"],
         desc: "A vampire warrior falls for a human caught in the centuries-old war between vampires and werewolves.",
+        thumbnail: "https://images5.alphacoders.com/795/thumb-1920-795161.jpg",
         where: []
     }
 ];
