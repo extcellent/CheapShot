@@ -509,7 +509,7 @@ const movieDatabase = [
         director: "Louis Leterrier",
         cast: ["Jesse Eisenberg", "Mark Ruffalo", "Woody Harrelson", "Isla Fisher", "Dave Franco", "Morgan Freeman", "Michael Caine"],
         desc: "An FBI agent and an Interpol detective track a team of illusionists who pull off bank heists during their performances and reward their audiences with the money.",
-        thumbnail : "https://wallpapercat.com/w/full/a/a/e/357543-3840x2160-desktop-4k-now-you-see-me-background-photo.jpg",
+        thumbnail: "https://wallpapercat.com/w/full/a/a/e/357543-3840x2160-desktop-4k-now-you-see-me-background-photo.jpg",
         where: []
     },
     {
