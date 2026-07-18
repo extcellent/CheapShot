@@ -393,7 +393,7 @@ const movieDatabase = [
         director: "Evan Goldberg, Seth Rogen",
         cast: ["James Franco", "Seth Rogen", "Randall Park", "Lizzy Caplan"],
         desc: "A talk show host and his producer discover that they have been recruited to assassinate the leader of North Korea during an interview.",
-        thumbnail: "https://images7.alphacoders.com/676/thumb-1920-676115.jpg".
+        thumbnail: "https://images7.alphacoders.com/676/thumb-1920-676115.jpg",
         where: []
     },
     {
