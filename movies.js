@@ -247,6 +247,7 @@ const movieDatabase = [
         director: "Doug Liman",
         cast: ["Brad Pitt", "Angelina Jolie", "Vince Vaughn", "Adam Brody"],
         desc: "A bored married couple discovers they are both secretly assassins working for rival agencies, hired to kill each other.",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjYL71d6FWIE9ojc_GpxVMvJl3tdpJLd-Zu6PCZcqbSHVgajyLydYRDXwN&s=10",
         where: []
     },
     {
@@ -273,9 +274,8 @@ const movieDatabase = [
         director: "Victor Salva",
         cast: ["Ray Wise", "Jonathan Breck", "Nicki Aycox"],
         desc: "On the last day of its 23-day feeding cycle, the winged Creeper attacks a school bus full of stranded basketball players.",
-        where: [
-            { name: "Netflix", url: "https://www.netflix.com/title/60029216" }
-        ]
+        thumbnail: "https://w0.peakpx.com/wallpaper/300/472/HD-wallpaper-movie-jeepers-creepers.jpg",
+        where: []
     },
     {
         url: "https://www.youtube.com/watch?v=xbsBVEPtLFs",
@@ -341,6 +341,7 @@ const movieDatabase = [
         director: "Jeff Wadlow",
         cast: ["Sean Faris", "Amber Heard", "Cam Gigandet", "Evan Peters", "Djimon Hounsou"],
         desc: "A frustrated teenager arrives at a new high school and discovers an underground fight club, finding a mentor in a mixed martial arts veteran.",
+        thumbnail: "https://streamcoimg-a.akamaihd.net/000/406/7386/4067386-Banner-L2-0eaa0519dd357382c0bb2efc08dd6a76.jpg",
         where: []
     },
     {
@@ -366,6 +367,7 @@ const movieDatabase = [
         director: "Rob Cohen",
         cast: ["Vin Diesel", "Asia Argento", "Marton Csokas", "Samuel L. Jackson"],
         desc: "An extreme sports athlete is recruited by the NSA to infiltrate a Russian crime ring and stop their plans to unleash a weapon of mass destruction.",
+        thumbnail: "https://images.alphacoders.com/791/thumb-1920-791200.jpg",
         where: []
     },
     {
@@ -378,6 +380,7 @@ const movieDatabase = [
         director: "Jake Kasdan",
         cast: ["Cameron Diaz", "Justin Timberlake", "Jason Segel", "Lucy Punch"],
         desc: "A lazy, incompetent middle school teacher is forced to return to teaching to make enough money for breast implants after her wealthy fiancé dumps her.",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjsAWeCF173qkfcMTQXsPPLtNdFGkxxvh4TICqLP1LmQ1MTj_a4q69PVgG&s=10",
         where: []
     },
     {
@@ -390,6 +393,7 @@ const movieDatabase = [
         director: "Evan Goldberg, Seth Rogen",
         cast: ["James Franco", "Seth Rogen", "Randall Park", "Lizzy Caplan"],
         desc: "A talk show host and his producer discover that they have been recruited to assassinate the leader of North Korea during an interview.",
+        thumbnail: "https://images7.alphacoders.com/676/thumb-1920-676115.jpg".
         where: []
     },
     {
@@ -406,14 +410,15 @@ const movieDatabase = [
     },
     {
         url: "https://youtu.be/sNBHqbOzv_Q",
-        title: "Favela",
+        title: "Falcon Rising",
         year: "2014",
         genre: "Action, Crime, Thriller",
-        rating: 6.0,
-        duration: null,
-        director: "Ruy Guerra",
-        cast: ["Eduardo Moscovis", "Milton Gonçalves", "Fábio Lago", "Tainá Müller"],
-        desc: "A former special forces operative travels to Rio de Janeiro to rescue his kidnapped son, uncovering a web of corruption and violence in the city's favelas.",
+        rating: 5.7,
+        duration: "103 min",
+        director: "Ernie Barbarash",
+        cast: ["Michael Jai White", "Neal McDonough", "Laila Ali", "Jimmy Navarro"],
+        desc: "A traumatized former Marine operative travels to the favelas of Rio de Janeiro to investigate a brutal attack on his sister, uncovering a dangerous web of police corruption and international crime syndicates.",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYolI_DuvFQRXGsKMfoJAKDvxITPf-ltPBdKPuX3WCbDPjtA9bwbCJP8N7&s=10",
         where: []
     },
     {
@@ -438,6 +443,7 @@ const movieDatabase = [
         director: "Scott Waugh",
         cast: ["Jason Statham", "50 Cent", "Megan Fox", "Dolph Lundgren", "Tony Jaa", "Sylvester Stallone"],
         desc: "Armed with every weapon they can get their hands on, the Expendables are the world's last line of defense when all other options are off the table.",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9RyyiD5I3U-5kbYvvkPEOL04qiqqjYKbStkcGgjGydAEkPGULMz8GSbnl&s=10",
         where: []
     },
     {
@@ -486,6 +492,7 @@ const movieDatabase = [
         director: "Ben Ramsey",
         cast: ["Michael Jai White", "Eamonn Walker", "Julian Sands", "Dante Basco"],
         desc: "In Los Angeles, an ex-con takes the underground fighting world by storm in his quest to fulfill a promise to a dead friend.",
+        thumbnail: "https://wallpapercave.com/wp/wp10179582.jpg",
         where: []
     },
     {
@@ -498,6 +505,7 @@ const movieDatabase = [
         director: "Louis Leterrier",
         cast: ["Jesse Eisenberg", "Mark Ruffalo", "Woody Harrelson", "Isla Fisher", "Dave Franco", "Morgan Freeman", "Michael Caine"],
         desc: "An FBI agent and an Interpol detective track a team of illusionists who pull off bank heists during their performances and reward their audiences with the money.",
+        thumbnail : "https://wallpapercat.com/w/full/a/a/e/357543-3840x2160-desktop-4k-now-you-see-me-background-photo.jpg",
         where: []
     },
     {
@@ -538,7 +546,7 @@ const movieDatabase = [
     },
     {
         url: "https://youtu.be/fbuQT7MSM04",
-        title: "A Working Man (No Mercy)",
+        title: "A Working Man",
         year: "2025",
         genre: "Action, Thriller",
         rating: 6.5,
@@ -546,18 +554,20 @@ const movieDatabase = [
         director: "David Ayer",
         cast: ["Jason Statham", "David Harbour", "Michael Peña", "Jason Flemyng", "Arianna Rivas"],
         desc: "A former military operative living a quiet life as a construction worker must use his skills to rescue his boss's daughter after she is kidnapped by a human trafficking ring.",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmE02kvVBCXyhgAtDqyajD2GrSBBTVWLoKsbuZIt1pN10U0kauY4Z9jD84&s=10",
         where: []
     },
     {
         url: "https://youtu.be/qvZHepVKj-Q",
-        title: "American Spy",
-        year: "2025",
-        genre: "Action, Thriller",
-        rating: null,
-        duration: null,
-        director: "Eric Colley",
-        cast: ["Kyle McLaughlin", "Chloe Condon", "Julia Eve", "Mat Vario", "Derek A. Smith"],
-        desc: "An ancient order of jiu-jitsu fighters joins forces to battle a vicious race of alien invaders, but when a celebrated war hero goes down in defeat, the fate of the planet hangs in the balance.",
+        title: "From Paris with Love",
+        year: "2010",
+        genre: "Action, Thriller, Crime",
+        rating: 6.4,
+        duration: "92",
+        director: "Pierre Morel",
+        cast: ["John Travolta", "Jonathan Rhys Meyers", "Kasia Smutniak", "Richard Durden"],
+        desc: "A low-level CIA operative working at the US Embassy in Paris teams up with a high-ranking, unorthodox American secret agent to stop a massive terrorist attack in the city.",
+        thumbnail: "https://c4.wallpaperflare.com/wallpaper/366/57/249/movies-from-paris-with-love-wallpaper-preview.jpg",
         where: []
     },
     {
