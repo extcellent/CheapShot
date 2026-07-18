@@ -1337,7 +1337,6 @@
             <button class="modal-close" onclick="closeModal()">✕</button>
             <div class="modal-video-wrapper" id="videoWrapper">
                 <div id="plyrContainer"></div>
-                <div class="own-thumbnail-overlay" id="ownThumbnailOverlay"></div>
                 <div class="yt-fallback-overlay" id="ytFallbackOverlay">
                     <p>This video is age-restricted and can't be played here.</p>
                     <a class="yt-fallback-btn" id="ytFallbackBtn" href="#" target="_blank" rel="noopener noreferrer">
@@ -1725,14 +1724,6 @@
             fallbackBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
             clearTimeout(fallbackCheckTimer);
 
-            // Overlay vorher aus dem Plyr-Container herausnehmen (falls vom
-            // letzten Film noch dort), sonst würde es gleich mit dem alten
-            // Player-DOM zerstört werden
-            const ownOverlaySafe = document.getElementById('ownThumbnailOverlay');
-            if (ownOverlaySafe) {
-                document.getElementById('videoWrapper').appendChild(ownOverlaySafe);
-            }
-
             // Destroy existing player
             if (currentPlayer) {
                 try {
@@ -1792,20 +1783,18 @@
             });
 
             // Eigenes Thumbnail aus movies.js nur anzeigen, wenn ein "thumbnail"
-            // Eintrag existiert. Das Overlay wird DIREKT in den Plyr-Container
-            // gehängt (gleicher Stacking-Context wie die Controls), damit die
-            // native Play-Button/Steuerleiste identisch sichtbar bleibt wie
-            // bei Videos ohne eigenes Thumbnail.
-            const ownOverlay = document.getElementById('ownThumbnailOverlay');
+            // Eintrag existiert. Das Overlay wird bei JEDEM Öffnen neu erzeugt
+            // und DIREKT in den Plyr-Container gehängt (gleicher Stacking-
+            // Context wie die Controls), damit die native Play-Button/
+            // Steuerleiste identisch sichtbar bleibt wie bei Videos ohne
+            // eigenes Thumbnail. Neu-Erzeugen statt Wiederverwenden vermeidet
+            // DOM-Lifecycle-Probleme, wenn der Player-Container geleert wird.
             const hasOwnThumbnail = movie && movie.thumbnail && movie.thumbnail.trim() !== '';
-            if (hasOwnThumbnail) {
+            let ownOverlay = null;
+            if (hasOwnThumbnail && player.elements && player.elements.container) {
+                ownOverlay = document.createElement('div');
+                ownOverlay.className = 'own-thumbnail-overlay';
                 ownOverlay.style.backgroundImage = `url('${movie.thumbnail}')`;
-                ownOverlay.classList.remove('hidden');
-            } else {
-                ownOverlay.style.backgroundImage = '';
-                ownOverlay.classList.add('hidden');
-            }
-            if (player.elements && player.elements.container) {
                 player.elements.container.appendChild(ownOverlay);
             }
 
@@ -1866,7 +1855,6 @@
 
             // Eigenes Thumbnail-Overlay ausblenden, sobald der Stream wirklich läuft
             player.on('playing', function() {
-                const ownOverlay = document.getElementById('ownThumbnailOverlay');
                 if (ownOverlay) ownOverlay.classList.add('hidden');
             });
 
@@ -1897,15 +1885,6 @@
                 } catch (e) {}
                 currentPlayer = null;
             }
-            // Overlay sicher herausnehmen, BEVOR der Container geleert wird –
-            // sonst wird der Node dauerhaft gelöscht und beim nächsten Öffnen
-            // schlägt getElementById('ownThumbnailOverlay') fehl
-            const ownOverlayOnClose = document.getElementById('ownThumbnailOverlay');
-            if (ownOverlayOnClose) {
-                document.getElementById('videoWrapper').appendChild(ownOverlayOnClose);
-                ownOverlayOnClose.classList.add('hidden');
-            }
-
             container.innerHTML = '';
             linksContainer.innerHTML = '';
         }
