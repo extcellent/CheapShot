@@ -248,7 +248,7 @@ const movieDatabase = [
         director: "Doug Liman",
         cast: ["Brad Pitt", "Angelina Jolie", "Vince Vaughn", "Adam Brody"],
         desc: "A bored married couple discovers they are both secretly assassins working for rival agencies, hired to kill each other.",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjYL71d6FWIE9ojc_GpxVMvJl3tdpJLd-Zu6PCZcqbSHVgajyLydYRDXwN&s=10",
+        thumbnail: "https://images5.alphacoders.com/112/thumb-1920-1121028.jpg",
         where: []
     },
     {
