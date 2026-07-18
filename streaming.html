@@ -847,6 +847,25 @@
             background: #cc0000;
         }
 
+        .own-thumbnail-overlay {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-color: #000;
+            z-index: 5;
+            opacity: 1;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .own-thumbnail-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         .plyr__video-embed .plyr__video-embed__container::after {
             display: none !important;
         }
@@ -1318,6 +1337,7 @@
             <button class="modal-close" onclick="closeModal()">✕</button>
             <div class="modal-video-wrapper" id="videoWrapper">
                 <div id="plyrContainer"></div>
+                <div class="own-thumbnail-overlay" id="ownThumbnailOverlay"></div>
                 <div class="yt-fallback-overlay" id="ytFallbackOverlay">
                     <p>This video is age-restricted and can't be played here.</p>
                     <a class="yt-fallback-btn" id="ytFallbackBtn" href="#" target="_blank" rel="noopener noreferrer">
@@ -1679,6 +1699,14 @@
             if (USE_EMBED_PLAYER) {
                 document.getElementById('videoWrapper').style.display = '';
                 document.getElementById('watchLinksContainer').style.display = 'none';
+
+                // Eigenes Thumbnail aus movies.js sofort anzeigen, damit man
+                // nie das kurze YouTube-eigene Thumbnail/Ladebild sieht
+                const ownOverlay = document.getElementById('ownThumbnailOverlay');
+                const ownThumb = getWideThumbnail(movie);
+                ownOverlay.style.backgroundImage = ownThumb ? `url('${ownThumb}')` : '';
+                ownOverlay.classList.remove('hidden');
+
                 // Initialize Plyr player after modal is visible
                 setTimeout(() => {
                     initPlyr(movie.url);
@@ -1815,6 +1843,12 @@
                         fallbackOverlay.classList.add('active');
                     }
                 }, 3000);
+            });
+
+            // Eigenes Thumbnail-Overlay ausblenden, sobald der Stream wirklich läuft
+            player.on('playing', function() {
+                const ownOverlay = document.getElementById('ownThumbnailOverlay');
+                if (ownOverlay) ownOverlay.classList.add('hidden');
             });
 
             // Fallback Nr. 2: falls YouTube doch ein klassisches Fehler-Event wirft
