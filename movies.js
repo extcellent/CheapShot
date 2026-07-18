@@ -317,7 +317,7 @@ const movieDatabase = [
         director: "Brian De Palma",
         cast: ["Nicolas Cage", "Gary Sinise", "Carla Gugino"],
         desc: "A corrupt Atlantic City cop investigates the assassination of the Secretary of Defense during a championship boxing match.",
-        thumbnail: "https://spoilertown.com/wp-content/uploads/2025/10/snake-eyes-1998.webp".
+        thumbnail: "https://spoilertown.com/wp-content/uploads/2025/10/snake-eyes-1998.webp",
         where: []
     },
     {
