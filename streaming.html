@@ -1897,6 +1897,15 @@
                 } catch (e) {}
                 currentPlayer = null;
             }
+            // Overlay sicher herausnehmen, BEVOR der Container geleert wird –
+            // sonst wird der Node dauerhaft gelöscht und beim nächsten Öffnen
+            // schlägt getElementById('ownThumbnailOverlay') fehl
+            const ownOverlayOnClose = document.getElementById('ownThumbnailOverlay');
+            if (ownOverlayOnClose) {
+                document.getElementById('videoWrapper').appendChild(ownOverlayOnClose);
+                ownOverlayOnClose.classList.add('hidden');
+            }
+
             container.innerHTML = '';
             linksContainer.innerHTML = '';
         }
