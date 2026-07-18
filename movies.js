@@ -624,6 +624,19 @@ const movieDatabase = [
         "desc": "An overworked air traffic controller takes his family on a beach vacation, but a series of mishaps and a feud with a local yachtsman threaten to ruin their summer getaway.",
         "thumbnail": "",
         "where": []
+    },
+    {
+    "url": "https://www.youtube.com/watch?v=4oH7uq69sOM",
+    "title": "The Nanny Diaries",
+    "year": "2007",
+    "genre": "Comedy, Drama, Romance",
+    "rating": 6.2,
+    "duration": 106,
+    "director": "Shari Springer Berman, Robert Pulcini",
+    "cast": ["Scarlett Johansson", "Laura Linney", "Paul Giamatti", "Chris Evans", "Alicia Keys", "Donna Murphy"],
+    "desc": "A recent college graduate from a working-class background takes a job as a nanny for a wealthy family on Manhattan's Upper East Side. She must juggle the family's dysfunction, the neglected child in her care, and a new romance, all while trying to figure out her own life path.",
+    "thumbnail": "",
+    "where": []
     }
 ];
 // ============================================================
