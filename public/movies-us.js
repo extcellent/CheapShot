@@ -6,6 +6,19 @@
 // ============================================================
 const topMoviesDatabase = [
     {
+        "url": "https://www.youtube.com/watch?v=fl4Vbc0jY6A",
+        "title": "Troy",
+        "year": "2004",
+        "genre": "War, Action, History",
+        "rating": 7.2,
+        "duration": 163,
+        "director": "Wolfgang Petersen",
+        "cast": ["Brad Pitt", "Orlando Bloom", "Eric Bana", "Brian Cox", "Sean Bean", "Brendan Gleeson"],
+        "desc": "In year 1250 B.C. during the late Bronze age, two emerging nations begin to clash. Paris, the Trojan prince, convinces Helen, Queen of Sparta, to leave her husband Menelaus, and sail with him back to Troy. After Menelaus finds out that his wife was taken by the Trojans, he asks his brother Agamemnon to help him get her back. Agamemnon sees this as an opportunity for power. They set off with 1,000 ships holding 50,000 Greeks to Troy.",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/a07wLy4ONfpsjnBqMwhlWTJTcm.jpg",
+        "where": []
+    },
+    {
         "url": "https://www.youtube.com/watch?v=Sh3EFwHg45c",
         "title": "Safe House",
         "year": "2012",
