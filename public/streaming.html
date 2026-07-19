@@ -1737,16 +1737,16 @@
         function initPlyr(videoUrl, movie) {
             const container = document.getElementById('plyrContainer');
             const videoId = extractYouTubeId(videoUrl);
-        
+
             if (!videoId) return;
-        
+
             // Fallback-Overlay zurücksetzen (verstecken) und Link vorbereiten
             const fallbackOverlay = document.getElementById('ytFallbackOverlay');
             const fallbackBtn = document.getElementById('ytFallbackBtn');
             fallbackOverlay.classList.remove('active');
             fallbackBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
             clearTimeout(fallbackCheckTimer);
-        
+
             // Destroy existing player
             if (currentPlayer) {
                 try {
@@ -1754,12 +1754,12 @@
                 } catch (e) {}
                 currentPlayer = null;
             }
-        
+
             // Create YouTube iframe with Plyr
             container.innerHTML = `
                 <div data-plyr-provider="youtube" data-plyr-embed-id="${videoId}"></div>
             `;
-        
+
             // Initialize Plyr with ALL controls VISIBLE
             const player = new Plyr(container.querySelector('[data-plyr-provider]'), {
                 controls: [
@@ -1804,8 +1804,14 @@
                     options: [0.5, 0.75, 1, 1.25, 1.5, 2]
                 }
             });
-        
-            // Eigenes Thumbnail aus movies.js
+
+            // Eigenes Thumbnail aus movies.js nur anzeigen, wenn ein "thumbnail"
+            // Eintrag existiert. Das Overlay wird bei JEDEM Öffnen neu erzeugt
+            // und DIREKT in den Plyr-Container gehängt (gleicher Stacking-
+            // Context wie die Controls), damit die native Play-Button/
+            // Steuerleiste identisch sichtbar bleibt wie bei Videos ohne
+            // eigenes Thumbnail. Neu-Erzeugen statt Wiederverwenden vermeidet
+            // DOM-Lifecycle-Probleme, wenn der Player-Container geleert wird.
             const hasOwnThumbnail = movie && movie.thumbnail && movie.thumbnail.trim() !== '';
             let ownOverlay = null;
             if (hasOwnThumbnail && player.elements && player.elements.container) {
@@ -1814,7 +1820,7 @@
                 ownOverlay.style.backgroundImage = `url('${movie.thumbnail}')`;
                 player.elements.container.appendChild(ownOverlay);
             }
-        
+
             // Make sure settings button is visible
             player.on('ready', function() {
                 // Hide YouTube UI completely
@@ -1846,38 +1852,15 @@
                     `;
                     document.head.appendChild(style);
                 }
-        
+
                 // Show settings button
                 const settingsBtn = container.querySelector('[data-plyr="settings"]');
                 if (settingsBtn) {
                     settingsBtn.style.display = 'flex';
                 }
-        
-                // --- THE FIX: Add client spoof to the iframe ---
-                // Find the iframe that Plyr created
-                const iframe = container.querySelector('iframe');
-                if (iframe) {
-                    let src = iframe.src;
-                    
-                    // Remove any existing client parameter to avoid duplicates
-                    src = src.replace(/[?&]client=[^&]*/g, '');
-                    
-                    // Add the client spoof parameter
-                    const separator = src.includes('?') ? '&' : '?';
-                    // Use TVHTML5_SIMPLY_EMBEDDED_PLAYER - the known bypass
-                    src = src + separator + 'client=TVHTML5_SIMPLY_EMBEDDED_PLAYER';
-                    
-                    // Also ensure we preserve the origin (critical for country cookie)
-                    if (!src.includes('origin=')) {
-                        src = src + '&origin=' + encodeURIComponent(window.location.origin);
-                    }
-                    
-                    iframe.src = src;
-                    console.log('🔄 YouTube client spoofed to TVHTML5_SIMPLY_EMBEDDED_PLAYER');
-                }
-        
+
                 console.log('🎬 Plyr player ready - Settings/Quality/Captions available');
-        
+
                 // WICHTIG: Bei altersbeschränkten / nicht einbettbaren Videos zeigt
                 // YouTube nur einen Hinweis-Screen direkt IM iFrame an - dabei wird
                 // KEIN 'error'-Event ausgelöst (Plyr merkt davon nichts). Deshalb prüfen
@@ -1892,12 +1875,12 @@
                     }
                 }, 3000);
             });
-        
+
             // Eigenes Thumbnail-Overlay ausblenden, sobald der Stream wirklich läuft
             player.on('playing', function() {
                 if (ownOverlay) ownOverlay.classList.add('hidden');
             });
-        
+
             // Fallback Nr. 2: falls YouTube doch ein klassisches Fehler-Event wirft
             // (z.B. Embedding komplett deaktiviert -> Fehlercodes 101/150).
             player.on('error', function() {
@@ -1905,7 +1888,7 @@
                 console.warn('⚠️ YouTube Embed-Fehler - zeige Fallback-Button');
                 fallbackOverlay.classList.add('active');
             });
-        
+
             currentPlayer = player;
         }
 
