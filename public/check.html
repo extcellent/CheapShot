@@ -198,9 +198,10 @@ const ERROR_MEANINGS = {
     2: 'Ungültige Video-ID',
     5: 'HTML5-Player-Fehler',
     100: 'Video nicht gefunden / privat / gelöscht',
-    101: 'Embedding vom Uploader deaktiviert',
+    101: 'Embedding vom Uploader deaktiviert (oder altersbeschränkt)',
     150: 'Embedding vom Uploader deaktiviert (oder altersbeschränkt)',
-    'timeout': 'Zeitüberschreitung — kein Event erhalten',
+    'play-call-failed': 'Wiedergabe konnte nicht gestartet werden',
+    'timeout': 'Zeitüberschreitung — Wiedergabe startete nicht',
 };
 
 function extractVideoId(raw) {
@@ -220,7 +221,7 @@ function extractVideoId(raw) {
     return null;
 }
 
-function testSingleVideo(videoId, timeoutMs = 9000) {
+function testSingleVideo(videoId, timeoutMs = 10000) {
     return new Promise((resolve) => {
         const containerId = 'yt-test-' + videoId + '-' + Math.random().toString(36).slice(2);
         const div = document.createElement('div');
@@ -247,7 +248,23 @@ function testSingleVideo(videoId, timeoutMs = 9000) {
                 videoId: videoId,
                 playerVars: { autoplay: 0, controls: 0 },
                 events: {
-                    onReady: () => finish({ playable: true, code: null }),
+                    onReady: (e) => {
+                        // Nur "ready" reicht nicht - bei altersbeschränkten
+                        // Videos lässt YouTube das Cuen zu, der Fehler kommt
+                        // erst beim tatsächlichen Abspielversuch
+                        try {
+                            e.target.mute(); // Autoplay-Policy des Browsers umgehen
+                            e.target.playVideo();
+                        } catch (err) {
+                            finish({ playable: false, code: 'play-call-failed' });
+                        }
+                    },
+                    onStateChange: (e) => {
+                        // state 1 = PLAYING, 3 = BUFFERING (beides = läuft wirklich an)
+                        if (e.data === 1 || e.data === 3) {
+                            finish({ playable: true, code: null });
+                        }
+                    },
                     onError: (e) => finish({ playable: false, code: e.data })
                 }
             });
