@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echter Embed-Playback-Check</title>
+<style>
+    :root {
+        --bg: #0a0a0f;
+        --panel: #14141c;
+        --border: #24242f;
+        --text: #e8e8f0;
+        --muted: #8b8b9c;
+        --accent: #f59e0b;
+        --accent-dark: #0a0a0f;
+        --ok: #22c55e;
+        --bad: #ef4444;
+        --warn: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        padding: 32px 20px 80px;
+    }
+    .wrap { max-width: 1000px; margin: 0 auto; }
+    h1 { font-size: 22px; margin: 0 0 4px; }
+    .sub { color: var(--muted); font-size: 14px; margin: 0 0 28px; line-height: 1.5; }
+    .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+    textarea {
+        width: 100%;
+        background: #0d0d13;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        color: var(--text);
+        padding: 10px 12px;
+        font-size: 14px;
+        font-family: inherit;
+        resize: vertical;
+        min-height: 160px;
+        line-height: 1.5;
+    }
+    textarea:focus { outline: none; border-color: var(--accent); }
+    button {
+        background: rgba(245, 158, 11, 0.9);
+        color: var(--accent-dark);
+        border: none;
+        border-radius: 6px;
+        padding: 11px 22px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    button:hover { background: #fbbf24; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #status { margin-top: 14px; font-size: 13px; color: var(--muted); min-height: 18px; }
+    .error-msg { color: var(--bad); font-size: 13px; margin-top: 10px; }
+    .progress-bar-outer {
+        width: 100%;
+        height: 6px;
+        background: #1c1c26;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 12px;
+        display: none;
+    }
+    .progress-bar-inner {
+        height: 100%;
+        background: var(--accent);
+        width: 0%;
+        transition: width 0.2s ease;
+    }
+    .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .results-header h2 { font-size: 16px; margin: 0; }
+    .summary { display: flex; gap: 14px; font-size: 13px; color: var(--muted); }
+    .summary b { color: var(--text); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.03em; }
+    tr.ok-row { background: rgba(34, 197, 94, 0.05); }
+    tr.bad-row { background: rgba(239, 68, 68, 0.04); }
+    tr.pending-row { background: rgba(245, 158, 11, 0.04); }
+    .id-mono { font-family: 'SF Mono', Consolas, monospace; font-size: 11px; color: var(--muted); }
+    .id-mono a { color: var(--muted); }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+    .pill.ok { background: rgba(34, 197, 94, 0.15); color: var(--ok); }
+    .pill.bad { background: rgba(239, 68, 68, 0.15); color: var(--bad); }
+    .pill.pending { background: rgba(245, 158, 11, 0.15); color: var(--warn); }
+    .copy-box { margin-top: 16px; }
+    .copy-box textarea { min-height: 100px; font-family: 'SF Mono', Consolas, monospace; font-size: 12px; }
+    .copy-btn { margin-top: 8px; background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .copy-btn:hover { background: rgba(245, 158, 11, 0.1); border-color: var(--accent); }
+    #testArea { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <h1>▶️ Echter Embed-Playback-Check</h1>
+    <p class="sub">
+        Testet Videos <strong>wirklich live</strong> in einem echten YouTube-Player (nicht nur Metadaten wie oEmbed),
+        genau der Check, der auch in deinem echten Player passieren würde. Erkennt zuverlässig Age-Restriction,
+        Embedding-Sperren und Store-Only-Filme, die bei reinen Metadaten-Checks fälschlich als "embeddable" durchrutschen.
+        Kein API-Key nötig, läuft komplett im Browser.
+    </p>
+
+    <div class="panel">
+        <label for="links">YouTube-Links oder Video-IDs (einer pro Zeile)</label>
+        <textarea id="links" placeholder="https://www.youtube.com/watch?v=xxxxxxxxxxx
+https://youtu.be/yyyyyyyyyyy
+zzzzzzzzzzz"></textarea>
+
+        <div style="margin-top:14px; display:flex; gap:10px; align-items:center;">
+            <button id="checkBtn">Live-Check starten</button>
+            <span id="status"></span>
+        </div>
+        <div class="progress-bar-outer" id="progressOuter">
+            <div class="progress-bar-inner" id="progressInner"></div>
+        </div>
+        <div class="error-msg" id="errorMsg"></div>
+    </div>
+
+    <div id="resultsPanel" class="panel" style="display:none;">
+        <div class="results-header">
+            <h2>Ergebnisse</h2>
+            <div class="summary" id="summary"></div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Video</th>
+                    <th>Status</th>
+                    <th>Grund</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <div class="copy-box" id="copyBox" style="display:none;">
+            <label>Nur abspielbare Video-IDs (zum Kopieren)</label>
+            <textarea id="usableIdsBox" readonly></textarea>
+            <button class="copy-btn" id="copyIdsBtn">In Zwischenablage kopieren</button>
+        </div>
+    </div>
+</div>
+
+<div id="testArea"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+const linksInput = document.getElementById('links');
+const checkBtn = document.getElementById('checkBtn');
+const statusEl = document.getElementById('status');
+const errorMsg = document.getElementById('errorMsg');
+const resultsPanel = document.getElementById('resultsPanel');
+const tableBody = document.getElementById('tableBody');
+const summaryEl = document.getElementById('summary');
+const copyBox = document.getElementById('copyBox');
+const usableIdsBox = document.getElementById('usableIdsBox');
+const copyIdsBtn = document.getElementById('copyIdsBtn');
+const progressOuter = document.getElementById('progressOuter');
+const progressInner = document.getElementById('progressInner');
+const testArea = document.getElementById('testArea');
+
+let ytApiReady = false;
+let ytApiReadyResolvers = [];
+
+// Wird von der YouTube IFrame API automatisch aufgerufen, sobald sie geladen ist
+window.onYouTubeIframeAPIReady = function () {
+    ytApiReady = true;
+    ytApiReadyResolvers.forEach(r => r());
+    ytApiReadyResolvers = [];
+};
+
+function waitForYtApi() {
+    if (ytApiReady && window.YT && window.YT.Player) return Promise.resolve();
+    return new Promise(resolve => ytApiReadyResolvers.push(resolve));
+}
+
+const ERROR_MEANINGS = {
+    2: 'Ungültige Video-ID',
+    5: 'HTML5-Player-Fehler',
+    100: 'Video nicht gefunden / privat / gelöscht',
+    101: 'Embedding vom Uploader deaktiviert',
+    150: 'Embedding vom Uploader deaktiviert (oder altersbeschränkt)',
+    'timeout': 'Zeitüberschreitung — kein Event erhalten',
+};
+
+function extractVideoId(raw) {
+    const s = raw.trim();
+    if (!s) return null;
+    if (/^[a-zA-Z0-9_-]{11}$/.test(s)) return s;
+    const patterns = [
+        /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
+        /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+        /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+        /(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/
+    ];
+    for (const p of patterns) {
+        const m = s.match(p);
+        if (m) return m[1];
+    }
+    return null;
+}
+
+function testSingleVideo(videoId, timeoutMs = 9000) {
+    return new Promise((resolve) => {
+        const containerId = 'yt-test-' + videoId + '-' + Math.random().toString(36).slice(2);
+        const div = document.createElement('div');
+        div.id = containerId;
+        testArea.appendChild(div);
+
+        let resolved = false;
+        let player = null;
+        let timeoutHandle = null;
+
+        const finish = (result) => {
+            if (resolved) return;
+            resolved = true;
+            clearTimeout(timeoutHandle);
+            resolve(result);
+            try { player && player.destroy && player.destroy(); } catch (e) {}
+            div.remove();
+        };
+
+        try {
+            player = new YT.Player(containerId, {
+                width: '1',
+                height: '1',
+                videoId: videoId,
+                playerVars: { autoplay: 0, controls: 0 },
+                events: {
+                    onReady: () => finish({ playable: true, code: null }),
+                    onError: (e) => finish({ playable: false, code: e.data })
+                }
+            });
+        } catch (e) {
+            finish({ playable: false, code: 'timeout' });
+            return;
+        }
+
+        timeoutHandle = setTimeout(() => finish({ playable: false, code: 'timeout' }), timeoutMs);
+    });
+}
+
+checkBtn.addEventListener('click', async () => {
+    errorMsg.textContent = '';
+    const rawLines = linksInput.value.split('\n').map(l => l.trim()).filter(Boolean);
+
+    if (rawLines.length === 0) {
+        errorMsg.textContent = 'Bitte mindestens einen Link oder eine Video-ID eintragen.';
+        return;
+    }
+
+    const idMap = [];
+    const invalidLines = [];
+    rawLines.forEach(line => {
+        const id = extractVideoId(line);
+        if (id) idMap.push({ id, original: line });
+        else invalidLines.push(line);
+    });
+
+    if (idMap.length === 0) {
+        errorMsg.textContent = 'Keine gültigen YouTube-Links/IDs gefunden.';
+        return;
+    }
+
+    checkBtn.disabled = true;
+    resultsPanel.style.display = 'block';
+    copyBox.style.display = 'none';
+    tableBody.innerHTML = '';
+    progressOuter.style.display = 'block';
+    progressInner.style.width = '0%';
+
+    // Tabelle initial mit "wird geprüft..." Zeilen befüllen
+    const rowEls = {};
+    idMap.forEach(({ id, original }) => {
+        const tr = document.createElement('tr');
+        tr.className = 'pending-row';
+        tr.innerHTML = `
+            <td>
+                <a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener" style="color:var(--text); text-decoration:none;">${id}</a>
+            </td>
+            <td><span class="pill pending">wird geprüft...</span></td>
+            <td>—</td>
+        `;
+        tableBody.appendChild(tr);
+        rowEls[id] = tr;
+    });
+
+    statusEl.textContent = 'Warte auf YouTube Player API...';
+    await waitForYtApi();
+
+    const results = [];
+    // Sequentiell mit leichter Überlappung (2 gleichzeitig), um YouTube
+    // nicht zu überlasten und Ergebnisse zuverlässig zu bekommen
+    const CONCURRENCY = 2;
+    let completed = 0;
+
+    async function worker(queue) {
+        while (queue.length > 0) {
+            const item = queue.shift();
+            statusEl.textContent = `Prüfe ${completed + 1} von ${idMap.length}: ${item.id}...`;
+            const result = await testSingleVideo(item.id);
+            completed++;
+            progressInner.style.width = Math.round((completed / idMap.length) * 100) + '%';
+
+            const row = rowEls[item.id];
+            const meaning = result.code !== null ? (ERROR_MEANINGS[result.code] || `Fehlercode ${result.code}`) : '—';
+
+            if (result.playable) {
+                row.className = 'ok-row';
+                row.cells[1].innerHTML = '<span class="pill ok">✓ abspielbar</span>';
+                row.cells[2].textContent = 'OK';
+            } else {
+                row.className = 'bad-row';
+                row.cells[1].innerHTML = '<span class="pill bad">✗ nicht abspielbar</span>';
+                row.cells[2].textContent = meaning;
+            }
+
+            results.push({ id: item.id, ...result });
+        }
+    }
+
+    const queue = [...idMap];
+    await Promise.all(Array.from({ length: CONCURRENCY }, () => worker(queue)));
+
+    statusEl.textContent = `Fertig — ${results.filter(r => r.playable).length} von ${idMap.length} Videos wirklich abspielbar.`;
+    checkBtn.disabled = false;
+
+    const playableCount = results.filter(r => r.playable).length;
+    const blockedCount = results.length - playableCount;
+    summaryEl.innerHTML = `
+        <span><b>${results.length}</b> geprüft</span>
+        <span style="color:var(--ok)"><b>${playableCount}</b> abspielbar</span>
+        <span style="color:var(--bad)"><b>${blockedCount}</b> blockiert</span>
+    `;
+
+    const playableIds = results.filter(r => r.playable).map(r => r.id);
+    if (playableIds.length > 0) {
+        copyBox.style.display = 'block';
+        usableIdsBox.value = playableIds.join('\n');
+    }
+});
+
+copyIdsBtn.addEventListener('click', () => {
+    usableIdsBox.select();
+    document.execCommand('copy');
+    copyIdsBtn.textContent = 'Kopiert ✓';
+    setTimeout(() => { copyIdsBtn.textContent = 'In Zwischenablage kopieren'; }, 1500);
+});
+</script>
+</body>
+</html>
