@@ -16,7 +16,7 @@ const topMoviesDatabase = [
         cast: ["Brad Pitt", "Orlando Bloom", "Eric Bana", "Brian Cox", "Sean Bean", "Brendan Gleeson"],
         desc: "In year 1250 B.C. during the late Bronze age, two emerging nations begin to clash. Paris, the Trojan prince, convinces Helen, Queen of Sparta, to leave her husband Menelaus, and sail with him back to Troy. After Menelaus finds out that his wife was taken by the Trojans, he asks his brother Agamemnon to help him get her back. Agamemnon sees this as an opportunity for power. They set off with 1,000 ships holding 50,000 Greeks to Troy.",
         poster: "https://image.tmdb.org/t/p/w780/a07wLy4ONfpsjnBqMwhlWTJTcm.jpg",
-        thumbnail: "https://image.tmdb.org/t/p/w1280/y51M7Ca95sCXTCDvJaRP1uzxKbg.jpg",
+        thumbnail: "https://image.tmdb.org/t/p/original/y51M7Ca95sCXTCDvJaRP1uzxKbg.jpg",
         where: []
     },
     {
