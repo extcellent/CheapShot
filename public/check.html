@@ -122,9 +122,10 @@
     </p>
 
     <div class="panel">
-        <label for="links">YouTube-Links oder Video-IDs (einer pro Zeile)</label>
+        <label for="links">YouTube-Links, IDs, oder "Titel - Link" (einer pro Zeile)</label>
         <textarea id="links" placeholder="https://www.youtube.com/watch?v=xxxxxxxxxxx
-https://youtu.be/yyyyyyyyyyy
+Ghost - https://www.youtube.com/watch?v=vhJRoPcwWXA
+Warrior – `/watch?v=yyyyyyyyyyy`
 zzzzzzzzzzz"></textarea>
 
         <div style="margin-top:14px; display:flex; gap:10px; align-items:center;">
@@ -212,13 +213,44 @@ function extractVideoId(raw) {
         /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
         /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
         /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
-        /(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/
+        /(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/,
+        /watch\?v=([a-zA-Z0-9_-]{11})/
     ];
     for (const p of patterns) {
         const m = s.match(p);
         if (m) return m[1];
     }
     return null;
+}
+
+// Erkennt sowohl "Titel - Link" (mit -, –, —, Backticks, relativen Pfaden)
+// als auch reine Links/IDs ohne Titel
+function parseLine(rawLine) {
+    const line = rawLine.replace(/`/g, '').trim();
+    if (!line) return null;
+
+    // Irgendwo in der Zeile nach einem YouTube-Link oder einer nackten ID suchen
+    const urlPattern = /(https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)[^\s,]+|\/?watch\?v=[a-zA-Z0-9_-]{11}[^\s,]*|\b[a-zA-Z0-9_-]{11}\b)/;
+    const match = line.match(urlPattern);
+    if (!match) return null;
+
+    const id = extractVideoId(match[0]);
+    if (!id) return null;
+
+    // Alles vor dem gefundenen Link ist der Titel (minus trennendem Bindestrich)
+    let title = line.slice(0, match.index).replace(/[-–—]\s*$/, '').trim();
+
+    return {
+        id,
+        title: title || null,
+        fullUrl: 'https://www.youtube.com/watch?v=' + id
+    };
+}
+
+function escapeHtmlLocal(str) {
+    const div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
 }
 
 function testSingleVideo(videoId, timeoutMs = 10000) {
@@ -289,8 +321,8 @@ checkBtn.addEventListener('click', async () => {
     const idMap = [];
     const invalidLines = [];
     rawLines.forEach(line => {
-        const id = extractVideoId(line);
-        if (id) idMap.push({ id, original: line });
+        const parsed = parseLine(line);
+        if (parsed) idMap.push(parsed);
         else invalidLines.push(line);
     });
 
@@ -308,12 +340,14 @@ checkBtn.addEventListener('click', async () => {
 
     // Tabelle initial mit "wird geprüft..." Zeilen befüllen
     const rowEls = {};
-    idMap.forEach(({ id, original }) => {
+    idMap.forEach(({ id, title, fullUrl }) => {
         const tr = document.createElement('tr');
         tr.className = 'pending-row';
+        const label = title ? escapeHtmlLocal(title) : id;
         tr.innerHTML = `
             <td>
-                <a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener" style="color:var(--text); text-decoration:none;">${id}</a>
+                <a href="${fullUrl}" target="_blank" rel="noopener" style="color:var(--text); text-decoration:none;">${label}</a>
+                ${title ? `<div class="id-mono">${id}</div>` : ''}
             </td>
             <td><span class="pill pending">wird geprüft...</span></td>
             <td>—</td>
@@ -352,7 +386,7 @@ checkBtn.addEventListener('click', async () => {
                 row.cells[2].textContent = meaning;
             }
 
-            results.push({ id: item.id, ...result });
+            results.push({ id: item.id, title: item.title, fullUrl: item.fullUrl, ...result });
         }
     }
 
@@ -370,7 +404,9 @@ checkBtn.addEventListener('click', async () => {
         <span style="color:var(--bad)"><b>${blockedCount}</b> blockiert</span>
     `;
 
-    const playableIds = results.filter(r => r.playable).map(r => r.id);
+    const playableIds = results.filter(r => r.playable).map(r => {
+        return r.title ? `${r.title} – ${r.fullUrl}` : r.fullUrl;
+    });
     if (playableIds.length > 0) {
         copyBox.style.display = 'block';
         usableIdsBox.value = playableIds.join('\n');
