@@ -2042,10 +2042,13 @@
                 touchStartY = e.changedTouches[0].screenY;
             }, { passive: true });
 
+            let touchMoved = false;
+            
             heroBanner.addEventListener('touchmove', (e) => {
                 const dx = e.changedTouches[0].screenX - touchStartX;
                 const dy = e.changedTouches[0].screenY - touchStartY;
                 if (Math.abs(dx) < Math.abs(dy)) return;
+                touchMoved = true;
                 const track = document.getElementById('heroTrack');
                 track.classList.add('dragging');
                 track.style.transform = `translate3d(calc(-${heroPosition * 100}% + ${dx}px), 0, 0)`;
@@ -2056,7 +2059,8 @@
                 const dy = e.changedTouches[0].screenY - touchStartY;
                 // Ignore mostly-vertical swipes (user is scrolling the page)
                 if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) {
-                    goToHeroPosition(heroPosition); // snap back
+                    if (touchMoved) goToHeroPosition(heroPosition);
+                    touchMoved = false;
                     return;
                 }
                 if (dx < 0) {
@@ -2098,7 +2102,7 @@
                 const dx = e.clientX - dragStartX;
                 const dy = e.clientY - dragStartY;
                 if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) {
-                    goToHeroPosition(heroPosition); // snap back
+                    if (dragMoved) goToHeroPosition(heroPosition);
                     return;
                 }
                 if (dx < 0) {
