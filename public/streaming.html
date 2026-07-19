@@ -1734,188 +1734,164 @@
             }
         }
 
-function initPlyr(videoUrl, movie) {
-    const container = document.getElementById('plyrContainer');
-    const videoId = extractYouTubeId(videoUrl);
+        function initPlyr(videoUrl, movie) {
+            const container = document.getElementById('plyrContainer');
+            const videoId = extractYouTubeId(videoUrl);
 
-    if (!videoId) return;
+            if (!videoId) return;
 
-    // Fallback-Overlay zurücksetzen
-    const fallbackOverlay = document.getElementById('ytFallbackOverlay');
-    const fallbackBtn = document.getElementById('ytFallbackBtn');
-    fallbackOverlay.classList.remove('active');
-    fallbackBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
-    clearTimeout(fallbackCheckTimer);
+            // Fallback-Overlay zurücksetzen (verstecken) und Link vorbereiten
+            const fallbackOverlay = document.getElementById('ytFallbackOverlay');
+            const fallbackBtn = document.getElementById('ytFallbackBtn');
+            fallbackOverlay.classList.remove('active');
+            fallbackBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
+            clearTimeout(fallbackCheckTimer);
 
-    // Destroy existing player
-    if (currentPlayer) {
-        try {
-            currentPlayer.destroy();
-        } catch (e) {}
-        currentPlayer = null;
-    }
-
-    // --- THE FIX: Spoof the client BEFORE Plyr loads ---
-    // We intercept Plyr's YouTube embed creation and modify it
-    
-    // Create a custom wrapper that modifies the YouTube request
-    container.innerHTML = `
-        <div id="plyrYouTubeContainer" data-plyr-provider="youtube" data-plyr-embed-id="${videoId}"></div>
-    `;
-
-    // Get the container element
-    const plyrContainer = container.querySelector('#plyrYouTubeContainer');
-    
-    // --- SPOOF THE YOUTUBE REQUEST ---
-    // We need to intercept the URL that Plyr generates and add the client parameter
-    // Plyr creates an iframe with a specific URL pattern
-    // We'll override the default behavior
-    
-    // Save the original method that Plyr uses to build the iframe URL
-    // We're going to override it just for this instance
-    
-    // The trick: We'll create a MutationObserver to catch when Plyr creates the iframe
-    // and immediately modify its src to include our spoof parameters
-    
-    // First, create a proxy function that modifies the iframe src
-    const originalAppendChild = container.appendChild;
-    
-    // Initialize Plyr with our custom configuration
-    const player = new Plyr(plyrContainer, {
-        controls: [
-            'play-large',
-            'play',
-            'progress',
-            'current-time',
-            'mute',
-            'volume',
-            'captions',
-            'settings',
-            'pip',
-            'fullscreen'
-        ],
-        settings: ['captions', 'quality', 'speed', 'loop'],
-        youtube: {
-            modestbranding: 1,
-            rel: 0,
-            showinfo: 0,
-            iv_load_policy: 3,
-            color: 'white',
-            controls: 0,
-            fs: 0,
-            cc_load_policy: 0,
-            hl: 'en',
-            autohide: 1,
-            disablekb: 1
-        },
-        autoplay: false,
-        debug: false,
-        captions: {
-            active: false,
-            language: 'en',
-            update: true
-        },
-        quality: {
-            default: 'hd720',
-            options: ['hd1080', 'hd720', 'auto']
-        },
-        speed: {
-            selected: 1,
-            options: [0.5, 0.75, 1, 1.25, 1.5, 2]
-        }
-    });
-
-    // --- THE KEY: Intercept and modify the iframe ---
-    // When Plyr creates the iframe, we catch it and add our spoof parameters
-    player.on('ready', function() {
-        // Find the iframe that Plyr created
-        const iframe = container.querySelector('iframe');
-        if (iframe) {
-            // Get the current src
-            let src = iframe.src;
-            
-            // Add the client spoof parameter to the URL
-            // This is the magic that bypasses age restrictions
-            if (src && !src.includes('client=')) {
-                const separator = src.includes('?') ? '&' : '?';
-                // The key parameter: client=TVHTML5_SIMPLY_EMBEDDED_PLAYER
-                // This tells YouTube to use the TV/embedded player which has fewer restrictions
-                src = src + separator + 'client=TVHTML5_SIMPLY_EMBEDDED_PLAYER';
-                iframe.src = src;
-                console.log('🔄 YouTube client spoofed to TVHTML5_SIMPLY_EMBEDDED_PLAYER');
+            // Destroy existing player
+            if (currentPlayer) {
+                try {
+                    currentPlayer.destroy();
+                } catch (e) {}
+                currentPlayer = null;
             }
-            
-            // Also add other useful parameters
-            if (!src.includes('origin=')) {
-                src = src + '&origin=' + encodeURIComponent(window.location.origin);
-                iframe.src = src;
-            }
-        }
 
-        // Hide YouTube UI
-        const styleId = 'plyr-youtube-hide';
-        if (!document.getElementById(styleId)) {
-            const style = document.createElement('style');
-            style.id = styleId;
-            style.textContent = `
-                .plyr__video-embed .plyr__video-embed__container::after {
-                    display: none !important;
-                }
-                .plyr__video-embed iframe {
-                    pointer-events: none !important;
-                }
-                .plyr--youtube .plyr__video-embed iframe {
-                    pointer-events: none !important;
-                }
-                .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark,
-                .ytp-gradient-top, .ytp-gradient-bottom,
-                .ytp-chrome-top-buttons, .ytp-title, .ytp-share-icon,
-                .ytp-panel, .ytp-popup, .ytp-menu,
-                .ytp-chrome-bottom, .ytp-progress-bar-container,
-                .ytp-chrome-controls, .ytp-player-content,
-                .ytp-cued-thumbnail-overlay, .ytp-pause-overlay,
-                .ytp-big-play-button, .ytp-spinner,
-                .ytp-tooltip, .ytp-tooltip-text {
-                    display: none !important;
-                }
+            // Create YouTube iframe with Plyr
+            container.innerHTML = `
+                <div data-plyr-provider="youtube" data-plyr-embed-id="${videoId}"></div>
             `;
-            document.head.appendChild(style);
-        }
 
-        // Show settings button
-        const settingsBtn = container.querySelector('[data-plyr="settings"]');
-        if (settingsBtn) {
-            settingsBtn.style.display = 'flex';
-        }
+            // Initialize Plyr with ALL controls VISIBLE
+            const player = new Plyr(container.querySelector('[data-plyr-provider]'), {
+                controls: [
+                    'play-large',
+                    'play',
+                    'progress',
+                    'current-time',
+                    'mute',
+                    'volume',
+                    'captions',
+                    'settings',
+                    'pip',
+                    'fullscreen'
+                ],
+                settings: ['captions', 'quality', 'speed', 'loop'],
+                youtube: {
+                    modestbranding: 1,
+                    rel: 0,
+                    showinfo: 0,
+                    iv_load_policy: 3,
+                    color: 'white',
+                    controls: 0,
+                    fs: 0,
+                    cc_load_policy: 0,
+                    hl: 'en',
+                    autohide: 1,
+                    disablekb: 1
+                },
+                autoplay: false,
+                debug: false,
+                captions: {
+                    active: false,
+                    language: 'en',
+                    update: true
+                },
+                quality: {
+                    default: 'hd720',
+                    options: ['hd1080', 'hd720', 'auto']
+                },
+                speed: {
+                    selected: 1,
+                    options: [0.5, 0.75, 1, 1.25, 1.5, 2]
+                }
+            });
 
-        console.log('🎬 Plyr player ready with client spoof');
-
-        // Check if video is age-restricted after a delay
-        clearTimeout(fallbackCheckTimer);
-        fallbackCheckTimer = setTimeout(function() {
-            const duration = player.duration;
-            if (!duration || isNaN(duration) || duration <= 0) {
-                console.warn('⚠️ Video may be age-restricted - showing fallback');
-                fallbackOverlay.classList.add('active');
+            // Eigenes Thumbnail aus movies.js nur anzeigen, wenn ein "thumbnail"
+            // Eintrag existiert. Das Overlay wird bei JEDEM Öffnen neu erzeugt
+            // und DIREKT in den Plyr-Container gehängt (gleicher Stacking-
+            // Context wie die Controls), damit die native Play-Button/
+            // Steuerleiste identisch sichtbar bleibt wie bei Videos ohne
+            // eigenes Thumbnail. Neu-Erzeugen statt Wiederverwenden vermeidet
+            // DOM-Lifecycle-Probleme, wenn der Player-Container geleert wird.
+            const hasOwnThumbnail = movie && movie.thumbnail && movie.thumbnail.trim() !== '';
+            let ownOverlay = null;
+            if (hasOwnThumbnail && player.elements && player.elements.container) {
+                ownOverlay = document.createElement('div');
+                ownOverlay.className = 'own-thumbnail-overlay';
+                ownOverlay.style.backgroundImage = `url('${movie.thumbnail}')`;
+                player.elements.container.appendChild(ownOverlay);
             }
-        }, 3000);
-    });
 
-    // Handle playing event (hide custom thumbnail)
-    player.on('playing', function() {
-        const ownOverlay = container.querySelector('.own-thumbnail-overlay');
-        if (ownOverlay) ownOverlay.classList.add('hidden');
-    });
+            // Make sure settings button is visible
+            player.on('ready', function() {
+                // Hide YouTube UI completely
+                const styleId = 'plyr-youtube-hide';
+                if (!document.getElementById(styleId)) {
+                    const style = document.createElement('style');
+                    style.id = styleId;
+                    style.textContent = `
+                        .plyr__video-embed .plyr__video-embed__container::after {
+                            display: none !important;
+                        }
+                        .plyr__video-embed iframe {
+                            pointer-events: none !important;
+                        }
+                        .plyr--youtube .plyr__video-embed iframe {
+                            pointer-events: none !important;
+                        }
+                        .ytp-chrome-top, .ytp-show-cards-title, .ytp-watermark,
+                        .ytp-gradient-top, .ytp-gradient-bottom,
+                        .ytp-chrome-top-buttons, .ytp-title, .ytp-share-icon,
+                        .ytp-panel, .ytp-popup, .ytp-menu,
+                        .ytp-chrome-bottom, .ytp-progress-bar-container,
+                        .ytp-chrome-controls, .ytp-player-content,
+                        .ytp-cued-thumbnail-overlay, .ytp-pause-overlay,
+                        .ytp-big-play-button, .ytp-spinner,
+                        .ytp-tooltip, .ytp-tooltip-text {
+                            display: none !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
 
-    // Handle errors
-    player.on('error', function() {
-        clearTimeout(fallbackCheckTimer);
-        console.warn('⚠️ YouTube Embed Error - showing fallback');
-        fallbackOverlay.classList.add('active');
-    });
+                // Show settings button
+                const settingsBtn = container.querySelector('[data-plyr="settings"]');
+                if (settingsBtn) {
+                    settingsBtn.style.display = 'flex';
+                }
 
-    currentPlayer = player;
-}
+                console.log('🎬 Plyr player ready - Settings/Quality/Captions available');
+
+                // WICHTIG: Bei altersbeschränkten / nicht einbettbaren Videos zeigt
+                // YouTube nur einen Hinweis-Screen direkt IM iFrame an - dabei wird
+                // KEIN 'error'-Event ausgelöst (Plyr merkt davon nichts). Deshalb prüfen
+                // wir zusätzlich, ob nach kurzer Zeit überhaupt eine Videolänge geladen
+                // wurde. Ist das nicht der Fall, gehen wir von einer Sperre aus.
+                clearTimeout(fallbackCheckTimer);
+                fallbackCheckTimer = setTimeout(function() {
+                    const duration = player.duration;
+                    if (!duration || isNaN(duration) || duration <= 0) {
+                        console.warn('⚠️ Video lädt keine Dauer (vermutlich gesperrt/altersbeschränkt) - zeige Fallback-Button');
+                        fallbackOverlay.classList.add('active');
+                    }
+                }, 3000);
+            });
+
+            // Eigenes Thumbnail-Overlay ausblenden, sobald der Stream wirklich läuft
+            player.on('playing', function() {
+                if (ownOverlay) ownOverlay.classList.add('hidden');
+            });
+
+            // Fallback Nr. 2: falls YouTube doch ein klassisches Fehler-Event wirft
+            // (z.B. Embedding komplett deaktiviert -> Fehlercodes 101/150).
+            player.on('error', function() {
+                clearTimeout(fallbackCheckTimer);
+                console.warn('⚠️ YouTube Embed-Fehler - zeige Fallback-Button');
+                fallbackOverlay.classList.add('active');
+            });
+
+            currentPlayer = player;
+        }
+
         function closeModal() {
             const modal = document.getElementById('movieModal');
             const container = document.getElementById('plyrContainer');
