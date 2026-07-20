@@ -3399,7 +3399,6 @@ const movieDatabase = [
         where: []
     },
     {
-    {
         url: "https://www.youtube.com/watch?v=8AD-1F8ZboA",
         title: "Witness for the Prosecution",
         year: 1957,
