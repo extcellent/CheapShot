@@ -4201,7 +4201,7 @@ const movieDatabase = [
         title: "Rich Girl",
         year: 1991,
         genre: "Drama",
-        rating: 9.5,
+        rating: 6.1,
         duration: 96,
         director: "Joel Bender",
         cast: ["Jill Schoelen", "Don Michael Paul", "Sean Kanan", "Ron Karabatsos", "Paul Gleason", "Melanie Tomlin"],
