@@ -2753,7 +2753,7 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/aLv0wZoFQvEXupDphPn1TjNfq9M.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mWFH41gA1t9LLOW04i83sLczFjH.jpg",
         where: []
-    },,
+    },
     {
         url: "https://www.youtube.com/watch?v=Kti7Q7ndQhU",
         title: "Invisible Sue",
