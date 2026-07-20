@@ -53,7 +53,7 @@ const topMoviesDatabase = [
         cast: ["Tom Hardy", "Joel Edgerton", "Nick Nolte", "Jennifer Morrison"],
         desc: "Two estranged brothers, both struggling with their past, enter a high-stakes MMA tournament, forcing them to confront each other and their abusive father.",
         poster: "https://m.media-amazon.com/images/I/61Bh9r3J7pL._AC_UF894,1000_QL80_.jpg",
-        backdrop: "",
+        thumbnail: "https://image.tmdb.org/t/p/original/zb7b40ieuRGiIc9ebIEapneaCsl.jpg",
         where: []
     },
     {
@@ -597,20 +597,6 @@ const movieDatabase = [
         cast: ["Kate Beckinsale", "Scott Speedman", "Michael Sheen", "Shane Brolly", "Bill Nighy"],
         desc: "A vampire warrior falls for a human caught in the centuries-old war between vampires and werewolves.",
         thumbnail: "https://images5.alphacoders.com/795/thumb-1920-795161.jpg",
-        where: []
-    },
-    {
-        url: "https://www.youtube.com/watch?v=DayRQcMrYIQ",
-        title: "Warrior",
-        year: 2011,
-        genre: "Drama, Action",
-        rating: 7.8,
-        duration: 140,
-        director: "Gavin O'Connor",
-        cast: ["Joel Edgerton", "Tom Hardy", "Nick Nolte", "Jennifer Morrison", "Frank Grillo", "Kevin Dunn"],
-        desc: "The youngest son of an alcoholic former boxer returns home, where he's trained by his father for competition in a mixed martial arts tournament – a path that puts the fighter on a collision course with his estranged, older brother.",
-        poster: "https://image.tmdb.org/t/p/w780/iM8n4nZJPR2abpnyZ36FUgHiRjr.jpg",
-        thumbnail: "https://image.tmdb.org/t/p/original/zb7b40ieuRGiIc9ebIEapneaCsl.jpg",
         where: []
     },
     {
