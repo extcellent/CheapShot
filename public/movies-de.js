@@ -85,6 +85,20 @@ const topMoviesDatabase = [
         where: []
     },
     {
+        url: "https://www.youtube.com/watch?v=jmzAKNIdvWU",
+        title: "Still Alice",
+        year: 2014,
+        genre: "Drama",
+        rating: 7.5,
+        duration: 101,
+        director: "Wash Westmoreland, Richard Glatzer",
+        cast: ["Julianne Moore", "Kate Bosworth", "Shane McRae", "Hunter Parrish", "Alec Baldwin", "Seth Gilliam"],
+        desc: "Alice Howland, happily married with three grown children, is a renowned linguistics professor who starts to forget words. When she receives a devastating diagnosis, Alice and her family find their bonds tested.",
+        poster: "https://image.tmdb.org/t/p/w780/jJiGGbuLW8IkEnh5073maEmIr7V.jpg",
+        thumbnail: "https://image.tmdb.org/t/p/original/qgCg1bCg9QBwr4jRygz6nZCoDqw.jpg",
+        where: []
+    },
+    {
         url: "https://youtu.be/z9TTAWb2p_o",
         title: "Ghost World",
         year: "2001",
@@ -155,20 +169,6 @@ const topMoviesDatabase = [
         poster: "https://image.tmdb.org/t/p/original/c6iTdD4UvpfDCOFb3BTYb1TpKki.jpg",
         backdrop: "",
         thumbnail: "https://d32qys9a6wm9no.cloudfront.net/images/movies/backdrop/9c/2ac627c55b4470c2157f5cee18025210_1920x1080.jpg?t=1636156573",
-        where: []
-    },
-    {
-        url: "https://youtu.be/4STyTOvaBpY",
-        title: "Redemption",
-        year: "2004",
-        genre: "Biography, Crime, Drama",
-        rating: 7.0,
-        duration: 96,
-        director: "Vondie Curtis-Hall",
-        cast: ["Jamie Foxx", "Lynn Whitfield", "Lee Thompson Young"],
-        desc: "The true story of Stan 'Tookie' Williams, a former gang leader on death row who writes children's books to warn against gang violence, earning Nobel Prize nominations.",
-        poster: "https://m.media-amazon.com/images/M/MV5BMDdiNTZmZTEtZDU0Zi00Yzk5LWJjYjAtOGQzMDlmMmI1YTkzXkEyXkFqcGc@._V1_.jpg",
-        backdrop: "",
         where: []
     }
 ];
@@ -1492,20 +1492,6 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/cxsZiEuxeR2nQlARcT5AIis7zhF.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/x1vOLAntF3Zw2KRg1eZgx9HigSW.jpg",
-        where: []
-    },
-    {
-        url: "https://www.youtube.com/watch?v=jmzAKNIdvWU",
-        title: "Still Alice",
-        year: 2014,
-        genre: "Drama",
-        rating: 7.5,
-        duration: 101,
-        director: "Wash Westmoreland, Richard Glatzer",
-        cast: ["Julianne Moore", "Kate Bosworth", "Shane McRae", "Hunter Parrish", "Alec Baldwin", "Seth Gilliam"],
-        desc: "Alice Howland, happily married with three grown children, is a renowned linguistics professor who starts to forget words. When she receives a devastating diagnosis, Alice and her family find their bonds tested.",
-        poster: "https://image.tmdb.org/t/p/w780/jJiGGbuLW8IkEnh5073maEmIr7V.jpg",
-        thumbnail: "https://image.tmdb.org/t/p/original/qgCg1bCg9QBwr4jRygz6nZCoDqw.jpg",
         where: []
     },
     {
