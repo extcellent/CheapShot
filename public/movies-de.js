@@ -3497,20 +3497,6 @@ const movieDatabase = [
         where: []
     },
     {
-        url: "https://www.youtube.com/watch?v=Kjyp8vJ5jU0",
-        title: "Peter & the Wolf",
-        year: 2006,
-        genre: "Animation, Family, Music",
-        rating: 6.7,
-        duration: 32,
-        director: "Suzie Templeton",
-        cast: [],
-        desc: "Peter is a slight lad, solitary, locked out of the woods by his protective grandfather, his only friend a duck. In town, he's bullied. When a wolf menaces the duck - as well as grandfather's fat cat and an ill-flying bird that Peter has befriended - Peter bravely tries to tree the wolf. Grandfather, the townspeople, and the hunters who have antagonized Peter figure in the dénouement.",
-        poster: "https://image.tmdb.org/t/p/w780/jkJHVuvdzlL3KC8ehyemD3py6Eb.jpg",
-        thumbnail: "https://image.tmdb.org/t/p/original/2m2t4fnxy8iq2aq7rMkDaPOzcVG.jpg",
-        where: []
-    },
-    {
         url: "https://www.youtube.com/watch?v=lprss8wgkFA",
         title: "He Who Findeth",
         year: 2023,
