@@ -754,7 +754,6 @@ const movieDatabase = [
         where: []
     },
     {
-    {
         url: "https://www.youtube.com/watch?v=5x1-gBJxsgI\"",
         title: "Barbershop",
         year: 2002,
