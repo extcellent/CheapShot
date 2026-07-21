@@ -1,0 +1,45 @@
+name: Update Movie Ratings (TMDB)
+
+on:
+  schedule:
+    # Läuft jeden Montag und Donnerstag um 03:00 UTC (~alle 3-4 Tage)
+    - cron: "0 3 * * 1,4"
+  workflow_dispatch: {} # erlaubt manuelles Auslösen im "Actions"-Tab
+
+# Damit der Workflow per GITHUB_TOKEN pushen darf
+permissions:
+  contents: write
+
+jobs:
+  update-movies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Abhängigkeiten installieren
+        working-directory: scripts
+        run: npm install
+
+      - name: Filme aktualisieren
+        working-directory: .
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node scripts/update-movies.mjs
+
+      - name: Änderungen committen (falls vorhanden)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/movies-de.js public/movies-us.js 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen, kein Commit nötig."
+          else
+            git commit -m "chore: TMDB ratings/popularity automatisch aktualisiert"
+            git push
+          fi
