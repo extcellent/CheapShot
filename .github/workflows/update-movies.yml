@@ -20,17 +20,15 @@ jobs:
       - name: Node.js einrichten
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Abhängigkeiten installieren
-        working-directory: scripts
         run: npm install
 
       - name: Filme aktualisieren
-        working-directory: .
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        run: node scripts/update-movies.mjs
+        run: node update-movies.mjs
 
       - name: Änderungen committen (falls vorhanden)
         run: |
