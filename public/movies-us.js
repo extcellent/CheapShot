@@ -8682,7 +8682,7 @@ const movieDatabase = [
         poster: "https://m.media-amazon.com/images/M/MV5BMDdiNTZmZTEtZDU0Zi00Yzk5LWJjYjAtOGQzMDlmMmI1YTkzXkEyXkFqcGc@._V1_.jpg",
         backdrop: "",
         where: []
-    }
+    },
     {
         url: "https://www.youtube.com/watch?v=oRFnusuSAnQ",
         title: "Dog Soldiers",
