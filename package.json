@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "@vercel/functions": "^1.0.0"
+    "@vercel/functions": "^1.0.0",
+    "recast": "^0.23.12"
   }
 }
