@@ -1442,9 +1442,45 @@
             return str.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
         }
 
+        const GENRE_ALIASES = {
+            'sci-fi': 'Science Fiction',
+            'science fiction': 'Science Fiction',
+            "children's/family": 'Family',
+            "children's family": 'Family',
+            'kids': 'Family'
+        };
+
         function getMovieGenres(movie) {
             if (!movie.genre) return [];
-            return movie.genre.split(',').map(g => g.trim()).filter(Boolean);
+            return movie.genre.split(',')
+                .map(g => g.trim())
+                .filter(Boolean)
+                .map(g => GENRE_ALIASES[g.toLowerCase()] || g);
+        }
+
+        // Rating + Popularity/Votes + Aktualität statt reinem Rating —
+        // siehe streaming.html für die ausführliche Begründung.
+        function smartScore(movie, context = 'default') {
+            let score = movie.rating || 0;
+
+            if (movie.vote_count) {
+                const C = 300, m = 7.0;
+                score = (movie.vote_count / (movie.vote_count + C)) * (movie.rating || 0)
+                      + (C / (movie.vote_count + C)) * m;
+            }
+
+            if (movie.popularity) {
+                score += Math.min(1.0, movie.popularity / 200);
+            }
+
+            const age = new Date().getFullYear() - (parseInt(movie.year, 10) || new Date().getFullYear());
+            score += Math.max(0, (8 - age) * 0.04);
+
+            if (context === 'all' && getMovieGenres(movie).includes('Documentary')) {
+                score -= 1.2;
+            }
+
+            return score;
         }
 
         function getAllGenresSortedByPopularity(movieList) {
@@ -1482,7 +1518,10 @@
                 ? movies.slice()
                 : movies.filter(m => getMovieGenres(m).includes(currentGenreFilter));
 
-            filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+            filtered.sort((a, b) => {
+                const ctx = currentGenreFilter === 'All' ? 'all' : 'genre';
+                return smartScore(b, ctx) - smartScore(a, ctx);
+            });
 
             if (filtered.length === 0) {
                 grid.innerHTML = `<div class="movie-grid-empty">No movies found for "${currentGenreFilter}".</div>`;
