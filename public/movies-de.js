@@ -173,32 +173,7 @@ const topMoviesDatabase = [
     }
 ];
 
-// ============================================================
-// 📌  TOP 10 — PATTERN ZUM KOPIEREN (max. 10 Einträge):
-// ============================================================
-// {
-//     url: "https://www.youtube.com/watch?v=VIDEO_ID",
-//     title: "Movie Title",
-//     year: "2024",
-//     genre: "Action",
-//     rating: 8.5,
-//     duration: 128,                        // Laufzeit in Minuten oder null falls unbekannt
-//     director: "Regisseur Name",
-//     cast: ["Schauspieler 1", "Schauspieler 2", "Schauspieler 3"],
-//     desc: "Movie description...",
-//     poster: "poster-images/movie.png",   // optional, sonst YouTube-Thumbnail
-//     backdrop: "backdrops/movie.jpg",     // optional, sonst YouTube-Thumbnail
-//     where: [
-//         { name: "Netflix", url: "https://www.netflix.com/title/12345" },
-//         { name: "Amazon Prime Video", url: "https://www.amazon.de/dp/..." }
-//     ]
-// },
 
-
-// ============================================================
-// 🎬  ALLE ANDEREN FILME — automatische YouTube-Thumbnails,
-//     erscheinen als breite 16:9-Karten (wide card)
-// ============================================================
 const movieDatabase = [
     {
         url: "https://www.youtube.com/watch?v=6_IO-q5X6QQ",
@@ -210,9 +185,9 @@ const movieDatabase = [
         director: "Paris Barclay",
         cast: ["Shawn Wayans", "Marlon Wayans", "Tracey Cherelle Jones"],
         desc: "A parody of hood films where a young man navigates life in the hood.",
-        where: [
-            { name: "Netflix", url: "https://www.netflix.com/title/452508" }
-        ]
+        where: [{"name":"Netflix","url":"https://www.netflix.com/title/452508"}],
+        vote_count: 1530,
+        popularity: 5.1
     },
     {
         url: "https://www.youtube.com/watch?v=oRFnusuSAnQ",
@@ -225,7 +200,9 @@ const movieDatabase = [
         cast: ["Sean Pertwee", "Kevin McKidd", "Emma Cleasby", "Liam Cunningham"],
         desc: "A squad of British soldiers on a training exercise in the Scottish Highlands must fight for survival against a pack of werewolves.",
         thumbnail: "https://cinephiliabeyond.org/wp-content/uploads/2022/07/dogsoldiers.jpg?x16735",
-        where: []
+        where: [],
+        vote_count: 1005,
+        popularity: 3.1
     },
     {
         url: "https://www.youtube.com/watch?v=6BlWDPRiQ88",
@@ -237,7 +214,9 @@ const movieDatabase = [
         director: "Gus Van Sant",
         cast: ["Nicole Kidman", "Matt Dillon", "Joaquin Phoenix", "Casey Affleck"],
         desc: "An ambitious TV weathergirl manipulates a teenager into murdering her husband so nothing can stand in the way of her fame.",
-        where: []
+        where: [],
+        vote_count: 896,
+        popularity: 2.7
     },
     {
         url: "https://www.youtube.com/watch?v=DoCgEA22CMc",
@@ -250,7 +229,9 @@ const movieDatabase = [
         cast: ["Brad Pitt", "Angelina Jolie", "Vince Vaughn", "Adam Brody"],
         desc: "A bored married couple discovers they are both secretly assassins working for rival agencies, hired to kill each other.",
         thumbnail: "https://images5.alphacoders.com/112/thumb-1920-1121028.jpg",
-        where: []
+        where: [],
+        vote_count: 11317,
+        popularity: 7.7
     },
     {
         url: "https://www.youtube.com/watch?v=leEKHvCg7HE",
@@ -262,9 +243,9 @@ const movieDatabase = [
         director: "Dwight H. Little",
         cast: ["Donald Pleasence", "Ellie Cornell", "Danielle Harris"],
         desc: "Michael Myers escapes custody and returns to Haddonfield to hunt down his young niece, Jamie Lloyd.",
-        where: [
-            { name: "Amazon Prime Video", url: "https://www.justwatch.com/de/Film/Halloween-4-The-Return-of-Michael-Myers" }
-        ]
+        where: [{"name":"Amazon Prime Video","url":"https://www.justwatch.com/de/Film/Halloween-4-The-Return-of-Michael-Myers"}],
+        vote_count: 2077,
+        popularity: 3.4
     },
     {
         url: "https://www.youtube.com/watch?v=IWuZB53pDn4",
@@ -277,21 +258,23 @@ const movieDatabase = [
         cast: ["Ray Wise", "Jonathan Breck", "Nicki Aycox"],
         desc: "On the last day of its 23-day feeding cycle, the winged Creeper attacks a school bus full of stranded basketball players.",
         thumbnail: "https://w0.peakpx.com/wallpaper/300/472/HD-wallpaper-movie-jeepers-creepers.jpg",
-        where: []
+        where: [],
+        vote_count: 1839,
+        popularity: 5.2
     },
     {
         url: "https://www.youtube.com/watch?v=xbsBVEPtLFs",
         title: "Mr. Popper's Penguins",
         year: "2011",
         genre: "Comedy, Family, Fantasy",
-        rating: 6.0,
+        rating: 6,
         duration: 94,
         director: "Mark Waters",
         cast: ["Jim Carrey", "Carla Gugino", "Angela Lansbury"],
         desc: "A workaholic businessman inherits six penguins from his late father and they turn his life and career upside down.",
-        where: [
-            { name: "Netflix", url: "https://www.netflix.com/title/70178623" }
-        ]
+        where: [{"name":"Netflix","url":"https://www.netflix.com/title/70178623"}],
+        vote_count: 3197,
+        popularity: 4.3
     },
     {
         url: "https://www.youtube.com/watch?v=ROY1YDlYUNc",
@@ -303,9 +286,9 @@ const movieDatabase = [
         director: "Victor Salva",
         cast: ["Gina Philips", "Justin Long", "Jonathan Breck"],
         desc: "A brother and sister driving home for spring break are stalked by a mysterious, ancient creature feeding on the last day of its cycle.",
-        where: [
-            { name: "Netflix", url: "https://www.netflix.com/title/60020999" }
-        ]
+        where: [{"name":"Netflix","url":"https://www.netflix.com/title/60020999"}],
+        vote_count: 3338,
+        popularity: 5.8
     },
     {
         url: "https://www.youtube.com/watch?v=T6SJ8Y9VeIU",
@@ -318,7 +301,9 @@ const movieDatabase = [
         cast: ["Nicolas Cage", "Gary Sinise", "Carla Gugino"],
         desc: "A corrupt Atlantic City cop investigates the assassination of the Secretary of Defense during a championship boxing match.",
         thumbnail: "https://spoilertown.com/wp-content/uploads/2025/10/snake-eyes-1998.webp",
-        where: []
+        where: [],
+        vote_count: 1536,
+        popularity: 2.7
     },
     {
         url: "https://www.youtube.com/watch?v=XcQKx93cIik",
@@ -330,9 +315,9 @@ const movieDatabase = [
         director: "Dominique Othenin-Girard",
         cast: ["Donald Pleasence", "Danielle Harris", "Ellie Cornell"],
         desc: "A year after his last rampage, Michael Myers returns to Haddonfield to hunt down his traumatized, now-mute niece Jamie.",
-        where: [
-            { name: "Netflix", url: "https://www.netflix.com/title/60002050" }
-        ]
+        where: [{"name":"Netflix","url":"https://www.netflix.com/title/60002050"}],
+        vote_count: 1347,
+        popularity: 2.8
     },
     {
         url: "https://youtu.be/BGMzGHcjKvE",
@@ -345,7 +330,9 @@ const movieDatabase = [
         cast: ["Sean Faris", "Amber Heard", "Cam Gigandet", "Evan Peters", "Djimon Hounsou"],
         desc: "A frustrated teenager arrives at a new high school and discovers an underground fight club, finding a mentor in a mixed martial arts veteran.",
         thumbnail: "https://streamcoimg-a.akamaihd.net/000/406/7386/4067386-Banner-L2-0eaa0519dd357382c0bb2efc08dd6a76.jpg",
-        where: []
+        where: [],
+        vote_count: 2514,
+        popularity: 5.9
     },
     {
         url: "https://youtu.be/_w2ZVTmcdi8",
@@ -358,7 +345,9 @@ const movieDatabase = [
         cast: ["Hayden Christensen", "Samuel L. Jackson", "Rachel Bilson", "Jamie Bell"],
         desc: "A young man with teleportation abilities finds himself in the middle of an ancient war between those like him and their sworn enemies.",
         thumbnail: "https://m.media-amazon.com/images/S/pv-target-images/b25957bdb9717637145c6a4f074386b909aa1639440031191dddeedcc17d03f7._SX1080_FMjpg_.jpg",
-        where: []
+        where: [],
+        vote_count: 6291,
+        popularity: 5.8
     },
     {
         url: "https://youtu.be/SEIqCe_0OX0",
@@ -371,7 +360,9 @@ const movieDatabase = [
         cast: ["Vin Diesel", "Asia Argento", "Marton Csokas", "Samuel L. Jackson"],
         desc: "An extreme sports athlete is recruited by the NSA to infiltrate a Russian crime ring and stop their plans to unleash a weapon of mass destruction.",
         thumbnail: "https://images.alphacoders.com/791/thumb-1920-791200.jpg",
-        where: []
+        where: [],
+        vote_count: 4964,
+        popularity: 16.3
     },
     {
         url: "https://youtu.be/Jl7n213ZPT0",
@@ -384,7 +375,9 @@ const movieDatabase = [
         cast: ["Cameron Diaz", "Justin Timberlake", "Jason Segel", "Lucy Punch"],
         desc: "A lazy, incompetent middle school teacher is forced to return to teaching to make enough money for breast implants after her wealthy fiancé dumps her.",
         thumbnail: "https://images6.alphacoders.com/653/thumb-1920-653693.jpg",
-        where: []
+        where: [],
+        vote_count: 4987,
+        popularity: 5.2
     },
     {
         url: "https://youtu.be/HwZSh-l4Aqw",
@@ -397,7 +390,9 @@ const movieDatabase = [
         cast: ["James Franco", "Seth Rogen", "Randall Park", "Lizzy Caplan"],
         desc: "A talk show host and his producer discover that they have been recruited to assassinate the leader of North Korea during an interview.",
         thumbnail: "https://images7.alphacoders.com/676/thumb-1920-676115.jpg",
-        where: []
+        where: [],
+        vote_count: 6284,
+        popularity: 5.3
     },
     {
         url: "https://youtu.be/a8MOVVPYW_M",
@@ -409,7 +404,9 @@ const movieDatabase = [
         director: "Adam Shankman",
         cast: ["Jennifer Lopez", "Matthew McConaughey", "Bridgette Wilson-Sampras", "Justin Chambers"],
         desc: "A successful wedding planner finds herself falling for a handsome doctor, only to discover that he is about to marry one of her clients.",
-        where: []
+        where: [],
+        vote_count: 1830,
+        popularity: 2.8
     },
     {
         url: "https://youtu.be/sNBHqbOzv_Q",
@@ -422,7 +419,9 @@ const movieDatabase = [
         cast: ["Michael Jai White", "Neal McDonough", "Laila Ali", "Jimmy Navarro"],
         desc: "A traumatized former Marine operative travels to the favelas of Rio de Janeiro to investigate a brutal attack on his sister, uncovering a dangerous web of police corruption and international crime syndicates.",
         thumbnail: "https://img.joyn.de/mas-prod/assets/b_pnae8fmxk7o/HERO_LANDSCAPE-726d9812.jpeg/profile:nextgen-web-herolandscape-1920x",
-        where: []
+        where: [],
+        vote_count: 390,
+        popularity: 2.1
     },
     {
         url: "https://youtu.be/zu8CSX0lwhE",
@@ -434,7 +433,9 @@ const movieDatabase = [
         director: "Nima Nourizadeh",
         cast: ["Thomas Mann", "Oliver Cooper", "Jonathan Daniel Brown", "Dax Flame"],
         desc: "Three high school seniors throw a party that quickly spirals out of control, turning their quiet neighborhood into a chaotic warzone.",
-        where: []
+        where: [],
+        vote_count: 6910,
+        popularity: 8.2
     },
     {
         url: "https://youtu.be/1hQqv7YjyoA",
@@ -447,19 +448,23 @@ const movieDatabase = [
         cast: ["Jason Statham", "50 Cent", "Megan Fox", "Dolph Lundgren", "Tony Jaa", "Sylvester Stallone"],
         desc: "Armed with every weapon they can get their hands on, the Expendables are the world's last line of defense when all other options are off the table.",
         thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9RyyiD5I3U-5kbYvvkPEOL04qiqqjYKbStkcGgjGydAEkPGULMz8GSbnl&s=10",
-        where: []
+        where: [],
+        vote_count: 1928,
+        popularity: 7.2
     },
     {
         url: "https://youtu.be/QFgbAJbfz28",
         title: "Death Proof",
         year: "2007",
         genre: "Action, Thriller",
-        rating: 7.0,
+        rating: 7,
         duration: 113,
         director: "Quentin Tarantino",
         cast: ["Kurt Russell", "Zoë Bell", "Rosario Dawson", "Vanessa Ferlito", "Mary Elizabeth Winstead"],
         desc: "A psychotic stuntman stalks and murders young women using his 'death-proof' car, but his plans are disrupted when he targets a group of fearless friends.",
-        where: []
+        where: [],
+        vote_count: 5683,
+        popularity: 4.9
     },
     {
         url: "https://youtu.be/g3ecBMZYbEM",
@@ -472,19 +477,23 @@ const movieDatabase = [
         cast: ["Dolph Lundgren", "Louis Gossett Jr.", "Jeroen Krabbé", "Kim Miyori"],
         desc: "A vigilante wages a one-man war on the Mafia and Yakuza after his family is killed by a mob bombing, using his military skills to deliver brutal justice.",
         thumbnail: "https://www.acmodasi.in/amdb/images/movie/w1920/0/88/the-punisher-1989-126621.webp",
-        where: []
+        where: [],
+        vote_count: 693,
+        popularity: 3.4
     },
     {
         url: "https://youtu.be/sx8pViXxZQg",
         title: "Big Stan",
         year: "2007",
         genre: "Comedy, Crime",
-        rating: 6.0,
+        rating: 6,
         duration: 97,
         director: "Rob Schneider",
         cast: ["Rob Schneider", "David Carradine", "Jennifer Morrison", "Scott Wilson"],
         desc: "A con artist sentenced to prison hires a martial arts master to help him survive, and he soon becomes the prison's unlikely peacekeeper against a corrupt warden.",
-        where: []
+        where: [],
+        vote_count: 1067,
+        popularity: 4.7
     },
     {
         url: "https://youtu.be/rwsGIPTDB0o",
@@ -497,7 +506,9 @@ const movieDatabase = [
         cast: ["Michael Jai White", "Eamonn Walker", "Julian Sands", "Dante Basco"],
         desc: "In Los Angeles, an ex-con takes the underground fighting world by storm in his quest to fulfill a promise to a dead friend.",
         thumbnail: "https://wallpapercave.com/wp/wp10179582.jpg",
-        where: []
+        where: [],
+        vote_count: 907,
+        popularity: 3.6
     },
     {
         url: "https://youtu.be/urf7dasypWU",
@@ -510,7 +521,9 @@ const movieDatabase = [
         cast: ["Jesse Eisenberg", "Mark Ruffalo", "Woody Harrelson", "Isla Fisher", "Dave Franco", "Morgan Freeman", "Michael Caine"],
         desc: "An FBI agent and an Interpol detective track a team of illusionists who pull off bank heists during their performances and reward their audiences with the money.",
         thumbnail: "https://wallpapercat.com/w/full/a/a/e/357543-3840x2160-desktop-4k-now-you-see-me-background-photo.jpg",
-        where: []
+        where: [],
+        vote_count: 16909,
+        popularity: 9.4
     },
     {
         url: "https://youtu.be/3OtmHQE6T2s",
@@ -522,7 +535,9 @@ const movieDatabase = [
         director: "Max Winkler",
         cast: ["Zoey Deutch", "Kathryn Hahn", "Tim Heidecker", "Adam Scott", "Joey Morgan"],
         desc: "A rebellious teen blackmails older men for money to bail out her father, but a plan for revenge against her mother's boyfriend takes an unexpected and dangerous turn.",
-        where: []
+        where: [],
+        vote_count: 284,
+        popularity: 1.1
     },
     {
         url: "https://youtu.be/DcxVA2YxLjw",
@@ -534,7 +549,9 @@ const movieDatabase = [
         director: "André Øvredal",
         cast: ["Zoe Margaret Colletti", "Michael Garza", "Gabriel Rush", "Austin Zajur", "Dean Norris", "Gil Bellows"],
         desc: "In 1968, a group of teenagers discover a book of terrifying stories that begin to come true, and they must find a way to stop the evil force behind them.",
-        where: []
+        where: [],
+        vote_count: 2892,
+        popularity: 4.5
     },
     {
         url: "https://youtu.be/CiqSiMGLclw",
@@ -546,7 +563,9 @@ const movieDatabase = [
         director: "Charles Stone III",
         cast: ["Wood Harris", "Mekhi Phifer", "Kevin Carroll", "Carla Gugino", "Cam'ron"],
         desc: "A young man rises to the top of the cocaine industry in Harlem during the 1980s, but his success comes at a devastating cost to himself and his friends.",
-        where: []
+        where: [],
+        vote_count: 246,
+        popularity: 1.8
     },
     {
         url: "https://youtu.be/fbuQT7MSM04",
@@ -559,7 +578,9 @@ const movieDatabase = [
         cast: ["Jason Statham", "David Harbour", "Michael Peña", "Jason Flemyng", "Arianna Rivas"],
         desc: "A former military operative living a quiet life as a construction worker must use his skills to rescue his boss's daughter after she is kidnapped by a human trafficking ring.",
         thumbnail: "https://images8.alphacoders.com/139/thumb-1920-1395596.jpg",
-        where: []
+        where: [],
+        vote_count: 1997,
+        popularity: 14.7
     },
     {
         url: "https://youtu.be/qvZHepVKj-Q",
@@ -572,7 +593,9 @@ const movieDatabase = [
         cast: ["John Travolta", "Jonathan Rhys Meyers", "Kasia Smutniak", "Richard Durden"],
         desc: "A low-level CIA operative working at the US Embassy in Paris teams up with a high-ranking, unorthodox American secret agent to stop a massive terrorist attack in the city.",
         thumbnail: "https://images.alphacoders.com/802/thumb-1920-802768.jpg",
-        where: []
+        where: [],
+        vote_count: 2369,
+        popularity: 6
     },
     {
         url: "https://youtu.be/ciICU2bKz8A",
@@ -584,20 +607,24 @@ const movieDatabase = [
         director: "Ben C. Lucas",
         cast: ["Jessica De Gouw", "Thomas Cocquerel", "T.J. Power", "Liam Graham"],
         desc: "A tech innovator creates a revolutionary virtual reality drug that allows users to experience hours of 'other life' in mere minutes, but she soon discovers a dark and dangerous side effect.",
-        where: []
+        where: [],
+        vote_count: 475,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=UnTb9y1ubeU",
         title: "Underworld",
         year: "2003",
         genre: "Action, Fantasy, Thriller",
-        rating: 7.0,
+        rating: 7,
         duration: 121,
         director: "Len Wiseman",
         cast: ["Kate Beckinsale", "Scott Speedman", "Michael Sheen", "Shane Brolly", "Bill Nighy"],
         desc: "A vampire warrior falls for a human caught in the centuries-old war between vampires and werewolves.",
         thumbnail: "https://images5.alphacoders.com/795/thumb-1920-795161.jpg",
-        where: []
+        where: [],
+        vote_count: 6659,
+        popularity: 5.5
     },
     {
         url: "https://www.youtube.com/watch?v=PBNcURn72uc",
@@ -611,7 +638,9 @@ const movieDatabase = [
         desc: "Paul Morse is a good guy. When his friends throw him a wild bachelor party, he just wants to keep his conscience clean -- which is why he's shocked when he wakes up in bed with a beautiful girl named Becky and can't remember the night before. Desperate to keep his fiancée, Karen, from finding out what may or may not be the truth, he tells her a teensy lie. Soon his lies are spiraling out of control and his life is a series of comical misunderstandings.",
         poster: "https://image.tmdb.org/t/p/w780/wWiPuP1wMW32pjX8Q9TEj69TxWI.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/uREKWDkU33hYHJXVH23fxFkj6UX.jpg",
-        where: []
+        where: [],
+        vote_count: 391,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=OzG1BrNWSq0",
@@ -625,7 +654,9 @@ const movieDatabase = [
         desc: "A mother falls for a younger man while her daughter falls in love for the first time.",
         poster: "https://image.tmdb.org/t/p/w780/kL5krXuuIqIxoMRJ96KWMZbhvPU.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/3DqyxUlCflBV6SNd4Ihg98xZs3n.jpg",
-        where: []
+        where: [],
+        vote_count: 464,
+        popularity: 2
     },
     {
         url: "https://www.youtube.com/watch?v=cCZqNRc3olg",
@@ -639,7 +670,9 @@ const movieDatabase = [
         desc: "Manhattan explores how the life of a middle-aged television writer dating a teenage girl is further complicated when he falls in love with his best friend's mistress.",
         poster: "https://image.tmdb.org/t/p/w780/k4eT3EvfxW1L9Wmt04UqJqCvCR6.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/ucjjCZaR2t6kcFU3t7ssRyqdVrV.jpg",
-        where: []
+        where: [],
+        vote_count: 2640,
+        popularity: 2.6
     },
     {
         url: "https://www.youtube.com/watch?v=RSiLQQd4dss",
@@ -653,7 +686,9 @@ const movieDatabase = [
         desc: "Mercenary soldiers Jamie and Drew are hired by a large corporation to liberate Zangaro, a small African nation, from an despot. Havoc ensues.",
         poster: "https://image.tmdb.org/t/p/w780/zAVFOLcjqYoEDYBF7UPNY4DIV2I.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8KgSYBgPfigVuLaleEQi2YinmEC.jpg",
-        where: []
+        where: [],
+        vote_count: 173,
+        popularity: 1.1
     },
     {
         url: "https://www.youtube.com/watch?v=7Z-igbaDWuQ",
@@ -667,7 +702,9 @@ const movieDatabase = [
         desc: "A cunning and resourceful housewife vows revenge on her husband when he begins an affair with a wealthy romance novelist.",
         poster: "https://image.tmdb.org/t/p/w780/jWYAXtdYF804aT1muO0G6FuR2Fa.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/yIiLycduASwtOC5ejceOxQzFZJV.jpg",
-        where: []
+        where: [],
+        vote_count: 433,
+        popularity: 2.1
     },
     {
         url: "https://www.youtube.com/watch?v=qE_SChUxBrs",
@@ -681,7 +718,9 @@ const movieDatabase = [
         desc: "A computer genius invents an A.I life coach to help him find love, but realizes too late he accidentally programmed his manipulative mother into the code.",
         poster: "https://image.tmdb.org/t/p/w780/vCjaL0KXxcHYq2tMLncceE8m6S1.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/oE5czy0nsAI8G89okzrH3Vfy7lo.jpg",
-        where: []
+        where: [],
+        vote_count: 30,
+        popularity: 1.4
     },
     {
         url: "https://www.youtube.com/watch?v=v0qMqnHgf9k",
@@ -695,7 +734,9 @@ const movieDatabase = [
         desc: "A seemingly perfect suburban housewife's life collapses as she starts malfunctioning, revealing her true android nature. As the glitches worsen, she becomes a threat to her family.",
         poster: "https://image.tmdb.org/t/p/w780/iI6HJL5NZz6bejcRTlshISrJ9xx.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/xOERaCrBqV8bw4N3Z7yKGrgPm04.jpg",
-        where: []
+        where: [],
+        vote_count: 16,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=bPAG-eY6hL8",
@@ -709,7 +750,9 @@ const movieDatabase = [
         desc: "American Matt Quigley answers Australian land baron Elliott Marston's ad for a sharpshooter to kill the dingoes on his property. But when Quigley finds out that Marston's real target is the aborigines, Quigley hits the road. Now, even American expatriate Crazy Cora can't keep Quigley safe in his cat-and-mouse game with the homicidal Marston.",
         poster: "https://image.tmdb.org/t/p/w780/sRgeovNyj1pARroKclXzJhOwPbW.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/vFAXyrTEluAKvcvcFXSf5fq9Qa0.jpg",
-        where: []
+        where: [],
+        vote_count: 429,
+        popularity: 2.3
     },
     {
         url: "https://www.youtube.com/watch?v=jNvDD6KPEko",
@@ -723,7 +766,9 @@ const movieDatabase = [
         desc: "The life of a teenage boy is forever altered by a chance encounter with cutting edge military technology.",
         poster: "https://image.tmdb.org/t/p/w780/9kB56ZdMB6RgY5QtX9Bar45jCeI.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2PCcEJ1lUJgir598yMGXkluJa6y.jpg",
-        where: []
+        where: [],
+        vote_count: 1273,
+        popularity: 2.7
     },
     {
         url: "https://www.youtube.com/watch?v=hQcb_tqYhMU",
@@ -737,7 +782,9 @@ const movieDatabase = [
         desc: "Following a ridiculously awful flight that leads to his pet's death, Nashawn Wade files a lawsuit against the airline, and wins a multimillion-dollar settlement. Determined to create a better flying experience, Nashawn starts his own airline, one that caters to an African-American clientele. Going into business with a tricked-out plane piloted by the smooth Capt. Mack, the airline hits a snag when it has to deal with the family of Elvis Hunkee.",
         poster: "https://image.tmdb.org/t/p/w780/b5Rzb5JUwPinllWGYUYER3OV14F.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/uYppahqnT4n0OlGf1BoeP8ADoS1.jpg",
-        where: []
+        where: [],
+        vote_count: 509,
+        popularity: 2.6
     },
     {
         url: "https://www.youtube.com/watch?v=5x1-gBJxsgI",
@@ -751,7 +798,9 @@ const movieDatabase = [
         desc: "A day in the life of a barbershop on the south side of Chicago. Calvin, who inherited the struggling business from his deceased father, views the shop as nothing but a burden and waste of his time. After selling the shop to a local loan shark, Calvin slowly begins to see his father's vision and legacy and struggles with the notion that he just sold it out.",
         poster: "https://image.tmdb.org/t/p/w780/up8cEgEsl2Dq5Djb9lMZYBK0s84.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/suMOf1KQFyEhzTXakHfu5TRRPjV.jpg",
-        where: []
+        where: [],
+        vote_count: 543,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=bmu-GrJDQGY",
@@ -765,7 +814,9 @@ const movieDatabase = [
         desc: "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other.",
         poster: "https://image.tmdb.org/t/p/w780/zhG3vKWyDRaZYoaww1UVAi29T9h.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/p1nBxgrSu9Ex0Uvci1ItWWCWPlk.jpg",
-        where: []
+        where: [],
+        vote_count: 10130,
+        popularity: 17.7
     },
     {
         url: "https://www.youtube.com/watch?v=-8-9IdIiXCI",
@@ -779,7 +830,9 @@ const movieDatabase = [
         desc: "Three teenage girls come of age while working at a pizza parlor in Mystic, Connecticut.",
         poster: "https://image.tmdb.org/t/p/w780/2wqMKLJEMjenT7U8UqnuI070cUC.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/auPhV7cBaQH1j0kj4qd1VDe6rCE.jpg",
-        where: []
+        where: [],
+        vote_count: 586,
+        popularity: 2.3
     },
     {
         url: "https://www.youtube.com/watch?v=IDLyQQHVhf4",
@@ -793,7 +846,9 @@ const movieDatabase = [
         desc: "A joyous family reunion becomes a hilarious nightmare as Madea and the crew travel to backwoods Georgia, where they find themselves unexpectedly planning a funeral that might unveil unpleasant family secrets.",
         poster: "https://image.tmdb.org/t/p/w780/sFvOTUlZrIxCLdmz1fC16wK0lme.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/koKkLTcYGqEupfR2oFzq7SCnQIT.jpg",
-        where: []
+        where: [],
+        vote_count: 493,
+        popularity: 2.5
     },
     {
         url: "https://www.youtube.com/watch?v=DLGyBpOts4Y",
@@ -807,7 +862,9 @@ const movieDatabase = [
         desc: "Failed college coach Norman Dale gets a chance at redemption when he is hired to coach a high school basketball team in a tiny Indiana town. After a teacher persuades star player Jimmy Chitwood to quit and focus on his long-neglected studies, Dale struggles to develop a winning team in the face of community criticism for his temper and his unconventional choice of assistant coach: Shooter, a notorious alcoholic.",
         poster: "https://image.tmdb.org/t/p/w780/dHpjZQXEdoi1xNLubM1rPmTHJYz.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/sz31PrTT4ZyJn2gbzHdxTilt1md.jpg",
-        where: []
+        where: [],
+        vote_count: 595,
+        popularity: 2.1
     },
     {
         url: "https://www.youtube.com/watch?v=8qO-BC5-j2Y",
@@ -821,7 +878,9 @@ const movieDatabase = [
         desc: "Between two Thanksgivings, Hannah's husband falls in love with her sister Lee, while her hypochondriac ex-husband rekindles his relationship with her sister Holly.",
         poster: "https://image.tmdb.org/t/p/w780/gARgIRb2QFRFVrsziwWE389u1pK.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/b9lgrFVKQnaNIunMaQOVq9kEH3C.jpg",
-        where: []
+        where: [],
+        vote_count: 1183,
+        popularity: 3.2
     },
     {
         url: "https://www.youtube.com/watch?v=qir5ucQKQ9w",
@@ -835,7 +894,9 @@ const movieDatabase = [
         desc: "Buck Weaver and Hap Felsch are young idealistic players on the Chicago White Sox, a pennant-winning team owned by Charles Comiskey -  a penny-pinching, hands-on manager who underpays his players and treats them with disdain. And when gamblers and hustlers discover that Comiskey's demoralized players are ripe for a money-making scheme, one by one the team members agree to throw the World Series. But when the White Sox are defeated, a couple of sports writers smell a fix and a national scandal explodes, ripping the cover off America's favorite pastime.",
         poster: "https://image.tmdb.org/t/p/w780/9nh0w2C9h9KfJb0OsVg65O65b5s.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/w6tucmH3jVOAP9mDF6bbEJBIasE.jpg",
-        where: []
+        where: [],
+        vote_count: 275,
+        popularity: 1.6
     },
     {
         url: "https://www.youtube.com/watch?v=0lwC3A8DQcg",
@@ -849,7 +910,9 @@ const movieDatabase = [
         desc: "When a recently fired policeman falls in love with a French prostitute, he doesn't want her to be with other men, so he creates an alter-ego in order to become her only customer.",
         poster: "https://image.tmdb.org/t/p/w780/5TgL8ql6WwXWmX4EvBL4geJ7gx5.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/9A0sv4DCV4Etln5zkFjJwEivfKb.jpg",
-        where: []
+        where: [],
+        vote_count: 481,
+        popularity: 2.2
     },
     {
         url: "https://www.youtube.com/watch?v=IutjP7pMQVg",
@@ -863,7 +926,9 @@ const movieDatabase = [
         desc: "Jiaolian [Coach] is the story of 27 year-old Norman De Silva, an American who overnight becomes the head coach of a professional Chinese basketball team.",
         poster: "https://image.tmdb.org/t/p/w780/vgOFAME8gUO0cTTpf9e3PJjsQWm.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=F8pM6Lq1R9I",
@@ -877,7 +942,9 @@ const movieDatabase = [
         desc: "With a serial strangler on the loose, a bookkeeper wanders around town searching for the vigilante group intent on catching the killer.",
         poster: "https://image.tmdb.org/t/p/w780/6Ybi2u1TSOTpAocZAGJl2WThq11.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/rDEpYLCaBoFeRyLv5v1Y5JDoqCh.jpg",
-        where: []
+        where: [],
+        vote_count: 402,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=Df7Z2sAuP5M",
@@ -891,7 +958,9 @@ const movieDatabase = [
         desc: "A village in the French Alps is rocked by a series of crimes, including the theft of a sacred ring and the murder of a man dressed as Père Noël (Father Christmas).",
         poster: "https://image.tmdb.org/t/p/w780/xScDM79VloXlS53zZHiiHgl0add.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/sY6Ktz0IpUmqzgLIlMO5UDailOo.jpg",
-        where: []
+        where: [],
+        vote_count: 23,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=kcZRNrDRRDo",
@@ -905,7 +974,9 @@ const movieDatabase = [
         desc: "Drama/Comedy set in a refugee camp in occupied Austria after World War II. A shrewd multi-lingual interpreter who mediates between Russian and British military brass enters into a friendly rivalry with British Major Giles Burnside, who is in charge of assigning the displaced persons into either the American or Russian zones.",
         poster: "https://image.tmdb.org/t/p/w780/a6gHde5nLjNnGKjKt4N25qREU0b.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/glEDVUoOOa7ABKPfm9VBNXfgqqa.jpg",
-        where: []
+        where: [],
+        vote_count: 14,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=MoIVOhGKlWs",
@@ -919,7 +990,9 @@ const movieDatabase = [
         desc: "A widowed field mouse must move her family -- including an ailing son -- to escape a farmer's plow. Aided by a crow and a pack of superintelligent, escaped lab rats, the brave mother struggles to transplant her home to firmer ground.",
         poster: "https://image.tmdb.org/t/p/w780/prNrnOKlkV9wl5Sl3zwHu1f3t2z.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/4Q0C49l6KkRbnVlE3N86IljtAXH.jpg",
-        where: []
+        where: [],
+        vote_count: 954,
+        popularity: 3.5
     },
     {
         url: "https://www.youtube.com/watch?v=Fg7AHLAJF1U",
@@ -933,7 +1006,9 @@ const movieDatabase = [
         desc: "Nicholas Nickleby, a young boy in search of a better life, struggles to save his family and friends from the abusive exploitation of his coldheartedly grasping uncle.",
         poster: "https://image.tmdb.org/t/p/w780/uLilCY2We3Ore9Ke7CdafntHvmT.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/ewGIMcaeNITw9DzxIc7KzLwHaNS.jpg",
-        where: []
+        where: [],
+        vote_count: 196,
+        popularity: 2.2
     },
     {
         url: "https://www.youtube.com/watch?v=Pt_pYLdLtxk",
@@ -947,7 +1022,9 @@ const movieDatabase = [
         desc: "Free Burma Rangers is a documentary film exploring the extraordinary 20-year journey of missionaries Dave and Karen Eubank. The film follows Dave, Karen, and their three young children, as they venture into war zones where they are fighting to bring hope.",
         poster: "https://image.tmdb.org/t/p/w780/mgltMVHOaHxfdatLNCqKUdSCT0y.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 11,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=zLeTaXu-C70",
@@ -959,9 +1036,11 @@ const movieDatabase = [
         director: "Woody Allen",
         cast: ["Mia Farrow", "Sam Waterston", "Dianne Wiest", "Elaine Stritch", "Jack Warden", "Denholm Elliott"],
         desc: "After a suicide attempt, Lane moves into her country house in Vermont to recuperate. Over a single weekend, a group of friends and family gather, and hidden feelings, unrequited love, and a painful family secret come to light as they all confront their emotional struggles.",
-        poster: "https://image.tmdb.org/t/p/w780/6qVa1DpPVu0Fpe2zyGkamR4Feok.jpg",      
+        poster: "https://image.tmdb.org/t/p/w780/6qVa1DpPVu0Fpe2zyGkamR4Feok.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 212,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=_TguPEgMDeI",
@@ -975,7 +1054,9 @@ const movieDatabase = [
         desc: "Vivien, an accomplished student with a passion for physics, and Roy, a troubled young man, are involved in an accident that forces them to reclaim their lives one minute at the time.",
         poster: "https://image.tmdb.org/t/p/w780/dxWHyMY4HoXH8LiEhYlga2OtK5B.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/6kb9jQ4U1KMtyPYZDgFgvc7qHmL.jpg",
-        where: []
+        where: [],
+        vote_count: 729,
+        popularity: 1.3
     },
     {
         url: "https://www.youtube.com/watch?v=gGZaKlg3Q2c",
@@ -989,7 +1070,9 @@ const movieDatabase = [
         desc: "Actress Maggie's world collapses when her director husband is outed by the paparazzi when it’s discovered his new leading lady is pregnant with his baby. Seeking solace and healing, Maggie escapes to her ex-pat cousin’s beautiful hotel in Nevis. After a week in paradise, she discovers herself and meets a new love interest. Then reality comes crashing back in.",
         poster: "https://image.tmdb.org/t/p/w780/dYmlqJeBkO2B9Aa2VCbzETtCS9X.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/iRJc5Uy2wUPu2ruzzooPXjEzcHk.jpg",
-        where: []
+        where: [],
+        vote_count: 12,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=xsER1cThtqY",
@@ -1003,7 +1086,9 @@ const movieDatabase = [
         desc: "In czarist Russia, a neurotic soldier and his distant cousin formulate a plot to assassinate Napoleon.",
         poster: "https://image.tmdb.org/t/p/w780/oJXFd1UHZoOQ1UtoLxbyBLGJDox.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/anMnNQ6fTK6y0Y0HnC6UMMBo7HO.jpg",
-        where: []
+        where: [],
+        vote_count: 978,
+        popularity: 1.9
     },
     {
         url: "https://www.youtube.com/watch?v=d69I1vl5d7M",
@@ -1017,7 +1102,9 @@ const movieDatabase = [
         desc: "A curious college student travels to Haiti to unravel the life of the president. What she finds is...unspeakable. While investigating the past of President Moïse for a memoir, Shedeline walks into the heart of a life-changing event for her, Haiti, and its president; as she gets a front-row seat to the chaos and intrigue of a bloody political firestorm. This unexpected turn of events shakes her and introduces a terrifying twist to what she thought would be an ordinary story. Now, her memory is heavy with the answer to the prodigious question hanging over an unsettled nation. Who killed the president?",
         poster: "https://image.tmdb.org/t/p/w780/188sMXV200ntkfg6WkKtIAFSb3r.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mV31zf1vgd6un04uJt8bDnWjnYY.jpg",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=DEOu3XuoJ1c",
@@ -1031,7 +1118,9 @@ const movieDatabase = [
         desc: "After the early death of his wife, a mourning father moves with his teenage son across the country for a private school teaching job. Their lives begin to transform due to two unique women, who help them embrace life and love again",
         poster: "https://image.tmdb.org/t/p/w780/yAwoDmcLFuZxg5bHzYgRexYhykm.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/aUhyPlj1ci8cJCt8DnbTlBrMPkA.jpg",
-        where: []
+        where: [],
+        vote_count: 179,
+        popularity: 1.4
     },
     {
         url: "https://www.youtube.com/watch?v=UOxcaS1s16M",
@@ -1045,7 +1134,9 @@ const movieDatabase = [
         desc: "The film deals with the filming of an episode of the series with storylines that take place both within the fiction with the characters of 'Aída' and outside of it with the actors themselves and their relationships, which reflects on topics such as the limits of comedy, the work of a comedian and fame.",
         poster: "https://image.tmdb.org/t/p/w780/h4QnoqmMPS50U7m1XByw29CJ1ws.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1tC0rMYwIqTplk3B3tlJ8oAFvPW.jpg",
-        where: []
+        where: [],
+        vote_count: 73,
+        popularity: 2.9
     },
     {
         url: "https://www.youtube.com/watch?v=NsWx1EJMT2U",
@@ -1059,7 +1150,9 @@ const movieDatabase = [
         desc: "Con man Ray is going after one last heist – a stash of rare coins – when his estranged son Timmy unexpectedly shows up. Ray is too preoccupied with his robbery to spend time with his son, so Timmy blackmails him into acting like a father, hiding the coins and promises to return them only after Ray takes him to amusement parks and baseball games.",
         poster: "https://image.tmdb.org/t/p/w780/txsmdQqbgSz5Zu3rgd9fglMqKA4.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/570uxNdyVeeeEQ8Hi8R0tFJPomJ.jpg",
-        where: []
+        where: [],
+        vote_count: 219,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=qujhX-Zu4SU",
@@ -1073,7 +1166,9 @@ const movieDatabase = [
         desc: "On the set of a playwright's new project, a love triangle forms between his wife, her ex-lover, and the call girl-turned-actress cast in the production.",
         poster: "https://image.tmdb.org/t/p/w780/2FiZVfwz27bvMROkud3dlFyE8uA.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/hGnbcFjR5xOXBUIeZJc4WkUDHaT.jpg",
-        where: []
+        where: [],
+        vote_count: 717,
+        popularity: 2.3
     },
     {
         url: "https://www.youtube.com/watch?v=NoihHJprHP0",
@@ -1087,7 +1182,9 @@ const movieDatabase = [
         desc: "Veteran catcher Crash Davis is brought to the minor league Durham Bulls to help their up and coming pitching prospect, \"Nuke\" Laloosh. Their relationship gets off to a rocky start and is further complicated when baseball groupie Annie Savoy sets her sights on the two men.",
         poster: "https://image.tmdb.org/t/p/w780/q3T9bO6p74NcTxWOhdUA6fASQ5T.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/gC00PJ6HViqgbbkb7ArAFB7geZ6.jpg",
-        where: []
+        where: [],
+        vote_count: 683,
+        popularity: 2.5
     },
     {
         url: "https://www.youtube.com/watch?v=MuKMiHmmugs",
@@ -1101,7 +1198,9 @@ const movieDatabase = [
         desc: "In order to save her home publishing company from being sold, ghostwriter Becca must go all the way to Arcania with famed action star Lee to secure movie rights to the popular “Lover’s Quest“ series written by acclaimed writing duo, Roger and Lilly Atwood. But their trip becomes an adventure when they find themselves on the trail of the legendary last Atwood novel and perhaps even the trail of…love.",
         poster: "https://image.tmdb.org/t/p/w780/res7pEuAoosoUWQ1ekAi7a5IKe9.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/9s7e10dvceSXTpmiAZK62vvbj4Q.jpg",
-        where: []
+        where: [],
+        vote_count: 10,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=KITdGzyTsA4",
@@ -1115,7 +1214,9 @@ const movieDatabase = [
         desc: "Adventurer/surgeon/rock musician Buckaroo Banzai and his band of men, the Hong Kong Cavaliers, take on evil alien invaders from the 8th dimension.",
         poster: "https://image.tmdb.org/t/p/w780/jWZh2ChereoxKgTl3AmSAKNpnmO.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/w0WrR8lfSevBUWC6jStdz8s6w8e.jpg",
-        where: []
+        where: [],
+        vote_count: 498,
+        popularity: 2.6
     },
     {
         url: "https://www.youtube.com/watch?v=pAYHJ-5_sAk",
@@ -1129,7 +1230,9 @@ const movieDatabase = [
         desc: "Aging King George III of England is exhibiting signs of madness, a problem little understood in 1788. As the monarch alternates between bouts of confusion and near-violent outbursts of temper, his hapless doctors attempt the ineffectual cures of the day. Meanwhile, Queen Charlotte and Prime Minister William Pitt the Younger attempt to prevent the king's political enemies, led by the Prince of Wales, from usurping the throne.",
         poster: "https://image.tmdb.org/t/p/w780/1dTSY023ZyBbgVSKDRuA6JLGSnZ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2Rf6jQMHGDZpzoeoNdBLbCyRCK7.jpg",
-        where: []
+        where: [],
+        vote_count: 260,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=pkevYsUnirY",
@@ -1143,7 +1246,9 @@ const movieDatabase = [
         desc: "Bullied at school and ignored and abused at home by his indifferent mother and older brother, Billy Casper, a 15-year-old working-class Yorkshire boy, tames and trains his pet kestrel falcon whom he names Kes. Helped and encouraged by his English teacher and his fellow students, Billy finally finds a positive purpose to his unhappy existence.",
         poster: "https://image.tmdb.org/t/p/w780/r1FMq75irhsQBVGjXhPU4xA9SDo.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fBjYZ7nLEEpQ6WzzCMOSk0i8kiv.jpg",
-        where: []
+        where: [],
+        vote_count: 444,
+        popularity: 1.4
     },
     {
         url: "https://www.youtube.com/watch?v=5eGG-wFdyxo",
@@ -1157,7 +1262,9 @@ const movieDatabase = [
         desc: "Two paintings are stolen. Amateur private detective Roland Gautier investigates.",
         poster: "https://image.tmdb.org/t/p/w780/kP9lqupcsgXoEp4tauXP0zx8l44.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 1.1
     },
     {
         url: "https://www.youtube.com/watch?v=BiWVz9Yffs4",
@@ -1171,7 +1278,9 @@ const movieDatabase = [
         desc: "Hrundi V. Bakshi, an accident-prone actor from India, is accidentally put on the guest list for an upcoming party at the home of a Hollywood film producer. Unfortunately, from the moment he arrives, one thing after another goes wrong with compounding effect.",
         poster: "https://image.tmdb.org/t/p/w780/nWZ9rrbMoHHgsvYNdng2EhbjeLf.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1eUshLGqkYo7DD7u0hRHLyfZK6Y.jpg",
-        where: []
+        where: [],
+        vote_count: 869,
+        popularity: 2.1
     },
     {
         url: "https://www.youtube.com/watch?v=rEkBvURPn2M",
@@ -1185,7 +1294,9 @@ const movieDatabase = [
         desc: "A group of single moms are brought together in the aftermath of an incident at their children's school.",
         poster: "https://image.tmdb.org/t/p/w780/cKVwaF5RzibSYbKu4cXh3HAZxDx.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/qEBtMLpgWMROc0YZAPlfd0rUVJp.jpg",
-        where: []
+        where: [],
+        vote_count: 175,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=f_lsOEEooNA",
@@ -1199,14 +1310,16 @@ const movieDatabase = [
         desc: "Claire and her pals are invited to the West Indies by their friend Ben, who just inherited an island getaway. To pass the long days, they start a business hosting beachfront weddings, resulting in both awesome success and hilarious disaster. Meanwhile, the sun and scenery put Claire, Ben, and their posse in the mood for romance. Will the next wedding be one of theirs?",
         poster: "https://image.tmdb.org/t/p/w780/yEQc19Js2Ul9xiL1WzXFcK35Ucv.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/3QvXejgj3TDQo1lyvJ3UZuOFMVU.jpg",
-        where: []
+        where: [],
+        vote_count: 7,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=-tY89sV3UXM",
         title: "Hearts of Bali",
         year: 2024,
         genre: "Comedy, Romance, Drama",
-        rating: 5.0,
+        rating: 5,
         duration: 113,
         director: "Johan Nijenhuis",
         cast: ["N/A"],
@@ -1226,7 +1339,9 @@ const movieDatabase = [
         desc: "10-year-old Eddie runs away from home with her best friend Ava, a two-ton circus elephant. They're pursued by everyone from the police to the circus' owner",
         poster: "https://image.tmdb.org/t/p/w780/i2EIds3XsdpNXkOq2xTZ7nr4wJs.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 4,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=rcq8vFl9YNE",
@@ -1240,7 +1355,9 @@ const movieDatabase = [
         desc: "\"Black\" is a stunning fire-and-silk stallion celebrated the world over. But to his young American owner, Alec Ramsay, he's much more. So, when the amazing animal is stolen, Alec will stop at nothing to get him back. Alec finally unravels the mystery of Black's theft...only to discover that he must overcome even greater odds to reclaim his beloved horse.",
         poster: "https://image.tmdb.org/t/p/w780/bozQVxJLeHMXMdfY76YLSAwVQBI.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/xXvwQhnJpcsgHD32qVAUQXMjxWr.jpg",
-        where: []
+        where: [],
+        vote_count: 68,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=7gCwhLu0DjE",
@@ -1254,7 +1371,9 @@ const movieDatabase = [
         desc: "In 1839, the slave ship Amistad set sail from Cuba to America. During the long trip, Cinque leads the slaves in an unprecedented uprising. They are then held prisoner in Connecticut, and their release becomes the subject of heated debate. Freed slave Theodore Joadson wants Cinque and the others exonerated and recruits property lawyer Roger Baldwin to help his case. Eventually, John Quincy Adams also becomes an ally.",
         poster: "https://image.tmdb.org/t/p/w780/6QqNyIHKow0jngiQgTNBOBrLILM.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/6dTbovP5RdrNjroTpke0DQAvidN.jpg",
-        where: []
+        where: [],
+        vote_count: 1432,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=yXXnOIhI-mg",
@@ -1268,7 +1387,9 @@ const movieDatabase = [
         desc: "Moronic best friends get themselves locked inside the Bio-Dome, a science experiment, along with a group of environmental scientists for one year.",
         poster: "https://image.tmdb.org/t/p/w780/pjSkGZAvksrbO6tGain8PJ3rfC7.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/vYlKb0thtAg7K8H1kMt8lP4bTKd.jpg",
-        where: []
+        where: [],
+        vote_count: 408,
+        popularity: 1.9
     },
     {
         url: "https://www.youtube.com/watch?v=-FQDGwJABo4",
@@ -1282,7 +1403,9 @@ const movieDatabase = [
         desc: "When a bubbly American hip hop dancer goes to India with her family for a wedding, she is impressed by a new dance style and falls in love with the man who introduced her to it.",
         poster: "https://image.tmdb.org/t/p/w780/3DvBfOx4roI3jg6d1jnLApzEFZM.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/zkcxo86sj6jH8vlxoszPPScHh1s.jpg",
-        where: []
+        where: [],
+        vote_count: 113,
+        popularity: 2.7
     },
     {
         url: "https://www.youtube.com/watch?v=s8eT_mt13b0",
@@ -1296,7 +1419,9 @@ const movieDatabase = [
         desc: "Set during the height of Spanish Inquisition. The beautiful and kind-hearted Maria is arrested as a witch when she inadvertently cries out in horror at the public whipping of a child. As Maria’s husband Antonio tries to save her, Torquemada, the Grand Inquisitor, determines to punish Maria with torture for the desire she inflames in him. Loosely based on Edgar Allen Poe's classic short story.",
         poster: "https://image.tmdb.org/t/p/w780/xq4pLMaMlVmDEzaxTrDqDa4ET25.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/5DQTIIi4E0sQg6bzKaMfNUwMReP.jpg",
-        where: []
+        where: [],
+        vote_count: 147,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=cyvjt9OCaGA",
@@ -1310,7 +1435,9 @@ const movieDatabase = [
         desc: "A young transgender Christian man in rural North Carolina and his girlfriend face significant challenges.",
         poster: "https://image.tmdb.org/t/p/w780/mTgv5hZrwKlo7oqJwk2ahNsRsmL.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 5,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=rfj5ZKG5084",
@@ -1324,7 +1451,9 @@ const movieDatabase = [
         desc: "Flora is a circus elephant who can no longer perform her tricks. The night before she's scheduled to be euthanized, the circus owner's 14-year old daughter, Dawn, sneaks Flora from the circus. All that stands between them and the safety of the elephant preserve is two hundred kilometers of woods, one raging river, two elephant hunters and the fear of not making it.",
         poster: "https://image.tmdb.org/t/p/w780/txFQFgjVQmQYFYvEFCbUlTJMYcs.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fvkEWfD5ZIHCcBnV9dPctsYNwVO.jpg",
-        where: []
+        where: [],
+        vote_count: 59,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=736-Ex96eUo",
@@ -1338,7 +1467,9 @@ const movieDatabase = [
         desc: "Princess Luisa and knight Gabriel must face a dragon to save their kingdom.",
         poster: "https://image.tmdb.org/t/p/w780/rIctEnkOra3vjZP1I31fepIgUjF.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/kF7wNxASM21cvHwDofFIt6Asyr.jpg",
-        where: []
+        where: [],
+        vote_count: 74,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=4A6QxpC2CH4",
@@ -1352,7 +1483,9 @@ const movieDatabase = [
         desc: "Emily, Selena and Jackie - known to their 50 thousand YouTube fans as The 3 Tails - finally bring their journey to the big screen. Their mermaid adventures have enchanted fans for more than five years, as the girls struggle to understand the meaning of their special gift, protecting their secret from the world. Even their parents don't know that they have the ability to transform into mermaids. In The 3 Tails: A Mermaid Adventure, their lives are threatened after a stranger learns of their abilities and kidnaps one of the girls in order to harness her DNA. During a perilous ocean rescue mission, they discover that mermaids are not the only endangered species in the sea.",
         poster: "https://image.tmdb.org/t/p/w780/tjLgbRafhj60sqSqBnIStfeFeHT.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/lLyLehpDRRhdMrRLNIgc1Jl4Hin.jpg",
-        where: []
+        where: [],
+        vote_count: 8,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=JMlaYKAJLD0",
@@ -1366,7 +1499,9 @@ const movieDatabase = [
         desc: "Die Leben einer Reihe ungleicher, unerfüllter Menschen treffen in einem kleinen englischen Hotel an der Küste aufeinander. Die schüchterne Sybil leidet unter ihrer dominanten Mutter; der exzentrische Major Pollock gibt sich als Held aus, verbirgt aber seine Ängste; und der selbstzerstörerische Schriftsteller John Malcolm wird plötzlich von seiner exzentrischen Ex-Frau Anne heimgesucht.",
         poster: "https://m.media-amazon.com/images/I/516Z77QMZ4L._AC_UF894,1000_QL80_.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 133,
+        popularity: 1.1
     },
     {
         url: "https://www.youtube.com/watch?v=B9bkv-q0Mvc",
@@ -1380,7 +1515,9 @@ const movieDatabase = [
         desc: "A couple celebrates their son’s birthday in the middle of the ocean on their boat. A violent storm hits and it brings up hungry creatures from the depths and they fight for their survival.",
         poster: "https://image.tmdb.org/t/p/w780/7fR3KxswtY8OHHZuOUB9td58CRX.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/6Bf23iAIVP90CHSYKEeEFk5T1Vg.jpg",
-        where: []
+        where: [],
+        vote_count: 395,
+        popularity: 5.6
     },
     {
         url: "https://www.youtube.com/watch?v=eKZR3qQgUmk",
@@ -1394,7 +1531,9 @@ const movieDatabase = [
         desc: "A man is convinced that 11-year old girl, Ivy, is the reincarnation of his own daughter Audrey Rose, who died in a fiery car accident, along with his wife, two minutes before Ivy was born.",
         poster: "https://image.tmdb.org/t/p/w780/omtHuaCwKRX20x5R8xnqxWYq8Xp.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/9ylZRaHbbbVjaLCvTy7CfDbtu9w.jpg",
-        where: []
+        where: [],
+        vote_count: 150,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=yDhkMFUrJmg",
@@ -1408,7 +1547,9 @@ const movieDatabase = [
         desc: "At the age of 11, Li was plucked from a poor Chinese village by Madame Mao's cultural delegates and taken to Beijing to study ballet. In 1979, during a cultural exchange to Texas, he falls in love with an American woman. Two years later, he managed to defect and went on to perform as a principal dancer for the Houston Ballet and as a principal artist with the Australian Ballet.",
         poster: "https://image.tmdb.org/t/p/w780/mvHW6UTlrn60RhyYsoqxXxTPIFn.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/tPgTNKrWSXajxYqpW8Yn8gBjkt2.jpg",
-        where: []
+        where: [],
+        vote_count: 123,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=ozT8ZhXII-Q",
@@ -1422,7 +1563,9 @@ const movieDatabase = [
         desc: "After Sita's disappearance at Mount Sarangan on Drupadi's 10th birthday, Tito's attitude became cold, leaving Drupadi sad. Her boyfriend, Raka, and her best friends, Maya, Ucok, Jamal, and Nurul, along with her parents' friends Bagus and Oji, and her uncle, Gancar, provided support for Drupadi. However, this was not enough, and on her 17th birthday, Drupadi set off for Mount Sarangan to search for her mother.",
         poster: "https://image.tmdb.org/t/p/w780/pi8Bf73Y3OaNS6ZZgDEIPqyWV0h.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/qhW8MbHnBiSUPozQIYmlQrAZ4LX.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=mJOuMAJOcgA",
@@ -1436,7 +1579,9 @@ const movieDatabase = [
         desc: "Ten years after he was last seen, a vicious mob enforcer returns home to find his son and methodically track down the gang that double-crossed him. His quest for revenge soon leads to a savage showdown between his wife and her mob boss father.",
         poster: "https://image.tmdb.org/t/p/w780/oapxWncDc5ztrge3ycpvaZIMcf3.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/9mtujSYIpHNc2dfcGZt8cML2Hvh.jpg",
-        where: []
+        where: [],
+        vote_count: 196,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=hkOHf5Fngpo",
@@ -1450,7 +1595,9 @@ const movieDatabase = [
         desc: "A brilliant but lonely gourmet chef and a rugged diner cook go head-to-head in a big contest. It's a main course of sumptuous food with a side of spicy competition, and delectable antics for dessert. If only they can discover the ultimate recipe... the recipe for love.",
         poster: "https://image.tmdb.org/t/p/w780/aERt7hv8bSPLuZ31Di3mUIT0wEr.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/p2aBgSqyCQQfyDfNzKUvaz6OFtC.jpg",
-        where: []
+        where: [],
+        vote_count: 6,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=5vhYOn06dYo",
@@ -1464,7 +1611,9 @@ const movieDatabase = [
         desc: "Three generations of men—a millennial on the run from a drug dealer; his father, a jaded professor trying to keep his job; and the family patriarch fighting senility—all struggle to find meaning in life.",
         poster: "https://image.tmdb.org/t/p/w780/susQc6W3AAi9wwIjdDLlY2yJsJ0.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=Y2Tlbxc7BH8",
@@ -1478,7 +1627,9 @@ const movieDatabase = [
         desc: "When a widower with ten children marries a widow with eight, can the twenty of them ever come together as one big happy family?",
         poster: "https://image.tmdb.org/t/p/w780/ejbrAFkAHP5W5mzI8wA0zUTcDdg.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/bV1VAPr35iQ7ekqFsOrR7I4g5zV.jpg",
-        where: []
+        where: [],
+        vote_count: 157,
+        popularity: 1.6
     },
     {
         url: "https://www.youtube.com/watch?v=Yc9TkGrNUq0",
@@ -1492,7 +1643,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/cxsZiEuxeR2nQlARcT5AIis7zhF.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/x1vOLAntF3Zw2KRg1eZgx9HigSW.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=531oj4YaX80",
@@ -1506,7 +1659,9 @@ const movieDatabase = [
         desc: "An action-packed race to find the legendary treasure of the Nibelungen hidden by Charlemagne and thought to be the biggest lost treasure in the world.",
         poster: "https://image.tmdb.org/t/p/w780/y0ZvqGa02dngzpCHSCgDdPk2FBR.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/iMSNIHGcVE0EL2IeiPMercgFxRc.jpg",
-        where: []
+        where: [],
+        vote_count: 25,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=aRkpJvmn_Wg",
@@ -1520,7 +1675,9 @@ const movieDatabase = [
         desc: "Basson has five days to make it to his father's funeral in Cape Town, but needs to complete certain tasks on this trip before he can call the family company his own. On the road he meets free-spirited bohemian girl, Amory. As they journey across the breathtaking landscape of South Africa, they meet wonderful characters that allow for hilarious moments and life-changing experiences. Their trip takes a sudden turn for the worst when a villainous figure makes an appearance. Basson and Amory are faced with disappointment and heartache. On the road called life, it is inevitable that you will take some wrong turns. But no matter how hard the road might be, on route to true love is where you will find your true north.",
         poster: "https://image.tmdb.org/t/p/w780/ex9icUfOGnW7liIv1SWmE3mmeGC.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/jRMOrEENNUPUkxMOOlR2pcmHzz1.jpg",
-        where: []
+        where: [],
+        vote_count: 23,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=zn9qnfp9BMA",
@@ -1534,7 +1691,9 @@ const movieDatabase = [
         desc: "Overwhelmed widower Seth Webster is searching for a housekeeper to help him with his unruly six year old twin sons. \"Mrs. Miracle\" mysteriously appears and quickly becomes an irreplaceable nanny, chef, friend... and matchmaker.",
         poster: "https://image.tmdb.org/t/p/w780/x4bgbJqRaiDC8wSPQNzVtn4iEsq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fMCkkqpAVfFmbf009flydh7gQY4.jpg",
-        where: []
+        where: [],
+        vote_count: 117,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=p2GGmg_TFxE",
@@ -1548,7 +1707,9 @@ const movieDatabase = [
         desc: "Tensions rise when four friends in a study room attempt to mend a breakup between two of them.",
         poster: "https://image.tmdb.org/t/p/w780/dLOI6RA3dbAPop7sXYpOgtr5FCk.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/zqApDFiuXIzfKhQMSL7CmjaLfnb.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 5.3
     },
     {
         url: "https://www.youtube.com/watch?v=MrEpKlrHtyM",
@@ -1562,7 +1723,9 @@ const movieDatabase = [
         desc: "The film tells the story of Grace, who is still grappling with the disappearance of her daughter five years earlier, and her husband Lukas, who is trapped in his own helpless grief. He and Grace have long since stopped communicating. As Grace confronts a series of small absurdities in her apartment building, Lukas finds himself unable to complete even the simplest of daily tasks. When something truly heartbreaking happens in a family, the deepest response is often unspoken.",
         poster: "https://image.tmdb.org/t/p/w780/vTtu8d6CfavWQjMuftwTkOfhAU4.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 5,
+        popularity: 1.6
     },
     {
         url: "https://www.youtube.com/watch?v=jS14m0HMG4o",
@@ -1576,7 +1739,9 @@ const movieDatabase = [
         desc: "After realizing one of the “gently used” items in her secondhand store is actually an antique teapot worth $80K, Rose McGovern finds herself the sights of Joe Burnsides an ambitious antique broker. He’s determined to buy the teapot from Rose, but she refuses to sell until she can find the original owner.",
         poster: "https://image.tmdb.org/t/p/w780/ljtJBp02fEa0WFD7GuS6B64SL.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/jhUzk8OZqNJQRCCsOgK03EcX24K.jpg",
-        where: []
+        where: [],
+        vote_count: 17,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=xiAGD0ma3uY",
@@ -1590,7 +1755,9 @@ const movieDatabase = [
         desc: "J.C. Wiatt is a talented and ambitious New York City career woman who is married to her job and working towards partner at her firm. She has a live-in relationship with Steven, a successful investment broker who, along with J.C., agreed children aren't part of the plan. J.C.'s life takes an unexpected turn when a distant relative dies and the will appoints her the caretaker of their baby girl, Elizabeth. The baby's sudden arrival causes Steven to leave, breaking off their relationship. Juggling power lunches and powdered formula, she is soon forced off the fast track by a conniving colleague and a bigoted boss. But she won't stay down for long. She'll prove to the world that a woman can have it all and on her own terms too!",
         poster: "https://image.tmdb.org/t/p/w780/4Jy5U4HITJWUDYJc1NGgJLIjbWz.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/lnqoglYq0UzJDweQEaDVTvowq4e.jpg",
-        where: []
+        where: [],
+        vote_count: 414,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=k1wTKXnI1DE",
@@ -1604,7 +1771,9 @@ const movieDatabase = [
         desc: "Career criminal Johnny Clay recruits a sharpshooter, a crooked police officer, a bartender and a betting teller named George, among others, for one last job before he goes straight and gets married. But when George tells his restless wife about the scheme to steal millions from the racetrack where he works, she hatches a plot of her own.",
         poster: "https://image.tmdb.org/t/p/w780/A6VzUPcADZGYdGHlVdWvpMNDF5d.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2EltoldCMsYmP2BXJVGiuNalEWv.jpg",
-        where: []
+        where: [],
+        vote_count: 1732,
+        popularity: 2.8
     },
     {
         url: "https://www.youtube.com/watch?v=Rr7cow4E22w",
@@ -1618,7 +1787,9 @@ const movieDatabase = [
         desc: "Cecilia is a waitress in New Jersey, living a dreary life during the Great Depression. Her only escape from her mundane reality is the movie theatre. After losing her job, Cecilia goes to see 'The Purple Rose of Cairo' in hopes of raising her spirits, where she watches dashing archaeologist Tom Baxter time and again.",
         poster: "https://image.tmdb.org/t/p/w780/ccsint43E44B7NGceEhVimD93Yt.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/afbfZtBOZIfxlzzvHCOfauI6pna.jpg",
-        where: []
+        where: [],
+        vote_count: 1153,
+        popularity: 2.4
     },
     {
         url: "https://www.youtube.com/watch?v=h59VcZ3o0gc",
@@ -1632,7 +1803,9 @@ const movieDatabase = [
         desc: "Maya is living the ultimate fashionistas dream: she is working as a stylist for one of the French trend setters, in the capital of haute-couture: Paris.  One of the IT girls of fashion, shes following her dreams until one night, when her life takes a sudden turn: shes being deported back to Morocco, after being stopped for over speeding, because her Visa expired some time ago.  So in no more than 24 hours, shes deported back to her family and original country. The strong cultural shock and the judgmental differences are pushing the woman to obtain back her place in the city of dreams and her dreams, no matter the costs. But that doesn't mean she will have to return alone, as she finds other things also among her way back to the city.",
         poster: "https://image.tmdb.org/t/p/w780/l0TqmtksDVWgEO6J5XtW4yHFfGV.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/veA3a3GdPJMJlkvXT7VAvT4Ztfx.jpg",
-        where: []
+        where: [],
+        vote_count: 310,
+        popularity: 1.3
     },
     {
         url: "https://www.youtube.com/watch?v=EmR4HhbehJg",
@@ -1646,7 +1819,9 @@ const movieDatabase = [
         desc: "When a psychiatrist takes a paranoid murderer as a patient, his family is thrown into a nightmare as he unwittingly invites danger into his home.",
         poster: "https://image.tmdb.org/t/p/w780/bHL6lOM9lrsoSh3MwLKkFSYbyqm.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2sMEhstTtbQcDALTqQFqUufSfnJ.jpg",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=5Ea8i2MjSSA",
@@ -1660,7 +1835,9 @@ const movieDatabase = [
         desc: "The story about the relationship between a manic depressive man, Mr. Jones, and the female doctor who takes more than a professional interest in his treatment.",
         poster: "https://image.tmdb.org/t/p/w780/rmAnfar51B0qSQ1Wkix0iKtUUnx.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2LgNNITucCde1qIYuGvPAGsgrzG.jpg",
-        where: []
+        where: [],
+        vote_count: 173,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=5FgPogSXMvI",
@@ -1674,7 +1851,9 @@ const movieDatabase = [
         desc: "Ghang-gheng, the ancient winner-take-all competition in which the deadliest fighters from around the world employ the most spectacular feats of martial arts skills ever displayed in order to win the prized Golden Dragon. But fighting prowess alone will not be enough for Chris to triumph over such daunting foes.",
         poster: "https://image.tmdb.org/t/p/w780/xMDo0ewl6XMZei44UNGMfho6eBq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/rv01ZPtZuPxn34u7hMMDRQpucTf.jpg",
-        where: []
+        where: [],
+        vote_count: 804,
+        popularity: 1.9
     },
     {
         url: "https://www.youtube.com/watch?v=RbuMHIw_tTM",
@@ -1688,7 +1867,9 @@ const movieDatabase = [
         desc: "Charlie and Itchy return to Earth to find Gabriel's Horn, but along the way meet up with a young boy named David, who ran away from home.",
         poster: "https://image.tmdb.org/t/p/w780/kNmIJILOW9qF2F1Z0qOXkadaS50.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/3DuDEqDDHG7OhbDpVEIMCTLHSic.jpg",
-        where: []
+        where: [],
+        vote_count: 289,
+        popularity: 2.3
     },
     {
         url: "https://www.youtube.com/watch?v=WDUdHJRsp64",
@@ -1702,7 +1883,9 @@ const movieDatabase = [
         desc: "After an accidental explosion at a local mine, dinosaurs emerge from the rubble to terrorize a small western town. Now, a group of gunslingers must defend their home if anyone is going to survive in a battle of cowboys versus dinosaurs.",
         poster: "https://image.tmdb.org/t/p/w780/inxX7yOvXXFV9NiyO90CF7wIQZD.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/868km79WWFuiTT1cbfqpubwWCFU.jpg",
-        where: []
+        where: [],
+        vote_count: 55,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=xQ305A2OIns",
@@ -1716,7 +1899,9 @@ const movieDatabase = [
         desc: "In dark ages Britain, a time of magic and legend, a powerful druid is bent on destroying the Celtic people. Arthur, a banished warrior, and Merlin, a hermit wizard, embark on a heroic quest to stop the druid and save their people, before the Celts are lost forever and become a myth themselves.",
         poster: "https://image.tmdb.org/t/p/w780/lItiYAN3Md0KFWSPvzw2TtB7pAE.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1TfScGaKVx1beBjSYoHKa76Jbqp.jpg",
-        where: []
+        where: [],
+        vote_count: 72,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=GM4f959mll0",
@@ -1730,7 +1915,9 @@ const movieDatabase = [
         desc: "An art instructor and an English teacher form a rivalry that ends up with a competition at their school in which students decide whether words or pictures are more important.",
         poster: "https://image.tmdb.org/t/p/w780/lm7kJm4mZ5NuFF3iMRXDaGzqItn.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/c9i59fpM39cKGpsT6Mtu3QwH8Us.jpg",
-        where: []
+        where: [],
+        vote_count: 242,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=Lbi_Dvbx3Jg",
@@ -1744,7 +1931,9 @@ const movieDatabase = [
         desc: "A hapless talent manager named Danny Rose, by helping a client, gets dragged into a love triangle involving the mob. His story is told in flashback, an anecdote shared amongst a group of comedians over lunch at New York's Carnegie Deli. Rose's one-man talent agency represents countless incompetent entertainers, including a one-legged tap dancer, and one slightly talented one: washed-up lounge singer Lou Canova, whose career is on the rebound.",
         poster: "https://image.tmdb.org/t/p/w780/oUgolImcg0PRiT33UNjK409aQoJ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/f1W8DI6pubQlIIpQhD3Rru91GDL.jpg",
-        where: []
+        where: [],
+        vote_count: 495,
+        popularity: 1.1
     },
     {
         url: "https://www.youtube.com/watch?v=3o0BpHoBhGs",
@@ -1758,7 +1947,9 @@ const movieDatabase = [
         desc: "An illiterate cook at a company cafeteria tries for the attention of a newly widowed woman. As they get to know one another, she discovers his inability to read. When he is fired, she takes on trying to teach him to read in her kitchen each night.",
         poster: "https://image.tmdb.org/t/p/w780/ydDNS3aCnBWOT9jQiEVmN56rk2i.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/scQculNdcFH75Jpru1OWkODhhe2.jpg",
-        where: []
+        where: [],
+        vote_count: 175,
+        popularity: 1.1
     },
     {
         url: "https://www.youtube.com/watch?v=RjaauK__aEw",
@@ -1772,7 +1963,9 @@ const movieDatabase = [
         desc: "Amiable slackers Bill and Ted are once again roped into a fantastical adventure when De Nomolos, a villain from the future, sends evil robot duplicates of the two lads to terminate and replace them. The robot doubles actually succeed in killing Bill and Ted, but the two are determined to escape the afterlife, challenging the Grim Reaper to a series of games in order to return to the land of the living.",
         poster: "https://image.tmdb.org/t/p/w780/tldtDfLnPFOtTWp758EmIP2Hbz5.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/urm3NbIrcCfRx8iF1Qkgug1rFvx.jpg",
-        where: []
+        where: [],
+        vote_count: 1369,
+        popularity: 3.2
     },
     {
         url: "https://www.youtube.com/watch?v=maEsSHK2Vxc",
@@ -1786,7 +1979,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/lvXMJcILoFWPEVqArf8hX20sgEQ.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=AxWQPljdurg",
@@ -1800,7 +1995,9 @@ const movieDatabase = [
         desc: "Tuscan Wedding, the new romantic comedy from the creators of Loving Ibiza. Together with her father Tom and stepmother Marla, Sanne runs Casa Matrimonio, a luxurious villa in sunkissed Italy.  The estate is located in Tuscany, a beautiful region where many couples go to have their perfect wedding. In Casa Matrimonio guests come together to celebrate love and life. A Tuscan Wedding is the apotheosis of everyone’s visit to the country side. And for some the villa is all too familiar as they return again and again: because some people only marry twice.",
         poster: "https://image.tmdb.org/t/p/w780/lPnGLMcRtXUuE98OPnB0oWv4kC6.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8Fu8NpShJHamigDjdv9Ykft6Agd.jpg",
-        where: []
+        where: [],
+        vote_count: 56,
+        popularity: 2
     },
     {
         url: "https://www.youtube.com/watch?v=PVaUSlP_zjM",
@@ -1814,7 +2011,9 @@ const movieDatabase = [
         desc: "Marc Lagnier confesses to the murder of his adored son, but refuses to explain.",
         poster: "https://image.tmdb.org/t/p/w780/vsB5J7mqC5dCjcZgKJ4FMEAUlGC.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/vTUibhTymmQJOIN5Ea9QPpO1xeg.jpg",
-        where: []
+        where: [],
+        vote_count: 37,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=Bb1sop0R26s",
@@ -1828,7 +2027,9 @@ const movieDatabase = [
         desc: "Sue and Ellie share an unspoken love that is gradually transforming into something much deeper, sweeter and more meaningful. Often when we are the ones closest to the truth, we are the very last people to see it.",
         poster: "https://image.tmdb.org/t/p/w780/g2eKg8dFohqk6yr97cTETGphBLC.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/qZw9XpThDIbAPnVzQ0vwfOZx3Ic.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 2.4
     },
     {
         url: "https://www.youtube.com/watch?v=-B34N5ETeaw",
@@ -1842,7 +2043,9 @@ const movieDatabase = [
         desc: "When a prom queen dies in 1962, her only means of entering Heaven is by returning to 1990 earth, to assist friends from her youth.",
         poster: "https://image.tmdb.org/t/p/w780/pX5prwPekuZHcnAf8mBbURAGvDF.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/5LRh3wdtL8J8qEQmbZRasZXiQtS.jpg",
-        where: []
+        where: [],
+        vote_count: 18,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=nM2m-RUcqBk",
@@ -1856,7 +2059,9 @@ const movieDatabase = [
         desc: "A girl paralyzed. A rabid dog. A duel to death for survival.",
         poster: "https://image.tmdb.org/t/p/w780/g0v7GKv6oGIfDox0FoB1a52ZRLJ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8g8qwMVmHSoeWknmmTV2PvII9p0.jpg",
-        where: []
+        where: [],
+        vote_count: 7818,
+        popularity: 8.4
     },
     {
         url: "https://www.youtube.com/watch?v=lH_VIbpGyKw",
@@ -1870,7 +2075,9 @@ const movieDatabase = [
         desc: "Jamie Fitzpatrick and Nona Alberts are two women from opposites sides of the social and economic track, but they have one thing in common: a mission to fix their community's broken school and ensure a bright future for their children. The two women refuse to let any obstacles stand in their way as they battle a bureaucracy that's hopelessly mired in traditional thinking, and they seek to re-energize a faculty that has lost its passion for teaching.",
         poster: "https://image.tmdb.org/t/p/w780/7Repugxu8BQXMYSGpzqRrBjFRna.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/dESVrG0cy7Xp71vHFATQC7foWbz.jpg",
-        where: []
+        where: [],
+        vote_count: 121,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=87Du6Bsr3dY",
@@ -1884,21 +2091,25 @@ const movieDatabase = [
         desc: "Former gunfighter Django has become a monk and abandoned his violent former ways. His daughter is kidnapped by rogue Hungarian soldiers using slave labor to run a silver mine. Django casts off his habit and digs up his machine gun to practice a little liberation theology.",
         poster: "https://image.tmdb.org/t/p/w780/1rkSeuO2cGcT3CQ47ZxLRHMcGZ8.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/hpCuQpwE6el42aoToImXye9bYmI.jpg",
-        where: []
+        where: [],
+        vote_count: 40,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=ZxiZqCGoVA0",
         title: "Beauty and the Beast",
         year: 1996,
         genre: "Animation, Romance, Fantasy, Family",
-        rating: 6.0,
+        rating: 6,
         duration: 50,
         director: "Richard Slapczynski",
         cast: ["Tony Bellette", "Joanna Moore", "Robyn Moore"],
         desc: "The magical story of a beautiful young girl named Beauty, whose family were at one time wealthy merchants and how through great family misfortune and drama she finds herself living in a palace, with a grotesque beast. During our tale, Beauty is visited by a kind fairy, but only in her dreams. Eventually Beauty breaks the spell which traps the beast and finds true love in the arms of a handsome Prince.[citation:6][citation:9]",
-        poster: "https://m.media-amazon.com/images/M/MV5BYTk1ZGY4MTQtNTA2Yi00MzlkLTk3YjEtMzk0MjRkMTgxZDc4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",       
+        poster: "https://m.media-amazon.com/images/M/MV5BYTk1ZGY4MTQtNTA2Yi00MzlkLTk3YjEtMzk0MjRkMTgxZDc4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
         thumbnail: "https://images2.alphacoders.com/438/thumb-1920-438834.jpg",
-        where: []
+        where: [],
+        vote_count: 4,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=l7TaWvjolyY",
@@ -1912,7 +2123,9 @@ const movieDatabase = [
         desc: "When her art museum faces money problems, a conventional curator works with an avant garde artist to develop an unconventional exhibit. She learns to color outside the lines to save the museum and find love.",
         poster: "https://image.tmdb.org/t/p/w780/ofZmHfrF7uQWrJ49vyGQqH5sQGZ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/pwRTMbzr9D4hwMW9by5Ohif7t3F.jpg",
-        where: []
+        where: [],
+        vote_count: 12,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=iJuAwacTTbE",
@@ -1926,7 +2139,9 @@ const movieDatabase = [
         desc: "François Gautier is stingy! Saving puts the joy, it causes pay sweats. His life is set for the sole purpose of never spend anything. A life that will switch in one day: he falls in love and discovers he has a daughter he did not know existed. Forced to lie in order to hide his terrible default, this will be the beginning for François problems. Because lie can sometimes be expensive. Very expensive…",
         poster: "https://image.tmdb.org/t/p/w780/axdQyS20MtoBnXLpzJhn3g6etqZ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/kvSFYQG9tW7JOOhpFOWv6b1pbB0.jpg",
-        where: []
+        where: [],
+        vote_count: 958,
+        popularity: 1.7
     },
     {
         url: "https://www.youtube.com/watch?v=lBKPgxOvj70",
@@ -1940,7 +2155,9 @@ const movieDatabase = [
         desc: "A vacuum repairman moonlights as a street musician and hopes for his big break. One day a Czech immigrant, who earns a living selling flowers, approaches him with the news that she is also an aspiring singer-songwriter. The pair decide to collaborate, and the songs that they compose reflect the story of their blossoming love.",
         poster: "https://image.tmdb.org/t/p/w780/7nW363kSYRCkr4VGOMvuSGwtzKs.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/o5quBGSZF9aj0OMLZIzfycOeQHg.jpg",
-        where: []
+        where: [],
+        vote_count: 1471,
+        popularity: 3
     },
     {
         url: "https://www.youtube.com/watch?v=tSX43siM0rc",
@@ -1954,7 +2171,9 @@ const movieDatabase = [
         desc: "A couple of academics enjoying a romantic break in a remote log cabin find their stay interrupted by someone who has tracked them down, seeking their help with what could be the biggest discovery in history...",
         poster: "https://image.tmdb.org/t/p/w780/eWv3d3J5M53IaeGCkiuRG307GeN.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/a9mpNk5SXID0zyoYULeQ6sHVinw.jpg",
-        where: []
+        where: [],
+        vote_count: 3,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=cFqhibP-I6Y",
@@ -1968,7 +2187,9 @@ const movieDatabase = [
         desc: "In the near future, the Government aims to replace judges with Artificial Intelligence software, pledging to effectively automate and depoliticize the justice system. Carmen Costa, a distinguished judge, has been invited to assess this new procedure. However, when the software’s creator is found dead, she realizes her life is in danger and that she will have to fight the powerful interests that are at play in the highest echelons of the State.",
         poster: "https://image.tmdb.org/t/p/w780/x7twpnxfyDDCzzQnX9T3Zl9db1F.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mjGGrL4L0RHGlMm86OfLRnscrjt.jpg",
-        where: []
+        where: [],
+        vote_count: 46,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=7GS0imZQzk8",
@@ -1982,7 +2203,9 @@ const movieDatabase = [
         desc: "When Frank emphatically points out security problems in e-banking to his boss and tries to help an elderly customer recover money she lost on the Internet, he loses his job, is publicly defamed as a fraudster, and ends up in pretrial detention.",
         poster: "",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=MG2zUEatH4w",
@@ -1996,7 +2219,9 @@ const movieDatabase = [
         desc: "The two pigs building houses of hay and sticks scoff at their brother, building the brick house. But when the wolf comes around and blows their houses down (after trickery like dressing as a foundling sheep fails), they run to their brother's house. And throughout, they sing the classic song, \"Who's Afraid of the Big Bad Wolf?\".",
         poster: "https://image.tmdb.org/t/p/w780/fKIjJa7N58Wx2MqXZZkiyRzdL1Q.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/c9AuTLymqrgEcGJTTW9tqWLdQer.jpg",
-        where: []
+        where: [],
+        vote_count: 423,
+        popularity: 1.7
     },
     {
         url: "https://www.youtube.com/watch?v=P_yh0G02wUE",
@@ -2010,7 +2235,9 @@ const movieDatabase = [
         desc: "An exploration of technologically developing nations and the effect the transition to Western-style modernization has had on them.",
         poster: "https://image.tmdb.org/t/p/w780/xh8Pvtq4dYry9B4uRT3VbmSI4Wi.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/dvareNwtZqPGoEt2eIrPAGqiLfL.jpg",
-        where: []
+        where: [],
+        vote_count: 183,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=enj5mFNZFes",
@@ -2024,7 +2251,9 @@ const movieDatabase = [
         desc: "Izzy is ready to make a difference in the world as she starts her career in public relations. When Grant Beiste - the big-headed corporate celebrity in town - accidentally hits her father with a car, Izzy is thrown into a public scandal that forces her to work closely with Grant. As she fights to save both her father and Grant's public image, she falls in love and learns not to judge a book by it's cover.",
         poster: "https://image.tmdb.org/t/p/w780/ecVJMknnEj8GMc01mEhdHf2AgGA.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/eauUrhx3YB162xFrAVC7ij4k5SD.jpg",
-        where: []
+        where: [],
+        vote_count: 12,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=62yiioe_aV8",
@@ -2038,7 +2267,9 @@ const movieDatabase = [
         desc: "A chance meeting between two strangers who share a disdain for Christmas results in The Mistletoe Promise, a pact to help them navigate their holiday complications - together. But as they spend more time with each other and experience the magic of Christmas the phony couple discovers there may be more to their contract than business.",
         poster: "https://image.tmdb.org/t/p/w780/lyWtlPVrL5vuSfTNqwOXhHHSh8k.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/qfbmvHpKtrEoOJ2e8slbaFAJ2Dp.jpg",
-        where: []
+        where: [],
+        vote_count: 94,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=_JPOz0l-VVs",
@@ -2052,7 +2283,9 @@ const movieDatabase = [
         desc: "When Sarah Kress learns her family’s vineyard is up for sale, she leaves her busy urban life and visits her hometown to help with the sale and have her last harvest. With the help of handsome neighbor Gabe, huge challenge becomes fun as she and Gabe fall in love. But when the job is done, Sarah must decide whether to return to her fast-paced life or follow her heart.",
         poster: "https://image.tmdb.org/t/p/w780/sbDuA60gZq8WHJaBiYmooJrOFrR.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/pREt18aGBybJPry1UCuiyLsIKKE.jpg",
-        where: []
+        where: [],
+        vote_count: 20,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=uliY278qi0A",
@@ -2066,7 +2299,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/78CGt6zuCTcak9P0ZrhRvSaJUHa.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fknm4Y6VgNhjoZxxVtYBQKGdpYw.jpg",
-        where: []
+        where: [],
+        vote_count: 11,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=BBkJjgYqerU",
@@ -2080,7 +2315,9 @@ const movieDatabase = [
         desc: "A young pianist is shocked when she witnesses a strange chess tournament with a robot. Could there be a gruesome secret behind this exhibition?",
         poster: "https://image.tmdb.org/t/p/w780/pagZP0J8y3nFO8To9Ky9qePKgjU.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/5KCcwGC1rOmwueth1RsJPtANxHa.jpg",
-        where: []
+        where: [],
+        vote_count: 6,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=y5AkBAfrPZ4",
@@ -2094,7 +2331,9 @@ const movieDatabase = [
         desc: "The author of a self-help book on how to find the perfect husband is determined to find eligible mates for her five single daughters.",
         poster: "https://image.tmdb.org/t/p/w780/bwmobnyQcqsY91c3EFPdR45aLgZ.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 7,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=jFolfTtqOa0",
@@ -2108,7 +2347,9 @@ const movieDatabase = [
         desc: "The North Sea, the largest sea on our doorstep, has many faces: wide tidal environments, high dunes, flat holms and rugged coastlines. Its beaches attract every season not only tourists but also countless seals. And beneath the cool sea surface hides a varied and fascinating underwater world: whether majestic basking before the chalk cliffs of Dover or combative gray seals on the beach of Helgoland, whether mighty squid on the Dutch Oosterschelde, or creepy Greenland shark in the Fjords of Norway.",
         poster: "https://image.tmdb.org/t/p/w780/4GFLcJp7oyQAkb1EgYQTYedH1WU.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/4JwZM3AzsI7DAt8ERbEjabd3vkm.jpg",
-        where: []
+        where: [],
+        vote_count: 6,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=VJNTLTh1dSM",
@@ -2122,7 +2363,9 @@ const movieDatabase = [
         desc: "LA Marzulli examines the leading questions about UFOs, entities, and related unexplained mysteries in this video documentary, with special guest Dr. Roger Leir, the surgeon who has removed implants from 16 patients.",
         poster: "https://image.tmdb.org/t/p/w780/whzOXZwb3XfWeLYGNxpC3xXcZCB.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/pTKtFsLzDEUP86P1HPbzrkJ2QD4.jpg",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=VuUbDN-z7dI",
@@ -2136,7 +2379,9 @@ const movieDatabase = [
         desc: "Details the catastrophic effects globalization has wrought on the ship, truck and train industries. We visit displaced farmers and villagers in Holland and Belgium, underpaid truck drivers in Los Angeles, seafarers aboard mega-ships shuttling between Asia and Europe, and factory workers in China, whose low wages are the fragile key to the whole puzzle. At a moment when collective bargaining rights are under attack in the United States, and China continues to bow to foreign pressures to prevent such rights from being granted at all, this film asks: Is capitalism the Trojan horse that turns on its inventors?",
         poster: "https://image.tmdb.org/t/p/w780/f7Dg4t7hOFsRRNfmVM9ebEomYdM.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 7,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=8bYqHR-R4vA",
@@ -2150,7 +2395,9 @@ const movieDatabase = [
         desc: "In the tradition of \"My Sweet Little Village\" and \"Waking Ned Devine\" FLUKE is a satire about a small village full of colorful characters, whose lives radically change due to a miracle. Or a simple crime.",
         poster: "https://image.tmdb.org/t/p/w780/f8CyRlR8nZrQo2rh6pGuJvQbPkE.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/nimIplZPrLnkpyVFFwiwCo5H8C9.jpg",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 4.2
     },
     {
         url: "https://www.youtube.com/watch?v=_lDj_niAooU",
@@ -2164,7 +2411,9 @@ const movieDatabase = [
         desc: "An all-American story that explores the family dynamic when a prodigal daughter returns home.",
         poster: "https://image.tmdb.org/t/p/w780/d33PyM6NPwZGFuteWpvI1Twad7h.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/5dPKDOgMK7gciZo4T6fTUaekWym.jpg",
-        where: []
+        where: [],
+        vote_count: 9,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=LZOnOM8CD7k",
@@ -2178,7 +2427,9 @@ const movieDatabase = [
         desc: "Mischevious twins Zip and Zap are placed in Esperanza, a school where games are prohibited. There, they found the Club of Marble, a resistance to challenge authority. Thanks to intelligence, courage, and unwavering faith in friendship, Zip, Zap and the club will discover a mysterious secret hidden deep in the school and live the most exciting adventure of their lives.",
         poster: "https://image.tmdb.org/t/p/w780/lFFnJ8ELKzuoDpBQQOab72uYPXj.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/wMTYsqzlCR7hsBrBaWDQaT3ghia.jpg",
-        where: []
+        where: [],
+        vote_count: 92,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=KCbVuW6YbZw",
@@ -2192,7 +2443,9 @@ const movieDatabase = [
         desc: "It's Christmastime and Jessi is all but excited. She finds herself with comparisonitis in the world of social media. Other women her age just seem to \"have it all\", while she is frustrated over her job at the local movie theater, and drowning in student loan debt. Her Grandma and friends seem to be concerned for her health and well being, and only want Jessi to be happy.",
         poster: "https://image.tmdb.org/t/p/w780/bitdPonfNH9wYSaZ5cRwOFQZA9R.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/dZutHlstOrHo0Hi9arGJmKhvRtL.jpg",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=3pib9CXwqGQ",
@@ -2206,7 +2459,9 @@ const movieDatabase = [
         desc: "Alex and his sister run a business designed to break up relationships. They are hired by a rich man to break up the wedding of his daughter. The only problem is that they only have one week to do so.",
         poster: "https://image.tmdb.org/t/p/w780/sw7Sc4u2A9Y0dZ1543MoGVaQdmI.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2e0Ditkl7h4vbsICiZt6c2GCAms.jpg",
-        where: []
+        where: [],
+        vote_count: 1414,
+        popularity: 1.7
     },
     {
         url: "https://www.youtube.com/watch?v=-5ipORBhsCc",
@@ -2220,7 +2475,9 @@ const movieDatabase = [
         desc: "When Goldilocks, a sassy reality TV star decides to film her next show at the humble home of the Bears, she gives them a taste of the celebrity sweet life they've never had before",
         poster: "https://image.tmdb.org/t/p/w780/xRM2UlEswdCYSOgfYvaWoRBuYx6.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/zHMRbLDAcWsaas3y8aU4ZmWB2s4.jpg",
-        where: []
+        where: [],
+        vote_count: 16,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=FbVVJP044Uc",
@@ -2234,7 +2491,9 @@ const movieDatabase = [
         desc: "A legal case unites two lawyers between rivalry and romance.",
         poster: "https://image.tmdb.org/t/p/w780/kNkTM5JfwhMEOtnbuQUafjx3eUo.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=nLfI_7-kmhc",
@@ -2248,7 +2507,9 @@ const movieDatabase = [
         desc: "When a mysterious cyber-attack cripples civilization, a group of old college friends and lovers retreat to a remote country cabin, where they must cope with an uncertain future while navigating the minefield of their shared past.",
         poster: "https://image.tmdb.org/t/p/w780/1WEzts5eapNbxglUSNUXUrs98CR.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8C0g6GlfvAg5mCkyi3IHLQSf3YW.jpg",
-        where: []
+        where: [],
+        vote_count: 158,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=SfSMpSLRIGE",
@@ -2262,7 +2523,9 @@ const movieDatabase = [
         desc: "Collin must make it through his final three days of probation for a chance at a new beginning. He and his troublemaking childhood best friend, Miles, work as movers, and when Collin witnesses a police shooting, the two men’s friendship is tested as they grapple with identity and their changed realities in the rapidly-gentrifying neighborhood they grew up in.",
         poster: "https://image.tmdb.org/t/p/w780/x4DRZfTqOlmzNWAvy4vcKWkgEGL.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/e6qz9lL1FR0kTKkkojf7xNMqx24.jpg",
-        where: []
+        where: [],
+        vote_count: 737,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=B23BgL_8TN0",
@@ -2276,7 +2539,9 @@ const movieDatabase = [
         desc: "Talented chef, Courtney Preston’s life has been turned upside down ever since the passing of her father, who was the master chef of her family’s famous restaurant. Now her family business is failing, her love life is in shambles, her passion for cooking has died and her childhood best friend and fellow chef Jake Turner has left town to find work in the big city.",
         poster: "https://image.tmdb.org/t/p/w780/neHdPF3jA7CmdZcy73IExYq7z34.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/n8lDlCRfhHtOcyFjXgSqe1EJ6JG.jpg",
-        where: []
+        where: [],
+        vote_count: 16,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=rmrPB4wN8fY",
@@ -2290,7 +2555,9 @@ const movieDatabase = [
         desc: "A young cavalry officer is assigned the job of bringing in a band of Apaches who have been terrorizing the countryside.",
         poster: "https://image.tmdb.org/t/p/w780/3rm0KEElXEWxFZpsyjgzTTaLEag.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/u9XzAVSJm6DInxUBCUeRoznsjZm.jpg",
-        where: []
+        where: [],
+        vote_count: 20,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=7FBwnqIxsUo",
@@ -2304,7 +2571,9 @@ const movieDatabase = [
         desc: "Twenty years after the disappearance of her daughter, a recovering alcoholic is preparing to host her family's Christmas celebration when her estranged ex-brother-in-law arrives unannounced, bearing nostalgic gifts and a heavy secret.",
         poster: "https://image.tmdb.org/t/p/w780/gUFHThondPpmjqeh3XI1yXnCRDa.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/kpRwlJ2xGEBRAbv2YWPsWdlYISx.jpg",
-        where: []
+        where: [],
+        vote_count: 86,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=GP2XA7Nfs4U",
@@ -2318,7 +2587,9 @@ const movieDatabase = [
         desc: "Follows a dog who is a master escape artist, who must team up with his puppy pals to prevent their block from being robbed.",
         poster: "https://image.tmdb.org/t/p/w780/7dy7qz736fvx3KBECpNKZNP6sRC.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8qUXs8R0JAABihJbieNHaKXTyV6.jpg",
-        where: []
+        where: [],
+        vote_count: 7,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=F_SrboQ5oJg",
@@ -2332,7 +2603,9 @@ const movieDatabase = [
         desc: "Once again someone from the future has come back to create an army of Trancers, human zombies who do what they're told without question or pause. Now officer Jack Deth, a cop from the future stranded in the past, must once again go forth to stop them. This sci-fi action sequel chronicles his courageous actions as he struggles to save the future. His difficulties are compounded when his boss sends his first wife back from the future to help Deth who has unfortunately, married a 20th-century girl.",
         poster: "https://image.tmdb.org/t/p/w780/y0A2fnieQsr0KZ4gWYWU3wlk5bF.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/oHfXTue1G2o9GdzUWOY1VhuQnAQ.jpg",
-        where: []
+        where: [],
+        vote_count: 135,
+        popularity: 1.7
     },
     {
         url: "https://www.youtube.com/watch?v=LQmTzpt9SNM",
@@ -2346,7 +2619,9 @@ const movieDatabase = [
         desc: "A 14-year-old coping with the divorce of her parents, a new school and typical teenage growing pains finds purpose and pride in a lost horse she cares for and trains for a state competition.",
         poster: "https://image.tmdb.org/t/p/w780/ag2oRLkgubAVDvJjWPi5mh4j0QZ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/hjCeAzZNGlskGEJKYNRu8yzfmK6.jpg",
-        where: []
+        where: [],
+        vote_count: 14,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=j6jnMJ44nZA",
@@ -2360,7 +2635,9 @@ const movieDatabase = [
         desc: "Almost as soon as Jake and Cassie decide to get married on Christmas Eve, complications arise.",
         poster: "https://image.tmdb.org/t/p/w780/cw6gQD0QRS3MA3bdGnAqQYSYhdr.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/oOPe7LZG7sfxB2ecXAVjWlL8jPW.jpg",
-        where: []
+        where: [],
+        vote_count: 97,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=cPLbSNH966g",
@@ -2374,7 +2651,9 @@ const movieDatabase = [
         desc: "After receiving an exciting new job opportunity at a cutting edge Pet Invention company, Robert, his teenage daughter Jenna and their trusty and special border collie Charlie make the move to the new neighborhood, right before Christmas. Upon arriving, Robert meets his gorgeous next door neighbor Holly, and her sassy and spunky border collie Gidget. Before the sparks can fly, they are set upon my Robert’s conniving and obnoxious next door neighbor and project manager Victor, his neighborhood bully bulldog “Vinnie P” and the sycophantic sidekick Chihuahua “Jose”.",
         poster: "https://image.tmdb.org/t/p/w780/2MJo65VVurU1GKqr0oDHBim0as4.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/r5915umTdrFUD9VAdI3vHsal2LI.jpg",
-        where: []
+        where: [],
+        vote_count: 66,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=QtlI6g5VzSw",
@@ -2388,7 +2667,9 @@ const movieDatabase = [
         desc: "A retired veteran hunting in the Allagash backcountry of Maine discovers a dead woman with a duffle bag full of money. He soon finds himself in a web of deceit and murder.",
         poster: "https://image.tmdb.org/t/p/w780/m7WhE0z9G8lWmo3sF1mopOgfWNc.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/11E0KVeuV2Eu3luPqoCzSqgdZCN.jpg",
-        where: []
+        where: [],
+        vote_count: 139,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=AoHead2PRHM",
@@ -2402,7 +2683,9 @@ const movieDatabase = [
         desc: "A rejected husband.  A beautiful stranger in peril.  A dangerous liaison.  For two couples enjoying a  spectacular Egyptian adventure, treachery and deception cruise the Nile along with them.",
         poster: "https://image.tmdb.org/t/p/w780/m5rhR6A2fyDMo2g6ULFNjy61MD5.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/6hChsVVd2Ttd8iKIDHLu7git3z9.jpg",
-        where: []
+        where: [],
+        vote_count: 11,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=CCMpx-r43EI",
@@ -2416,7 +2699,9 @@ const movieDatabase = [
         desc: "Frank Boyd comes to Hong Kong to visit a friend, but unfortunately he was murdered a few days ago. The father of his fiancee puts $ 10,000 reward for the capture of the murderer and Frank wants to earn this money.",
         poster: "https://image.tmdb.org/t/p/w780/gx4MQ0IG6h9Q0TkoD1s2ySYo1hw.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/dAgrCd3QpVHLaJanhF3ntAHOLL.jpg",
-        where: []
+        where: [],
+        vote_count: 4,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=h_e7Fp-VNU0",
@@ -2430,7 +2715,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/7M6rIQq33yO9GqKaGUiG1goJzxv.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/xa1ACTl7I2EYVJEa4k0l0fo3VuR.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=R5NcqgP5GW4",
@@ -2444,7 +2731,9 @@ const movieDatabase = [
         desc: "Jessica is a housewife, unhappy in her marriage, who decides to \"spice it up\" a little bit. But she gets more than she bargained for when she contacts an old high school classmate she once had a crush on.",
         poster: "https://image.tmdb.org/t/p/w780/t1vbforjlpjPzeAG74pyS5nj6aR.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/rGqlo1WfQrCkyjdyqcFb1hwxBx5.jpg",
-        where: []
+        where: [],
+        vote_count: 8,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=bIw1hY3lgKY",
@@ -2458,7 +2747,9 @@ const movieDatabase = [
         desc: "From NFL superstardom to public collapse, Out of Bounds: In Search of Antonio Brown examines fame, trauma, CTE speculation, and what happens when football ends.",
         poster: "https://image.tmdb.org/t/p/w780/2YzVTOGHg2DbbKFp3fEbfU1oOY0.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=7QWejOv9468",
@@ -2472,7 +2763,9 @@ const movieDatabase = [
         desc: "A famous pianist at the twilight of his career meets a free-spirited music critic who soon becomes his rock as his mental state deteriorates.",
         poster: "https://image.tmdb.org/t/p/w780/v8w80VLACr7wz97dlGK8GvNIGbP.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/hQrf8NTvLbel18glhbhDGtjXMiZ.jpg",
-        where: []
+        where: [],
+        vote_count: 94,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=5G_-8vJoOLg",
@@ -2486,7 +2779,9 @@ const movieDatabase = [
         desc: "Two divers find a treasure map, which apparently points to a sunken treasure below the ocean. They hire a professional to help them get the gold but this guy turns out to have a few secrets of his own.",
         poster: "https://image.tmdb.org/t/p/w780/32O4nax9Ka2EeiGcuVqXkUg1TW8.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/lVzuxAoV8qaEWuBHGfTlhCnUU1T.jpg",
-        where: []
+        where: [],
+        vote_count: 5,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=qhNvVZZAK0k",
@@ -2500,7 +2795,9 @@ const movieDatabase = [
         desc: "Captain Sabertooth and his crew are up against a sunburnt vampire, a manipulating queen, a violent monkey army and two young pirates while on the hunt for the magical diamond.",
         poster: "https://image.tmdb.org/t/p/w780/e3ffIIhlOU8mUFmC4DjsOdVzVN6.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/aenZ1GSnPOjqiadOqc0FxTQE0Ff.jpg",
-        where: []
+        where: [],
+        vote_count: 48,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=omiye6CO0EM",
@@ -2514,7 +2811,9 @@ const movieDatabase = [
         desc: "When Kate is given the job of planning her mom's Garden Gala, the biggest fashion event of the year, she has to compromise with the unhelpful head of the Botanical Garden.",
         poster: "https://image.tmdb.org/t/p/w780/q6BVp5CU1ORPTGIXq0YBpaW9aRC.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1TFLCM4EZN5iML0a13fdHeLmfRQ.jpg",
-        where: []
+        where: [],
+        vote_count: 16,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=pmANXf7AD1o",
@@ -2528,7 +2827,9 @@ const movieDatabase = [
         desc: "A hot one-night stand turns into an awkward morning after when Guy and Holly get stuck in a dead-stopped traffic jam.",
         poster: "https://image.tmdb.org/t/p/w780/4xeoHNWVgjD05gZE8ZtwbKCw4zy.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2hnpEkLpD69i1TUxf5Suq8ZJybV.jpg",
-        where: []
+        where: [],
+        vote_count: 35,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=Hvlmq9MuHwc",
@@ -2542,7 +2843,9 @@ const movieDatabase = [
         desc: "A mother reports her student daughter Lisa missing, but detective Aslak Eira is getting too little information, and she is found in a lake. The more they investigate, the less they seem to understand. Then Lisa's best friend goes missing too.",
         poster: "https://image.tmdb.org/t/p/w780/rURVYJqICh2dPx7549FA04KNKRU.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/yroDhq6pemZFPVWxhDhWwYWamrP.jpg",
-        where: []
+        where: [],
+        vote_count: 8,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=EfuhcftgYzU",
@@ -2556,7 +2859,9 @@ const movieDatabase = [
         desc: "Explores the The Beatles’ love affair with India, its religions and its culture and, in turn, the impact of their music and style on a young generation in India.",
         poster: "https://image.tmdb.org/t/p/w780/zi2uPVFtxsdLljamZn2ijDVk1oI.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1uPeBCOHBoWoA4eEoaPQj1QAfqA.jpg",
-        where: []
+        where: [],
+        vote_count: 22,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=5-m4ULewFnQ",
@@ -2570,7 +2875,9 @@ const movieDatabase = [
         desc: "IS THERE A CONNECTION? Are we seeing a connection between our ancient past and what is happening today? Were huge stones simply levitated into position, and do we have any modern evidence that such a thing may have been possible? WATCHERS 8 explores how today's UFO phenomena and the ancient evidence in Peru may be connected. We'll also continue with our story in WATCHERS 7 with Bill's implant.",
         poster: "https://image.tmdb.org/t/p/w780/7e8HTNv2Z52gxPf4g3xvKCjFGo9.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=pUkckTQuUeI",
@@ -2584,7 +2891,9 @@ const movieDatabase = [
         desc: "L.A. Marzulli continues with Dr. Leir's latest implant tests, and on to Texas where we probe into the Nephilim. The latest Torah Codes, as well as an exclusive interview with Jonathan Daniels from the Knesset, and finally -- what it is like to die and go to hell?",
         poster: "https://image.tmdb.org/t/p/w780/uZfVfpY2oiZX3GEJuwv9oxW9vhR.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=9cZAW5yMp8E",
@@ -2598,7 +2907,9 @@ const movieDatabase = [
         desc: "In 1990s Belfast, a woman is forced to betray all she believes in for the sake of her son.",
         poster: "https://image.tmdb.org/t/p/w780/ihkceEMJK4XtHXgw97ggsrE3ExP.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/njlNFqPnmnUbqtUst6ETEbQ3oIr.jpg",
-        where: []
+        where: [],
+        vote_count: 282,
+        popularity: 1.7
     },
     {
         url: "https://www.youtube.com/watch?v=ojCUEbYV2uo",
@@ -2612,7 +2923,9 @@ const movieDatabase = [
         desc: "While his parents are renovating a cottage in an English village, teenager Tim and his friend Rebecca uncover information about the mysterious death of a 15-year-old boy who lived in the house decades prior, and as they dig deeper, Tim begins to find events from the past being mirrored in his own life.",
         poster: "https://image.tmdb.org/t/p/w780/mrEklfsM5JQZ5c5jmZCMhK7ca3A.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/dbYkmg8FM5NE8vCHehDjdPJYb4l.jpg",
-        where: []
+        where: [],
+        vote_count: 4,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=IG9LR392jUY",
@@ -2626,7 +2939,9 @@ const movieDatabase = [
         desc: "A young grizzly bear, undaunted by his mother's warnings of the coming winter, runs away from home only to be confronted by Old Man Winter himself.",
         poster: "https://image.tmdb.org/t/p/w780/tFjDdTxdW2ygknyj7GFgUoeaX97.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mTqgLEZQruQWs2Bi0pkotegmSnP.jpg",
-        where: []
+        where: [],
+        vote_count: 19,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=2rZ8m_KYk5I",
@@ -2640,7 +2955,9 @@ const movieDatabase = [
         desc: "A young father takes his nine year old son, the family dog, and two of his son's friends backpacking in the mountains of Colorado only for all five of them to be struck by lightning.",
         poster: "https://image.tmdb.org/t/p/w780/bxw9tRRPZHIQ3vYOubS3DVfgnDo.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1R21tNdm3UL09YE4yVH0Ek0KS0o.jpg",
-        where: []
+        where: [],
+        vote_count: 42,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=HvrbUMWtRkk",
@@ -2654,7 +2971,9 @@ const movieDatabase = [
         desc: "When Thomas Archer's happy and successful life is all but ruined following a horrific attack he is presented with a perfect opportunity to exact physical revenge upon the man who caused all his grief. However the immediate consequences of his actions and in-actions are much more complicated than he imagined.",
         poster: "https://image.tmdb.org/t/p/w780/rgYotrZoOwjcUKlkeItp3Oy5e6p.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/iwp6FdxTBfLKCzDwaACfaxsW3He.jpg",
-        where: []
+        where: [],
+        vote_count: 36,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=W6-9afDZUCY",
@@ -2668,7 +2987,9 @@ const movieDatabase = [
         desc: "A portrait of Berlin’s most famous bouncers – Sven Marquardt, Frank Künster and Smiley Baldwin. The three men have been part and parcel of the capital’s club scene for more than 25 years – from the days after the fall of the Berlin Wall to the present day – but aren’t yet considering calling it a day even though life makes more demands on them as they turn 50.",
         poster: "https://image.tmdb.org/t/p/w780/woBlfYZdP4BnQspcU5HzktFlipD.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mdOCf920Kjztc1mPdFfzhuSHBw1.jpg",
-        where: []
+        where: [],
+        vote_count: 21,
+        popularity: 1.3
     },
     {
         url: "https://www.youtube.com/watch?v=6lkZqCKkRX0",
@@ -2682,7 +3003,9 @@ const movieDatabase = [
         desc: "Home is where we grow up or settle permanently. And this home is always shaped by nature. Today, we human beings change and shape this more than any law of nature. HEIMAT NATUR is a visually stunning journey through the nature of our homeland, from the peaks of the Alps to the coasts and the depths of the North and Baltic Seas. In between is a cinematic foray through steaming forests, shimmering moors, over rose-blossoming heaths and the colorful cultural landscape around our villages and towns. In extraordinary images this nature is shown from its most beautiful side, examining the state of the native habitats. Slow-motion and time-lapse photography as well as intimate shots of familiar and unfamiliar species, some filmed for the first time, making the film a cinematic nature experience for the whole family.",
         poster: "https://image.tmdb.org/t/p/w780/nJyibxiHsjgCoVPQNqTBgeREjpb.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/h7ggiTQDTJlh93WNoBTiK6AgBLE.jpg",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=dIPX1CuWzOc",
@@ -2696,7 +3019,9 @@ const movieDatabase = [
         desc: "As a kid, Darcy had no control over her family’s holidays and thus, has grown up to be a Christmas control freak — so much so that she loses sight of what the holidays actually mean. Suddenly, she finds herself magically transported into her idea of the perfect Christmas Village and learns that ‘perfection’ isn’t all it’s cracked up to be.",
         poster: "https://image.tmdb.org/t/p/w780/mSAPMz8fK7k9ktJzGMiotIVBSov.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/qorN4BK6AJznqM14ggzXdLHnIux.jpg",
-        where: []
+        where: [],
+        vote_count: 37,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=7QtlrFUc4_k",
@@ -2710,7 +3035,9 @@ const movieDatabase = [
         desc: "The story of Colonel Paul Tibbets, the pilot that dropped the atomic bomb on Hiroshima. Although unaware of the full potential of this new weapon, he knows that it can do tremendously more damage than any other weapon used before, and that the death toll resulting from it will be huge. He is reluctant to be the person who will end so many lives, but as time goes on, the pressure upon him only increase.",
         poster: "https://image.tmdb.org/t/p/w780/gCPfp4GCKhQtGwBtTITRIFdJcQr.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/wCK6WHbAdRWJ1no8au3GHpx5GHy.jpg",
-        where: []
+        where: [],
+        vote_count: 18,
+        popularity: 1.1
     },
     {
         url: "https://www.youtube.com/watch?v=m07jmAKjx0Q",
@@ -2724,7 +3051,9 @@ const movieDatabase = [
         desc: "Set in the remote Scottish town of Fort William on Christmas Eve, when life is turned upside down for Jen and Rob. Suddenly finding themselves heartbroken, single and stranded, they team up to try and reach home 100 miles away to be with their families. \"Borrowing\" Jen’s now ex-boyfriend’s classic car, the pair hit the road, but it’s not long before the weather turns for the worse forcing them to continue their journey on foot.",
         poster: "https://image.tmdb.org/t/p/w780/aLv0wZoFQvEXupDphPn1TjNfq9M.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mWFH41gA1t9LLOW04i83sLczFjH.jpg",
-        where: []
+        where: [],
+        vote_count: 20,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=Kti7Q7ndQhU",
@@ -2738,7 +3067,9 @@ const movieDatabase = [
         desc: "12-year-old Sue is a lone wolf. Due to a potion invented by her mother, she is suddenly able to become invisible. But when mum is kidnapped, Sue will need the help of her new friends Tobi and App to rescue her mother and hunt down the criminals.",
         poster: "https://image.tmdb.org/t/p/w780/gxr1MJF6BNLzVojtVjaGRWvfLEp.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/jrOPKBwyUhkiZg3ZnxRHKaHZW2x.jpg",
-        where: []
+        where: [],
+        vote_count: 47,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=5YQPLSFziEI",
@@ -2752,7 +3083,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/vvBDXujgsIystiMw15quTomQs1U.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=awJkowspHd0",
@@ -2766,7 +3099,9 @@ const movieDatabase = [
         desc: "This is a large-scale canvass depicting life in the Solovetsky monastery. What does the spiritual life of man signify? what is religious tradition and how does it relate to the modern world? how does faith influence human life? the solovetsky islands are a milestone in the spiritual geography of russia. they are marked by spiritual, historical, cultural events which have a profound bearing on the national memory. located on the outskirts of russia, the archipelago was destined to become one of the powerful symbols of the russian spirit. the movie looks at the deeper meaning of existence, faith, hope and love.",
         poster: "https://image.tmdb.org/t/p/w780/7zPuQv0qcpNNIQWEgx9t6Jvq50z.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 1.1
     },
     {
         url: "https://www.youtube.com/watch?v=ipVKbDKHf_U",
@@ -2780,7 +3115,9 @@ const movieDatabase = [
         desc: "The second documentary in the series follows Charles Hall as he uncovers the coexistence of earthlings with various ET races.",
         poster: "https://image.tmdb.org/t/p/w780/ptXHICD3iNgRn4cIpz5iPEkf3f6.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/vRjoPnuFx8fHQhA1XfsWauJfNLa.jpg",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=qXYcH3l2CeI",
@@ -2794,7 +3131,9 @@ const movieDatabase = [
         desc: "Once again, Bastian is transported to the world of Fantasia which he recently managed to save from destruction. However, the land is now being destroyed by an evil sorceress, Xayide, so he must join up with Atreyu and face the Emptiness once more.",
         poster: "https://image.tmdb.org/t/p/w780/bRSLCuO2B6owYBtUwGYGqWZCVo6.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/22328gc644F4pZn30nWPPUo4I93.jpg",
-        where: []
+        where: [],
+        vote_count: 894,
+        popularity: 3.1
     },
     {
         url: "https://www.youtube.com/watch?v=F6wbN3YUWhg",
@@ -2808,7 +3147,9 @@ const movieDatabase = [
         desc: "Gabriel Chevalier, 45 years old, is an ex-policeman. Unemployed, lonely and depressed,he lives like a ghost and hardly takes care of his only teenage child Juliette. One day, by pure chance, he finds a suspicious but extremely well paid job: his daily mission consists of delivering a briefcase exactly where he is told. The only rule being to never open it. These deliveries will bring him to meet weird people in strange places. Gradually, his cop instinct resurfaces...",
         poster: "https://image.tmdb.org/t/p/w780/xqKzfcD2CsTHNn6gfJRSV7IVFSz.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/kwSjHymiucUGtM5odOLawLA8xy0.jpg",
-        where: []
+        where: [],
+        vote_count: 51,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=mC8mWOZZY4s",
@@ -2822,7 +3163,9 @@ const movieDatabase = [
         desc: "Chef Lia’s plans to expand her non-profit heart-centered meal delivery service flounder due to her insistence on doing everything herself. But with the help of her new neighbor and recent adoptee father Eli she’ll discover that business, just like romance, can flourish with a little effort and trust.",
         poster: "https://image.tmdb.org/t/p/w780/wAM5hOmIwLFF0FaKhIpyXC7f9pl.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/lUsjrSaQ4LNWc0llOndBGaAxyQs.jpg",
-        where: []
+        where: [],
+        vote_count: 13,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=pT8XI0DF73o",
@@ -2836,7 +3179,9 @@ const movieDatabase = [
         desc: "The true story of the Wayana people, French Indians of Amazonia who are cursed by living in a region rich in gold. Consequently, the uncontrolled exploitation of this wealth has brought about a severe deterioration of the forest's ecosystem, the irreversible pollution of streams, as well as countless violations of fundamental human rights. This film not only shows the despair of the Amerindians but also their awareness of the problem and how they are trying to cope with their survival. A documentary which gives a human face to a contemporary tragedy which concerns all of us.",
         poster: "https://image.tmdb.org/t/p/w780/aVWtkupaJD8RYmDTxnjuH80I08S.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 3,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=Wc2b6_Fa9Qc",
@@ -2850,7 +3195,9 @@ const movieDatabase = [
         desc: "Princess Verunka's marriage is supposed to save the kingdom, which has been impoverished by the crazy ideas of its ruler. And she has several suitors! The poet Alexander Alexandrovich, who would make even Pushkin pale with envy, the two-headed baron, military leader and composer Wajsman, the mysterious Marquis, who rules with the magic of his mother, the queen of death Morana, and the eccentric inventor Sir Klevr. Can Ondra, a boy who longs to become a whitewater swimmer, be their worthy opponent?",
         poster: "https://image.tmdb.org/t/p/w780/7iLBOYlcsU0wAKj5ltQlQWWjABJ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mS8lY3ya9xpXZd48HRPqTatkA5C.jpg",
-        where: []
+        where: [],
+        vote_count: 5,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=ga7UalxYFLc",
@@ -2864,7 +3211,9 @@ const movieDatabase = [
         desc: "Prophecies that are seemingly impossible and yet are there for all to see. The outbreak of a worldwide pandemic, the death of Queen Elizabeth, the invasion of Ukraine, global warming, terror attacks, world war and the end of times. Now some experts glean future events that foretell of a coming war, starting in Europe, will engulf the globe and cause catastrophic numbers of deaths. The materialistic Christian West will do battle with the united forces of the East and the Muslim world following a Russian invasion of Europe. Ballistic rockets will reign down upon us all. Nostradamus possessed a remarkable, unique insight into events set in motion by mankind. Now with startling clarity they may tell us of our near future.",
         poster: "https://image.tmdb.org/t/p/w780/uf0TwqvXt0iIHyf03snh9EHAmq9.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/yys9bfE1WCetPYBof7hZpKnYOnT.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=TyGkj4f_0fE",
@@ -2878,7 +3227,9 @@ const movieDatabase = [
         desc: "Detroit native Tony T. Roberts returns to his hometown for a raucous and occasionally musical night of stand up where no topic is off limits and anything can happen.",
         poster: "",
         thumbnail: "https://is1-ssl.mzstatic.com/image/thumb/Gg2YSsFChhQS2CXtwQJ7Ag/1920x1080.webp",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=yrdX1j0wVjk",
@@ -2892,7 +3243,9 @@ const movieDatabase = [
         desc: "Walking With Destiny highlights Churchill's years in the political wilderness, his early opposition to Adolf Hitler and Nazism, and his support for Jews under threat by the Nazi regime. As historian John Lukacs explains, Churchill may not have won the War in 1940, but without him, the War most certainly would have been lost. Sir Martin Gilbert, historical consultant for the film and Churchill's official biographer, adds that had Churchill's warnings about Nazi Germany's racial policies towards Jews been heeded in the early 1930's, the Holocaust may never have occurred. The film examines why Winston Churchill's legacy continues to be relevant in the 21st Century and explores why his leadership remains inspirational to current day political leaders and diplomats.",
         poster: "https://image.tmdb.org/t/p/w780/5BLdbvXGaVkF7uoaWpb3fnVGfXe.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/veepMBwjJaHLO8fmboEjrWsgpVx.jpg",
-        where: []
+        where: [],
+        vote_count: 7,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=2zmiI3zxhxs",
@@ -2906,7 +3259,9 @@ const movieDatabase = [
         desc: "The Making of America - Uncover the true origin of the United States of America and explore the occult origins of its signs and symbols - discovering that the Illuminati and secret societies are responsible for how we live our daily lives in this modern world.",
         poster: "https://image.tmdb.org/t/p/w780/dWjjeljIi2CtfRDZJpaV1AvaKVb.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/7u09N8a2EFsD62ULXgymgV8BMkL.jpg",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=Suzom0yQDNI",
@@ -2920,7 +3275,9 @@ const movieDatabase = [
         desc: "Candace, daughter of lifestyle mogul Liz Livingstone, has never lived up to her mother’s standards. When a young girl posts a video begging Liz to help arrange a special Christmas party, Candace is sent in her place. As she struggles to prove herself worthy of running the company, Candace meets—and begins falling for—the girl’s uncle, a reporter writing an expose on her.",
         poster: "https://image.tmdb.org/t/p/w780/9XC1hug2bGP1d6kIKKSFILTdJzf.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/6BKgqHM9VzsXXJjwACQrv56Oztg.jpg",
-        where: []
+        where: [],
+        vote_count: 38,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=FKJP_E_INnE",
@@ -2934,7 +3291,9 @@ const movieDatabase = [
         desc: "Haulage dispatcher Freddy Sternthaler suddenly finds himself hopelessly involved in an absurd dispute in the art scene and experiences what is probably the worst night of his life on an odyssey through Vienna.",
         poster: "https://image.tmdb.org/t/p/w780/zbGkLG77G2KFFygEDyOssUq26RV.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/sVWRGQ1AtYi0yT7z2jWV47FenuS.jpg",
-        where: []
+        where: [],
+        vote_count: 7,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=rwV0iKTk0CA",
@@ -2948,7 +3307,9 @@ const movieDatabase = [
         desc: "Kick off the season with Warren Miller’s Timeless, presented by Volkswagen, as we celebrate 70 years of ski cinematography and travel with top athletes across the globe to renowned mountain locations. Featuring ski legends like Glen Plake, alongside newcomers Caite Zeliff, Jaelin Kauf, and Baker Boyd. Road-trip with rippers from Arlberg to the Matterhorn, be immersed in the hometown hill of Eldora and discover a different side of Jackson Hole, plus much more.",
         poster: "https://image.tmdb.org/t/p/w780/zAufhY12ORUEBUNT89isjecn3zB.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=ZKypanAqBew",
@@ -2962,7 +3323,9 @@ const movieDatabase = [
         desc: "After a gifted musician inherits a mansion after her long lost father dies under mysterious circumstances, she discovers his last musical masterpiece riddled with cryptic symbols that unravels an evil secret, triggering dark forces that reach beyond her imagination.",
         poster: "https://image.tmdb.org/t/p/w780/iiL3AWKPx6GIZN6AmmSq7pbtyc.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/65HGK8re1IJewZ6HZNi8wzU5g9l.jpg",
-        where: []
+        where: [],
+        vote_count: 62,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=gfc69XyKAr4",
@@ -2976,7 +3339,9 @@ const movieDatabase = [
         desc: "Freddie Mercury was known for his flamboyant stage persona and four-octave vocal range - the lead singer of Queen defied the conventions of a typical rock frontman. He paved the way for many contemporary artists to have a more confident and theatrical act which indelibly shaped the next generation of pop and rock music. From working as a baggage handler at Heathrow airport to hiding his HIV diagnosis from the public until just before his death, Mercury's life was filled with adventure, publicity, and perhaps above all, a clear duality. He was both flamboyant and shy, outspoken and intensely private. The illness that claimed his life could never have defined Freddie, and now, years later, his legacy is greater than he could have ever imagined.",
         poster: "https://image.tmdb.org/t/p/w780/gl7JIKuXHavyovwcOIF6boXnZAS.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/y6COoDsbrzBmLKmsgh6XtR54qqJ.jpg",
-        where: []
+        where: [],
+        vote_count: 3,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=dpTm7u8i4R0",
@@ -2990,7 +3355,9 @@ const movieDatabase = [
         desc: "Filmmaker Liam Le Guillou seeks out an occult curse to an answer to the question \"is magic real?\", forcing him to question the nature of reality and belief in this dangerous, never-before-seen, dark social experiment.",
         poster: "https://image.tmdb.org/t/p/w780/d67zTqanjFdgiCUayzNeKja7Bjg.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fAr7lEmTG2t4YDiSNm9pLJrltPS.jpg",
-        where: []
+        where: [],
+        vote_count: 7,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=Bo4tqGfde5o",
@@ -3004,7 +3371,9 @@ const movieDatabase = [
         desc: "Starting in 1881 this film shows the personal battle between Lenin's Ulyanov family and the royal Romanovs that eventually led to the Russian revolution.",
         poster: "https://image.tmdb.org/t/p/w780/6pszbUsH0eWC2GXN4v4YKUBm7dY.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/zQ2fCBD01utDIqxzaGxeuKW86O0.jpg",
-        where: []
+        where: [],
+        vote_count: 28,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=gxEyclBK99s",
@@ -3018,7 +3387,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/dyJKX18D8ntaLVrSfyGpfzu8TJH.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 1.3
     },
     {
         url: "https://www.youtube.com/watch?v=qkVM_sMv0cE",
@@ -3032,7 +3403,9 @@ const movieDatabase = [
         desc: "Zezé is an 8 year old boy who, although a naughty boy, has a good heart. He leads a very modest life, due to the fact that his father has been unemployed for a long time, and has the habit of having long conversations with a sweet orange tree which is in his backyard. Until one day he meets Portuga, a man who begins to help him and soon becomes his best friend.",
         poster: "https://image.tmdb.org/t/p/w780/7Q6FpTfJYiZZHSe8C9jcopFLptt.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fKOdobrFOaixErZDNVF4mS5S6oI.jpg",
-        where: []
+        where: [],
+        vote_count: 51,
+        popularity: 1.7
     },
     {
         url: "https://www.youtube.com/watch?v=2OcncnEkrl4",
@@ -3046,7 +3419,9 @@ const movieDatabase = [
         desc: "A German documentary about the life of Hollywood icon Audrey Hepburn.",
         poster: "https://image.tmdb.org/t/p/w780/8OySz09IzyTWzNFP4YfIwYsdo2D.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=RxLHuqKbCPE",
@@ -3060,7 +3435,9 @@ const movieDatabase = [
         desc: "When a New England Christmas decorating competition searches for the town with the most Christmas spirit, the Mayors of East and West Riverton go all out to get their towns to the top of the holiday heap.",
         poster: "https://image.tmdb.org/t/p/w780/vYEpId8nCN9wcE4cXSSqG3cw82p.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/565OKPD68F8g30N7HzJFYSMmM9E.jpg",
-        where: []
+        where: [],
+        vote_count: 40,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=oMDImMDl9uM",
@@ -3074,7 +3451,9 @@ const movieDatabase = [
         desc: "The pursuit of knowledge regarding ancient mystical anomalies, technology and the extraterrestrial connection has produced stunning new revelations that alter the perceptions of our past by scientists and researchers. Documentation of early humans subjected to abductions and surgical examinations by interdimensional beings, a mysterious mausoleum capable of time travel, a second-century old map revealing shocking discoveries and pre-ordained predictions of future events substantiate the claims that planet Earth holds many secrets that must be probed.",
         poster: "https://image.tmdb.org/t/p/w780/5Lm7qFDBQT8ALMgtInYPEK5QTOi.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=a8qsB7kzLLY",
@@ -3088,7 +3467,9 @@ const movieDatabase = [
         desc: "Astounding confessions and vivid depictions of experiences in captivity from confirmed alien abductees will shock the senses and shatter the mind.",
         poster: "",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=WQrYyu0q0bI",
@@ -3102,7 +3483,9 @@ const movieDatabase = [
         desc: "Battle for Disclosure is a riveting documentary that delves into the decades-long cover-up of the UFO phenomenon by the U.S. government.",
         poster: "https://image.tmdb.org/t/p/w780/3N0Ch33eeVaC4UV9ayElffQLKTv.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/3mZ3fgZFgoYBd6elvIfBeeiHWzv.jpg",
-        where: []
+        where: [],
+        vote_count: 6,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=M7ZOKWny_yc",
@@ -3116,7 +3499,9 @@ const movieDatabase = [
         desc: "Before the mother goat goes into the forest, she warns her seven little goats not to open the door to anyone and, above all, to beware of the big bad wolf. However, the wolf manages to gain entry with a trick.",
         poster: "https://image.tmdb.org/t/p/w780/k96TEazPkWmsK7s6YPjZwv7h7k8.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=dkrDGPgus7M",
@@ -3130,7 +3515,9 @@ const movieDatabase = [
         desc: "SOMETHING IS HAPPENING  UFOs are being reported all over the world in greater numbers than ever before. Has something changed? Who are these beings, where do they come from, why do they work in the shadows and what is their agenda? Has the U.S. been sharing tech from these visitors since the 50s?  Well take actual samples from a sphere that crashed to earth in Mexico and analyze them under an Electron Microscope, (SEM). Well examine a piece of drywall from a home that was visited. Are the fingerprints human, or alien? WATCHERS 7 looks at the science behind UFOs and their origin in ancient Biblical texts. A UK poll indicates more people believe in ETs than God. Whats next??",
         poster: "https://image.tmdb.org/t/p/w780/5QU2FZwnZbVsg9XqArhvvI84vPC.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=IeL8m2GbHtM",
@@ -3144,7 +3531,9 @@ const movieDatabase = [
         desc: "The truth takes flight.  For decades, the U.S. military denied the truth. Now, declassified footage reveals an unidentified, craft-defying explanation. This film uncovers America’s UFO secrets from Roswell to the latest Pentagon leaks.  Declassified military footage. Unexplained aerial encounters. From Roswell to the Pentagon’s shocking leaks, this gripping doc exposes decades of UFO secrets the government tried to hide.",
         poster: "https://image.tmdb.org/t/p/w780/vtfsoLABhtaZiPXmAYNQ3ZqFciJ.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=cA4Y2qcQY4A",
@@ -3158,7 +3547,9 @@ const movieDatabase = [
         desc: "When looking for a gift for his kid, Jon Heder (Napoleon Dynamite) is introduced to the world of Grimdark. In that moment he starts down a journey that will take him all over the world and through interviews with prominent Grimdark authors, game developers, and dedicated fans, he delves into the themes that define the genre—all in an effort to find the man who started it all: John Blanche.",
         poster: "https://image.tmdb.org/t/p/w780/dRIMOfsipvcgTku3spCcDbiRCnX.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/kFR0M5FVvYXqzlZ3QQTnATxWg5l.jpg",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=WYeNFbY61SQ",
@@ -3172,7 +3563,9 @@ const movieDatabase = [
         desc: "A mentally ill young woman finds her love in an eccentric man who models himself after Buster Keaton.",
         poster: "https://image.tmdb.org/t/p/w780/7g7qYdUN9wDXJGIOj6U67RPIBHO.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2TkuCpt75P5CyRgW1606dkY4JwM.jpg",
-        where: []
+        where: [],
+        vote_count: 830,
+        popularity: 2
     },
     {
         url: "https://www.youtube.com/watch?v=DvvG-u4eVxE",
@@ -3186,7 +3579,9 @@ const movieDatabase = [
         desc: "A single woman focused on her career in New York is forced to deal with the aftermath of a failed relationship when an ex-boyfriend is hired by her company.",
         poster: "https://image.tmdb.org/t/p/w780/131BvNu5w2zI9FtqoZTAMRFcuGX.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/tdLxXsHpxC5CIyxKbGgBSZwClJ4.jpg",
-        where: []
+        where: [],
+        vote_count: 42,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=pfPLpeqQly4",
@@ -3200,7 +3595,9 @@ const movieDatabase = [
         desc: "In a modern America where witches are real and witchcraft is illegal, a sheltered teenager must face her own demons and prejudices as she helps two young witches avoid law enforcement and cross the southern border to asylum in Mexico.",
         poster: "https://image.tmdb.org/t/p/w780/vHKlIci8f38GaAd361EW0VSx91k.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fpj4gZVOxD9D4sAyMwcHxq01HCo.jpg",
-        where: []
+        where: [],
+        vote_count: 286,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=JET1J1wFwDY",
@@ -3214,7 +3611,9 @@ const movieDatabase = [
         desc: "In order to escape the police after a robbery, two estranged siblings lay low in a metaphysical farmhouse that hides them away in a different time. There they reckon with a mysterious force that pushes their familial bonds to unnatural breaking points.",
         poster: "https://image.tmdb.org/t/p/w780/8vpYPns2SjbmgqkE72e69knRMGY.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/kIswXWYAvgq3rrloYbRAXdTsgVl.jpg",
-        where: []
+        where: [],
+        vote_count: 77,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=MbkpaLS-ovY",
@@ -3228,7 +3627,9 @@ const movieDatabase = [
         desc: "When a food critic at the top of her game comes face to face with a chef renowned for refusing food critics to his restaurant at her sister’s wedding, they must find a way to overcome their differences before the big day.",
         poster: "https://image.tmdb.org/t/p/w780/3mJcqbUYewdD5qcAvnz2gZTNGuq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/tFKQJMltnnOosVBcpjZ9txdnDCP.jpg",
-        where: []
+        where: [],
+        vote_count: 14,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=SCVsmvm2gDw",
@@ -3256,7 +3657,9 @@ const movieDatabase = [
         desc: "After a strange sighting, four friends decide to move in the near woodlands to investigate. Soon their week-end becomes a nightmare and a race for survival.",
         poster: "https://image.tmdb.org/t/p/w780/djgZVX8OgWg2IDIqlFm355y6P46.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/vxLReTf3BMuXCQUObd8kTOSjf9m.jpg",
-        where: []
+        where: [],
+        vote_count: 7,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=JwG0RGdlqR0",
@@ -3270,7 +3673,9 @@ const movieDatabase = [
         desc: "In a Parisian parking lot Sonia finds herself trapped in her car with her son and the daughter of her boyfriend Fred, who has been left outside, powerless to deal with the situation: an anti-tank mine has been set under the car. Sonia is a bomb-disposal expert, who works for a NGO with Fred. She just got back from a mission in Ukraine and, while she's used to face dangerous situations, with the children's lives on the line the stakes have never been higher. Along with colleagues Igor and Camille, who came to the rescue, Sonia and Fred have 30 minutes to defuse the bomb and work out who could be the mastermind behind this. Will they stand united until the end or will the family implode under pressure?",
         poster: "https://image.tmdb.org/t/p/w780/k43iS9a1ugXkcBEjYJPiAGtlzv6.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/a7iX0CtLxQOQX8Eduv7jG20gy4x.jpg",
-        where: []
+        where: [],
+        vote_count: 69,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=hDUzG_1f_Zk",
@@ -3284,7 +3689,9 @@ const movieDatabase = [
         desc: "A romantic escape into nature turns into the ultimate moment of reckoning when a husband and wife are trapped in a tent with a deadly snake. Unable to escape and with certain death looming, the tent becomes a heated confessional to a cataclysmic truth. Betrayed, the couple finds themselves spiraling into a dark and dangerous space of which only one can survive.",
         poster: "https://image.tmdb.org/t/p/w780/h3GRtHasWEQV04LuoS22UHVpJfA.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/lq15xQuW66mGikgf7ea2lQamv9v.jpg",
-        where: []
+        where: [],
+        vote_count: 39,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=HP34jSL-oYk",
@@ -3298,7 +3705,9 @@ const movieDatabase = [
         desc: "Zoe Davis is a successful and highly driven wedding planner in the big city. When her father asks her for help at the family café shop, she happily drives back to her cozy hometown of Romance, Oregon. Little does she know her mom has already hired Will to help, an aspiring chef and coincidentally…Zoe’s childhood sweetheart! Tensions rise between Zoe and Will, but so does the chemistry. Will they settle their differences and find lost love along the way?",
         poster: "https://image.tmdb.org/t/p/w780/hqlAZWVAoQWGXMJzBTtf1qjrRpH.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/m5OZfpt9q1b5r8edAehumQ5Jrgq.jpg",
-        where: []
+        where: [],
+        vote_count: 25,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=4woZTuIatB4",
@@ -3312,7 +3721,9 @@ const movieDatabase = [
         desc: "In Depression-era West Virginia, a serial-killing preacher hunts two young children who know the whereabouts of a stash of money.",
         poster: "https://image.tmdb.org/t/p/w780/rBka0nFWiHxabHRLr0KfIA8Yiaq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/sTwVct9k3FJ7Mn1GeIfUJDk7Jyr.jpg",
-        where: []
+        where: [],
+        vote_count: 1851,
+        popularity: 3.4
     },
     {
         url: "https://www.youtube.com/watch?v=3LyMgTCVkJA",
@@ -3326,7 +3737,9 @@ const movieDatabase = [
         desc: "A former footballer living in Brittany enlists his old teammates to help the local fisherman to win some games in order to raise money and save jobs.",
         poster: "https://image.tmdb.org/t/p/w780/aQ0tNcw1WYUh8WlzbeFsd8By90C.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8uRZsCSkpDwNwNaaP9Ynp3gSj1N.jpg",
-        where: []
+        where: [],
+        vote_count: 31,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=pEN5jFKZ8qI",
@@ -3340,7 +3753,9 @@ const movieDatabase = [
         desc: "An inventor and his mom hit the road together so he can sell his latest invention.",
         poster: "https://image.tmdb.org/t/p/w780/55JqWqocsMNx5uanELDRDFqu40J.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/dNWVC0RwiF4eUzYpDKOGsWZPzw1.jpg",
-        where: []
+        where: [],
+        vote_count: 777,
+        popularity: 2.7
     },
     {
         url: "https://www.youtube.com/watch?v=e3VohQO70Kw",
@@ -3354,7 +3769,9 @@ const movieDatabase = [
         desc: "Two best friends in college Mitch and Elizabeth make a pact that if in ten years after graduation they are both not married they will marry each other. Ten years later Mitch (still single) finds out Elizabeth never got married so he decides to travel across the country, find her and follow through on their pact. What he soon realizes is it wont be a simple as he thought.",
         poster: "https://image.tmdb.org/t/p/w780/hQ8kya0t6OiZovU0mvaPlnoa38E.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2NjW4xx7IqkoQaAHNq7aaVt9uKo.jpg",
-        where: []
+        where: [],
+        vote_count: 66,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=XvdS6V2A4Lk",
@@ -3368,7 +3785,9 @@ const movieDatabase = [
         desc: "What happens to the feelings of two people when they are poured into the official form of a marriage? Love can suffocate under the pressure of this contract or blossom into an unexpected, deep bond when confronted with eternity. Why do two people promise each other? Levin Peter and Elsa Kremser, not only two filmmakers but also a young couple, search for answers to these questions. Driven by a very personal story, the film interweaves very different couples and concepts of marriage.",
         poster: "https://image.tmdb.org/t/p/w780/Q9OWtwfYve4dA5HthfgxdD0RUY.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/4pdYSU95GvH1fI367pjHEIQfJfI.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=8AD-1F8ZboA",
@@ -3382,7 +3801,9 @@ const movieDatabase = [
         desc: "An ailing barrister is thrust back into the courtroom in what becomes one of the most unusual and eventful murder cases of the lawyer's career when he finds himself defending a man being tried for the murder of a socialite.",
         poster: "https://image.tmdb.org/t/p/w780/bCj4EfuehAlgBwVd3diyWyhuuau.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/evUB9YKE5IPPtQOchcEF6hS90BO.jpg",
-        where: []
+        where: [],
+        vote_count: 1725,
+        popularity: 5.8
     },
     {
         url: "https://www.youtube.com/watch?v=UtG_aQDOxak",
@@ -3396,7 +3817,9 @@ const movieDatabase = [
         desc: "A family together with their grandpa go on a vacation, when their new car won't stop and it nearly escapes crashing into a hundred cars.",
         poster: "https://image.tmdb.org/t/p/w780/hrExpoA2E2bCrSZ6VPWHHdzY2y.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/t5p87zY3MKSOHFIwOBbwmjxA5rS.jpg",
-        where: []
+        where: [],
+        vote_count: 674,
+        popularity: 1.6
     },
     {
         url: "https://www.youtube.com/watch?v=xMbUgi1rIr0",
@@ -3410,7 +3833,9 @@ const movieDatabase = [
         desc: "When George and her colleagues get a new boss whose focus is on moving souls quickly and enjoying life without consequences, the team begins to break the strict reaper rules. While her friends fall victim to their desires for money, success, and fame, George breaks another rule by revealing her true identity to her living family.",
         poster: "https://image.tmdb.org/t/p/w780/ekzGiwleJbx0ei1R3s0ylowFKT9.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/ljyOBKHcLKsi1JBxxw5ffI1Fb5m.jpg",
-        where: []
+        where: [],
+        vote_count: 304,
+        popularity: 1.4
     },
     {
         url: "https://www.youtube.com/watch?v=Y4VVEXsV4iQ",
@@ -3424,7 +3849,9 @@ const movieDatabase = [
         desc: "Exhausted from her marketing job, Sophie rents an Airbnb with a widowed father and his daughter to wind down. However, the daughter is set on making her father fall in love once more, with her sight set on Sophie.",
         poster: "https://image.tmdb.org/t/p/w780/bpOrZGKbrdk9L0tfMk22o3zCkvz.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/scMMd0Gq6pd1TmHhzPA8ZuH7iAe.jpg",
-        where: []
+        where: [],
+        vote_count: 27,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=R-Nr5uIb1z4",
@@ -3438,7 +3865,9 @@ const movieDatabase = [
         desc: "Tough, naughty, quick-witted and brave Lillebror has just moved, and has not made any new friends yet, when his imaginary friend – the wooden twig Knerten – appears in the middle of a pile of firewood...",
         poster: "https://image.tmdb.org/t/p/w780/suFlbtFENy7WRHt4YJOb7eE7JiF.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/cimTHVntJAMVJWrJnSEYII4iAcz.jpg",
-        where: []
+        where: [],
+        vote_count: 20,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=9_2DEf49-lQ",
@@ -3452,7 +3881,9 @@ const movieDatabase = [
         desc: "In the wake of a nuclear war, a young woman survives on her own, fearing she may actually be the proverbial last woman on earth, until she discovers the most astonishing sight of her life: another human being. A distraught scientist, he’s nearly been driven mad by radiation exposure and his desperate search for others. A fragile, imperative strand of trust connects them. But when a stranger enters the valley, their precarious bond begins to unravel.",
         poster: "https://image.tmdb.org/t/p/w780/c7rdpZlviWAcOOx5bnzfqPPPNvq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/xYqj3oiw7msHDLd7n1OgbRLnkZQ.jpg",
-        where: []
+        where: [],
+        vote_count: 1005,
+        popularity: 1.7
     },
     {
         url: "https://www.youtube.com/watch?v=KjeSd0UsWfY",
@@ -3466,7 +3897,9 @@ const movieDatabase = [
         desc: "After thirty years of marriage, a middle-aged couple attends an intense, week-long counseling session to work on their relationship.",
         poster: "https://image.tmdb.org/t/p/w780/mHEca5NntVHtUPfBiQ3ZVFBRixe.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/ivNDj0LuziOuz0ZivgA7sxHIi3z.jpg",
-        where: []
+        where: [],
+        vote_count: 838,
+        popularity: 3
     },
     {
         url: "https://www.youtube.com/watch?v=0yJsJH2lqwQ",
@@ -3480,7 +3913,9 @@ const movieDatabase = [
         desc: "In this documentary Ray Santilli and Gary Shoefield explain how their lives have changed since they made footage of an alien autopsy available to the public in a 1995 television special. They also explain how governments around the world are keeping the truth hidden from us.",
         poster: "https://image.tmdb.org/t/p/w780/d0gaa9KyYppfG9wq62kKZ0ODVVN.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/sQ0DihRcQGZ2GIITCGEnCsFspKa.jpg",
-        where: []
+        where: [],
+        vote_count: 3,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=RzIJ7M2HSdQ",
@@ -3494,7 +3929,9 @@ const movieDatabase = [
         desc: "As mass of solar storms causes tsunamis, volcanoes, and flooding, a city-dwelling family attempts to flee to the relative safety of a group of high-elevation caves several miles away.",
         poster: "https://image.tmdb.org/t/p/w780/nCMh8pkYpoMqHmMplzOg57QYHVR.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/t40khZPNup55xi0mtjxOFtnfXnF.jpg",
-        where: []
+        where: [],
+        vote_count: 46,
+        popularity: 1.1
     },
     {
         url: "https://www.youtube.com/watch?v=lprss8wgkFA",
@@ -3508,7 +3945,9 @@ const movieDatabase = [
         desc: "Heir to the Anderson Corp. throne, Daniel is turning 30 and his parents have been trying to get him to settle down. They decide to throw a ball, to find a  suitable mate.",
         poster: "https://image.tmdb.org/t/p/w780/67Vo28qJDrf8Mz4TXgSIrsn0Uj0.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/9sNNbntfdkSgU4fO3Ci3mfCxA2F.jpg",
-        where: []
+        where: [],
+        vote_count: 3,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=1fM5yOMUnA0",
@@ -3522,7 +3961,9 @@ const movieDatabase = [
         desc: "In Shirleyville, Vermont, during the sixties, sisters Merricat and Constance, along with their ailing uncle Julian, confined to a wheelchair, live isolated in a big mansion located on the hill overlooking the town, tormented by the memories of a family tragedy occurred six years ago. The arrival of cousin Charles will threaten the fragile equilibrium of their minds, haunted by madness, fear and superstition.",
         poster: "https://image.tmdb.org/t/p/w780/ejp1MQSlekBjH3bBJrBlWItpmQW.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1zWIVHKUJSHISGrrbVjzB9OuQ8A.jpg",
-        where: []
+        where: [],
+        vote_count: 339,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=tTmm-_7Wa6A",
@@ -3536,7 +3977,9 @@ const movieDatabase = [
         desc: "Juliette is attending the baptism of Lucas, the son of her best friend Claire. But the young mother, weakened by her childbirth, shows disturbing signs of depression.",
         poster: "https://image.tmdb.org/t/p/w780/tybXgBp5neCFSYEPUCmFTzyRVPl.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2DnBAfAQRSDXy5GbAJB9G0W6FNW.jpg",
-        where: []
+        where: [],
+        vote_count: 16,
+        popularity: 1.4
     },
     {
         url: "https://www.youtube.com/watch?v=oOjlzE0fI0g",
@@ -3550,7 +3993,9 @@ const movieDatabase = [
         desc: "In 2011, Mickey Chen wrote an autobiography about his torn-apart family and his life as the gay eldest son. Since he passed away in December 2018, this documentary film of the same name was left unfinished but shows enough promise and paints a heartbreaking portrait of his troubled family.",
         poster: "https://image.tmdb.org/t/p/w780/9ZXrBnBU4Ypq012zUARWwN2Zp4u.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=AGtKRiGfgpw",
@@ -3564,7 +4009,9 @@ const movieDatabase = [
         desc: "A middle-aged man in a stagnant marriage, finds his life upended when an attractive young woman and her seemingly abusive husband move in next door.",
         poster: "https://image.tmdb.org/t/p/w780/jvv66k53knzs49wnzaOZjOPYj4r.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mYOpADWIufOdYissCNFQtLceWF5.jpg",
-        where: []
+        where: [],
+        vote_count: 148,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=Hccfh6fYkoE",
@@ -3578,7 +4025,9 @@ const movieDatabase = [
         desc: "An employee is surprised at the flattering attention he's getting from his boss.  Will this ruin the relationship?",
         poster: "https://image.tmdb.org/t/p/w780/bYjKfUomm6tbyveBZfi9qr6OJBH.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/s1VJGwvjYOybgff6NJUt6iqWmp9.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=LqQdb5EzYo0",
@@ -3592,7 +4041,9 @@ const movieDatabase = [
         desc: "Two ice skaters develop a love-hate relationship while dreaming of Olympic glory.",
         poster: "https://image.tmdb.org/t/p/w780/lDF8zGixn3WVWSKc2usVGjPWc7C.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fUosOAY42laqr82I7Ql2HRRZko5.jpg",
-        where: []
+        where: [],
+        vote_count: 183,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=NTisrLJkMuo",
@@ -3606,7 +4057,9 @@ const movieDatabase = [
         desc: "Kate Francis has been a loyal assistant at a Seattle newspaper for the past five years. When one of her story ideas finally gets accepted, the assignment takes her back to her charming hometown of Sunflower Valley.",
         poster: "https://image.tmdb.org/t/p/w780/9bxZpfxjqwDQqeE69u63LJ3x5lr.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/rmxDaCnco2WIvPAkYjErfI9Br0D.jpg",
-        where: []
+        where: [],
+        vote_count: 28,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=apGV7AwP7ho",
@@ -3620,7 +4073,9 @@ const movieDatabase = [
         desc: "Two gay men living in St. Tropez have their lives turned upside down when the son of one of the men announces he is getting married. They try to conceal their lifestyle and their ownership of the drag club downstairs when the fiancée and her parents come for dinner.",
         poster: "https://image.tmdb.org/t/p/w780/oMz9BUs3qIAx5UAO5BLiufzVwrr.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/xkrLPXpDBwzKW0jzbUEzqnnusLb.jpg",
-        where: []
+        where: [],
+        vote_count: 443,
+        popularity: 1.4
     },
     {
         url: "https://www.youtube.com/watch?v=iFN6ZZgRaXQ",
@@ -3634,7 +4089,9 @@ const movieDatabase = [
         desc: "When Tiffany’s fiancée calls off their wedding and cancels all the bookings, Tiffany is heartbroken…that her dream wedding is off! To make matters worse, her best frenemy agent at work seems to be snapping up all the cancellations for her own wedding. But not if Tiffany can help it. After looking through her roster of potential clients she convinces hugely talented but yet unsuccessful actor Nicholas to be her ‘fiancée’ in return for signing him to her agency. The wedding will happen, but for who?",
         poster: "https://image.tmdb.org/t/p/w780/y4jHN5hE5Xb93LRSTyk06cjRZg8.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/v8abodzGgRJbj1mibf7zVpjz0vx.jpg",
-        where: []
+        where: [],
+        vote_count: 9,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=FfaFyuwdqSc",
@@ -3648,7 +4105,9 @@ const movieDatabase = [
         desc: "Young Ivan Drago's newfound love of board games catapults him into the fantastical and competitive world of game invention, and pits him against the inventor Morodian, who has long desired to destroy the city of Zyl, founded by Ivan's grandfather. To save his family and defeat Morodian, Ivan must come to know what it is to be a true games maker.",
         poster: "https://image.tmdb.org/t/p/w780/5X2IqHXicO3miUlenOdnGhZWnn2.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fWgaOh3xyTfmz13Kjts2AbNI5cp.jpg",
-        where: []
+        where: [],
+        vote_count: 78,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=_o2hUF-fbKw",
@@ -3662,7 +4121,9 @@ const movieDatabase = [
         desc: "A daring physicist travels into the past to stop a mysterious woman from stealing his invention. But once there, he uncovers a surprising truth about the machine, the woman, and his own fractured reality.",
         poster: "https://image.tmdb.org/t/p/w780/wGHoYDswvx96PVF43qFErVAnQHS.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/5CtNhSBoHtiuzFfnAfawAxy3I3b.jpg",
-        where: []
+        where: [],
+        vote_count: 412,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=rD9ivDZHDpo",
@@ -3676,7 +4137,9 @@ const movieDatabase = [
         desc: "Working as an assistant on a long cattle drive, the young Ben Mockridge contends between his dream of being a cowboy and the harsh truth of the Old West.",
         poster: "https://image.tmdb.org/t/p/w780/lOs56PTFKa5ZjPLPeXsAOkG3v9J.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/6GKax0sdFhVi8ueg5wmbektDSFn.jpg",
-        where: []
+        where: [],
+        vote_count: 50,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=Ozas1agz0_U",
@@ -3690,7 +4153,9 @@ const movieDatabase = [
         desc: "A hapless inventor finally finds success with a flying car, which a dictator from a foreign government sets out to take for himself.",
         poster: "https://image.tmdb.org/t/p/w780/wJ62FzGeCAs6PjCIK1as6xzdIY5.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8KoJMwh58Xh76K3vsx2Y3StLBB1.jpg",
-        where: []
+        where: [],
+        vote_count: 749,
+        popularity: 3
     },
     {
         url: "https://www.youtube.com/watch?v=Pls2OozyUnU",
@@ -3704,7 +4169,9 @@ const movieDatabase = [
         desc: "After six years, Antonio and Laura face a crisis in their relationship.",
         poster: "https://image.tmdb.org/t/p/w780/pdDeiNHLMIh27nTkyUBjf7olEt5.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/wEtoG7RKlFiM2vAkma0puui02cQ.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=XDAyx6Ok0vo",
@@ -3718,7 +4185,9 @@ const movieDatabase = [
         desc: "Joyce thought she had made the dream marriage. Her husband, Stan, is a successful, handsome dentist, and Joyce, who grew up in poverty, cannot believe her good fortune. But her charismatic husband has a dark side that is about to engulf and destroy Joyce's entire world.",
         poster: "https://image.tmdb.org/t/p/w780/qhGzycSJUryzBVadslFn51qQxhT.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=4fPzv8cWLtc",
@@ -3732,7 +4201,9 @@ const movieDatabase = [
         desc: "Rex is an old man who is bitter about never becoming famous and having lived a life without any meaning. After suffering a stroke, he ends up in a nursing home staffed by Latin American immigrants. Put off by the situation, he focuses his energy on getting out, which places him at odds with the Latino workers. However, their relationship takes on new meaning when it is discovered that he once shook hands with Vicente Fernandez, a Mexican singer, producer and actor idolized throughout Latin culture. The employees soon begin to treat Rex like the celebrity he's always dreamed of being.",
         poster: "https://image.tmdb.org/t/p/w780/2smJb7ceUoF9BVgg7XJJmA7vgcW.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/p9khG4Bq3T69ASbkPWtsibzZmD5.jpg",
-        where: []
+        where: [],
+        vote_count: 12,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=ZWFMuIqZT0k",
@@ -3746,21 +4217,25 @@ const movieDatabase = [
         desc: "During the harrows of WWII, Jo, a young shepherd along with the help of the widow Horcada, helps to smuggle Jewish children across the border from southern France into Spain.",
         poster: "https://image.tmdb.org/t/p/w780/5BfXAZ6BoS6zdWa2X4nXEuIXPZe.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/wnik9MqiWLhOQmfX2fMzFO1Tkzm.jpg",
-        where: []
+        where: [],
+        vote_count: 93,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=uBCxpVe1Y0I",
         title: "End Zone",
         year: 2026,
         genre: "Thriller",
-        rating: 7.0,
+        rating: 7,
         duration: 126,
         director: "Terica Kindred",
         cast: ["Johnell Young", "Yhover Perez", "Jizzixious Bishop", "Drew Sidora", "Brian White", "Matthew Gilmore"],
         desc: "Recovering from severe leg injuries after a deadly car crash, a guilt-ridden college football star is terrorized by hallucinations of his deceased friends and a mysterious masked stalker who breaks into his home, forcing him to fight for his survival while dark secrets come to light.[citation:1][citation:3][citation:4]",
-        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6i5cWqZGQ7OMZ5twnd4HvszIOsnD7-3WF2qaISQ8cGy0F0-XjwTkx_nA&s=10",     
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6i5cWqZGQ7OMZ5twnd4HvszIOsnD7-3WF2qaISQ8cGy0F0-XjwTkx_nA&s=10",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=gizHQXYCGPk",
@@ -3774,7 +4249,9 @@ const movieDatabase = [
         desc: "Worlds collide when two women from opposite sides of the tracks wind up together in an all-night laundromat.",
         poster: "https://image.tmdb.org/t/p/w780/mPhXhLZPYu0v7ZC8zQCdTqG2eLj.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/s3Xny0wNzAMeIcQ2lyBV9NALxIJ.jpg",
-        where: []
+        where: [],
+        vote_count: 4,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=EjNAkpDKtLc",
@@ -3788,7 +4265,9 @@ const movieDatabase = [
         desc: "Social, cultural, and historical changes in a village, the first film of Koepp's “landscape” series.",
         poster: "",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=RIa5559FwT0",
@@ -3802,7 +4281,9 @@ const movieDatabase = [
         desc: "When Lorelei inherits a shabby sailboat from a distant relative, she hires Rob to help clean, fix and sail it from its present location at a Caribbean island to Miami. The two will have to work together as romantic sparks start to fly.",
         poster: "https://image.tmdb.org/t/p/w780/vfQtbcFdKf7juAnX2JSUSvkl75V.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/7so76ZQvUbsvhGYt3txYpooLiuC.jpg",
-        where: []
+        where: [],
+        vote_count: 12,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=n2utgZPZN-0",
@@ -3816,7 +4297,9 @@ const movieDatabase = [
         desc: "An aspiring fashion designer gets her chance to debut at a lavish Hamptons wedding where she is mistaken for a socialite and falls for a groomsman. Their love story could fall apart when she is exposed as a fraud.",
         poster: "https://image.tmdb.org/t/p/w780/r4NuDItXfGsM43wbbqvUa8TFDlj.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/tYhQY3hoaYrwIG4K6d3W3IbRXAv.jpg",
-        where: []
+        where: [],
+        vote_count: 13,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=ATxtkfmERFc",
@@ -3830,7 +4313,9 @@ const movieDatabase = [
         desc: "Successful New York attorney Sam Leibowitz travels to the South in 1933 to defend nine young black men accused of raping two women on an Alabama freight train.",
         poster: "https://image.tmdb.org/t/p/w780/q0SCPx3yl0rWllrR7iCr7PMlsiq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8s1YuZt26RsVNJbXy9nfDBjHWto.jpg",
-        where: []
+        where: [],
+        vote_count: 20,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=Q5dEt9Xr0Os",
@@ -3844,7 +4329,9 @@ const movieDatabase = [
         desc: "Hal (Robert Davi), a former radio mogul who has fallen on hard times, enlists the aid of a beleaguered businessman (Paul Wilson) to battle a thuggish superintendent (Chuck Zito) and the forces of gentrification in the South Bronx.",
         poster: "https://image.tmdb.org/t/p/w780/jdfnNrnzzKV6CYbhQSQgBBP6J3t.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/9xmepqScf6h3dFQBKAVyzQIpzX6.jpg",
-        where: []
+        where: [],
+        vote_count: 9,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=YiVvNoPFd9g",
@@ -3858,7 +4345,9 @@ const movieDatabase = [
         desc: "When Lindsay gets the chance to sign up to the notoriously exclusive dating service Eternity, she clashes with Will, her first date. They mutually agree this dating service has been a complete bust and make a deal to get their money back. However, when they turn up at the door, they find all the furniture gone, Eternity nowhere to be found and make a pact to find out the truth – they’ve been conned! Or have they…?",
         poster: "https://image.tmdb.org/t/p/w780/e7yDmkxA2ApJZP5TvfOifpFI1Bi.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/7tg3VmYoDUQtCEFGR52ffDOVo9W.jpg",
-        where: []
+        where: [],
+        vote_count: 20,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=-fJgF1tejKw",
@@ -3872,7 +4361,9 @@ const movieDatabase = [
         desc: "Terror arrives at the one place we all feel safest... When a wealthy woman, Chloe, and her stepson, Jacob, are targeted by a trio of expert thieves in their remote mansion, her only form of help comes from a call with Mike, a security systems specialist. But as the intruders become increasingly hostile and the connection wavers, will she trust him to be her eyes and navigate her to safety?",
         poster: "https://image.tmdb.org/t/p/w780/9Wbt3orDldytLe3JMOl2lzukxnw.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/lvZN7fqjWSctIYX3M9ba8xx5EkE.jpg",
-        where: []
+        where: [],
+        vote_count: 167,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=QgvLsdRbXUo",
@@ -3886,7 +4377,9 @@ const movieDatabase = [
         desc: "A struggling family buys an old ship at auction with high hopes of starting a charter business, only to discover her horrifying secrets on the isolated open waters.",
         poster: "https://image.tmdb.org/t/p/w780/cdcyHzqqBrzPGJFVH29ONnzsV6I.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/3R4Oro4z904rWOecd0Qjo22PqII.jpg",
-        where: []
+        where: [],
+        vote_count: 230,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=teqNN21nNPE",
@@ -3900,7 +4393,9 @@ const movieDatabase = [
         desc: "Veronica is preparing a very special dinner for her fiancé, but an argument she has had earlier leads to an accident which leaves her immobilised in the living-room at her home. Matters get worse as time passes.",
         poster: "https://image.tmdb.org/t/p/w780/bEiSdA2T5b3Rd6S8qGALWW6UhyJ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/k2BlvFpTzhcwkkKUVemAyg5CXmg.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 2
     },
     {
         url: "https://www.youtube.com/watch?v=tX-fKIUD-M8",
@@ -3914,7 +4409,9 @@ const movieDatabase = [
         desc: "The Limey follows Wilson, a tough English ex-con who travels to Los Angeles to avenge his daughter's death. Upon arrival, Wilson goes to task battling Valentine and an army of L.A.'s toughest criminals, hoping to find clues and piece together what happened. After surviving a near-death beating, getting thrown from a building and being chased down a dangerous mountain road, the Englishman decides to dole out some bodily harm of his own.",
         poster: "https://image.tmdb.org/t/p/w780/efAnFInZYrenNvBlLIXN2oLYyNc.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/g3tL8cbO94H7HXpj1lZfKMivd0e.jpg",
-        where: []
+        where: [],
+        vote_count: 502,
+        popularity: 1.5
     },
     {
         url: "https://www.youtube.com/watch?v=mLJ8w8s-Aik",
@@ -3928,7 +4425,9 @@ const movieDatabase = [
         desc: "The eccentric new manager of a UHF television channel tries to save the station from financial ruin with an odd array of programming.",
         poster: "https://image.tmdb.org/t/p/w780/wxx5YQLKVH1WMSRXQAUnC76r4iY.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/3avAV6iWLFFVZxQ6wOrccXpjqzs.jpg",
-        where: []
+        where: [],
+        vote_count: 415,
+        popularity: 1.2
     },
     {
         url: "https://www.youtube.com/watch?v=UUYaWzvkZBE",
@@ -3942,7 +4441,9 @@ const movieDatabase = [
         desc: "Marina is a woman in her thirties who works organizing weddings. Not because she is an inveterate romantic just because, as she says, \"when people are in love, they don't care about money\". Unlike her customers, she enjoys a life without ties or commitments, until the moment when she falls in love with Carlos. The problem is not only he is about to get married, but also his fiancee is Marina's childhood friend and they have hired her as their Wedding Planner.",
         poster: "https://image.tmdb.org/t/p/w780/pjx2VovTdQ91dL6vPL9opHZclvW.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/n0TrGS55pOn8pdhXJS7MLP3BgGb.jpg",
-        where: []
+        where: [],
+        vote_count: 183,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=dxfXlV46G-k",
@@ -3956,7 +4457,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/zljTyT0jMC3zORM5EWrJdHGl4L.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/a5PsGLBQw5n1ipSpnpOnsYT1gaD.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=yMR-TzEoOJk",
@@ -3970,7 +4473,9 @@ const movieDatabase = [
         desc: "A psychopathic killer plans his next attack.",
         poster: "https://image.tmdb.org/t/p/w780/ib12m840lIWjeY3pHSzsuJnujUK.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.1
     },
     {
         url: "https://www.youtube.com/watch?v=vs6V0GkNtSU",
@@ -3984,7 +4489,9 @@ const movieDatabase = [
         desc: "A group of people are plunged into a dark, claustrophobic maze, where they must fight to survive, as the outside world watches.",
         poster: "https://image.tmdb.org/t/p/w780/xVyHjAwCVYcoCQQHyc1zQH9DSoU.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/nM8iHJDIGuJPVmjejK2cBLEDiDF.jpg",
-        where: []
+        where: [],
+        vote_count: 152,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=KJTSW8AS1vk",
@@ -3998,7 +4505,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/xdFBP0ySt2U7L5PD4m5LvYkYiP1.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=sl4DufCfGSo",
@@ -4012,7 +4521,9 @@ const movieDatabase = [
         desc: "A young boy whose parents are going through a bitter divorce, is given hope and courage through the powerful stories embellished by his grandfather. The stories give the boy the inner strength and resolve to confront the inevitable challenges which lie ahead.",
         poster: "https://image.tmdb.org/t/p/w780/2eT2W5hheoufiXpsd42wBqeDJTS.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 4,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=5Vc9WHXj5Sk",
@@ -4026,7 +4537,9 @@ const movieDatabase = [
         desc: "Liam wakes from a car crash with no memory of who he is. As he makes his way into town to look for help, he finds only dead bodies, all with strange pale eyes. Liam's first assessment is that a virus is present in the air, but he soon discovers the horrible truth: anyone who comes within a 50-foot radius of him dies instantly.",
         poster: "https://image.tmdb.org/t/p/w780/3BHYW2Wlcu9ES41Y4OTeSgkhYkD.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fx9Bw68v1EZqmUf6wfdf2nZVqp3.jpg",
-        where: []
+        where: [],
+        vote_count: 751,
+        popularity: 2.7
     },
     {
         url: "https://www.youtube.com/watch?v=U1bIewTzJpY",
@@ -4040,7 +4553,9 @@ const movieDatabase = [
         desc: "On the Pacific island of Guadalcanal in 1942, the famed 1st Marine Division — the oldest, largest and most decorated division of the U.S. Marine Corps — defeated Japanese forces in a turning point of WWII. This film documents the experiences of 1st Marine Division veterans who took part in the historic fight.",
         poster: "https://image.tmdb.org/t/p/w780/zfpJhEd1TUE96yoiCAPIIrla7q9.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/zUcCrwKNe8C3G1LMjbq8p5ZMpnB.jpg",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=nlINeqxmQc4",
@@ -4054,7 +4569,9 @@ const movieDatabase = [
         desc: "“The Conductor” is the first feature length film created entirely by the artist Jeremy Mann.  It is a story told through a dreamscape metaphor of the eternal artistic struggle.",
         poster: "https://image.tmdb.org/t/p/w780/jEQ9o4XfJiOBeE2UevLJwlV6WcQ.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=sM5UENuE8D0",
@@ -4068,7 +4585,9 @@ const movieDatabase = [
         desc: "Your favourite teddy bear. That model kit that took so long to complete. The picture book you used to read over and over again. The shining stone you found that day in the park. Where do all your childhood's treasures go when you grow up? In this story, we meet fantastic creatures that gather all these little objects that fall into oblivion as they are forgotten by their owners when they step into adulthood. These creatures sneak into our world from a different dimension, and unseen by humans, they take all the ditched and forgotten \"treasures\" into their world. Here, they use their booty to build their own city, a fairy tale-like place called... Oblivion Island!",
         poster: "https://image.tmdb.org/t/p/w780/6k7UuJadZOnPWQ3KWOcpVOXNgIt.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/shc57d5Ki2mpx1b7DnJNm26oSaG.jpg",
-        where: []
+        where: [],
+        vote_count: 44,
+        popularity: 1.4
     },
     {
         url: "https://www.youtube.com/watch?v=xQ-4l5-tJY8",
@@ -4082,7 +4601,9 @@ const movieDatabase = [
         desc: "Small-town Pennsylvania schoolteacher Linda Sinclair balances her staid home life with an incredible passion for her subject. Then a former star pupil reenters her life after failing as a playwright in New York City. Seeing in his script the inspiration that she has always longed to instill in her students, this dyed-in-the-wool romantic enlists the help of long-suffering drama teacher Carl to mount the work as the high school’s next and riskiest production.",
         poster: "https://image.tmdb.org/t/p/w780/mF14chZNzgDRZffs8Wk8lPwdNQA.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/rMrtoZfd0B0jDc1IW6r7MHELAtt.jpg",
-        where: []
+        where: [],
+        vote_count: 374,
+        popularity: 1.6
     },
     {
         url: "https://www.youtube.com/watch?v=sG5qo9o12XQ",
@@ -4096,7 +4617,9 @@ const movieDatabase = [
         desc: "In Normandy, Louise lives happily in the horse world. Suddenly, fate strikes. Louise left alone with his father and a family friend to Ferronnière the stud where she has always lived. Business is bad, they are on the verge of bankruptcy ... Fortunately there Marquise, a young mare Louise high. Against all odds, the girl and Marquise will fight against the fate that seems hell-bent ...",
         poster: "https://image.tmdb.org/t/p/w780/wLQbvmP40paRTmha8gBWjhexYEI.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/zFkGKu3VG0YgNThzB2Lv1vW1GCV.jpg",
-        where: []
+        where: [],
+        vote_count: 25,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=HBghpHAOv5U",
@@ -4110,7 +4633,9 @@ const movieDatabase = [
         desc: "When Tyler's furry best friend dies tragically, his inventor Dad creates a new dog to take his place - complete with mechanical powers and robotic abilities to keep everyone on their toes.",
         poster: "https://image.tmdb.org/t/p/w780/qqkAFKidHuEVwxsDtqygqgHEQBI.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/po2J7LAMriZSYxOJgoqROZlkl6G.jpg",
-        where: []
+        where: [],
+        vote_count: 25,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=0B1Mb_61E9I",
@@ -4124,7 +4649,9 @@ const movieDatabase = [
         desc: "Angelino is just one of thousands of deadbeats living in Dark Meat City. But an otherwise unremarkable scooter accident caused by a beautiful, mysterious stranger is about to transform his life... into a waking nightmare! He starts seeing monstrous forms prowling around all over the city... Is Angelino losing his mind, or could an alien invasion really be happening this quietly...?",
         poster: "https://image.tmdb.org/t/p/w780/oSMIKsznGYzGfdl611kgEJF889.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1HwTbEN3SFiFWxChqVXddxquKHf.jpg",
-        where: []
+        where: [],
+        vote_count: 354,
+        popularity: 2
     },
     {
         url: "https://www.youtube.com/watch?v=TDokjXdCxcc",
@@ -4138,7 +4665,9 @@ const movieDatabase = [
         desc: "An engaged couple adopts two puppies but when they decide to split up, the puppies hatch a plan to bring the two back together.",
         poster: "https://image.tmdb.org/t/p/w780/uayocSRtvhBk7PDYy70o14PidjQ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/vSKCA2ND6IE76idZugD8o5V32W9.jpg",
-        where: []
+        where: [],
+        vote_count: 10,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=OnCZeDC12QU",
@@ -4152,7 +4681,9 @@ const movieDatabase = [
         desc: "Captain Blaubär’s archenemy Prof. Dr. Feinfinger, kidnapped the grandson of Blaubär, three little bears, from his custody to avenge himself at Blaubär, who had destroyed the years before Feinfinger’s plans to conquer the world. Together with his friend Hein Blöd, Blaubär sets out to free them.",
         poster: "https://image.tmdb.org/t/p/w780/uDQj3XnGc0s9wLGFMvweSYYTKFP.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/g59xoiJmfwxrhaIhuW0DucBv6yY.jpg",
-        where: []
+        where: [],
+        vote_count: 13,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=fOGKr3hNnoI",
@@ -4166,7 +4697,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/pmtRzsakgqxOqKnuNBwo9HHd2hW.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=kv2xuS1XaK4",
@@ -4180,7 +4713,9 @@ const movieDatabase = [
         desc: "When their daughter is abducted by experienced kidnappers, the Jennings turn the tables on their seemingly fool-proof plan.",
         poster: "https://image.tmdb.org/t/p/w780/4sujD0KP5O90TXAWrTjqDPBTnfQ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/dE2PZb6j2HZC9a1rkmKwjHxJtby.jpg",
-        where: []
+        where: [],
+        vote_count: 623,
+        popularity: 2.2
     },
     {
         url: "https://www.youtube.com/watch?v=2AkSfpGQIKs",
@@ -4194,7 +4729,9 @@ const movieDatabase = [
         desc: "A rich Beverly Hills girl gets a job as a waitress, and falls in love with a rock singer.",
         poster: "https://image.tmdb.org/t/p/w780/wBPWTtDp5TWIJAiWI5gbfdXm2w0.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.5
     },
     {
         url: "https://www.youtube.com/watch?v=hJi8GWPCGjI",
@@ -4208,7 +4745,9 @@ const movieDatabase = [
         desc: "A diehard romantic sets the date for her wedding despite still being single. As she goes on a quest to find a fiancé, she’s unaware true love might be right under her nose.",
         poster: "https://image.tmdb.org/t/p/w780/tcpcxX0kbiizYwV6Lccwpzd7YDH.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2UyWQIyxiuplGCJ2BQLfMsL1onG.jpg",
-        where: []
+        where: [],
+        vote_count: 12,
+        popularity: 0.3
     },
     {
         url: "https://www.youtube.com/watch?v=22dvd5o6djE",
@@ -4222,7 +4761,9 @@ const movieDatabase = [
         desc: "Discover the UFO phenomenon like never before, with insights from NASA, CNES, Oxford, compelling firsthand witnesses, and even the possible viewpoint of extraterrestrial visitors.",
         poster: "https://image.tmdb.org/t/p/w780/trzLl81tAtlUsR8EhUUaVPN2kJ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/iG0Kjm95zHVApDuSOKM1VmDsIXo.jpg",
-        where: []
+        where: [],
+        vote_count: 4,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=metBsC0wHXE",
@@ -4236,7 +4777,9 @@ const movieDatabase = [
         desc: "They knew each other long ago: a man and a woman whose dazzling and unexpected romance captured in the now-iconic film revolutionized our understanding of love. Today, the former race car driver seems lost in the pathways of his memory. In order to help him, his son seeks out the woman his father wasn’t able to cherish but whom he constantly revisits in his thoughts and dreams. Anne reunites with Jean-Louis and their story picks up where they left it…",
         poster: "https://image.tmdb.org/t/p/w780/41jZAOJvZRj4e1jshl3sFzKqHnR.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/ylob1axAunw2NW06Drd5jfjMASK.jpg",
-        where: []
+        where: [],
+        vote_count: 103,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=phvGcK_XDpY",
@@ -4250,7 +4793,9 @@ const movieDatabase = [
         desc: "Sam is a gifted young dancer whose world spirals after an unexpected, life-changing event. ​Sam walks away from dancing and ballet, ​but the art form is in her blood, and she can’t resist the temptation to return. ​Life eventually leads Sam back to her old dance school – but not as a dancer. An​ old rival, a long-time crush, and her former dance teacher guide Sam back to​ what she loves most, but ultimately, it’s her own emotions and fears that she must confront to reignite her deep passion for dance.",
         poster: "https://image.tmdb.org/t/p/w780/qEuquBwX2Oqdw5ixUnDP1vJbNAk.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/cf1yVkO8t0xYHOsoMrp8DWHuYV6.jpg",
-        where: []
+        where: [],
+        vote_count: 11,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=Gy0HfoYgkvk",
@@ -4264,7 +4809,9 @@ const movieDatabase = [
         desc: "Romy’s mother has to work a lot. That’s why Romy goes to her grandmother every day after school. Grandma Stine is very busy working in her hairdressing salon, and is very strict. But everything changes when Romy discovers a totally different side to her grandmother.",
         poster: "https://image.tmdb.org/t/p/w780/ruSsEzIJHrkIryWPmgwK1gVWPKY.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/ahw6wX1e0VgxR1GKMdeIORhCTtS.jpg",
-        where: []
+        where: [],
+        vote_count: 15,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=6jaEI9pBdJk",
@@ -4278,7 +4825,9 @@ const movieDatabase = [
         desc: "A tale of a philosophical womanizer who is forced to question his seemingly carefree existence.",
         poster: "https://image.tmdb.org/t/p/w780/dvKvkoc2d06cOSheq5hQ7G4FJJX.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/5APJCIebhpROWEMc2ZIBclfmjm2.jpg",
-        where: []
+        where: [],
+        vote_count: 886,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=YGS2lKZya5o",
@@ -4292,7 +4841,9 @@ const movieDatabase = [
         desc: "Silly Augustine, wife of silly August, who performs in the circus, and mother of Guggo, Gugga and Guggilein, dreams of one day being able to perform as a clown in the circus. Instead, she has to run the exhausting household. Her suggestion to share the job, the housework and the children is met with incomprehension and scorn from her husband. When silly August suffers from a toothache and misses his performance, Augustine seizes her chance, steps in and promptly masters the task with flying colors. From then on, father and mother share the housework and circus duties, as silly August immediately realizes that he has underestimated his wife.",
         poster: "",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 1,
+        popularity: 0.7
     },
     {
         url: "https://www.youtube.com/watch?v=I-K41N_rZdI",
@@ -4306,7 +4857,9 @@ const movieDatabase = [
         desc: "Upon returning from serving in the U.S. Army, Chaplain Darren Turner faces a crisis that shatters his Family and Faith in God but through the help of his fellow soldiers, he returns to his faith and family",
         poster: "https://image.tmdb.org/t/p/w780/nHoV8LbrDPGBZp0QSl9S0Jiw4tg.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/eHS6TBRzHhwpSKGYsmAUth2he6c.jpg",
-        where: []
+        where: [],
+        vote_count: 82,
+        popularity: 0.9
     },
     {
         url: "https://www.youtube.com/watch?v=udDWNFQQKlU",
@@ -4320,7 +4873,9 @@ const movieDatabase = [
         desc: "A group of friends who have known each other for many years meet at Max and Lucie's house to celebrate Lucie's birthday. When they arrive, the three guests discover Max kneeling in front of the body of his wife who has been murdered. He is sure that the police will charge him because everything accuses him. Convinced of his innocence, his friends decide to give him an alibi. But the investigation tightens around Max.",
         poster: "https://image.tmdb.org/t/p/w780/wei2WoPJka60ITevLP9f73guSNn.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/baR7FyL8DIF2lYydRgic3uUxgcd.jpg",
-        where: []
+        where: [],
+        vote_count: 15,
+        popularity: 1.9
     },
     {
         url: "https://www.youtube.com/watch?v=zkkVWcMYxt8",
@@ -4334,7 +4889,9 @@ const movieDatabase = [
         desc: "Siblings Ethan and Hallie O'Fallon plot to get their divorced parents back together in time for Christmas.",
         poster: "https://image.tmdb.org/t/p/w780/3Fcyjwyg7Qjp0qUKo4HfoC7JIf.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/gFLCrMbVoPXvDTwl0j3hurQoeua.jpg",
-        where: []
+        where: [],
+        vote_count: 129,
+        popularity: 1.3
     },
     {
         url: "https://www.youtube.com/watch?v=t82ToajbWZc",
@@ -4348,7 +4905,9 @@ const movieDatabase = [
         desc: "After his mother’s death, Zucchini is befriended by a kind police officer, Raymond, who accompanies him to his new foster home filled with other orphans his age. There, with the help of his newfound friends, Zucchini eventually learns to trust and love as he searches for a new family of his own.",
         poster: "https://image.tmdb.org/t/p/w780/2uu8fIzl76C9MFiUQhjKYSLKVq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/39KCF3nZUG0b2GPE5vCeMm0kSf9.jpg",
-        where: []
+        where: [],
+        vote_count: 1523,
+        popularity: 2.2
     },
     {
         url: "https://www.youtube.com/watch?v=rxCcjn-4Ubc",
@@ -4362,7 +4921,9 @@ const movieDatabase = [
         desc: "After a near-fatal accident, on a horse the experts thought was nothing special, a determined rider from the wrong side of the tracks defies all the odds to pursue her dreams of winning a national jumping championship.",
         poster: "https://image.tmdb.org/t/p/w780/gFQYIrS32BlSDdqDx0fps4eZllc.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fCZiwwD8M58X7IXW33EMjXLuBSV.jpg",
-        where: []
+        where: [],
+        vote_count: 74,
+        popularity: 1
     },
     {
         url: "https://www.youtube.com/watch?v=fuu7ZkiORZE",
@@ -4376,7 +4937,9 @@ const movieDatabase = [
         desc: "A troubled girl finds faith, hope, and healing through a relationship with a wounded horse.",
         poster: "https://image.tmdb.org/t/p/w780/1czsAXl9sGD5eS7LlaA6qC7mihZ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/vT06tEfV6mXuhWo8QAoMXBNieeO.jpg",
-        where: []
+        where: [],
+        vote_count: 33,
+        popularity: 0.4
     },
     {
         url: "https://www.youtube.com/watch?v=QhNuh6k7GQE",
@@ -4390,7 +4953,9 @@ const movieDatabase = [
         desc: "A dangerous gangster called the Lizard escaped from prison. He steals chickens and spits on old ladies. There's only one man who can catch him: the commissioner Roy Schneider!",
         poster: "https://image.tmdb.org/t/p/w780/quoBK0F6kOC7E3K4N9ZOj9tfP3u.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1EeYPF1ifsKrdHlmfxmQcXWKcsE.jpg",
-        where: []
+        where: [],
+        vote_count: 46,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=Txpl7lvZKpw",
@@ -4404,7 +4969,9 @@ const movieDatabase = [
         desc: "Allison Sawyer is the go-to reporter at Metropolis Post, known for breaking high-profile stories. Her next story is writing a profile piece on one of her favourite authors Annabelle Lee. Annabelle based all her romantic novels on the timelessly beautiful Clybourne Ranch, far away from city life.",
         poster: "https://image.tmdb.org/t/p/w780/cleLiTpYiSo4zYOeT7i954RwE0w.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/7ElFuk6MXWM57V56mVEisbxFXtY.jpg",
-        where: []
+        where: [],
+        vote_count: 22,
+        popularity: 0.6
     },
     {
         url: "https://www.youtube.com/watch?v=kkzjt6I5em0",
@@ -4418,7 +4985,9 @@ const movieDatabase = [
         desc: "",
         poster: "https://image.tmdb.org/t/p/w780/llqUiiJV5a3Qpm8su4eCJBE0EG2.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 0,
+        popularity: 0.8
     },
     {
         url: "https://www.youtube.com/watch?v=iB-gS8QH6kA",
@@ -4432,7 +5001,9 @@ const movieDatabase = [
         desc: "A private military operation invents futuristic microchip tech that enables the mind of an agent to inhabit the body of another person to carry out covert, deadly missions. But when an agent is killed during a secret mission, his wife takes his place in an attempt to bring the man responsible to justice.",
         poster: "https://image.tmdb.org/t/p/w780/7N0BJPs616SSwE4hVs0jjWuiy5k.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/umU01ex28ykcaF5IxcHPB0lSGP1.jpg",
-        where: []
+        where: [],
+        vote_count: 203,
+        popularity: 2
     },
     {
         url: "https://www.youtube.com/watch?v=AEutrEJvEpU",
@@ -4446,7 +5017,9 @@ const movieDatabase = [
         desc: "Count Harro von Treuenfels is suspected of poisoning his wife. Griseldis von Ronach, his daughter's governess, falls in love with the count and sets out to find the real culprit.",
         poster: "https://image.tmdb.org/t/p/w780/ooXFQ8YXHAEwsHzpURFknyFw3bu.jpg",
         thumbnail: "",
-        where: []
+        where: [],
+        vote_count: 2,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=fxLuR1LLCbU",
@@ -4460,7 +5033,9 @@ const movieDatabase = [
         desc: "Five scientists awake from a cryogenic sleep and find themselves trapped in an underground facility. With no memory of who they are or how long they've been asleep, they begin to realize they may have been part of a scientific experiment gone wrong. After a series of strange events, the scientists find themselves being hunted. They do not know who is hunting them or for what reason, but the scientists begin to suspect that one of them may be the killer.",
         poster: "https://image.tmdb.org/t/p/w780/v5TV49AaIdZ1jiTCTYAF420mal8.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/xsMqT1i7V5qmUluCDk547pZmNgN.jpg",
-        where: []
+        where: [],
+        vote_count: 46,
+        popularity: 0.2
     },
     {
         url: "https://www.youtube.com/watch?v=5aT0JfZgFbw&pp=sAQB",
@@ -4474,7 +5049,9 @@ const movieDatabase = [
         desc: "Inspired by one of the longest and bloodiest real-life events in police history, Officer Mike Chandler and a young civilian passenger find themselves under-prepared and outgunned when fate puts them squarely in the crosshairs of a daring bank heist in progress by a fearless team of highly-trained and heavily-armed men.",
         poster: "https://image.tmdb.org/t/p/w780/81RColr4rau6DZ7z9eMsksokcfk.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/9veiTNBxButuExKBa0l8APqr2li.jpg",
-        where: []
+        where: [],
+        vote_count: 499,
+        popularity: 2.3
     },
     {
         url: "https://www.youtube.com/watch?v=IyggXqtgwMc&pp=sAQB",
@@ -4488,7 +5065,9 @@ const movieDatabase = [
         desc: "An astronomer becomes obsessed with searching the cosmos for signs of life beyond Earth which leads to a shocking discovery.",
         poster: "https://image.tmdb.org/t/p/w780/uaWAjD4y64qkvGzgNNj9vDrjX2l.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/7zKaMAH0nAxJHCQ6tsKYiueUikL.jpg",
-        where: []
+        where: [],
+        vote_count: 231,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=sAROTQKRefk&pp=sAQB",
@@ -4502,7 +5081,9 @@ const movieDatabase = [
         desc: "When Elias van Dorne, CEO of the world's largest robotics company, introduces his most powerful invention, Kronos-a super-computer designed to end all wars-it determines that humans are the biggest threat and launches a worldwide attack on mankind. A small band of survivors must form an unlikely alliance to survive the greatest artificial intelligence threat man will ever know.",
         poster: "https://image.tmdb.org/t/p/w780/hMWiOdsN5VK5hgZYocUDxXWSjtQ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/54chAMdvhmK1Fh7twaYxbB4ojQB.jpg",
-        where: []
+        where: [],
+        vote_count: 232,
+        popularity: 1.8
     },
     {
         url: "https://www.youtube.com/watch?v=Kjyp8vJ5jU0",
@@ -4516,20 +5097,8 @@ const movieDatabase = [
         desc: "Peter is a slight lad, solitary, locked out of the woods by his protective grandfather, his only friend a duck. In town, he's bullied. When a wolf menaces the duck - as well as grandfather's fat cat and an ill-flying bird that Peter has befriended - Peter bravely tries to tree the wolf. Grandfather, the townspeople, and the hunters who have antagonized Peter figure in the dénouement.",
         poster: "https://image.tmdb.org/t/p/w780/jkJHVuvdzlL3KC8ehyemD3py6Eb.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2m2t4fnxy8iq2aq7rMkDaPOzcVG.jpg",
-        where: []
+        where: [],
+        vote_count: 108,
+        popularity: 1.1
     }
 ];
-// ============================================================
-// 📌  RESTLICHE FILME — PATTERN ZUM KOPIEREN:
-// ============================================================
-// {
-//     url: "https://www.youtube.com/watch?v=VIDEO_ID",
-//     title: "Movie Title",
-//     year: "2024",
-//     genre: "Action",
-//     rating: 8.5,
-//     duration: 128,               // Laufzeit in Minuten oder null falls unbekannt
-//     director: "Director Name",
-//     cast: ["Actor 1", "Actor 2", "Actor 3"],
-//     desc: "Movie description..."
-// }
