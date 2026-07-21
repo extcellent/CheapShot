@@ -1331,21 +1331,34 @@
         </div>
     </div>
 
-    <!-- ===== TOP RATED SECTION ===== -->
+    <!-- ===== RANDOM DISCOVERY SECTION (fully random, reshuffled on every load) ===== -->
     <div class="section">
         <div class="section-header">
-            <h2>⭐ Top Rated</h2>
+            <h2>🎲 Random Discovery</h2>
             <a href="browse.html" class="view-all">View All →</a>
         </div>
         <div class="slider-wrapper">
-            <button class="slider-btn prev" onclick="slide('topRated', -1)">‹</button>
-            <div class="slider-container" id="topRatedSlider"></div>
-            <button class="slider-btn next" onclick="slide('topRated', 1)">›</button>
+            <button class="slider-btn prev" onclick="slide('random', -1)">‹</button>
+            <div class="slider-container" id="randomSlider"></div>
+            <button class="slider-btn next" onclick="slide('random', 1)">›</button>
         </div>
     </div>
 
     <!-- ===== GENRE SECTIONS (auto-generated from movies.js) ===== -->
     <div id="genreSections"></div>
+
+    <!-- ===== DOCUMENTARY SECTION (fixed, always at the bottom) ===== -->
+    <div class="section" id="documentarySection" style="display:none;">
+        <div class="section-header">
+            <h2>🎬 Documentary</h2>
+            <a href="browse.html?genre=Documentary" class="view-all">View All →</a>
+        </div>
+        <div class="slider-wrapper">
+            <button class="slider-btn prev" onclick="slide('documentary', -1)">‹</button>
+            <div class="slider-container" id="documentarySlider"></div>
+            <button class="slider-btn next" onclick="slide('documentary', 1)">›</button>
+        </div>
+    </div>
 
     <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="movieModal">
@@ -1431,7 +1444,6 @@
                 </div>
             `;
             document.getElementById('trendingSlider').innerHTML = '';
-            document.getElementById('topRatedSlider').innerHTML = '';
         }
         
         // ============================================================
@@ -1571,18 +1583,90 @@
             `;
         }
 
+        // ============================================================
+        // 🧠 SMART SCORE — Rating + Popularity/Votes + Aktualität
+        // ============================================================
+        // Reines Rating ist irreführend: ein 9.0er mit 8 TMDB-Stimmen
+        // ist kein besserer Film als ein 7.8er mit 50.000 Stimmen.
+        // vote_count/popularity kommen automatisch von TMDB (siehe
+        // auto-search Tool). Fehlen sie (alte Einträge), fällt die
+        // Formel sauber auf reines Rating + leichten Recency-Bonus zurück.
+        const GENRE_ALIASES = {
+            'sci-fi': 'Science Fiction',
+            'science fiction': 'Science Fiction',
+            "children's/family": 'Family',
+            "children's family": 'Family',
+            'kids': 'Family'
+        };
+
+        function smartScore(movie, context = 'default') {
+            let score = movie.rating || 0;
+
+            if (movie.vote_count) {
+                const C = 300, m = 7.0;
+                score = (movie.vote_count / (movie.vote_count + C)) * (movie.rating || 0)
+                      + (C / (movie.vote_count + C)) * m;
+            }
+
+            if (movie.popularity) {
+                score += Math.min(1.0, movie.popularity / 200);
+            }
+
+            const age = new Date().getFullYear() - (parseInt(movie.year, 10) || new Date().getFullYear());
+            score += Math.max(0, (8 - age) * 0.04);
+
+            if (context === 'all' && getMovieGenres(movie).includes('Documentary')) {
+                score -= 1.2;
+            }
+
+            return score;
+        }
+
+        // Wechselt den Seed nur alle N Tage (statt täglich) — dieselbe
+        // Trending-Reihenfolge bleibt also mehrere Tage stabil und ändert
+        // sich dann automatisch, ganz ohne dass du irgendwas manuell
+        // anstoßen musst. Neu hinzugefügte Filme mit hohem smartScore
+        // rutschen beim nächsten Seed-Wechsel automatisch mit rein.
+        function getMultiDaySeed(days = 3) {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const dayOfYear = Math.floor((now - start) / 86400000);
+            const bucket = Math.floor(dayOfYear / days);
+            return now.getFullYear() * 1000 + bucket;
+        }
+
+        // Nimmt die Top-N nach smartScore und mischt NUR innerhalb dieser
+        // Gruppe — mit einem Seed, der sich alle 3 Tage ändert. Fühlt sich
+        // über die Zeit lebendig an, ohne dass Trash-Filme nach oben
+        // rutschen und ohne dass du manuell etwas neu anstoßen musst.
+        function shuffleWithinTopBand(movieList, bandSize = 30, days = 3) {
+            const scored = movieList.slice().sort((a, b) => smartScore(b) - smartScore(a));
+            const top = scored.slice(0, bandSize);
+            const rest = scored.slice(bandSize);
+            const shuffledTop = seededShuffle(top, getMultiDaySeed(days));
+            return [...shuffledTop, ...rest];
+        }
+
         function renderSliders() {
             if (!movies || movies.length === 0) {
                 return;
             }
 
+            // Top 10 Today: bewusst NICHT smartScore-sortiert — kommt 1:1
+            // aus deiner manuell kuratierten topMoviesDatabase-Reihenfolge.
             const top10 = movies.slice(0, topMoviesCount);
-            const trending = movies.slice().sort(() => Math.random() - 0.5);
-            const topRated = movies.slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
+
+            // Trending: Top ~30 nach Score, aber innerhalb dieser Gruppe
+            // bei jedem Laden neu gemischt.
+            const trending = shuffleWithinTopBand(movies, 30);
+
+            // Zufallsfund: komplett zufällig aus ALLEN Filmen, wie früher
+            // "Trending" — kann auch Nischentitel und Doku-Kandidaten zeigen.
+            const random = movies.slice().sort(() => Math.random() - 0.5);
 
             document.getElementById('top10Slider').innerHTML = top10.map((m, i) => renderMovieCard(m, movies.indexOf(m), true, 'top10', i)).join('');
             document.getElementById('trendingSlider').innerHTML = trending.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
-            document.getElementById('topRatedSlider').innerHTML = topRated.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
+            document.getElementById('randomSlider').innerHTML = random.map((m) => renderMovieCard(m, movies.indexOf(m), false, 'wide')).join('');
         }
 
         // ============================================================
@@ -1603,13 +1687,17 @@
 
         function getMovieGenres(movie) {
             if (!movie.genre) return [];
-            return movie.genre.split(',').map(g => g.trim()).filter(Boolean);
+            return movie.genre.split(',')
+                .map(g => g.trim())
+                .filter(Boolean)
+                .map(g => GENRE_ALIASES[g.toLowerCase()] || g);
         }
 
         function getPopularGenres(movieList) {
             const counts = {};
             movieList.forEach(m => {
                 getMovieGenres(m).forEach(g => {
+                    if (g === 'Documentary') return; // hat eine feste Reihe ganz unten
                     counts[g] = (counts[g] || 0) + 1;
                 });
             });
@@ -1647,13 +1735,30 @@
                 const id = 'genre-' + slugify(genre);
                 const genreMovies = movies
                     .filter(m => getMovieGenres(m).includes(genre))
-                    .sort((a, b) => (b.rating || 0) - (a.rating || 0))
+                    .sort((a, b) => smartScore(b) - smartScore(a))
                     .slice(0, GENRE_MOVIES_PER_ROW);
 
                 document.getElementById(id + 'Slider').innerHTML = genreMovies
                     .map(m => renderMovieCard(m, movies.indexOf(m), false, 'wide'))
                     .join('');
             });
+
+            // Fixe Documentary-Reihe ganz unten, unabhängig vom Popularitäts-Ranking
+            // der anderen Genres — taucht immer auf, wenn genug Dokus vorhanden sind.
+            const docMovies = movies
+                .filter(m => getMovieGenres(m).includes('Documentary'))
+                .sort((a, b) => smartScore(b) - smartScore(a))
+                .slice(0, GENRE_MOVIES_PER_ROW);
+
+            const docSection = document.getElementById('documentarySection');
+            if (docMovies.length >= GENRE_MIN_MOVIES) {
+                docSection.style.display = '';
+                document.getElementById('documentarySlider').innerHTML = docMovies
+                    .map(m => renderMovieCard(m, movies.indexOf(m), false, 'wide'))
+                    .join('');
+            } else {
+                docSection.style.display = 'none';
+            }
         }
 
         function renderAll() {
