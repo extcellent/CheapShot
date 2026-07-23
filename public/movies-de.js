@@ -6172,7 +6172,7 @@ const movieDatabase = [
         where: []
     },
     {
-        url: "https://www.youtube.com/watch?v=NFnK4lYOaiM\"",
+        url: "https://www.youtube.com/watch?v=NFnK4lYOaiM",
         title: "The Outcasts",
         year: 2017,
         genre: "Comedy",
@@ -9449,18 +9449,18 @@ const movieDatabase = [
     {
         url: "https://www.youtube.com/watch?v=OIG-xG6VC2Y",
         title: "The Cleaner",
-        year: 2013,
-        genre: "Drama",
-        rating: 6.5,
-        vote_count: 6,
-        popularity: 1.4,
-        tmdbId: 139306,
+        year: 2021,
+        genre: "Crime, Drama, Mystery",
+        rating: 5.4,
+        vote_count: 32,
+        popularity: 1,
+        tmdbId: 876024,
         duration: 93,
-        director: "Adrián Saba",
-        cast: ["Víctor Prada", "Adrian du Bois", "Milena Alva", "Carlos Gassols", "Miguel Iza"],
-        desc: "A forensic cleaner, responsible for the removal of human corpses, has never been able to relate with people or life. Suddenly, he will become accountable for an 8-year-old orphan who has been left behind in the middle of a mysterious epidemic crisis in Lima.",
-        poster: "https://image.tmdb.org/t/p/w780/AtUveT2JS0epeK5vzMlqevYslyG.jpg",
-        thumbnail: "https://image.tmdb.org/t/p/original/kYGtbzS0jUp9XbCQBIVL4dmFJ1p.jpg",
+        director: "Erin Elders",
+        cast: ["Soleil Moon Frye", "Luke Wilson", "Lynda Carter", "Eden Brolin", "Shelley Long", "King Orba"],
+        desc: "When middle-aged house cleaner Buck Enderly takes on an eccentric new client, he gets roped into locating her estranged son. Buck tracks down the disturbed young man but in another twist of fate becomes an accomplice to a violent crime. Buck must then decide whether to hide the truth from his family or come clean with everyone and move on with his life",
+        poster: "https://image.tmdb.org/t/p/w780/vqBGCe4sdvScFSJVNkDxHAMDTYk.jpg",
+        thumbnail: "https://image.tmdb.org/t/p/original/cJQp4zxDQ4p9n0pflPuYr8orery.jpg",
         where: []
     },
     {
