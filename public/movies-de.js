@@ -34,9 +34,9 @@ const topMoviesDatabase = [
         year: "1995",
         genre: "Action, Crime, Drama",
         rating: 8.3,
-        popularity: 13.4,
+        popularity: 14.2,
         tmdbId: 949,
-        vote_count: 8473,
+        vote_count: 8477,
         duration: 170,
         director: "Michael Mann",
         cast: ["Al Pacino", "Robert De Niro", "Val Kilmer", "Jon Voight"],
@@ -51,9 +51,9 @@ const topMoviesDatabase = [
         year: "2011",
         genre: "Action, Drama, Sport",
         rating: 8.2,
-        popularity: 5.7,
+        popularity: 6.9,
         tmdbId: 59440,
-        vote_count: 5061,
+        vote_count: 5062,
         duration: 140,
         director: "Gavin O'Connor",
         cast: ["Tom Hardy", "Joel Edgerton", "Nick Nolte", "Jennifer Morrison"],
@@ -68,9 +68,9 @@ const topMoviesDatabase = [
         year: "2015",
         genre: "Science Fiction, Adventure, Drama",
         rating: 8.0,
-        popularity: 17.5,
+        popularity: 22.2,
         tmdbId: 286217,
-        vote_count: 21448,
+        vote_count: 21463,
         duration: 144,
         director: "Ridley Scott",
         cast: ["Matt Damon", "Jessica Chastain", "Kristen Wiig", "Jeff Daniels"],
@@ -85,9 +85,9 @@ const topMoviesDatabase = [
         year: "2007",
         genre: "Crime, Drama, Mystery",
         rating: 7.7,
-        popularity: 8.5,
+        popularity: 10.9,
         tmdbId: 1949,
-        vote_count: 11664,
+        vote_count: 11671,
         duration: 157,
         director: "David Fincher",
         cast: ["Jake Gyllenhaal", "Mark Ruffalo", "Robert Downey Jr.", "Anthony Edwards"],
@@ -102,7 +102,7 @@ const topMoviesDatabase = [
         year: 2014,
         genre: "Drama",
         rating: 7.5,
-        popularity: 3.6,
+        popularity: 4.6,
         tmdbId: 284293,
         vote_count: 3297,
         duration: 101,
@@ -119,9 +119,9 @@ const topMoviesDatabase = [
         year: "2001",
         genre: "Comedy, Drama",
         rating: 7.3,
-        popularity: 1.7,
+        popularity: 2,
         tmdbId: 1548,
-        vote_count: 1594,
+        vote_count: 1595,
         duration: 111,
         director: "Terry Zwigoff",
         cast: ["Thora Birch", "Scarlett Johansson", "Steve Buscemi", "Brad Renfro"],
@@ -136,9 +136,9 @@ const topMoviesDatabase = [
         year: "2016",
         genre: "Action, Drama, History",
         rating: 7.3,
-        popularity: 3.5,
+        popularity: 3.8,
         tmdbId: 388399,
-        vote_count: 2875,
+        vote_count: 2877,
         duration: 133,
         director: "Peter Berg",
         cast: ["Mark Wahlberg", "Kevin Bacon", "John Goodman", "J.K. Simmons"],
@@ -154,9 +154,9 @@ const topMoviesDatabase = [
         year: "1999",
         genre: "Fantasy, Horror, Mystery",
         rating: 7.3,
-        popularity: 8.3,
+        popularity: 9,
         tmdbId: 2668,
-        vote_count: 7436,
+        vote_count: 7440,
         duration: 105,
         director: "Tim Burton",
         cast: ["Johnny Depp", "Christina Ricci", "Miranda Richardson", "Christopher Walken"],
@@ -171,9 +171,9 @@ const topMoviesDatabase = [
         year: "2005",
         genre: "Action, Adventure, Drama",
         rating: 7.3,
-        popularity: 13.7,
+        popularity: 14,
         tmdbId: 1495,
-        vote_count: 5064,
+        vote_count: 5068,
         duration: 144,
         director: "Ridley Scott",
         cast: ["Orlando Bloom", "Eva Green", "Jeremy Irons", "Liam Neeson"],
@@ -188,9 +188,9 @@ const topMoviesDatabase = [
         year: "2007",
         genre: "Adventure, Drama, Family, Fantasy",
         rating: 7.2,
-        popularity: 8.8,
+        popularity: 9.6,
         tmdbId: 1265,
-        vote_count: 5353,
+        vote_count: 5359,
         duration: 96,
         director: "Gábor Csupó",
         cast: ["Josh Hutcherson", "AnnaSophia Robb", "Zooey Deschanel", "Robert Patrick"],
@@ -215,8 +215,8 @@ const movieDatabase = [
         cast: ["Shawn Wayans", "Marlon Wayans", "Tracey Cherelle Jones"],
         desc: "A parody of hood films where a young man navigates life in the hood.",
         where: [{"name":"Netflix","url":"https://www.netflix.com/title/452508"}],
-        vote_count: 1531,
-        popularity: 5.1,
+        vote_count: 1533,
+        popularity: 4.6,
         tmdbId: 10607
     },
     {
@@ -231,7 +231,7 @@ const movieDatabase = [
         desc: "A squad of British soldiers on a training exercise in the Scottish Highlands must fight for survival against a pack of werewolves.",
         thumbnail: "https://cinephiliabeyond.org/wp-content/uploads/2022/07/dogsoldiers.jpg?x16735",
         where: [],
-        vote_count: 1005,
+        vote_count: 1006,
         popularity: 3.1,
         tmdbId: 11880
     },
@@ -247,7 +247,7 @@ const movieDatabase = [
         desc: "An ambitious TV weathergirl manipulates a teenager into murdering her husband so nothing can stand in the way of her fame.",
         where: [],
         vote_count: 896,
-        popularity: 2.7,
+        popularity: 2.2,
         tmdbId: 577
     },
     {
@@ -262,8 +262,8 @@ const movieDatabase = [
         desc: "A bored married couple discovers they are both secretly assassins working for rival agencies, hired to kill each other.",
         thumbnail: "https://images5.alphacoders.com/112/thumb-1920-1121028.jpg",
         where: [],
-        vote_count: 11317,
-        popularity: 9.3,
+        vote_count: 11319,
+        popularity: 10.3,
         tmdbId: 787
     },
     {
@@ -277,8 +277,8 @@ const movieDatabase = [
         cast: ["Donald Pleasence", "Ellie Cornell", "Danielle Harris"],
         desc: "Michael Myers escapes custody and returns to Haddonfield to hunt down his young niece, Jamie Lloyd.",
         where: [{"name":"Amazon Prime Video","url":"https://www.justwatch.com/de/Film/Halloween-4-The-Return-of-Michael-Myers"}],
-        vote_count: 2077,
-        popularity: 3.4,
+        vote_count: 2078,
+        popularity: 4.2,
         tmdbId: 11357
     },
     {
@@ -293,8 +293,8 @@ const movieDatabase = [
         desc: "On the last day of its 23-day feeding cycle, the winged Creeper attacks a school bus full of stranded basketball players.",
         thumbnail: "https://w0.peakpx.com/wallpaper/300/472/HD-wallpaper-movie-jeepers-creepers.jpg",
         where: [],
-        vote_count: 1839,
-        popularity: 5.2,
+        vote_count: 1841,
+        popularity: 5.1,
         tmdbId: 11351
     },
     {
@@ -309,7 +309,7 @@ const movieDatabase = [
         desc: "A workaholic businessman inherits six penguins from his late father and they turn his life and career upside down.",
         where: [{"name":"Netflix","url":"https://www.netflix.com/title/70178623"}],
         vote_count: 3197,
-        popularity: 4.3,
+        popularity: 4.4,
         tmdbId: 58224
     },
     {
@@ -323,8 +323,8 @@ const movieDatabase = [
         cast: ["Gina Philips", "Justin Long", "Jonathan Breck"],
         desc: "A brother and sister driving home for spring break are stalked by a mysterious, ancient creature feeding on the last day of its cycle.",
         where: [{"name":"Netflix","url":"https://www.netflix.com/title/60020999"}],
-        vote_count: 3338,
-        popularity: 5.8,
+        vote_count: 3340,
+        popularity: 6.8,
         tmdbId: 8922
     },
     {
@@ -339,8 +339,8 @@ const movieDatabase = [
         desc: "A corrupt Atlantic City cop investigates the assassination of the Secretary of Defense during a championship boxing match.",
         thumbnail: "https://spoilertown.com/wp-content/uploads/2025/10/snake-eyes-1998.webp",
         where: [],
-        vote_count: 1536,
-        popularity: 2.7,
+        vote_count: 1537,
+        popularity: 3.3,
         tmdbId: 8688
     },
     {
@@ -354,8 +354,8 @@ const movieDatabase = [
         cast: ["Donald Pleasence", "Danielle Harris", "Ellie Cornell"],
         desc: "A year after his last rampage, Michael Myers returns to Haddonfield to hunt down his traumatized, now-mute niece Jamie.",
         where: [{"name":"Netflix","url":"https://www.netflix.com/title/60002050"}],
-        vote_count: 1347,
-        popularity: 2.8,
+        vote_count: 1348,
+        popularity: 2.7,
         tmdbId: 11361
     },
     {
@@ -371,7 +371,7 @@ const movieDatabase = [
         thumbnail: "https://streamcoimg-a.akamaihd.net/000/406/7386/4067386-Banner-L2-0eaa0519dd357382c0bb2efc08dd6a76.jpg",
         where: [],
         vote_count: 2514,
-        popularity: 5.9,
+        popularity: 6.1,
         tmdbId: 8456
     },
     {
@@ -386,8 +386,8 @@ const movieDatabase = [
         desc: "A young man with teleportation abilities finds himself in the middle of an ancient war between those like him and their sworn enemies.",
         thumbnail: "https://m.media-amazon.com/images/S/pv-target-images/b25957bdb9717637145c6a4f074386b909aa1639440031191dddeedcc17d03f7._SX1080_FMjpg_.jpg",
         where: [],
-        vote_count: 6291,
-        popularity: 5.8,
+        vote_count: 6293,
+        popularity: 6.8,
         tmdbId: 8247
     },
     {
@@ -402,8 +402,8 @@ const movieDatabase = [
         desc: "An extreme sports athlete is recruited by the NSA to infiltrate a Russian crime ring and stop their plans to unleash a weapon of mass destruction.",
         thumbnail: "https://images.alphacoders.com/791/thumb-1920-791200.jpg",
         where: [],
-        vote_count: 4964,
-        popularity: 16.3,
+        vote_count: 4966,
+        popularity: 16.6,
         tmdbId: 7451
     },
     {
@@ -419,7 +419,7 @@ const movieDatabase = [
         thumbnail: "https://images6.alphacoders.com/653/thumb-1920-653693.jpg",
         where: [],
         vote_count: 4987,
-        popularity: 5.2,
+        popularity: 6.3,
         tmdbId: 52449
     },
     {
@@ -434,8 +434,8 @@ const movieDatabase = [
         desc: "A talk show host and his producer discover that they have been recruited to assassinate the leader of North Korea during an interview.",
         thumbnail: "https://images7.alphacoders.com/676/thumb-1920-676115.jpg",
         where: [],
-        vote_count: 6284,
-        popularity: 5.5,
+        vote_count: 6285,
+        popularity: 6.2,
         tmdbId: 228967
     },
     {
@@ -450,7 +450,7 @@ const movieDatabase = [
         desc: "A successful wedding planner finds herself falling for a handsome doctor, only to discover that he is about to marry one of her clients.",
         where: [],
         vote_count: 1830,
-        popularity: 2.8,
+        popularity: 3.6,
         tmdbId: 2018
     },
     {
@@ -466,7 +466,7 @@ const movieDatabase = [
         thumbnail: "https://img.joyn.de/mas-prod/assets/b_pnae8fmxk7o/HERO_LANDSCAPE-726d9812.jpeg/profile:nextgen-web-herolandscape-1920x",
         where: [],
         vote_count: 390,
-        popularity: 2.1,
+        popularity: 2.4,
         tmdbId: 270938
     },
     {
@@ -480,8 +480,8 @@ const movieDatabase = [
         cast: ["Thomas Mann", "Oliver Cooper", "Jonathan Daniel Brown", "Dax Flame"],
         desc: "Three high school seniors throw a party that quickly spirals out of control, turning their quiet neighborhood into a chaotic warzone.",
         where: [],
-        vote_count: 6910,
-        popularity: 8.2,
+        vote_count: 6914,
+        popularity: 9.1,
         tmdbId: 57214
     },
     {
@@ -496,8 +496,8 @@ const movieDatabase = [
         desc: "Armed with every weapon they can get their hands on, the Expendables are the world's last line of defense when all other options are off the table.",
         thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9RyyiD5I3U-5kbYvvkPEOL04qiqqjYKbStkcGgjGydAEkPGULMz8GSbnl&s=10",
         where: [],
-        vote_count: 1928,
-        popularity: 7.2,
+        vote_count: 1929,
+        popularity: 6.8,
         tmdbId: 299054
     },
     {
@@ -511,8 +511,8 @@ const movieDatabase = [
         cast: ["Kurt Russell", "Zoë Bell", "Rosario Dawson", "Vanessa Ferlito", "Mary Elizabeth Winstead"],
         desc: "A psychotic stuntman stalks and murders young women using his 'death-proof' car, but his plans are disrupted when he targets a group of fearless friends.",
         where: [],
-        vote_count: 5683,
-        popularity: 4.9,
+        vote_count: 5684,
+        popularity: 5.3,
         tmdbId: 1991
     },
     {
@@ -528,7 +528,7 @@ const movieDatabase = [
         thumbnail: "https://www.acmodasi.in/amdb/images/movie/w1920/0/88/the-punisher-1989-126621.webp",
         where: [],
         vote_count: 693,
-        popularity: 3.4,
+        popularity: 4,
         tmdbId: 8867
     },
     {
@@ -559,7 +559,7 @@ const movieDatabase = [
         thumbnail: "https://wallpapercave.com/wp/wp10179582.jpg",
         where: [],
         vote_count: 907,
-        popularity: 3.6,
+        popularity: 5.4,
         tmdbId: 22164
     },
     {
@@ -574,8 +574,8 @@ const movieDatabase = [
         desc: "An FBI agent and an Interpol detective track a team of illusionists who pull off bank heists during their performances and reward their audiences with the money.",
         thumbnail: "https://wallpapercat.com/w/full/a/a/e/357543-3840x2160-desktop-4k-now-you-see-me-background-photo.jpg",
         where: [],
-        vote_count: 16909,
-        popularity: 9.4,
+        vote_count: 16920,
+        popularity: 13.5,
         tmdbId: 75656
     },
     {
@@ -590,7 +590,7 @@ const movieDatabase = [
         desc: "A rebellious teen blackmails older men for money to bail out her father, but a plan for revenge against her mother's boyfriend takes an unexpected and dangerous turn.",
         where: [],
         vote_count: 284,
-        popularity: 1.1,
+        popularity: 1.7,
         tmdbId: 421471
     },
     {
@@ -605,7 +605,7 @@ const movieDatabase = [
         desc: "In 1968, a group of teenagers discover a book of terrifying stories that begin to come true, and they must find a way to stop the evil force behind them.",
         where: [],
         vote_count: 2892,
-        popularity: 4.5,
+        popularity: 5.6,
         tmdbId: 417384
     },
     {
@@ -620,7 +620,7 @@ const movieDatabase = [
         desc: "A young man rises to the top of the cocaine industry in Harlem during the 1980s, but his success comes at a devastating cost to himself and his friends.",
         where: [],
         vote_count: 246,
-        popularity: 1.8,
+        popularity: 2.3,
         tmdbId: 13098
     },
     {
@@ -635,8 +635,8 @@ const movieDatabase = [
         desc: "A former military operative living a quiet life as a construction worker must use his skills to rescue his boss's daughter after she is kidnapped by a human trafficking ring.",
         thumbnail: "https://images8.alphacoders.com/139/thumb-1920-1395596.jpg",
         where: [],
-        vote_count: 1998,
-        popularity: 14.7,
+        vote_count: 2002,
+        popularity: 17,
         tmdbId: 1197306
     },
     {
@@ -651,8 +651,8 @@ const movieDatabase = [
         desc: "A low-level CIA operative working at the US Embassy in Paris teams up with a high-ranking, unorthodox American secret agent to stop a massive terrorist attack in the city.",
         thumbnail: "https://images.alphacoders.com/802/thumb-1920-802768.jpg",
         where: [],
-        vote_count: 2369,
-        popularity: 6,
+        vote_count: 2370,
+        popularity: 7.6,
         tmdbId: 26389
     },
     {
@@ -666,8 +666,8 @@ const movieDatabase = [
         cast: ["Jessica De Gouw", "Thomas Cocquerel", "T.J. Power", "Liam Graham"],
         desc: "A tech innovator creates a revolutionary virtual reality drug that allows users to experience hours of 'other life' in mere minutes, but she soon discovers a dark and dangerous side effect.",
         where: [],
-        vote_count: 475,
-        popularity: 1.8,
+        vote_count: 476,
+        popularity: 2.1,
         tmdbId: 411999
     },
     {
@@ -682,8 +682,8 @@ const movieDatabase = [
         desc: "A vampire warrior falls for a human caught in the centuries-old war between vampires and werewolves.",
         thumbnail: "https://images5.alphacoders.com/795/thumb-1920-795161.jpg",
         where: [],
-        vote_count: 6660,
-        popularity: 5.5,
+        vote_count: 6664,
+        popularity: 6.7,
         tmdbId: 277
     },
     {
@@ -700,7 +700,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/uREKWDkU33hYHJXVH23fxFkj6UX.jpg",
         where: [],
         vote_count: 391,
-        popularity: 1.5,
+        popularity: 1.4,
         tmdbId: 9582
     },
     {
@@ -717,7 +717,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/3DqyxUlCflBV6SNd4Ihg98xZs3n.jpg",
         where: [],
         vote_count: 464,
-        popularity: 2,
+        popularity: 1.9,
         tmdbId: 15019
     },
     {
@@ -733,8 +733,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/k4eT3EvfxW1L9Wmt04UqJqCvCR6.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/ucjjCZaR2t6kcFU3t7ssRyqdVrV.jpg",
         where: [],
-        vote_count: 2640,
-        popularity: 2.6,
+        vote_count: 2641,
+        popularity: 2.4,
         tmdbId: 696
     },
     {
@@ -751,7 +751,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/8KgSYBgPfigVuLaleEQi2YinmEC.jpg",
         where: [],
         vote_count: 173,
-        popularity: 1.1,
+        popularity: 1.6,
         tmdbId: 20681
     },
     {
@@ -768,7 +768,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/yIiLycduASwtOC5ejceOxQzFZJV.jpg",
         where: [],
         vote_count: 433,
-        popularity: 2.1,
+        popularity: 2.4,
         tmdbId: 11157
     },
     {
@@ -802,7 +802,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/xOERaCrBqV8bw4N3Z7yKGrgPm04.jpg",
         where: [],
         vote_count: 16,
-        popularity: 0.9,
+        popularity: 1.4,
         tmdbId: 648299
     },
     {
@@ -835,8 +835,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/9kB56ZdMB6RgY5QtX9Bar45jCeI.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2PCcEJ1lUJgir598yMGXkluJa6y.jpg",
         where: [],
-        vote_count: 1272,
-        popularity: 2.7,
+        vote_count: 1274,
+        popularity: 3.7,
         tmdbId: 438590
     },
     {
@@ -853,7 +853,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/uYppahqnT4n0OlGf1BoeP8ADoS1.jpg",
         where: [],
         vote_count: 509,
-        popularity: 2.6,
+        popularity: 3.3,
         tmdbId: 12657
     },
     {
@@ -870,7 +870,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/suMOf1KQFyEhzTXakHfu5TRRPjV.jpg",
         where: [],
         vote_count: 543,
-        popularity: 2.6,
+        popularity: 2.9,
         tmdbId: 10611
     },
     {
@@ -886,8 +886,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/zhG3vKWyDRaZYoaww1UVAi29T9h.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/p1nBxgrSu9Ex0Uvci1ItWWCWPlk.jpg",
         where: [],
-        vote_count: 10130,
-        popularity: 17.7,
+        vote_count: 10140,
+        popularity: 15.6,
         tmdbId: 389
     },
     {
@@ -904,7 +904,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/auPhV7cBaQH1j0kj4qd1VDe6rCE.jpg",
         where: [],
         vote_count: 586,
-        popularity: 2.3,
+        popularity: 1.9,
         tmdbId: 11191
     },
     {
@@ -938,7 +938,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/sz31PrTT4ZyJn2gbzHdxTilt1md.jpg",
         where: [],
         vote_count: 595,
-        popularity: 2.1,
+        popularity: 2.2,
         tmdbId: 5693
     },
     {
@@ -954,8 +954,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/gARgIRb2QFRFVrsziwWE389u1pK.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/b9lgrFVKQnaNIunMaQOVq9kEH3C.jpg",
         where: [],
-        vote_count: 1183,
-        popularity: 3.2,
+        vote_count: 1184,
+        popularity: 2.7,
         tmdbId: 5143
     },
     {
@@ -971,8 +971,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/9nh0w2C9h9KfJb0OsVg65O65b5s.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/w6tucmH3jVOAP9mDF6bbEJBIasE.jpg",
         where: [],
-        vote_count: 275,
-        popularity: 1.6,
+        vote_count: 276,
+        popularity: 1.8,
         tmdbId: 13554
     },
     {
@@ -989,7 +989,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/9A0sv4DCV4Etln5zkFjJwEivfKb.jpg",
         where: [],
         vote_count: 481,
-        popularity: 2.2,
+        popularity: 2.3,
         tmdbId: 2690
     },
     {
@@ -1006,7 +1006,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 0.1,
+        popularity: 0,
         tmdbId: 413012
     },
     {
@@ -1073,8 +1073,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/prNrnOKlkV9wl5Sl3zwHu1f3t2z.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/4Q0C49l6KkRbnVlE3N86IljtAXH.jpg",
         where: [],
-        vote_count: 954,
-        popularity: 3.5,
+        vote_count: 955,
+        popularity: 3.4,
         tmdbId: 11704
     },
     {
@@ -1091,7 +1091,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/ewGIMcaeNITw9DzxIc7KzLwHaNS.jpg",
         where: [],
         vote_count: 196,
-        popularity: 2.2,
+        popularity: 2,
         tmdbId: 29339
     },
     {
@@ -1125,7 +1125,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 212,
-        popularity: 1,
+        popularity: 1.2,
         tmdbId: 22477
     },
     {
@@ -1141,8 +1141,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/dxWHyMY4HoXH8LiEhYlga2OtK5B.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/6kb9jQ4U1KMtyPYZDgFgvc7qHmL.jpg",
         where: [],
-        vote_count: 729,
-        popularity: 1.3,
+        vote_count: 730,
+        popularity: 1.8,
         tmdbId: 763148
     },
     {
@@ -1159,7 +1159,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/iRJc5Uy2wUPu2ruzzooPXjEzcHk.jpg",
         where: [],
         vote_count: 12,
-        popularity: 0.7,
+        popularity: 0.8,
         tmdbId: 838720
     },
     {
@@ -1176,7 +1176,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/anMnNQ6fTK6y0Y0HnC6UMMBo7HO.jpg",
         where: [],
         vote_count: 978,
-        popularity: 1.9,
+        popularity: 2,
         tmdbId: 11686
     },
     {
@@ -1193,7 +1193,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/mV31zf1vgd6un04uJt8bDnWjnYY.jpg",
         where: [],
         vote_count: 2,
-        popularity: 0.1,
+        popularity: 0.3,
         tmdbId: 1432521
     },
     {
@@ -1210,7 +1210,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/aUhyPlj1ci8cJCt8DnbTlBrMPkA.jpg",
         where: [],
         vote_count: 179,
-        popularity: 1.4,
+        popularity: 1.7,
         tmdbId: 397601
     },
     {
@@ -1227,7 +1227,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/1tC0rMYwIqTplk3B3tlJ8oAFvPW.jpg",
         where: [],
         vote_count: 73,
-        popularity: 2.9,
+        popularity: 3,
         tmdbId: 1370123
     },
     {
@@ -1244,7 +1244,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/570uxNdyVeeeEQ8Hi8R0tFJPomJ.jpg",
         where: [],
         vote_count: 219,
-        popularity: 1.5,
+        popularity: 1.7,
         tmdbId: 41579
     },
     {
@@ -1261,7 +1261,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/hGnbcFjR5xOXBUIeZJc4WkUDHaT.jpg",
         where: [],
         vote_count: 717,
-        popularity: 2.3,
+        popularity: 3.1,
         tmdbId: 245906
     },
     {
@@ -1278,7 +1278,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/gC00PJ6HViqgbbkb7ArAFB7geZ6.jpg",
         where: [],
         vote_count: 683,
-        popularity: 2.5,
+        popularity: 3.5,
         tmdbId: 287
     },
     {
@@ -1295,7 +1295,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/9s7e10dvceSXTpmiAZK62vvbj4Q.jpg",
         where: [],
         vote_count: 10,
-        popularity: 1,
+        popularity: 0.9,
         tmdbId: 1032806
     },
     {
@@ -1311,8 +1311,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/jWZh2ChereoxKgTl3AmSAKNpnmO.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/w0WrR8lfSevBUWC6jStdz8s6w8e.jpg",
         where: [],
-        vote_count: 498,
-        popularity: 2.6,
+        vote_count: 500,
+        popularity: 3.3,
         tmdbId: 11379
     },
     {
@@ -1328,8 +1328,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/1dTSY023ZyBbgVSKDRuA6JLGSnZ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/2Rf6jQMHGDZpzoeoNdBLbCyRCK7.jpg",
         where: [],
-        vote_count: 260,
-        popularity: 1.8,
+        vote_count: 261,
+        popularity: 2,
         tmdbId: 11318
     },
     {
@@ -1345,8 +1345,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/r1FMq75irhsQBVGjXhPU4xA9SDo.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/fBjYZ7nLEEpQ6WzzCMOSk0i8kiv.jpg",
         where: [],
-        vote_count: 444,
-        popularity: 1.4,
+        vote_count: 446,
+        popularity: 1.5,
         tmdbId: 13384
     },
     {
@@ -1363,7 +1363,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 1,
-        popularity: 1.1,
+        popularity: 1.5,
         tmdbId: 559182
     },
     {
@@ -1380,7 +1380,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/1eUshLGqkYo7DD7u0hRHLyfZK6Y.jpg",
         where: [],
         vote_count: 869,
-        popularity: 2.1,
+        popularity: 2.2,
         tmdbId: 10794
     },
     {
@@ -1414,7 +1414,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/3QvXejgj3TDQo1lyvJ3UZuOFMVU.jpg",
         where: [],
         vote_count: 7,
-        popularity: 0.7,
+        popularity: 0.6,
         tmdbId: 1055600
     },
     {
@@ -1444,7 +1444,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 4,
-        popularity: 0.6,
+        popularity: 0.9,
         tmdbId: 70052
     },
     {
@@ -1461,7 +1461,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/xXvwQhnJpcsgHD32qVAUQXMjxWr.jpg",
         where: [],
         vote_count: 68,
-        popularity: 1,
+        popularity: 1.3,
         tmdbId: 24883
     },
     {
@@ -1477,8 +1477,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/6QqNyIHKow0jngiQgTNBOBrLILM.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/6dTbovP5RdrNjroTpke0DQAvidN.jpg",
         where: [],
-        vote_count: 1432,
-        popularity: 0.6,
+        vote_count: 1433,
+        popularity: 0.7,
         tmdbId: 11831
     },
     {
@@ -1495,7 +1495,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/vYlKb0thtAg7K8H1kMt8lP4bTKd.jpg",
         where: [],
         vote_count: 408,
-        popularity: 1.9,
+        popularity: 2.3,
         tmdbId: 9536
     },
     {
@@ -1512,7 +1512,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/zkcxo86sj6jH8vlxoszPPScHh1s.jpg",
         where: [],
         vote_count: 113,
-        popularity: 2.3,
+        popularity: 2.9,
         tmdbId: 457308
     },
     {
@@ -1529,7 +1529,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/5DQTIIi4E0sQg6bzKaMfNUwMReP.jpg",
         where: [],
         vote_count: 147,
-        popularity: 1.8,
+        popularity: 3.2,
         tmdbId: 47090
     },
     {
@@ -1563,7 +1563,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fvkEWfD5ZIHCcBnV9dPctsYNwVO.jpg",
         where: [],
         vote_count: 59,
-        popularity: 0.8,
+        popularity: 1.5,
         tmdbId: 570488
     },
     {
@@ -1580,7 +1580,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/kF7wNxASM21cvHwDofFIt6Asyr.jpg",
         where: [],
         vote_count: 74,
-        popularity: 1,
+        popularity: 0.8,
         tmdbId: 16999
     },
     {
@@ -1614,7 +1614,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 133,
-        popularity: 1.1,
+        popularity: 0.8,
         tmdbId: 43136
     },
     {
@@ -1631,7 +1631,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/6Bf23iAIVP90CHSYKEeEFk5T1Vg.jpg",
         where: [],
         vote_count: 395,
-        popularity: 5.6,
+        popularity: 7.3,
         tmdbId: 1196470
     },
     {
@@ -1648,7 +1648,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/9ylZRaHbbbVjaLCvTy7CfDbtu9w.jpg",
         where: [],
         vote_count: 150,
-        popularity: 1,
+        popularity: 0.9,
         tmdbId: 49126
     },
     {
@@ -1665,7 +1665,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/tPgTNKrWSXajxYqpW8Yn8gBjkt2.jpg",
         where: [],
         vote_count: 123,
-        popularity: 1.5,
+        popularity: 1.3,
         tmdbId: 33870
     },
     {
@@ -1699,7 +1699,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/9mtujSYIpHNc2dfcGZt8cML2Hvh.jpg",
         where: [],
         vote_count: 196,
-        popularity: 1.2,
+        popularity: 1.1,
         tmdbId: 821792
     },
     {
@@ -1716,7 +1716,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/p2aBgSqyCQQfyDfNzKUvaz6OFtC.jpg",
         where: [],
         vote_count: 6,
-        popularity: 1,
+        popularity: 0.7,
         tmdbId: 1448014
     },
     {
@@ -1733,7 +1733,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 1,
+        popularity: 1.3,
         tmdbId: 1511753
     },
     {
@@ -1749,8 +1749,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/ejbrAFkAHP5W5mzI8wA0zUTcDdg.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/bV1VAPr35iQ7ekqFsOrR7I4g5zV.jpg",
         where: [],
-        vote_count: 157,
-        popularity: 1.6,
+        vote_count: 158,
+        popularity: 1.8,
         tmdbId: 27983
     },
     {
@@ -1767,7 +1767,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/x1vOLAntF3Zw2KRg1eZgx9HigSW.jpg",
         where: [],
         vote_count: 0,
-        popularity: 0.4,
+        popularity: 0.3,
         tmdbId: 826696
     },
     {
@@ -1784,7 +1784,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/iMSNIHGcVE0EL2IeiPMercgFxRc.jpg",
         where: [],
         vote_count: 25,
-        popularity: 0.8,
+        popularity: 0.9,
         tmdbId: 12782
     },
     {
@@ -1818,7 +1818,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fMCkkqpAVfFmbf009flydh7gQY4.jpg",
         where: [],
         vote_count: 117,
-        popularity: 1,
+        popularity: 0.9,
         tmdbId: 50506
     },
     {
@@ -1835,7 +1835,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/zqApDFiuXIzfKhQMSL7CmjaLfnb.jpg",
         where: [],
         vote_count: 0,
-        popularity: 5.3,
+        popularity: 5.2,
         tmdbId: 1594441
     },
     {
@@ -1852,7 +1852,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 5,
-        popularity: 1.6,
+        popularity: 2,
         tmdbId: 68360
     },
     {
@@ -1869,7 +1869,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/jhUzk8OZqNJQRCCsOgK03EcX24K.jpg",
         where: [],
         vote_count: 17,
-        popularity: 0.4,
+        popularity: 0.3,
         tmdbId: 874944
     },
     {
@@ -1886,7 +1886,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/lnqoglYq0UzJDweQEaDVTvowq4e.jpg",
         where: [],
         vote_count: 414,
-        popularity: 1,
+        popularity: 1.9,
         tmdbId: 11215
     },
     {
@@ -1903,7 +1903,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/2EltoldCMsYmP2BXJVGiuNalEWv.jpg",
         where: [],
         vote_count: 1732,
-        popularity: 2.8,
+        popularity: 2.6,
         tmdbId: 247
     },
     {
@@ -1919,8 +1919,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/ccsint43E44B7NGceEhVimD93Yt.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/afbfZtBOZIfxlzzvHCOfauI6pna.jpg",
         where: [],
-        vote_count: 1153,
-        popularity: 2.4,
+        vote_count: 1155,
+        popularity: 2.5,
         tmdbId: 10849
     },
     {
@@ -1937,7 +1937,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/veA3a3GdPJMJlkvXT7VAvT4Ztfx.jpg",
         where: [],
         vote_count: 310,
-        popularity: 1.3,
+        popularity: 1.6,
         tmdbId: 203665
     },
     {
@@ -1954,7 +1954,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/2sMEhstTtbQcDALTqQFqUufSfnJ.jpg",
         where: [],
         vote_count: 2,
-        popularity: 0.4,
+        popularity: 0.3,
         tmdbId: 889953
     },
     {
@@ -1971,7 +1971,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/2LgNNITucCde1qIYuGvPAGsgrzG.jpg",
         where: [],
         vote_count: 173,
-        popularity: 1.8,
+        popularity: 2.1,
         tmdbId: 2625
     },
     {
@@ -1988,7 +1988,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/rv01ZPtZuPxn34u7hMMDRQpucTf.jpg",
         where: [],
         vote_count: 804,
-        popularity: 1.9,
+        popularity: 2.1,
         tmdbId: 9103
     },
     {
@@ -2005,7 +2005,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/3DuDEqDDHG7OhbDpVEIMCTLHSic.jpg",
         where: [],
         vote_count: 289,
-        popularity: 2.3,
+        popularity: 3.2,
         tmdbId: 19042
     },
     {
@@ -2022,7 +2022,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/868km79WWFuiTT1cbfqpubwWCFU.jpg",
         where: [],
         vote_count: 55,
-        popularity: 0.7,
+        popularity: 0.9,
         tmdbId: 337208
     },
     {
@@ -2056,7 +2056,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/c9i59fpM39cKGpsT6Mtu3QwH8Us.jpg",
         where: [],
         vote_count: 242,
-        popularity: 1.2,
+        popularity: 1.7,
         tmdbId: 214075
     },
     {
@@ -2072,7 +2072,7 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/oUgolImcg0PRiT33UNjK409aQoJ.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/f1W8DI6pubQlIIpQhD3Rru91GDL.jpg",
         where: [],
-        vote_count: 495,
+        vote_count: 496,
         popularity: 1.1,
         tmdbId: 12762
     },
@@ -2090,7 +2090,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/scQculNdcFH75Jpru1OWkODhhe2.jpg",
         where: [],
         vote_count: 175,
-        popularity: 1.1,
+        popularity: 1.5,
         tmdbId: 36094
     },
     {
@@ -2106,8 +2106,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/tldtDfLnPFOtTWp758EmIP2Hbz5.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/urm3NbIrcCfRx8iF1Qkgug1rFvx.jpg",
         where: [],
-        vote_count: 1369,
-        popularity: 3.2,
+        vote_count: 1372,
+        popularity: 3.7,
         tmdbId: 1649
     },
     {
@@ -2141,7 +2141,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/8Fu8NpShJHamigDjdv9Ykft6Agd.jpg",
         where: [],
         vote_count: 56,
-        popularity: 2,
+        popularity: 2.9,
         tmdbId: 242257
     },
     {
@@ -2158,7 +2158,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/vTUibhTymmQJOIN5Ea9QPpO1xeg.jpg",
         where: [],
         vote_count: 37,
-        popularity: 0.4,
+        popularity: 0.7,
         tmdbId: 532043
     },
     {
@@ -2175,7 +2175,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/qZw9XpThDIbAPnVzQ0vwfOZx3Ic.jpg",
         where: [],
         vote_count: 0,
-        popularity: 2.4,
+        popularity: 2.3,
         tmdbId: 1150788
     },
     {
@@ -2192,7 +2192,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/5LRh3wdtL8J8qEQmbZRasZXiQtS.jpg",
         where: [],
         vote_count: 18,
-        popularity: 0.8,
+        popularity: 1.1,
         tmdbId: 246900
     },
     {
@@ -2209,7 +2209,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/8g8qwMVmHSoeWknmmTV2PvII9p0.jpg",
         where: [],
         vote_count: 34,
-        popularity: 0.3,
+        popularity: 0.6,
         tmdbId: 632251
     },
     {
@@ -2243,7 +2243,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/hpCuQpwE6el42aoToImXye9bYmI.jpg",
         where: [],
         vote_count: 40,
-        popularity: 1.5,
+        popularity: 1.3,
         tmdbId: 77079
     },
     {
@@ -2294,7 +2294,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/kvSFYQG9tW7JOOhpFOWv6b1pbB0.jpg",
         where: [],
         vote_count: 958,
-        popularity: 1.7,
+        popularity: 2.4,
         tmdbId: 382511
     },
     {
@@ -2310,8 +2310,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/7nW363kSYRCkr4VGOMvuSGwtzKs.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/o5quBGSZF9aj0OMLZIzfycOeQHg.jpg",
         where: [],
-        vote_count: 1471,
-        popularity: 3,
+        vote_count: 1472,
+        popularity: 3.4,
         tmdbId: 5723
     },
     {
@@ -2328,7 +2328,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/a9mpNk5SXID0zyoYULeQ6sHVinw.jpg",
         where: [],
         vote_count: 3,
-        popularity: 1.2,
+        popularity: 1.4,
         tmdbId: 1496815
     },
     {
@@ -2345,7 +2345,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/mjGGrL4L0RHGlMm86OfLRnscrjt.jpg",
         where: [],
         vote_count: 46,
-        popularity: 0.9,
+        popularity: 1,
         tmdbId: 1209423
     },
     {
@@ -2396,7 +2396,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/dvareNwtZqPGoEt2eIrPAGqiLfL.jpg",
         where: [],
         vote_count: 183,
-        popularity: 0.8,
+        popularity: 0.9,
         tmdbId: 24348
     },
     {
@@ -2413,7 +2413,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/eauUrhx3YB162xFrAVC7ij4k5SD.jpg",
         where: [],
         vote_count: 12,
-        popularity: 0.2,
+        popularity: 0.3,
         tmdbId: 853291
     },
     {
@@ -2430,7 +2430,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/qfbmvHpKtrEoOJ2e8slbaFAJ2Dp.jpg",
         where: [],
         vote_count: 94,
-        popularity: 1.5,
+        popularity: 1.4,
         tmdbId: 410315
     },
     {
@@ -2464,7 +2464,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fknm4Y6VgNhjoZxxVtYBQKGdpYw.jpg",
         where: [],
         vote_count: 11,
-        popularity: 0.2,
+        popularity: 0.6,
         tmdbId: 535302
     },
     {
@@ -2481,7 +2481,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/5KCcwGC1rOmwueth1RsJPtANxHa.jpg",
         where: [],
         vote_count: 6,
-        popularity: 0.3,
+        popularity: 0.4,
         tmdbId: 2386
     },
     {
@@ -2498,7 +2498,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 7,
-        popularity: 1,
+        popularity: 1.1,
         tmdbId: 605795
     },
     {
@@ -2515,7 +2515,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/4JwZM3AzsI7DAt8ERbEjabd3vkm.jpg",
         where: [],
         vote_count: 6,
-        popularity: 0.7,
+        popularity: 0.9,
         tmdbId: 240904
     },
     {
@@ -2532,7 +2532,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/pTKtFsLzDEUP86P1HPbzrkJ2QD4.jpg",
         where: [],
         vote_count: 2,
-        popularity: 0.1,
+        popularity: 0.3,
         tmdbId: 364291
     },
     {
@@ -2549,7 +2549,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 7,
-        popularity: 0.2,
+        popularity: 0.3,
         tmdbId: 105554
     },
     {
@@ -2566,7 +2566,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/nimIplZPrLnkpyVFFwiwCo5H8C9.jpg",
         where: [],
         vote_count: 1,
-        popularity: 4.2,
+        popularity: 4,
         tmdbId: 83617
     },
     {
@@ -2583,7 +2583,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/5dPKDOgMK7gciZo4T6fTUaekWym.jpg",
         where: [],
         vote_count: 9,
-        popularity: 0.4,
+        popularity: 0.5,
         tmdbId: 404764
     },
     {
@@ -2600,7 +2600,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/wMTYsqzlCR7hsBrBaWDQaT3ghia.jpg",
         where: [],
         vote_count: 92,
-        popularity: 0.6,
+        popularity: 1,
         tmdbId: 159774
     },
     {
@@ -2634,7 +2634,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/2e0Ditkl7h4vbsICiZt6c2GCAms.jpg",
         where: [],
         vote_count: 1414,
-        popularity: 1.7,
+        popularity: 1.5,
         tmdbId: 41211
     },
     {
@@ -2651,7 +2651,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/zHMRbLDAcWsaas3y8aU4ZmWB2s4.jpg",
         where: [],
         vote_count: 16,
-        popularity: 0.9,
+        popularity: 1.2,
         tmdbId: 26187
     },
     {
@@ -2685,7 +2685,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/8C0g6GlfvAg5mCkyi3IHLQSf3YW.jpg",
         where: [],
         vote_count: 158,
-        popularity: 1,
+        popularity: 1.1,
         tmdbId: 201066
     },
     {
@@ -2702,7 +2702,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/e6qz9lL1FR0kTKkkojf7xNMqx24.jpg",
         where: [],
         vote_count: 737,
-        popularity: 1.8,
+        popularity: 2.4,
         tmdbId: 489930
     },
     {
@@ -2719,7 +2719,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/n8lDlCRfhHtOcyFjXgSqe1EJ6JG.jpg",
         where: [],
         vote_count: 16,
-        popularity: 0.6,
+        popularity: 0.5,
         tmdbId: 795640
     },
     {
@@ -2736,7 +2736,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/u9XzAVSJm6DInxUBCUeRoznsjZm.jpg",
         where: [],
         vote_count: 20,
-        popularity: 0.8,
+        popularity: 1.1,
         tmdbId: 155685
     },
     {
@@ -2753,7 +2753,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/kpRwlJ2xGEBRAbv2YWPsWdlYISx.jpg",
         where: [],
         vote_count: 86,
-        popularity: 0.8,
+        popularity: 0.6,
         tmdbId: 1035654
     },
     {
@@ -2770,7 +2770,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/8qUXs8R0JAABihJbieNHaKXTyV6.jpg",
         where: [],
         vote_count: 7,
-        popularity: 0.4,
+        popularity: 0.3,
         tmdbId: 876487
     },
     {
@@ -2787,7 +2787,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/oHfXTue1G2o9GdzUWOY1VhuQnAQ.jpg",
         where: [],
         vote_count: 135,
-        popularity: 1.7,
+        popularity: 2.3,
         tmdbId: 40740
     },
     {
@@ -2821,7 +2821,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/oOPe7LZG7sfxB2ecXAVjWlL8jPW.jpg",
         where: [],
         vote_count: 97,
-        popularity: 1.5,
+        popularity: 1.1,
         tmdbId: 61005
     },
     {
@@ -2838,7 +2838,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/r5915umTdrFUD9VAdI3vHsal2LI.jpg",
         where: [],
         vote_count: 66,
-        popularity: 0.7,
+        popularity: 1.3,
         tmdbId: 761548
     },
     {
@@ -2855,7 +2855,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/11E0KVeuV2Eu3luPqoCzSqgdZCN.jpg",
         where: [],
         vote_count: 139,
-        popularity: 1.2,
+        popularity: 1.5,
         tmdbId: 691812
     },
     {
@@ -2889,7 +2889,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/dAgrCd3QpVHLaJanhF3ntAHOLL.jpg",
         where: [],
         vote_count: 4,
-        popularity: 0.4,
+        popularity: 0.5,
         tmdbId: 266411
     },
     {
@@ -2906,7 +2906,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/xa1ACTl7I2EYVJEa4k0l0fo3VuR.jpg",
         where: [],
         vote_count: 0,
-        popularity: 0.2,
+        popularity: 0.3,
         tmdbId: 1353275
     },
     {
@@ -2923,7 +2923,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/rGqlo1WfQrCkyjdyqcFb1hwxBx5.jpg",
         where: [],
         vote_count: 8,
-        popularity: 0.5,
+        popularity: 0.9,
         tmdbId: 187332
     },
     {
@@ -2974,7 +2974,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/lVzuxAoV8qaEWuBHGfTlhCnUU1T.jpg",
         where: [],
         vote_count: 5,
-        popularity: 0.5,
+        popularity: 0.4,
         tmdbId: 95080
     },
     {
@@ -2991,7 +2991,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/aenZ1GSnPOjqiadOqc0FxTQE0Ff.jpg",
         where: [],
         vote_count: 48,
-        popularity: 0.9,
+        popularity: 1.8,
         tmdbId: 606149
     },
     {
@@ -3008,7 +3008,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/1TFLCM4EZN5iML0a13fdHeLmfRQ.jpg",
         where: [],
         vote_count: 16,
-        popularity: 0.4,
+        popularity: 0.3,
         tmdbId: 1053482
     },
     {
@@ -3025,7 +3025,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/2hnpEkLpD69i1TUxf5Suq8ZJybV.jpg",
         where: [],
         vote_count: 0,
-        popularity: 0.9,
+        popularity: 1.4,
         tmdbId: 1111266
     },
     {
@@ -3042,7 +3042,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/yroDhq6pemZFPVWxhDhWwYWamrP.jpg",
         where: [],
         vote_count: 8,
-        popularity: 0.4,
+        popularity: 0.6,
         tmdbId: 253016
     },
     {
@@ -3059,7 +3059,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/1uPeBCOHBoWoA4eEoaPQj1QAfqA.jpg",
         where: [],
         vote_count: 22,
-        popularity: 0.7,
+        popularity: 0.6,
         tmdbId: 820453
     },
     {
@@ -3076,7 +3076,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 0.5,
+        popularity: 0.6,
         tmdbId: 362261
     },
     {
@@ -3110,7 +3110,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/njlNFqPnmnUbqtUst6ETEbQ3oIr.jpg",
         where: [],
         vote_count: 282,
-        popularity: 1.7,
+        popularity: 1.3,
         tmdbId: 84336
     },
     {
@@ -3127,7 +3127,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/dbYkmg8FM5NE8vCHehDjdPJYb4l.jpg",
         where: [],
         vote_count: 4,
-        popularity: 0.6,
+        popularity: 0.7,
         tmdbId: 252857
     },
     {
@@ -3144,7 +3144,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/mTqgLEZQruQWs2Bi0pkotegmSnP.jpg",
         where: [],
         vote_count: 19,
-        popularity: 0.6,
+        popularity: 1,
         tmdbId: 70539
     },
     {
@@ -3161,7 +3161,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/1R21tNdm3UL09YE4yVH0Ek0KS0o.jpg",
         where: [],
         vote_count: 42,
-        popularity: 0.4,
+        popularity: 0.7,
         tmdbId: 470205
     },
     {
@@ -3195,7 +3195,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/mdOCf920Kjztc1mPdFfzhuSHBw1.jpg",
         where: [],
         vote_count: 21,
-        popularity: 1.3,
+        popularity: 1.7,
         tmdbId: 575848
     },
     {
@@ -3212,7 +3212,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/h7ggiTQDTJlh93WNoBTiK6AgBLE.jpg",
         where: [],
         vote_count: 1,
-        popularity: 1.2,
+        popularity: 1.4,
         tmdbId: 848967
     },
     {
@@ -3229,7 +3229,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/qorN4BK6AJznqM14ggzXdLHnIux.jpg",
         where: [],
         vote_count: 37,
-        popularity: 0.5,
+        popularity: 0.6,
         tmdbId: 550652
     },
     {
@@ -3246,7 +3246,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/wCK6WHbAdRWJ1no8au3GHpx5GHy.jpg",
         where: [],
         vote_count: 18,
-        popularity: 1.1,
+        popularity: 1.2,
         tmdbId: 80806
     },
     {
@@ -3263,7 +3263,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/mWFH41gA1t9LLOW04i83sLczFjH.jpg",
         where: [],
         vote_count: 20,
-        popularity: 0.2,
+        popularity: 0.4,
         tmdbId: 760556
     },
     {
@@ -3280,7 +3280,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/jrOPKBwyUhkiZg3ZnxRHKaHZW2x.jpg",
         where: [],
         vote_count: 47,
-        popularity: 0.9,
+        popularity: 1.2,
         tmdbId: 581599
     },
     {
@@ -3297,7 +3297,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 2,
-        popularity: 0.1,
+        popularity: 0.2,
         tmdbId: 207571
     },
     {
@@ -3314,7 +3314,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 1.1,
+        popularity: 1.3,
         tmdbId: 1010437
     },
     {
@@ -3348,7 +3348,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/22328gc644F4pZn30nWPPUo4I93.jpg",
         where: [],
         vote_count: 894,
-        popularity: 3.1,
+        popularity: 2.7,
         tmdbId: 34636
     },
     {
@@ -3382,7 +3382,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/lUsjrSaQ4LNWc0llOndBGaAxyQs.jpg",
         where: [],
         vote_count: 13,
-        popularity: 0.3,
+        popularity: 0.4,
         tmdbId: 1030307
     },
     {
@@ -3416,7 +3416,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/mS8lY3ya9xpXZd48HRPqTatkA5C.jpg",
         where: [],
         vote_count: 5,
-        popularity: 0.3,
+        popularity: 0.5,
         tmdbId: 374168
     },
     {
@@ -3450,7 +3450,7 @@ const movieDatabase = [
         thumbnail: "https://is1-ssl.mzstatic.com/image/thumb/Gg2YSsFChhQS2CXtwQJ7Ag/1920x1080.webp",
         where: [],
         vote_count: 1,
-        popularity: 0.1,
+        popularity: 0.3,
         tmdbId: 429792
     },
     {
@@ -3484,7 +3484,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/7u09N8a2EFsD62ULXgymgV8BMkL.jpg",
         where: [],
         vote_count: 1,
-        popularity: 0.3,
+        popularity: 0.4,
         tmdbId: 929564
     },
     {
@@ -3501,7 +3501,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/6BKgqHM9VzsXXJjwACQrv56Oztg.jpg",
         where: [],
         vote_count: 38,
-        popularity: 0.5,
+        popularity: 0.7,
         tmdbId: 550034
     },
     {
@@ -3535,7 +3535,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 1,
-        popularity: 0.1,
+        popularity: 0.3,
         tmdbId: 643841
     },
     {
@@ -3552,7 +3552,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/65HGK8re1IJewZ6HZNi8wzU5g9l.jpg",
         where: [],
         vote_count: 62,
-        popularity: 0.8,
+        popularity: 1.1,
         tmdbId: 477036
     },
     {
@@ -3569,7 +3569,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/y6COoDsbrzBmLKmsgh6XtR54qqJ.jpg",
         where: [],
         vote_count: 3,
-        popularity: 0.9,
+        popularity: 1.3,
         tmdbId: 1080441
     },
     {
@@ -3586,7 +3586,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fAr7lEmTG2t4YDiSNm9pLJrltPS.jpg",
         where: [],
         vote_count: 7,
-        popularity: 1.2,
+        popularity: 1.1,
         tmdbId: 1399580
     },
     {
@@ -3603,7 +3603,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/zQ2fCBD01utDIqxzaGxeuKW86O0.jpg",
         where: [],
         vote_count: 28,
-        popularity: 0.4,
+        popularity: 0.5,
         tmdbId: 465870
     },
     {
@@ -3620,7 +3620,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 1.3,
+        popularity: 0.9,
         tmdbId: 505447
     },
     {
@@ -3637,7 +3637,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fKOdobrFOaixErZDNVF4mS5S6oI.jpg",
         where: [],
         vote_count: 51,
-        popularity: 1.7,
+        popularity: 1.8,
         tmdbId: 191185
     },
     {
@@ -3654,7 +3654,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 1,
-        popularity: 0.5,
+        popularity: 0.6,
         tmdbId: 932841
     },
     {
@@ -3671,7 +3671,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/565OKPD68F8g30N7HzJFYSMmM9E.jpg",
         where: [],
         vote_count: 40,
-        popularity: 0.6,
+        popularity: 0.7,
         tmdbId: 630923
     },
     {
@@ -3722,7 +3722,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/3mZ3fgZFgoYBd6elvIfBeeiHWzv.jpg",
         where: [],
         vote_count: 6,
-        popularity: 0.6,
+        popularity: 0.4,
         tmdbId: 1396837
     },
     {
@@ -3773,7 +3773,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 0.9,
+        popularity: 1.2,
         tmdbId: 1624656
     },
     {
@@ -3790,7 +3790,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/kFR0M5FVvYXqzlZ3QQTnATxWg5l.jpg",
         where: [],
         vote_count: 2,
-        popularity: 1,
+        popularity: 0.9,
         tmdbId: 1391184
     },
     {
@@ -3807,7 +3807,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/2TkuCpt75P5CyRgW1606dkY4JwM.jpg",
         where: [],
         vote_count: 830,
-        popularity: 2,
+        popularity: 1.8,
         tmdbId: 4104
     },
     {
@@ -3824,7 +3824,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/tdLxXsHpxC5CIyxKbGgBSZwClJ4.jpg",
         where: [],
         vote_count: 42,
-        popularity: 0.9,
+        popularity: 1.2,
         tmdbId: 536725
     },
     {
@@ -3841,7 +3841,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fpj4gZVOxD9D4sAyMwcHxq01HCo.jpg",
         where: [],
         vote_count: 286,
-        popularity: 1.1,
+        popularity: 1.5,
         tmdbId: 670429
     },
     {
@@ -3858,7 +3858,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/kIswXWYAvgq3rrloYbRAXdTsgVl.jpg",
         where: [],
         vote_count: 77,
-        popularity: 0.7,
+        popularity: 0.8,
         tmdbId: 1226840
     },
     {
@@ -3906,7 +3906,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/vxLReTf3BMuXCQUObd8kTOSjf9m.jpg",
         where: [],
         vote_count: 7,
-        popularity: 0.4,
+        popularity: 0.5,
         tmdbId: 131885
     },
     {
@@ -3940,7 +3940,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/lq15xQuW66mGikgf7ea2lQamv9v.jpg",
         where: [],
         vote_count: 39,
-        popularity: 0.6,
+        popularity: 0.8,
         tmdbId: 436285
     },
     {
@@ -3957,7 +3957,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/m5OZfpt9q1b5r8edAehumQ5Jrgq.jpg",
         where: [],
         vote_count: 25,
-        popularity: 0.6,
+        popularity: 0.5,
         tmdbId: 778996
     },
     {
@@ -3973,8 +3973,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/rBka0nFWiHxabHRLr0KfIA8Yiaq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/sTwVct9k3FJ7Mn1GeIfUJDk7Jyr.jpg",
         where: [],
-        vote_count: 1851,
-        popularity: 3.4,
+        vote_count: 1854,
+        popularity: 4.3,
         tmdbId: 3112
     },
     {
@@ -4008,7 +4008,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/dNWVC0RwiF4eUzYpDKOGsWZPzw1.jpg",
         where: [],
         vote_count: 777,
-        popularity: 2.7,
+        popularity: 2.5,
         tmdbId: 82687
     },
     {
@@ -4042,7 +4042,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/4pdYSU95GvH1fI367pjHEIQfJfI.jpg",
         where: [],
         vote_count: 0,
-        popularity: 0.4,
+        popularity: 0.7,
         tmdbId: 957162
     },
     {
@@ -4059,7 +4059,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/evUB9YKE5IPPtQOchcEF6hS90BO.jpg",
         where: [],
         vote_count: 1726,
-        popularity: 5.8,
+        popularity: 9.8,
         tmdbId: 37257
     },
     {
@@ -4075,8 +4075,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/hrExpoA2E2bCrSZ6VPWHHdzY2y.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/t5p87zY3MKSOHFIwOBbwmjxA5rS.jpg",
         where: [],
-        vote_count: 674,
-        popularity: 1.6,
+        vote_count: 676,
+        popularity: 2.1,
         tmdbId: 382598
     },
     {
@@ -4093,7 +4093,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/ljyOBKHcLKsi1JBxxw5ffI1Fb5m.jpg",
         where: [],
         vote_count: 304,
-        popularity: 1.4,
+        popularity: 1.8,
         tmdbId: 14849
     },
     {
@@ -4110,7 +4110,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/scMMd0Gq6pd1TmHhzPA8ZuH7iAe.jpg",
         where: [],
         vote_count: 27,
-        popularity: 0.6,
+        popularity: 0.9,
         tmdbId: 690741
     },
     {
@@ -4127,7 +4127,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/cimTHVntJAMVJWrJnSEYII4iAcz.jpg",
         where: [],
         vote_count: 20,
-        popularity: 0.5,
+        popularity: 1,
         tmdbId: 33407
     },
     {
@@ -4144,7 +4144,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/xYqj3oiw7msHDLd7n1OgbRLnkZQ.jpg",
         where: [],
         vote_count: 1005,
-        popularity: 1.7,
+        popularity: 2,
         tmdbId: 193687
     },
     {
@@ -4161,7 +4161,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/ivNDj0LuziOuz0ZivgA7sxHIi3z.jpg",
         where: [],
         vote_count: 838,
-        popularity: 3,
+        popularity: 3.2,
         tmdbId: 82696
     },
     {
@@ -4178,7 +4178,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/sQ0DihRcQGZ2GIITCGEnCsFspKa.jpg",
         where: [],
         vote_count: 3,
-        popularity: 1.2,
+        popularity: 0.8,
         tmdbId: 105892
     },
     {
@@ -4195,7 +4195,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/t40khZPNup55xi0mtjxOFtnfXnF.jpg",
         where: [],
         vote_count: 46,
-        popularity: 1.1,
+        popularity: 1.7,
         tmdbId: 573641
     },
     {
@@ -4212,7 +4212,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/9sNNbntfdkSgU4fO3Ci3mfCxA2F.jpg",
         where: [],
         vote_count: 3,
-        popularity: 0.8,
+        popularity: 0.7,
         tmdbId: 1267064
     },
     {
@@ -4229,7 +4229,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/1zWIVHKUJSHISGrrbVjzB9OuQ8A.jpg",
         where: [],
         vote_count: 339,
-        popularity: 1,
+        popularity: 1.1,
         tmdbId: 411144
     },
     {
@@ -4263,7 +4263,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 0.1,
+        popularity: 0.2,
         tmdbId: 648051
     },
     {
@@ -4279,8 +4279,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/jvv66k53knzs49wnzaOZjOPYj4r.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/mYOpADWIufOdYissCNFQtLceWF5.jpg",
         where: [],
-        vote_count: 148,
-        popularity: 1.2,
+        vote_count: 149,
+        popularity: 1.4,
         tmdbId: 415311
     },
     {
@@ -4297,7 +4297,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/s1VJGwvjYOybgff6NJUt6iqWmp9.jpg",
         where: [],
         vote_count: 0,
-        popularity: 0.5,
+        popularity: 0.4,
         tmdbId: 805915
     },
     {
@@ -4314,7 +4314,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fUosOAY42laqr82I7Ql2HRRZko5.jpg",
         where: [],
         vote_count: 183,
-        popularity: 1.5,
+        popularity: 1.6,
         tmdbId: 14872
     },
     {
@@ -4347,8 +4347,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/oMz9BUs3qIAx5UAO5BLiufzVwrr.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/xkrLPXpDBwzKW0jzbUEzqnnusLb.jpg",
         where: [],
-        vote_count: 443,
-        popularity: 1.4,
+        vote_count: 444,
+        popularity: 1.9,
         tmdbId: 4484
     },
     {
@@ -4365,7 +4365,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/v8abodzGgRJbj1mibf7zVpjz0vx.jpg",
         where: [],
         vote_count: 9,
-        popularity: 0.4,
+        popularity: 0.3,
         tmdbId: 1024601
     },
     {
@@ -4382,7 +4382,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fWgaOh3xyTfmz13Kjts2AbNI5cp.jpg",
         where: [],
         vote_count: 78,
-        popularity: 1,
+        popularity: 1.4,
         tmdbId: 262788
     },
     {
@@ -4416,7 +4416,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/6GKax0sdFhVi8ueg5wmbektDSFn.jpg",
         where: [],
         vote_count: 50,
-        popularity: 1,
+        popularity: 1.4,
         tmdbId: 42490
     },
     {
@@ -4432,8 +4432,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/wJ62FzGeCAs6PjCIK1as6xzdIY5.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/8KoJMwh58Xh76K3vsx2Y3StLBB1.jpg",
         where: [],
-        vote_count: 749,
-        popularity: 3,
+        vote_count: 750,
+        popularity: 3.4,
         tmdbId: 11708
     },
     {
@@ -4450,7 +4450,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/wEtoG7RKlFiM2vAkma0puui02cQ.jpg",
         where: [],
         vote_count: 0,
-        popularity: 0.6,
+        popularity: 0.5,
         tmdbId: 1143119
     },
     {
@@ -4467,7 +4467,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 2,
-        popularity: 0.8,
+        popularity: 0.7,
         tmdbId: 65944
     },
     {
@@ -4501,7 +4501,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/wnik9MqiWLhOQmfX2fMzFO1Tkzm.jpg",
         where: [],
         vote_count: 93,
-        popularity: 1.2,
+        popularity: 1.7,
         tmdbId: 525428
     },
     {
@@ -4518,7 +4518,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 0.5,
+        popularity: 0.6,
         tmdbId: 1660247
     },
     {
@@ -4535,7 +4535,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/s3Xny0wNzAMeIcQ2lyBV9NALxIJ.jpg",
         where: [],
         vote_count: 4,
-        popularity: 1,
+        popularity: 1.1,
         tmdbId: 822098
     },
     {
@@ -4552,7 +4552,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 1,
-        popularity: 0.2,
+        popularity: 0.3,
         tmdbId: 419585
     },
     {
@@ -4603,7 +4603,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/8s1YuZt26RsVNJbXy9nfDBjHWto.jpg",
         where: [],
         vote_count: 20,
-        popularity: 1.2,
+        popularity: 1,
         tmdbId: 34898
     },
     {
@@ -4620,7 +4620,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/9xmepqScf6h3dFQBKAVyzQIpzX6.jpg",
         where: [],
         vote_count: 9,
-        popularity: 0.2,
+        popularity: 0.3,
         tmdbId: 848273
     },
     {
@@ -4637,7 +4637,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/7tg3VmYoDUQtCEFGR52ffDOVo9W.jpg",
         where: [],
         vote_count: 20,
-        popularity: 0.4,
+        popularity: 0.3,
         tmdbId: 1044298
     },
     {
@@ -4653,8 +4653,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/9Wbt3orDldytLe3JMOl2lzukxnw.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/lvZN7fqjWSctIYX3M9ba8xx5EkE.jpg",
         where: [],
-        vote_count: 167,
-        popularity: 1.8,
+        vote_count: 168,
+        popularity: 2.4,
         tmdbId: 380565
     },
     {
@@ -4670,8 +4670,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/cdcyHzqqBrzPGJFVH29ONnzsV6I.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/3R4Oro4z904rWOecd0Qjo22PqII.jpg",
         where: [],
-        vote_count: 230,
-        popularity: 1.6,
+        vote_count: 231,
+        popularity: 2,
         tmdbId: 419706
     },
     {
@@ -4688,7 +4688,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/k2BlvFpTzhcwkkKUVemAyg5CXmg.jpg",
         where: [],
         vote_count: 0,
-        popularity: 2,
+        popularity: 2.6,
         tmdbId: 1409882
     },
     {
@@ -4705,7 +4705,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/g3tL8cbO94H7HXpj1lZfKMivd0e.jpg",
         where: [],
         vote_count: 502,
-        popularity: 1.5,
+        popularity: 2.1,
         tmdbId: 10388
     },
     {
@@ -4721,8 +4721,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/wxx5YQLKVH1WMSRXQAUnC76r4iY.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/3avAV6iWLFFVZxQ6wOrccXpjqzs.jpg",
         where: [],
-        vote_count: 415,
-        popularity: 1.2,
+        vote_count: 416,
+        popularity: 1.4,
         tmdbId: 11959
     },
     {
@@ -4738,8 +4738,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/pjx2VovTdQ91dL6vPL9opHZclvW.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/n0TrGS55pOn8pdhXJS7MLP3BgGb.jpg",
         where: [],
-        vote_count: 183,
-        popularity: 0.9,
+        vote_count: 184,
+        popularity: 1.3,
         tmdbId: 623926
     },
     {
@@ -4790,7 +4790,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/nM8iHJDIGuJPVmjejK2cBLEDiDF.jpg",
         where: [],
         vote_count: 152,
-        popularity: 1.8,
+        popularity: 2.4,
         tmdbId: 395883
     },
     {
@@ -4807,7 +4807,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 2,
-        popularity: 0.3,
+        popularity: 0.5,
         tmdbId: 500037
     },
     {
@@ -4824,7 +4824,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 4,
-        popularity: 0.7,
+        popularity: 0.9,
         tmdbId: 188891
     },
     {
@@ -4858,7 +4858,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/zUcCrwKNe8C3G1LMjbq8p5ZMpnB.jpg",
         where: [],
         vote_count: 0,
-        popularity: 0.3,
+        popularity: 0.2,
         tmdbId: 1088256
     },
     {
@@ -4875,7 +4875,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 1,
-        popularity: 0.2,
+        popularity: 0.1,
         tmdbId: 625672
     },
     {
@@ -4909,7 +4909,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/rMrtoZfd0B0jDc1IW6r7MHELAtt.jpg",
         where: [],
         vote_count: 374,
-        popularity: 1.6,
+        popularity: 2.3,
         tmdbId: 174321
     },
     {
@@ -4926,7 +4926,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/zFkGKu3VG0YgNThzB2Lv1vW1GCV.jpg",
         where: [],
         vote_count: 25,
-        popularity: 0.7,
+        popularity: 0.9,
         tmdbId: 123018
     },
     {
@@ -4943,7 +4943,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/po2J7LAMriZSYxOJgoqROZlkl6G.jpg",
         where: [],
         vote_count: 25,
-        popularity: 0.5,
+        popularity: 0.6,
         tmdbId: 332212
     },
     {
@@ -4959,8 +4959,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/oSMIKsznGYzGfdl611kgEJF889.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/1HwTbEN3SFiFWxChqVXddxquKHf.jpg",
         where: [],
-        vote_count: 354,
-        popularity: 2,
+        vote_count: 355,
+        popularity: 2.7,
         tmdbId: 461615
     },
     {
@@ -4977,7 +4977,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/vSKCA2ND6IE76idZugD8o5V32W9.jpg",
         where: [],
         vote_count: 10,
-        popularity: 0.5,
+        popularity: 1,
         tmdbId: 616828
     },
     {
@@ -4994,7 +4994,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/g59xoiJmfwxrhaIhuW0DucBv6yY.jpg",
         where: [],
         vote_count: 13,
-        popularity: 0.4,
+        popularity: 0.6,
         tmdbId: 10392
     },
     {
@@ -5045,7 +5045,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 2,
-        popularity: 0.5,
+        popularity: 0.6,
         tmdbId: 292026
     },
     {
@@ -5079,7 +5079,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/iG0Kjm95zHVApDuSOKM1VmDsIXo.jpg",
         where: [],
         vote_count: 4,
-        popularity: 0.7,
+        popularity: 0.5,
         tmdbId: 1397168
     },
     {
@@ -5096,7 +5096,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/ylob1axAunw2NW06Drd5jfjMASK.jpg",
         where: [],
         vote_count: 103,
-        popularity: 1,
+        popularity: 1.3,
         tmdbId: 582887
     },
     {
@@ -5113,7 +5113,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/cf1yVkO8t0xYHOsoMrp8DWHuYV6.jpg",
         where: [],
         vote_count: 11,
-        popularity: 0.4,
+        popularity: 0.6,
         tmdbId: 1075010
     },
     {
@@ -5130,7 +5130,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/ahw6wX1e0VgxR1GKMdeIORhCTtS.jpg",
         where: [],
         vote_count: 15,
-        popularity: 0.2,
+        popularity: 0.7,
         tmdbId: 622139
     },
     {
@@ -5147,7 +5147,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/5APJCIebhpROWEMc2ZIBclfmjm2.jpg",
         where: [],
         vote_count: 886,
-        popularity: 1.8,
+        popularity: 2.2,
         tmdbId: 8849
     },
     {
@@ -5181,7 +5181,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/eHS6TBRzHhwpSKGYsmAUth2he6c.jpg",
         where: [],
         vote_count: 82,
-        popularity: 0.9,
+        popularity: 1.4,
         tmdbId: 514407
     },
     {
@@ -5198,7 +5198,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/baR7FyL8DIF2lYydRgic3uUxgcd.jpg",
         where: [],
         vote_count: 15,
-        popularity: 1.9,
+        popularity: 2,
         tmdbId: 935412
     },
     {
@@ -5215,7 +5215,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/gFLCrMbVoPXvDTwl0j3hurQoeua.jpg",
         where: [],
         vote_count: 129,
-        popularity: 1.3,
+        popularity: 1.7,
         tmdbId: 13644
     },
     {
@@ -5231,8 +5231,8 @@ const movieDatabase = [
         poster: "https://image.tmdb.org/t/p/w780/2uu8fIzl76C9MFiUQhjKYSLKVq.jpg",
         thumbnail: "https://image.tmdb.org/t/p/original/39KCF3nZUG0b2GPE5vCeMm0kSf9.jpg",
         where: [],
-        vote_count: 1523,
-        popularity: 2.2,
+        vote_count: 1524,
+        popularity: 3,
         tmdbId: 393559
     },
     {
@@ -5249,7 +5249,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/fCZiwwD8M58X7IXW33EMjXLuBSV.jpg",
         where: [],
         vote_count: 74,
-        popularity: 1,
+        popularity: 1.1,
         tmdbId: 382951
     },
     {
@@ -5266,7 +5266,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/vT06tEfV6mXuhWo8QAoMXBNieeO.jpg",
         where: [],
         vote_count: 33,
-        popularity: 0.4,
+        popularity: 0.6,
         tmdbId: 500705
     },
     {
@@ -5283,7 +5283,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/1EeYPF1ifsKrdHlmfxmQcXWKcsE.jpg",
         where: [],
         vote_count: 46,
-        popularity: 0.8,
+        popularity: 0.6,
         tmdbId: 138820
     },
     {
@@ -5300,7 +5300,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/7ElFuk6MXWM57V56mVEisbxFXtY.jpg",
         where: [],
         vote_count: 22,
-        popularity: 0.6,
+        popularity: 0.5,
         tmdbId: 778994
     },
     {
@@ -5317,7 +5317,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 0,
-        popularity: 0.8,
+        popularity: 0.6,
         tmdbId: 920699
     },
     {
@@ -5334,7 +5334,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/umU01ex28ykcaF5IxcHPB0lSGP1.jpg",
         where: [],
         vote_count: 95,
-        popularity: 1.2,
+        popularity: 1.3,
         tmdbId: 921355
     },
     {
@@ -5351,7 +5351,7 @@ const movieDatabase = [
         thumbnail: "",
         where: [],
         vote_count: 2,
-        popularity: 0.2,
+        popularity: 0.3,
         tmdbId: 248375
     },
     {
@@ -5368,7 +5368,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/xsMqT1i7V5qmUluCDk547pZmNgN.jpg",
         where: [],
         vote_count: 46,
-        popularity: 0.2,
+        popularity: 0.3,
         tmdbId: 953542
     },
     {
@@ -5385,7 +5385,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/9veiTNBxButuExKBa0l8APqr2li.jpg",
         where: [],
         vote_count: 499,
-        popularity: 2.3,
+        popularity: 2.2,
         tmdbId: 500919
     },
     {
@@ -5402,7 +5402,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/7zKaMAH0nAxJHCQ6tsKYiueUikL.jpg",
         where: [],
         vote_count: 231,
-        popularity: 1.8,
+        popularity: 2,
         tmdbId: 466532
     },
     {
@@ -5419,7 +5419,7 @@ const movieDatabase = [
         thumbnail: "https://image.tmdb.org/t/p/original/54chAMdvhmK1Fh7twaYxbB4ojQB.jpg",
         where: [],
         vote_count: 232,
-        popularity: 1.8,
+        popularity: 2.3,
         tmdbId: 484886
     },
     {
