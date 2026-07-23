@@ -8229,23 +8229,6 @@ const movieDatabase = [
         where: []
     },
     {
-        url: "https://www.youtube.com/watch?v=92fEXr_sywI",
-        title: "Noah's Ark",
-        year: 2024,
-        genre: "Animation, Music, Comedy, Fantasy, Family",
-        rating: 7,
-        vote_count: 116,
-        popularity: 1.8,
-        tmdbId: 1192209,
-        duration: 96,
-        director: "Alois Di Leo, Sérgio Machado",
-        cast: ["Rodrigo Santoro", "Marcelo Adnet", "Alice Braga", "Lázaro Ramos", "Júlio Andrade", "Bruno Gagliasso"],
-        desc: "A pair of mice attempt to board Noah's Ark: Vini, a charismatic poet with terrible stage fright, and Tito, a talented and charming guitarist. When the rains come, only one male and one female of each species is allowed on Noah's Ark. With the help of an ingenious cockroach and fate's good luck, Vini and Tito sneak their way onto the Ark and together avert a showdown among the ships carnivores and plant eaters. All the while, the animals perform a series of classic songs inspired by world renowned poet, Vinicius de Moraes. Can these talented stowaways use music to break the tension and help these cooped up creatures survive the 40 days and 40 nights together?",
-        poster: "https://image.tmdb.org/t/p/w780/x6wH1kowr6uNFJ12CVKsRHzC0cm.jpg",
-        thumbnail: "https://image.tmdb.org/t/p/original/qSc5JzPvSm6KxVv54nrn7SNXFtk.jpg",
-        where: []
-    },
-    {
         url: "https://www.youtube.com/watch?v=yndrj4Ds2ho",
         title: "Morning Glory",
         year: 1993,
