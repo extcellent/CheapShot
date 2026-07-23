@@ -6739,7 +6739,7 @@ const movieDatabase = [
         title: "War of the God Monsters",
         year: 1985,
         genre: "Science Fiction, Horror",
-        rating: 7,
+        rating: 3.7,
         vote_count: 6,
         popularity: 0.4,
         tmdbId: 106568,
