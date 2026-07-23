@@ -238,17 +238,19 @@ const movieDatabase = [
     {
         url: "https://www.youtube.com/watch?v=6BlWDPRiQ88",
         title: "To Die For",
-        year: "1995",
-        genre: "Comedy, Crime, Drama",
-        rating: 6.8,
+        year: 1995,
+        genre: "Drama, Comedy, Crime",
+        rating: 6.6,
+        vote_count: 896,
+        popularity: 3.1,
+        tmdbId: 577,
         duration: 106,
         director: "Gus Van Sant",
-        cast: ["Nicole Kidman", "Matt Dillon", "Joaquin Phoenix", "Casey Affleck"],
-        desc: "An ambitious TV weathergirl manipulates a teenager into murdering her husband so nothing can stand in the way of her fame.",
-        where: [],
-        vote_count: 896,
-        popularity: 2.2,
-        tmdbId: 577
+        cast: ["Nicole Kidman", "Matt Dillon", "Joaquin Phoenix", "Casey Affleck", "Illeana Douglas", "Alison Folland"],
+        desc: "Suzanne Stone wants to be a world-famous news anchor and she is willing to do anything to get what she wants. What she lacks in intelligence, she makes up for in cold determination and diabolical wiles. As she pursues her goal with relentless focus, she is forced to destroy anything and anyone that may stand in her way, regardless of the ultimate cost or means necessary.",
+        poster: "https://image.tmdb.org/t/p/w780/whz4bwvqE1OmQHIyqHdZD8jU9CO.jpg",
+        thumbnail: "https://image.tmdb.org/t/p/original/ufYWigU75j2GlKWhGayj3ZxCTQs.jpg",
+        where: []
     },
     {
         url: "https://www.youtube.com/watch?v=DoCgEA22CMc",
